@@ -1,0 +1,182 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+AR	Makefile	/^AR            = ar cqs$/;"	m
+CC	Makefile	/^CC            = gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS        = -pipe -march=x86-64 -mtune=generic -O2 -pipe -fstack-protector --param=ssp-buffer-size=4 -Wall -W -D_REENTRANT -fPIE $(DEFINES)$/;"	m
+CHK_DIR_EXISTS	Makefile	/^CHK_DIR_EXISTS= test -d$/;"	m
+COMPRESS	Makefile	/^COMPRESS      = gzip -9f$/;"	m
+COPY	Makefile	/^COPY          = cp -f$/;"	m
+COPY_DIR	Makefile	/^COPY_DIR      = cp -f -R$/;"	m
+COPY_FILE	Makefile	/^COPY_FILE     = cp -f$/;"	m
+CXX	Makefile	/^CXX           = g++$/;"	m
+CXXFLAGS	Makefile	/^CXXFLAGS      = -pipe -std=c++11 -march=x86-64 -mtune=generic -O2 -pipe -fstack-protector --param=ssp-buffer-size=4 -Wall -W -D_REENTRANT -fPIE $(DEFINES)$/;"	m
+DEFINES	Makefile	/^DEFINES       = -DQT_NO_DEBUG -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB$/;"	m
+DEL_DIR	Makefile	/^DEL_DIR       = rmdir$/;"	m
+DEL_FILE	Makefile	/^DEL_FILE      = rm -f$/;"	m
+DESTDIR	Makefile	/^DESTDIR       = #avoid trailing-slash linebreak$/;"	m
+DIST	Makefile	/^DIST          = \/usr\/lib\/qt\/mkspecs\/features\/spec_pre.prf \\$/;"	m
+DataSet	kbplot.h	/^		DataSet (const std::vector<double> &data);$/;"	p	class:DataSet	access:public	signature:(const std::vector<double> &data)
+DataSet	kbplot.h	/^class DataSet {$/;"	c
+DataSet::DataSet	kbplot.h	/^		DataSet (const std::vector<double> &data);$/;"	p	class:DataSet	access:public	signature:(const std::vector<double> &data)
+DataSet::draw	kbplot.h	/^		void draw();$/;"	p	class:DataSet	access:public	signature:()
+DataSet::wlines	kbplot.h	/^		bool wlines;$/;"	m	class:DataSet	access:private
+DataSet::wmarks	kbplot.h	/^		bool wmarks;$/;"	m	class:DataSet	access:private
+GLWIDGET_H	glwidget.h	2;"	d
+GLWidget	glwidget.cpp	/^GLWidget::GLWidget(QWidget *parent): QGLWidget(parent)$/;"	f	class:GLWidget	signature:(QWidget *parent)
+GLWidget	glwidget.h	/^    GLWidget(QWidget *parent = 0);$/;"	p	class:GLWidget	access:public	signature:(QWidget *parent = 0)
+GLWidget	glwidget.h	/^class GLWidget : public QGLWidget$/;"	c	inherits:QGLWidget
+GLWidget::GLWidget	glwidget.cpp	/^GLWidget::GLWidget(QWidget *parent): QGLWidget(parent)$/;"	f	class:GLWidget	signature:(QWidget *parent)
+GLWidget::GLWidget	glwidget.h	/^    GLWidget(QWidget *parent = 0);$/;"	p	class:GLWidget	access:public	signature:(QWidget *parent = 0)
+GLWidget::initializeGL	glwidget.cpp	/^void GLWidget::initializeGL() {$/;"	f	class:GLWidget	signature:()
+GLWidget::initializeGL	glwidget.h	/^    void initializeGL();$/;"	p	class:GLWidget	access:public	signature:()
+GLWidget::line	glwidget.cpp	/^void GLWidget::line(int x1, int y1,int x2, int y2){$/;"	f	class:GLWidget	signature:(int x1, int y1,int x2, int y2)
+GLWidget::line	glwidget.h	/^    void line(int x1, int y1, int x2, int y2);$/;"	p	class:GLWidget	access:public	signature:(int x1, int y1, int x2, int y2)
+GLWidget::metaObject	moc_glwidget.cpp	/^const QMetaObject *GLWidget::metaObject() const$/;"	f	class:GLWidget	signature:() const
+GLWidget::mouseMoveEvent	glwidget.cpp	/^void GLWidget::mouseMoveEvent(QMouseEvent *e){$/;"	f	class:GLWidget	signature:(QMouseEvent *e)
+GLWidget::mouseMoveEvent	glwidget.h	/^    void mouseMoveEvent(QMouseEvent *e);$/;"	p	class:GLWidget	access:public	signature:(QMouseEvent *e)
+GLWidget::mouseReleaseEvent	glwidget.cpp	/^void GLWidget::mouseReleaseEvent(QMouseEvent *e){$/;"	f	class:GLWidget	signature:(QMouseEvent *e)
+GLWidget::mouseReleaseEvent	glwidget.h	/^    void mouseReleaseEvent(QMouseEvent *e);$/;"	p	class:GLWidget	access:public	signature:(QMouseEvent *e)
+GLWidget::mouseX	glwidget.h	/^	int mouseX, mouseY;$/;"	m	class:GLWidget	access:private
+GLWidget::mouseY	glwidget.h	/^	int mouseX, mouseY;$/;"	m	class:GLWidget	access:private
+GLWidget::paintGL	glwidget.cpp	/^void GLWidget::paintGL(){$/;"	f	class:GLWidget	signature:()
+GLWidget::paintGL	glwidget.h	/^    void paintGL();$/;"	p	class:GLWidget	access:public	signature:()
+GLWidget::qt_metacall	moc_glwidget.cpp	/^int GLWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:GLWidget	signature:(QMetaObject::Call _c, int _id, void **_a)
+GLWidget::qt_metacast	moc_glwidget.cpp	/^void *GLWidget::qt_metacast(const char *_clname)$/;"	f	class:GLWidget	signature:(const char *_clname)
+GLWidget::qt_static_metacall	moc_glwidget.cpp	/^void GLWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:GLWidget	signature:(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+GLWidget::resizeGL	glwidget.cpp	/^void GLWidget::resizeGL(int nw, int nh){$/;"	f	class:GLWidget	signature:(int nw, int nh)
+GLWidget::resizeGL	glwidget.h	/^    void resizeGL(int nw, int nh);$/;"	p	class:GLWidget	access:public	signature:(int nw, int nh)
+GLWidget::routine	glwidget.h	/^	std::list<std::function<void(void)> > routine;$/;"	m	class:GLWidget	access:private
+GLWidget::routinePush	glwidget.h	/^    void routinePush(std::function<void(void)>);$/;"	p	class:GLWidget	access:public	signature:(std::function<void(void)>)
+GLWidget::staticMetaObject	moc_glwidget.cpp	/^const QMetaObject GLWidget::staticMetaObject = {$/;"	m	class:GLWidget	file:
+GLWidget::text	glwidget.h	/^    void text(int x, int y, std::string text);$/;"	p	class:GLWidget	access:public	signature:(int x, int y, std::string text)
+GLWidget::translateFromMathX	glwidget.cpp	/^inline float GLWidget::translateFromMathX(float x){$/;"	f	class:GLWidget	signature:(float x)
+GLWidget::translateFromMathX	glwidget.h	/^    inline float translateFromMathX(float x);$/;"	p	class:GLWidget	access:public	signature:(float x)
+GLWidget::translateFromMathY	glwidget.cpp	/^inline float GLWidget::translateFromMathY(float y){$/;"	f	class:GLWidget	signature:(float y)
+GLWidget::translateFromMathY	glwidget.h	/^    inline float translateFromMathY(float y);$/;"	p	class:GLWidget	access:public	signature:(float y)
+GLWidget::translateToMath	glwidget.h	/^    void translateToMath();$/;"	p	class:GLWidget	access:public	signature:()
+GLWidget::xpos	glwidget.h	/^	float xpos, ypos;$/;"	m	class:GLWidget	access:private
+GLWidget::ypos	glwidget.h	/^	float xpos, ypos;$/;"	m	class:GLWidget	access:private
+INCPATH	Makefile	/^INCPATH       = -I\/usr\/lib\/qt\/mkspecs\/linux-g++ -I. -I. -I\/usr\/include\/qt -I\/usr\/include\/qt\/QtOpenGL -I\/usr\/include\/qt\/QtWidgets -I\/usr\/include\/qt\/QtGui -I\/usr\/include\/qt\/QtCore -I.$/;"	m
+INSTALL_DIR	Makefile	/^INSTALL_DIR   = $(COPY_DIR)$/;"	m
+INSTALL_FILE	Makefile	/^INSTALL_FILE  = install -m 644 -p$/;"	m
+INSTALL_PROGRAM	Makefile	/^INSTALL_PROGRAM = install -m 755 -p$/;"	m
+KbPlot	kbplot.cpp	/^KbPlot::KbPlot(GLWidget *_container){$/;"	f	class:KbPlot	signature:(GLWidget *_container)
+KbPlot	kbplot.h	/^		KbPlot(GLWidget *container);$/;"	p	class:KbPlot	access:public	signature:(GLWidget *container)
+KbPlot	kbplot.h	/^class KbPlot {$/;"	c
+KbPlot::KbPlot	kbplot.cpp	/^KbPlot::KbPlot(GLWidget *_container){$/;"	f	class:KbPlot	signature:(GLWidget *_container)
+KbPlot::KbPlot	kbplot.h	/^		KbPlot(GLWidget *container);$/;"	p	class:KbPlot	access:public	signature:(GLWidget *container)
+KbPlot::container	kbplot.h	/^		GLWidget *container;$/;"	m	class:KbPlot	access:private
+KbPlot::drawAxis	kbplot.cpp	/^void KbPlot::drawAxis(){$/;"	f	class:KbPlot	signature:()
+KbPlot::drawAxis	kbplot.h	/^		void drawAxis();$/;"	p	class:KbPlot	access:private	signature:()
+KbPlot::drawBg	kbplot.h	/^		void drawBg();$/;"	p	class:KbPlot	access:private	signature:()
+KbPlot::drawNumbers	kbplot.h	/^		void drawNumbers();$/;"	p	class:KbPlot	access:private	signature:()
+KbPlot::init	kbplot.cpp	/^void KbPlot::init(){$/;"	f	class:KbPlot	signature:()
+KbPlot::init	kbplot.h	/^		void init();$/;"	p	class:KbPlot	access:public	signature:()
+LFLAGS	Makefile	/^LFLAGS        = -Wl,-O1,--sort-common,--as-needed,-z,relro -Wl,-O1$/;"	m
+LIBS	Makefile	/^LIBS          = $(SUBLIBS) -lQt5OpenGL -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread $/;"	m
+LINK	Makefile	/^LINK          = g++$/;"	m
+LineStyle	kbplot.h	/^		LineStyle();$/;"	p	class:LineStyle	access:public	signature:()
+LineStyle	kbplot.h	/^class LineStyle : public Style {$/;"	c	inherits:Style
+LineStyle::LineStyle	kbplot.h	/^		LineStyle();$/;"	p	class:LineStyle	access:public	signature:()
+LineStyle::stroke	kbplot.h	/^		unsigned int stroke;$/;"	m	class:LineStyle	access:public
+LineStyle::thickness	kbplot.h	/^		unsigned int thickness;$/;"	m	class:LineStyle	access:public
+MAKEFILE	Makefile	/^MAKEFILE      = Makefile$/;"	m
+MKDIR	Makefile	/^MKDIR         = mkdir -p$/;"	m
+MOVE	Makefile	/^MOVE          = mv -f$/;"	m
+MarkStyle	kbplot.h	/^		MarkStyle();$/;"	p	class:MarkStyle	access:public	signature:()
+MarkStyle	kbplot.h	/^class MarkStyle : public Style {$/;"	c	inherits:Style
+MarkStyle::MarkStyle	kbplot.h	/^		MarkStyle();$/;"	p	class:MarkStyle	access:public	signature:()
+MarkStyle::size	kbplot.h	/^		unsigned int size;$/;"	m	class:MarkStyle	access:public
+OBJECTS	Makefile	/^OBJECTS       = glwidget.o \\$/;"	m
+OBJECTS_DIR	Makefile	/^OBJECTS_DIR   = .\/$/;"	m
+QMAKE	Makefile	/^QMAKE         = \/usr\/lib\/qt\/bin\/qmake$/;"	m
+QMAKE_TARGET	Makefile	/^QMAKE_TARGET  = kbplot$/;"	m
+QT_MOC_LITERAL	moc_glwidget.cpp	25;"	d	file:
+QT_MOC_LITERAL	moc_glwidget.cpp	36;"	d	file:
+QT_MOC_LITERAL	moc_widget.cpp	25;"	d	file:
+QT_MOC_LITERAL	moc_widget.cpp	36;"	d	file:
+RANLIB	Makefile	/^RANLIB        = $/;"	m
+SED	Makefile	/^SED           = sed$/;"	m
+SOURCES	Makefile	/^SOURCES       = glwidget.cpp \\$/;"	m
+STRIP	Makefile	/^STRIP         = strip$/;"	m
+SYMLINK	Makefile	/^SYMLINK       = ln -f -s$/;"	m
+Style	kbplot.h	/^		Style ();$/;"	p	class:Style	access:public	signature:()
+Style	kbplot.h	/^class Style {$/;"	c
+Style::Style	kbplot.h	/^		Style ();$/;"	p	class:Style	access:public	signature:()
+Style::color	kbplot.h	/^		unsigned int color;$/;"	m	class:Style	access:public
+Style::~Style	kbplot.h	/^		virtual ~Style ();$/;"	p	class:Style	access:public	implementation:virtual	signature:()
+TAR	Makefile	/^TAR           = tar -cf$/;"	m
+TARGET	Makefile	/^TARGET        = kbplot$/;"	m
+Widget::metaObject	moc_widget.cpp	/^const QMetaObject *Widget::metaObject() const$/;"	f	class:Widget	signature:() const
+Widget::qt_metacall	moc_widget.cpp	/^int Widget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:Widget	signature:(QMetaObject::Call _c, int _id, void **_a)
+Widget::qt_metacast	moc_widget.cpp	/^void *Widget::qt_metacast(const char *_clname)$/;"	f	class:Widget	signature:(const char *_clname)
+Widget::qt_static_metacall	moc_widget.cpp	/^void Widget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:Widget	signature:(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+Widget::staticMetaObject	moc_widget.cpp	/^const QMetaObject Widget::staticMetaObject = {$/;"	m	class:Widget	file:
+color	kbplot.h	/^		unsigned int color;$/;"	m	class:Style	access:public
+container	kbplot.h	/^		GLWidget *container;$/;"	m	class:KbPlot	access:private
+data	moc_glwidget.cpp	/^    QByteArrayData data[1];$/;"	m	struct:qt_meta_stringdata_GLWidget_t	file:	access:public
+data	moc_widget.cpp	/^    QByteArrayData data[1];$/;"	m	struct:qt_meta_stringdata_Widget_t	file:	access:public
+draw	kbplot.h	/^		void draw();$/;"	p	class:DataSet	access:public	signature:()
+drawAxis	kbplot.cpp	/^void KbPlot::drawAxis(){$/;"	f	class:KbPlot	signature:()
+drawAxis	kbplot.h	/^		void drawAxis();$/;"	p	class:KbPlot	access:private	signature:()
+drawBg	kbplot.h	/^		void drawBg();$/;"	p	class:KbPlot	access:private	signature:()
+drawNumbers	kbplot.h	/^		void drawNumbers();$/;"	p	class:KbPlot	access:private	signature:()
+init	kbplot.cpp	/^void KbPlot::init(){$/;"	f	class:KbPlot	signature:()
+init	kbplot.h	/^		void init();$/;"	p	class:KbPlot	access:public	signature:()
+initializeGL	glwidget.cpp	/^void GLWidget::initializeGL() {$/;"	f	class:GLWidget	signature:()
+initializeGL	glwidget.h	/^    void initializeGL();$/;"	p	class:GLWidget	access:public	signature:()
+line	glwidget.cpp	/^void GLWidget::line(int x1, int y1,int x2, int y2){$/;"	f	class:GLWidget	signature:(int x1, int y1,int x2, int y2)
+line	glwidget.h	/^    void line(int x1, int y1, int x2, int y2);$/;"	p	class:GLWidget	access:public	signature:(int x1, int y1, int x2, int y2)
+main	main.cpp	/^int main(int argc, char *argv[])$/;"	f	signature:(int argc, char *argv[])
+metaObject	moc_glwidget.cpp	/^const QMetaObject *GLWidget::metaObject() const$/;"	f	class:GLWidget	signature:() const
+metaObject	moc_widget.cpp	/^const QMetaObject *Widget::metaObject() const$/;"	f	class:Widget	signature:() const
+mouseMoveEvent	glwidget.cpp	/^void GLWidget::mouseMoveEvent(QMouseEvent *e){$/;"	f	class:GLWidget	signature:(QMouseEvent *e)
+mouseMoveEvent	glwidget.h	/^    void mouseMoveEvent(QMouseEvent *e);$/;"	p	class:GLWidget	access:public	signature:(QMouseEvent *e)
+mouseReleaseEvent	glwidget.cpp	/^void GLWidget::mouseReleaseEvent(QMouseEvent *e){$/;"	f	class:GLWidget	signature:(QMouseEvent *e)
+mouseReleaseEvent	glwidget.h	/^    void mouseReleaseEvent(QMouseEvent *e);$/;"	p	class:GLWidget	access:public	signature:(QMouseEvent *e)
+mouseX	glwidget.h	/^	int mouseX, mouseY;$/;"	m	class:GLWidget	access:private
+mouseY	glwidget.h	/^	int mouseX, mouseY;$/;"	m	class:GLWidget	access:private
+paintGL	glwidget.cpp	/^void GLWidget::paintGL(){$/;"	f	class:GLWidget	signature:()
+paintGL	glwidget.h	/^    void paintGL();$/;"	p	class:GLWidget	access:public	signature:()
+qt_meta_data_GLWidget	moc_glwidget.cpp	/^static const uint qt_meta_data_GLWidget[] = {$/;"	v	file:
+qt_meta_data_Widget	moc_widget.cpp	/^static const uint qt_meta_data_Widget[] = {$/;"	v	file:
+qt_meta_stringdata_GLWidget	moc_glwidget.cpp	/^static const qt_meta_stringdata_GLWidget_t qt_meta_stringdata_GLWidget = {$/;"	v	file:
+qt_meta_stringdata_GLWidget_t	moc_glwidget.cpp	/^struct qt_meta_stringdata_GLWidget_t {$/;"	s	file:
+qt_meta_stringdata_GLWidget_t::data	moc_glwidget.cpp	/^    QByteArrayData data[1];$/;"	m	struct:qt_meta_stringdata_GLWidget_t	file:	access:public
+qt_meta_stringdata_GLWidget_t::stringdata	moc_glwidget.cpp	/^    char stringdata[10];$/;"	m	struct:qt_meta_stringdata_GLWidget_t	file:	access:public
+qt_meta_stringdata_Widget	moc_widget.cpp	/^static const qt_meta_stringdata_Widget_t qt_meta_stringdata_Widget = {$/;"	v	file:
+qt_meta_stringdata_Widget_t	moc_widget.cpp	/^struct qt_meta_stringdata_Widget_t {$/;"	s	file:
+qt_meta_stringdata_Widget_t::data	moc_widget.cpp	/^    QByteArrayData data[1];$/;"	m	struct:qt_meta_stringdata_Widget_t	file:	access:public
+qt_meta_stringdata_Widget_t::stringdata	moc_widget.cpp	/^    char stringdata[8];$/;"	m	struct:qt_meta_stringdata_Widget_t	file:	access:public
+qt_metacall	moc_glwidget.cpp	/^int GLWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:GLWidget	signature:(QMetaObject::Call _c, int _id, void **_a)
+qt_metacall	moc_widget.cpp	/^int Widget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:Widget	signature:(QMetaObject::Call _c, int _id, void **_a)
+qt_metacast	moc_glwidget.cpp	/^void *GLWidget::qt_metacast(const char *_clname)$/;"	f	class:GLWidget	signature:(const char *_clname)
+qt_metacast	moc_widget.cpp	/^void *Widget::qt_metacast(const char *_clname)$/;"	f	class:Widget	signature:(const char *_clname)
+qt_static_metacall	moc_glwidget.cpp	/^void GLWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:GLWidget	signature:(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+qt_static_metacall	moc_widget.cpp	/^void Widget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:Widget	signature:(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+resizeGL	glwidget.cpp	/^void GLWidget::resizeGL(int nw, int nh){$/;"	f	class:GLWidget	signature:(int nw, int nh)
+resizeGL	glwidget.h	/^    void resizeGL(int nw, int nh);$/;"	p	class:GLWidget	access:public	signature:(int nw, int nh)
+routine	glwidget.h	/^	std::list<std::function<void(void)> > routine;$/;"	m	class:GLWidget	access:private
+routinePush	glwidget.h	/^    void routinePush(std::function<void(void)>);$/;"	p	class:GLWidget	access:public	signature:(std::function<void(void)>)
+size	kbplot.h	/^		unsigned int size;$/;"	m	class:MarkStyle	access:public
+staticMetaObject	moc_glwidget.cpp	/^const QMetaObject GLWidget::staticMetaObject = {$/;"	m	class:GLWidget	file:
+staticMetaObject	moc_widget.cpp	/^const QMetaObject Widget::staticMetaObject = {$/;"	m	class:Widget	file:
+stringdata	moc_glwidget.cpp	/^    char stringdata[10];$/;"	m	struct:qt_meta_stringdata_GLWidget_t	file:	access:public
+stringdata	moc_widget.cpp	/^    char stringdata[8];$/;"	m	struct:qt_meta_stringdata_Widget_t	file:	access:public
+stroke	kbplot.h	/^		unsigned int stroke;$/;"	m	class:LineStyle	access:public
+text	glwidget.h	/^    void text(int x, int y, std::string text);$/;"	p	class:GLWidget	access:public	signature:(int x, int y, std::string text)
+thickness	kbplot.h	/^		unsigned int thickness;$/;"	m	class:LineStyle	access:public
+translateFromMathX	glwidget.cpp	/^inline float GLWidget::translateFromMathX(float x){$/;"	f	class:GLWidget	signature:(float x)
+translateFromMathX	glwidget.h	/^    inline float translateFromMathX(float x);$/;"	p	class:GLWidget	access:public	signature:(float x)
+translateFromMathY	glwidget.cpp	/^inline float GLWidget::translateFromMathY(float y){$/;"	f	class:GLWidget	signature:(float y)
+translateFromMathY	glwidget.h	/^    inline float translateFromMathY(float y);$/;"	p	class:GLWidget	access:public	signature:(float y)
+translateToMath	glwidget.h	/^    void translateToMath();$/;"	p	class:GLWidget	access:public	signature:()
+wlines	kbplot.h	/^		bool wlines;$/;"	m	class:DataSet	access:private
+wmarks	kbplot.h	/^		bool wmarks;$/;"	m	class:DataSet	access:private
+xpos	glwidget.h	/^	float xpos, ypos;$/;"	m	class:GLWidget	access:private
+ypos	glwidget.h	/^	float xpos, ypos;$/;"	m	class:GLWidget	access:private
+~Style	kbplot.h	/^		virtual ~Style ();$/;"	p	class:Style	access:public	implementation:virtual	signature:()
