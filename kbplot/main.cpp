@@ -2,16 +2,22 @@
 #include "kbplot.h"
 #include <QApplication>
 #include <QtGui>
-#include<functional>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     GLWidget w;
     KbPlot p(&w);
-    auto f = [&w](){w.line(100,100,200,200);};
-    w.routinePush(f);
-
+	std::vector<double> *v = new std::vector<double>();
+	v->push_back(0.1f);
+	v->push_back(0.1f);
+	v->push_back(0.2f);
+	v->push_back(0.1f);
+	v->push_back(0.1f);
+	v->push_back(0.4f);
+	Polyline pl(v);
+	w.objects.push_back((Primitive*)(&pl));
     w.show();
+    v->clear();
     return a.exec();
 }

@@ -8,6 +8,7 @@ GLWidget::GLWidget(QWidget *parent): QGLWidget(parent)
 	ypos = 0.0;
 	initializeGL();
 	qDebug() << "Initialized GL";
+	//TODO: get rid of this
 }
 
 void GLWidget::initializeGL() {
@@ -26,8 +27,8 @@ void GLWidget::paintGL(){
 	glLoadIdentity();
 	glTranslatef(xpos, ypos, 0);
 
-	for( auto fun : this->routine){
-		fun();
+	for(std::list<Primitive*>::const_iterator i = this->objects.begin(); i != this->objects.end(); i++){
+		(*i)->draw();
 	}
 }
 
@@ -58,19 +59,6 @@ void GLWidget::mouseReleaseEvent(QMouseEvent *e){
 	updateGL();
 }
 
-void GLWidget::line(int x1, int y1,int x2, int y2){
-	glBegin(GL_LINE_STRIP);
-	glVertex2f(
-			this->translateFromMathX(x1),
-			this->translateFromMathY(y1)
-			);
-	glVertex2f(
-			this->translateFromMathX(x2),
-			this->translateFromMathY(y2)
-			);
-	glEnd();
-}
-
 inline float GLWidget::translateFromMathX(float x){
 	return x/width();
 }
@@ -78,6 +66,16 @@ inline float GLWidget::translateFromMathY(float y){
 	return y/height();
 }
 
-void GLWidget::routinePush(std::function<void(void)> f){
-	this->routine.push_back(f);
+Polyline::Polyline(std::vector<double> *vs){
+	this->values = vs;
+}
+
+void Polyline::draw() const{
+	if(this->values == NULL) return;
+	
+	glBegin(GL_LINE_STRIP);
+	for (std::vector<double>::const_iterator i = this->values->begin(); i != this->values->end() && i+1 != this->values->end(); i+=2) {
+		glVertex2d(*i, *(i+1));
+	}
+	glEnd();
 }

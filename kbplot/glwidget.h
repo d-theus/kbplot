@@ -3,20 +3,21 @@
 
 #include <QGLWidget>
 #include <QtOpenGL>
-#include <functional>
 #include <list>
+
+class Primitive;
+class Polyline;
 
 class GLWidget : public QGLWidget
 {
 	Q_OBJECT
 
-
 	float xpos, ypos;
 	int mouseX, mouseY;
-	std::list<std::function<void(void)> > routine;
 
 
 public:
+	std::list<Primitive*> objects;
     GLWidget(QWidget *parent = 0);
     void initializeGL();
     void resizeGL(int nw, int nh);
@@ -29,10 +30,21 @@ public:
     inline float translateFromMathY(float y);
     void translateToMath();
 
-    void line(int x1, int y1, int x2, int y2);
-    void text(int x, int y, std::string text);
+};
 
-    void routinePush(std::function<void(void)>);
+class Primitive {
+public:
+	virtual ~Primitive(){};
+	virtual void draw() const = 0;
+};
+
+class Polyline : public Primitive {
+public:
+	Polyline(std::vector<double> *);
+	virtual void draw() const;
+	virtual ~Polyline(){};
+private:
+	std::vector<double> *values;
 };
 
 #endif // GLWIDGET_H

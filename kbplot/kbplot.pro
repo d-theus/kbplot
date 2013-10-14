@@ -3,7 +3,7 @@
 ######################################################################
 
 QT += core gui opengl
-QMAKE_CXXFLAGS += -std=c++11
+QMAKE_CXXFLAGS += -std=c++11 -w
 TEMPLATE = app
 TARGET = kbplot
 INCLUDEPATH += .
