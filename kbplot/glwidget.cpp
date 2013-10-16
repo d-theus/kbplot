@@ -8,7 +8,6 @@ GLWidget::GLWidget(QWidget *parent): QGLWidget(parent)
 	ypos = 0.0;
 	initializeGL();
 	qDebug() << "Initialized GL";
-	//TODO: get rid of this
 }
 
 void GLWidget::initializeGL() {
@@ -27,9 +26,13 @@ void GLWidget::paintGL(){
 	glLoadIdentity();
 	glTranslatef(xpos, ypos, 0);
 
+
+	qDebug() << "Looping through objects";
 	for(std::list<Primitive*>::const_iterator i = this->objects.begin(); i != this->objects.end(); i++){
+		qDebug() << "Calling draw";
 		(*i)->draw();
 	}
+	qDebug() << "Done looping";
 }
 
 void GLWidget::resizeGL(int nw, int nh){
@@ -66,16 +69,43 @@ inline float GLWidget::translateFromMathY(float y){
 	return y/height();
 }
 
+void Primitive::setTranslation(double x, double y){
+	this->isTranslated = true;
+	this->trX = x;
+	this->trY = y;
+}
+
+void Primitive::setTranslation(bool b){
+	this->isTranslated = b;
+}
+
 Polyline::Polyline(std::vector<double> *vs){
 	this->values = vs;
 }
 
 void Polyline::draw() const{
+	qDebug()<<"We are in draw";
 	if(this->values == NULL) return;
+	qDebug()<<"Checking if values valid";
+	this->values->size();
+
+	//TODO: this is not DRY, refactor needed
+	if(this->isTranslated){
+		glMatrixMode(GL_MODELVIEW);
+		glPushMatrix();
+		glLoadIdentity();
+		glTranslated(trX, trY,0.0);
+	}
 	
 	glBegin(GL_LINE_STRIP);
 	for (std::vector<double>::const_iterator i = this->values->begin(); i != this->values->end() && i+1 != this->values->end(); i+=2) {
+		qDebug() << "x:"; *i;
+		qDebug() << "y:" ; *(i+1);
 		glVertex2d(*i, *(i+1));
 	}
 	glEnd();
+
+	if(this->isTranslated){
+		glPopMatrix();
+	}
 }

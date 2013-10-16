@@ -33,9 +33,14 @@ public:
 };
 
 class Primitive {
-public:
-	virtual ~Primitive(){};
-	virtual void draw() const = 0;
+	protected:
+		bool isTranslated = false;
+		double trX, trY;
+	public:
+		virtual ~Primitive(){};
+		virtual void draw() const = 0;
+		void setTranslation(double,double);
+		void setTranslation(bool);
 };
 
 class Polyline : public Primitive {
