@@ -3,10 +3,13 @@
 
 #include <QGLWidget>
 #include <QtOpenGL>
-#include <list>
+#include <map>
+#include <string>
 
 class Primitive;
 class Polyline;
+
+using std::string;
 
 class GLWidget : public QGLWidget
 {
@@ -14,21 +17,23 @@ class GLWidget : public QGLWidget
 
 	float xpos, ypos;
 	int mouseX, mouseY;
-
+	std::map<int, Primitive*> objects;
 
 public:
-	std::list<Primitive*> objects;
-    GLWidget(QWidget *parent = 0);
-    void initializeGL();
-    void resizeGL(int nw, int nh);
-    void paintGL();
+	GLWidget(QWidget *parent = 0);
+	void initializeGL();
+	void resizeGL(int nw, int nh);
+	void paintGL();
 
-    void mouseMoveEvent(QMouseEvent *e);
-    void mouseReleaseEvent(QMouseEvent *e);
+	void mouseMoveEvent(QMouseEvent *e);
+	void mouseReleaseEvent(QMouseEvent *e);
 
-    inline float translateFromMathX(float x);
-    inline float translateFromMathY(float y);
-    void translateToMath();
+	inline float translateFromMathX(float x);
+	inline float translateFromMathY(float y);
+	void translateToMath();
+
+	void addObject(int, Primitive*);
+	void deleteObject(int);
 
 };
 

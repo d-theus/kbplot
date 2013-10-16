@@ -24,7 +24,7 @@ void KbPlot::drawAxis(){
 	qDebug()<<"Done";
 
 	qDebug()<<"appending axis object to list";
-	this->container->objects.push_back(axis);
+	this->container->addObject(2, axis);
 	qDebug()<<"Done";
 }
 

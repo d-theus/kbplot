@@ -28,9 +28,9 @@ void GLWidget::paintGL(){
 
 
 	qDebug() << "Looping through objects";
-	for(std::list<Primitive*>::const_iterator i = this->objects.begin(); i != this->objects.end(); i++){
+	for(std::map<int, Primitive*>::const_iterator i = this->objects.begin(); i != this->objects.end(); i++){
 		qDebug() << "Calling draw";
-		(*i)->draw();
+		(*i).second->draw();
 	}
 	qDebug() << "Done looping";
 }
@@ -67,6 +67,10 @@ inline float GLWidget::translateFromMathX(float x){
 }
 inline float GLWidget::translateFromMathY(float y){
 	return y/height();
+}
+
+void GLWidget::addObject(int key, Primitive *p){
+	this->objects[key] = p;
 }
 
 void Primitive::setTranslation(double x, double y){
