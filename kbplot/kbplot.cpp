@@ -1,35 +1,26 @@
 #include "kbplot.h"
 #include <vector>
 
-void KbPlot::drawAxis(){
-	std::vector<double> *v = new std::vector<double>();
-	v->push_back(-0.98);
-	v->push_back(-0.98);
+void KbPlot::drawAxis(double xmin, double xmax, double ymin, double ymax){
+	static Line 
+		xt(-0.98, 0.98, 0.98, 0.98),
+		xb(-0.98, -0.98, 0.98, -0.98),
+		yl(-0.98, 0.98, -0.98, -0.98),
+		yr(0.98, -0.98, 0.98, 0.98);
 
-	v->push_back(-0.98);
-	v->push_back(0.98);
+	xt.setTranslation(0.0,0.0);
+	xb.setTranslation(0.0,0.0);
+	yl.setTranslation(0.0,0.0);
+	yr.setTranslation(0.0,0.0);
 
-	v->push_back(0.98);
-	v->push_back(0.98);
-
-	v->push_back(0.98);
-	v->push_back(-0.98);
-
-	v->push_back(-0.98);
-	v->push_back(-0.98);
-
-	qDebug()<<"Constructing polyline axis";
-	Polyline *axis = new Polyline(v);
-	axis->setTranslation(0.0, 0.0);
-	qDebug()<<"Done";
-
-	qDebug()<<"appending axis object to list";
-	this->container->addObject(2, axis);
-	qDebug()<<"Done";
+	container -> addObject("axis_xt", (Primitive*)&xt);
+	container -> addObject("axis_xb", (Primitive*)&xb);
+	container -> addObject("axis_yl", (Primitive*)&yl);
+	container -> addObject("axis_yr", (Primitive*)&yr);
 }
 
 void KbPlot::init(){
-	drawAxis();
+	drawAxis(-1.0, 1.0, -1.0, 1.0);
 }
 
 KbPlot::KbPlot(GLWidget *_container){

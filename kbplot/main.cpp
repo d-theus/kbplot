@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     v->push_back(0.4);
     v->push_back(0.5);
     Polyline pl(v);
-    w.addObject(1,(Primitive*)&pl);
+    w.addObject("example",(Primitive*)&pl);
     w.show();
     return a.exec();
 }

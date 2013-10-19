@@ -17,7 +17,7 @@ class GLWidget : public QGLWidget
 
 	float xpos, ypos;
 	int mouseX, mouseY;
-	std::map<int, Primitive*> objects;
+	std::map<string, Primitive*> objects;
 
 public:
 	GLWidget(QWidget *parent = 0);
@@ -28,11 +28,12 @@ public:
 	void mouseMoveEvent(QMouseEvent *e);
 	void mouseReleaseEvent(QMouseEvent *e);
 
-	inline float translateFromMathX(float x);
-	inline float translateFromMathY(float y);
-	void translateToMath();
+	double scr_to_gl_x(int);
+	double scr_to_gl_y(int);
+	int gl_to_scr_x(double);
+	int gl_to_scr_y(double);
 
-	void addObject(int, Primitive*);
+	void addObject(string, Primitive*);
 	void deleteObject(int);
 
 };
@@ -41,6 +42,8 @@ class Primitive {
 	protected:
 		bool isTranslated = false;
 		double trX, trY;
+		void before_draw()const;
+		void after_draw()const;
 	public:
 		virtual ~Primitive(){};
 		virtual void draw() const = 0;
@@ -56,5 +59,15 @@ public:
 private:
 	std::vector<double> *values;
 };
+
+class Line : public Primitive {
+public:
+	Line(double,double,double,double);
+	virtual void draw() const;
+	virtual ~Line(){};
+private:
+	double x1,x2,y1,y2;
+};
+
 
 #endif // GLWIDGET_H

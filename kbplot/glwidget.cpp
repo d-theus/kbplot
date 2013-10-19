@@ -28,7 +28,7 @@ void GLWidget::paintGL(){
 
 
 	qDebug() << "Looping through objects";
-	for(std::map<int, Primitive*>::const_iterator i = this->objects.begin(); i != this->objects.end(); i++){
+	for(std::map<string, Primitive*>::const_iterator i = this->objects.begin(); i != this->objects.end(); i++){
 		qDebug() << "Calling draw";
 		(*i).second->draw();
 	}
@@ -62,15 +62,24 @@ void GLWidget::mouseReleaseEvent(QMouseEvent *e){
 	updateGL();
 }
 
-inline float GLWidget::translateFromMathX(float x){
-	return x/width();
-}
-inline float GLWidget::translateFromMathY(float y){
-	return y/height();
+void GLWidget::addObject(string key, Primitive *p){
+	this->objects[key] = p;
 }
 
-void GLWidget::addObject(int key, Primitive *p){
-	this->objects[key] = p;
+double GLWidget::scr_to_gl_x(int x){
+	return (double)(this->width() - x)/this->width();
+}
+
+double GLWidget::scr_to_gl_y(int y){
+	return (double)(this->height() - y)/this->height();
+}
+
+int GLWidget::gl_to_scr_x(double x){
+	return (double)(this->width()) * (x - 1.0);
+}
+
+int GLWidget::gl_to_scr_y(double y){
+	return (double)(this->width()) * (y - 1.0);
 }
 
 void Primitive::setTranslation(double x, double y){
@@ -83,6 +92,21 @@ void Primitive::setTranslation(bool b){
 	this->isTranslated = b;
 }
 
+void Primitive::before_draw()const{
+	if(isTranslated){
+		glMatrixMode(GL_MODELVIEW);
+		glPushMatrix();
+		glLoadIdentity();
+		glTranslated(trX, trY,0.0);
+	}
+}
+
+void Primitive::after_draw()const{
+	if(isTranslated){
+		glPopMatrix();
+	}
+}
+
 Polyline::Polyline(std::vector<double> *vs){
 	this->values = vs;
 }
@@ -93,13 +117,7 @@ void Polyline::draw() const{
 	qDebug()<<"Checking if values valid";
 	this->values->size();
 
-	//TODO: this is not DRY, refactor needed
-	if(this->isTranslated){
-		glMatrixMode(GL_MODELVIEW);
-		glPushMatrix();
-		glLoadIdentity();
-		glTranslated(trX, trY,0.0);
-	}
+	before_draw();
 	
 	glBegin(GL_LINE_STRIP);
 	for (std::vector<double>::const_iterator i = this->values->begin(); i != this->values->end() && i+1 != this->values->end(); i+=2) {
@@ -109,7 +127,18 @@ void Polyline::draw() const{
 	}
 	glEnd();
 
-	if(this->isTranslated){
-		glPopMatrix();
-	}
+	after_draw();
+}
+
+Line::Line(double _x1, double _y1, double _x2, double _y2): x1(_x1), x2(_x2), y1(_y1), y2(_y2) { } 
+
+void Line::draw() const {
+	before_draw();
+
+	glBegin(GL_LINE_STRIP);
+	glVertex2d(x1,y1);
+	glVertex2d(x2,y2);
+	glEnd();
+
+	after_draw();
 }

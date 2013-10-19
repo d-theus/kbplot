@@ -6,7 +6,7 @@ class KbPlot {
 
 		void init();
 	private:
-		void drawAxis();
+		void drawAxis(double, double, double, double);
 		void drawNumbers();
 		void drawBg();
 
