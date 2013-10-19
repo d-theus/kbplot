@@ -15,11 +15,12 @@ class GLWidget : public QGLWidget
 {
 	Q_OBJECT
 
-	float xpos, ypos;
 	int mouseX, mouseY;
 	std::map<string, Primitive*> objects;
 
 public:
+	double xpos, ypos;
+
 	GLWidget(QWidget *parent = 0);
 	void initializeGL();
 	void resizeGL(int nw, int nh);
@@ -65,6 +66,7 @@ public:
 	Line(double,double,double,double);
 	virtual void draw() const;
 	virtual ~Line(){};
+	void setCoordinates(double,double,double,double);
 private:
 	double x1,x2,y1,y2;
 };

@@ -132,6 +132,13 @@ void Polyline::draw() const{
 
 Line::Line(double _x1, double _y1, double _x2, double _y2): x1(_x1), x2(_x2), y1(_y1), y2(_y2) { } 
 
+void Line::setCoordinates(double _x1, double _y1, double _x2, double _y2){
+	x1 = _x1;
+	x2 = _x2;
+	y1 = _y1;
+	y2 = _y2;
+}
+
 void Line::draw() const {
 	before_draw();
 
