@@ -54,6 +54,10 @@ void GLWidget::mouseMoveEvent(QMouseEvent *e){
 	mouseX = x;
 	mouseY = y;
 	updateGL();
+
+	for(std::vector<IMouseEventListener*>::const_iterator i = this->mouseListeners.begin(); i != mouseListeners.end(); i++){
+		(*i)->mouseMoveEvent(e->x(), e->y());
+	}
 }
 
 void GLWidget::mouseReleaseEvent(QMouseEvent *e){
@@ -80,6 +84,10 @@ int GLWidget::gl_to_scr_x(double x){
 
 int GLWidget::gl_to_scr_y(double y){
 	return (double)(this->width()) * (y - 1.0);
+}
+
+void GLWidget::subscribeToMouse(IMouseEventListener*l){
+	this->mouseListeners.push_back(l);
 }
 
 void Primitive::setTranslation(double x, double y){

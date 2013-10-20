@@ -28,10 +28,6 @@ void KbPlot::drawAxis(double xmin, double xmax, double ymin, double ymax){
 	container -> addObject("test_tick", (Primitive*)&t1);
 }
 
-void KbPlot::init(){
-	drawAxis(-1.0, 1.0, -1.0, 1.0);
-}
-
 KbPlot::KbPlot(GLWidget *_container, double _xmin, double _xmax, double _ymin, double _ymax){
 	xmin = _xmin;
 	xmax = _xmax;
@@ -39,7 +35,7 @@ KbPlot::KbPlot(GLWidget *_container, double _xmin, double _xmax, double _ymin, d
 	ymax = _ymax;
 	this->container = _container;
 	if(container != NULL){
-		init();
+		container->subscribeToMouse(this);
 	}
 }
 
@@ -67,4 +63,15 @@ double KbPlot::m_to_gl_x(double x){
 
 double KbPlot::m_to_gl_y(double y){
 	return (ymax - y)/(ymax-ymin) - 1.0;
+}
+
+void KbPlot::mouseMoveEvent(int x, int y){
+	qDebug()<<"We are in kbplot and we know about mouse";
+	qDebug()<<"kbplot: x:" << x << " y: " << y;
+}
+
+void KbPlot::mousePressEvent(int,int){
+}
+
+void KbPlot::mouseReleaseEvent(int,int){
 }

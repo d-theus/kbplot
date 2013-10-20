@@ -9,5 +9,5 @@ TARGET = kbplot
 INCLUDEPATH += .
 
 # Input
-HEADERS += glwidget.h kbplot.h
+HEADERS += glwidget.h kbplot.h event.h
 SOURCES += glwidget.cpp main.cpp kbplot.cpp

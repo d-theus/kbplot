@@ -1,10 +1,10 @@
 #include "glwidget.h"
+#include "event.h"
 
-class KbPlot {
+
+class KbPlot : IMouseEventListener {
 	public:
 		KbPlot(GLWidget*, double, double, double, double);
-
-		void init();
 
 		int m_to_pix_x(double);
 		int m_to_pix_y(double);
@@ -17,6 +17,10 @@ class KbPlot {
 
 		double pix_to_m_x(int);
 		double pix_to_m_y(int);
+
+		virtual void mouseMoveEvent(int,int);
+		virtual void mousePressEvent(int,int);
+		virtual void mouseReleaseEvent(int,int);
 	private:
 		void drawAxis(double, double, double, double);
 		void drawNumbers();

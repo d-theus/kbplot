@@ -5,6 +5,7 @@
 #include <QtOpenGL>
 #include <map>
 #include <string>
+#include "event.h"
 
 class Primitive;
 class Polyline;
@@ -17,6 +18,7 @@ class GLWidget : public QGLWidget
 
 	int mouseX, mouseY;
 	std::map<string, Primitive*> objects;
+	std::vector<IMouseEventListener*> mouseListeners;
 
 public:
 	double xpos, ypos;
@@ -37,6 +39,7 @@ public:
 	void addObject(string, Primitive*);
 	void deleteObject(int);
 
+	void subscribeToMouse(IMouseEventListener*);
 };
 
 class Primitive {
