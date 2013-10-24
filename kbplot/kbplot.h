@@ -5,6 +5,8 @@
 class KbPlot : IMouseEventListener {
 	public:
 		KbPlot(GLWidget*, double, double, double, double);
+		~KbPlot();
+		void setRanges(double,double,double,double);
 
 		int m_to_pix_x(double);
 		int m_to_pix_y(double);
@@ -22,9 +24,13 @@ class KbPlot : IMouseEventListener {
 		virtual void mousePressEvent(int,int);
 		virtual void mouseReleaseEvent(int,int);
 	private:
-		void drawAxis(double, double, double, double);
+		void drawAxis();
 		void drawNumbers();
 		void drawBg();
+
+		Line *axis_xt, *axis_xb, *axis_yl, *axis_yr;
+		std::vector<Line*> xticks;
+		std::vector<Line*> yticks;
 
 		GLWidget *container;
 

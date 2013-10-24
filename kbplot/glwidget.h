@@ -70,6 +70,10 @@ public:
 	virtual void draw() const;
 	virtual ~Line(){};
 	void setCoordinates(double,double,double,double);
+	double get_x1();
+	double get_x2();
+	double get_y1();
+	double get_y2();
 private:
 	double x1,x2,y1,y2;
 };

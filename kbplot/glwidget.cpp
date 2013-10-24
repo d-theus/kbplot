@@ -157,3 +157,19 @@ void Line::draw() const {
 
 	after_draw();
 }
+
+double Line::get_x1(){
+	return this->x1;
+}
+
+double Line::get_x2(){
+	return this->x2;
+}
+
+double Line::get_y1(){
+	return this->y1;
+}
+
+double Line::get_y2(){
+	return this->y2;
+}
