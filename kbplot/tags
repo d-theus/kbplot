@@ -1,0 +1,347 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+AR	Makefile	/^AR            = ar cqs$/;"	m
+CC	Makefile	/^CC            = gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS        = -pipe -march=x86-64 -mtune=generic -O2 -pipe -fstack-protector --param=ssp-buffer-size=4 -Wall -W -D_REENTRANT -fPIE $(DEFINES)$/;"	m
+CHK_DIR_EXISTS	Makefile	/^CHK_DIR_EXISTS= test -d$/;"	m
+COMPRESS	Makefile	/^COMPRESS      = gzip -9f$/;"	m
+COPY	Makefile	/^COPY          = cp -f$/;"	m
+COPY_DIR	Makefile	/^COPY_DIR      = cp -f -R$/;"	m
+COPY_FILE	Makefile	/^COPY_FILE     = cp -f$/;"	m
+CXX	Makefile	/^CXX           = g++$/;"	m
+CXXFLAGS	Makefile	/^CXXFLAGS      = -pipe -std=c++11 -w -march=x86-64 -mtune=generic -O2 -pipe -fstack-protector --param=ssp-buffer-size=4 -Wall -W -D_REENTRANT -fPIE $(DEFINES)$/;"	m
+DEFINES	Makefile	/^DEFINES       = -DQT_NO_DEBUG -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB$/;"	m
+DEL_DIR	Makefile	/^DEL_DIR       = rmdir$/;"	m
+DEL_FILE	Makefile	/^DEL_FILE      = rm -f$/;"	m
+DESTDIR	Makefile	/^DESTDIR       = #avoid trailing-slash linebreak$/;"	m
+DIST	Makefile	/^DIST          = \/usr\/lib\/qt\/mkspecs\/features\/spec_pre.prf \\$/;"	m
+DataSet	kbplot.h	/^		DataSet (const std::vector<double> &data);$/;"	p	class:DataSet	access:public	signature:(const std::vector<double> &data)
+DataSet	kbplot.h	/^class DataSet {$/;"	c
+DataSet::DataSet	kbplot.h	/^		DataSet (const std::vector<double> &data);$/;"	p	class:DataSet	access:public	signature:(const std::vector<double> &data)
+DataSet::draw	kbplot.h	/^		void draw();$/;"	p	class:DataSet	access:public	signature:()
+DataSet::wlines	kbplot.h	/^		bool wlines;$/;"	m	class:DataSet	access:private
+DataSet::wmarks	kbplot.h	/^		bool wmarks;$/;"	m	class:DataSet	access:private
+EVENT_H	event.h	2;"	d
+GLWIDGET_H	glwidget.h	2;"	d
+GLWidget	glwidget.cpp	/^GLWidget::GLWidget(QWidget *parent): QGLWidget(parent)$/;"	f	class:GLWidget	signature:(QWidget *parent)
+GLWidget	glwidget.h	/^	GLWidget(QWidget *parent = 0);$/;"	p	class:GLWidget	access:public	signature:(QWidget *parent = 0)
+GLWidget	glwidget.h	/^class GLWidget : public QGLWidget$/;"	c	inherits:QGLWidget
+GLWidget::GLWidget	glwidget.cpp	/^GLWidget::GLWidget(QWidget *parent): QGLWidget(parent)$/;"	f	class:GLWidget	signature:(QWidget *parent)
+GLWidget::GLWidget	glwidget.h	/^	GLWidget(QWidget *parent = 0);$/;"	p	class:GLWidget	access:public	signature:(QWidget *parent = 0)
+GLWidget::addObject	glwidget.cpp	/^void GLWidget::addObject(string key, Primitive *p){$/;"	f	class:GLWidget	signature:(string key, Primitive *p)
+GLWidget::addObject	glwidget.h	/^	void addObject(string, Primitive*);$/;"	p	class:GLWidget	access:public	signature:(string, Primitive*)
+GLWidget::deleteObject	glwidget.h	/^	void deleteObject(int);$/;"	p	class:GLWidget	access:public	signature:(int)
+GLWidget::gl_to_scr_x	glwidget.cpp	/^int GLWidget::gl_to_scr_x(double x){$/;"	f	class:GLWidget	signature:(double x)
+GLWidget::gl_to_scr_x	glwidget.h	/^	int gl_to_scr_x(double);$/;"	p	class:GLWidget	access:public	signature:(double)
+GLWidget::gl_to_scr_y	glwidget.cpp	/^int GLWidget::gl_to_scr_y(double y){$/;"	f	class:GLWidget	signature:(double y)
+GLWidget::gl_to_scr_y	glwidget.h	/^	int gl_to_scr_y(double);$/;"	p	class:GLWidget	access:public	signature:(double)
+GLWidget::initializeGL	glwidget.cpp	/^void GLWidget::initializeGL() {$/;"	f	class:GLWidget	signature:()
+GLWidget::initializeGL	glwidget.h	/^	void initializeGL();$/;"	p	class:GLWidget	access:public	signature:()
+GLWidget::metaObject	moc_glwidget.cpp	/^const QMetaObject *GLWidget::metaObject() const$/;"	f	class:GLWidget	signature:() const
+GLWidget::mouseListeners	glwidget.h	/^	std::vector<IMouseEventListener*> mouseListeners;$/;"	m	class:GLWidget	access:private
+GLWidget::mouseMoveEvent	glwidget.cpp	/^void GLWidget::mouseMoveEvent(QMouseEvent *e){$/;"	f	class:GLWidget	signature:(QMouseEvent *e)
+GLWidget::mouseMoveEvent	glwidget.h	/^	void mouseMoveEvent(QMouseEvent *e);$/;"	p	class:GLWidget	access:public	signature:(QMouseEvent *e)
+GLWidget::mouseReleaseEvent	glwidget.cpp	/^void GLWidget::mouseReleaseEvent(QMouseEvent *e){$/;"	f	class:GLWidget	signature:(QMouseEvent *e)
+GLWidget::mouseReleaseEvent	glwidget.h	/^	void mouseReleaseEvent(QMouseEvent *e);$/;"	p	class:GLWidget	access:public	signature:(QMouseEvent *e)
+GLWidget::mouseX	glwidget.h	/^	int mouseX, mouseY;$/;"	m	class:GLWidget	access:private
+GLWidget::mouseY	glwidget.h	/^	int mouseX, mouseY;$/;"	m	class:GLWidget	access:private
+GLWidget::objects	glwidget.h	/^	std::map<string, Primitive*> objects;$/;"	m	class:GLWidget	access:private
+GLWidget::paintGL	glwidget.cpp	/^void GLWidget::paintGL(){$/;"	f	class:GLWidget	signature:()
+GLWidget::paintGL	glwidget.h	/^	void paintGL();$/;"	p	class:GLWidget	access:public	signature:()
+GLWidget::qt_metacall	moc_glwidget.cpp	/^int GLWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:GLWidget	signature:(QMetaObject::Call _c, int _id, void **_a)
+GLWidget::qt_metacast	moc_glwidget.cpp	/^void *GLWidget::qt_metacast(const char *_clname)$/;"	f	class:GLWidget	signature:(const char *_clname)
+GLWidget::qt_static_metacall	moc_glwidget.cpp	/^void GLWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:GLWidget	signature:(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+GLWidget::resizeGL	glwidget.cpp	/^void GLWidget::resizeGL(int nw, int nh){$/;"	f	class:GLWidget	signature:(int nw, int nh)
+GLWidget::resizeGL	glwidget.h	/^	void resizeGL(int nw, int nh);$/;"	p	class:GLWidget	access:public	signature:(int nw, int nh)
+GLWidget::scr_to_gl_x	glwidget.cpp	/^double GLWidget::scr_to_gl_x(int x){$/;"	f	class:GLWidget	signature:(int x)
+GLWidget::scr_to_gl_x	glwidget.h	/^	double scr_to_gl_x(int);$/;"	p	class:GLWidget	access:public	signature:(int)
+GLWidget::scr_to_gl_y	glwidget.cpp	/^double GLWidget::scr_to_gl_y(int y){$/;"	f	class:GLWidget	signature:(int y)
+GLWidget::scr_to_gl_y	glwidget.h	/^	double scr_to_gl_y(int);$/;"	p	class:GLWidget	access:public	signature:(int)
+GLWidget::setWorkingArea	glwidget.h	/^	void setWorkingArea(double xmin, double xmax, double ymin, double ymax);$/;"	p	class:GLWidget	access:public	signature:(double xmin, double xmax, double ymin, double ymax)
+GLWidget::staticMetaObject	moc_glwidget.cpp	/^const QMetaObject GLWidget::staticMetaObject = {$/;"	m	class:GLWidget	file:
+GLWidget::subscribeToMouse	glwidget.cpp	/^void GLWidget::subscribeToMouse(IMouseEventListener*l){$/;"	f	class:GLWidget	signature:(IMouseEventListener*l)
+GLWidget::subscribeToMouse	glwidget.h	/^	void subscribeToMouse(IMouseEventListener*);$/;"	p	class:GLWidget	access:public	signature:(IMouseEventListener*)
+GLWidget::xpos	glwidget.h	/^	double xpos, ypos;$/;"	m	class:GLWidget	access:public
+GLWidget::ypos	glwidget.h	/^	double xpos, ypos;$/;"	m	class:GLWidget	access:public
+IMouseEventListener	event.h	/^class IMouseEventListener {$/;"	c
+IMouseEventListener::mouseMoveEvent	event.h	/^	virtual void mouseMoveEvent(int,int)=0;$/;"	p	class:IMouseEventListener	access:public	implementation:pure virtual	signature:(int,int)
+IMouseEventListener::mousePressEvent	event.h	/^	virtual void mousePressEvent(int,int)=0;$/;"	p	class:IMouseEventListener	access:public	implementation:pure virtual	signature:(int,int)
+IMouseEventListener::mouseReleaseEvent	event.h	/^	virtual void mouseReleaseEvent(int,int)=0;$/;"	p	class:IMouseEventListener	access:public	implementation:pure virtual	signature:(int,int)
+IMouseEventListener::~IMouseEventListener	event.h	/^	virtual ~IMouseEventListener() {};$/;"	f	class:IMouseEventListener	access:public	implementation:virtual	signature:()
+INCPATH	Makefile	/^INCPATH       = -I\/usr\/lib\/qt\/mkspecs\/linux-g++ -I. -I. -I\/usr\/include\/qt -I\/usr\/include\/qt\/QtOpenGL -I\/usr\/include\/qt\/QtWidgets -I\/usr\/include\/qt\/QtGui -I\/usr\/include\/qt\/QtCore -I.$/;"	m
+INSTALL_DIR	Makefile	/^INSTALL_DIR   = $(COPY_DIR)$/;"	m
+INSTALL_FILE	Makefile	/^INSTALL_FILE  = install -m 644 -p$/;"	m
+INSTALL_PROGRAM	Makefile	/^INSTALL_PROGRAM = install -m 755 -p$/;"	m
+KbPlot	kbplot.cpp	/^KbPlot::KbPlot(GLWidget *_container, double _xmin, double _xmax, double _ymin, double _ymax){$/;"	f	class:KbPlot	signature:(GLWidget *_container, double _xmin, double _xmax, double _ymin, double _ymax)
+KbPlot	kbplot.h	/^		KbPlot(GLWidget*, double, double, double, double);$/;"	p	class:KbPlot	access:public	signature:(GLWidget*, double, double, double, double)
+KbPlot	kbplot.h	/^class KbPlot : IMouseEventListener {$/;"	c	inherits:IMouseEventListener
+KbPlot::KbPlot	kbplot.cpp	/^KbPlot::KbPlot(GLWidget *_container, double _xmin, double _xmax, double _ymin, double _ymax){$/;"	f	class:KbPlot	signature:(GLWidget *_container, double _xmin, double _xmax, double _ymin, double _ymax)
+KbPlot::KbPlot	kbplot.h	/^		KbPlot(GLWidget*, double, double, double, double);$/;"	p	class:KbPlot	access:public	signature:(GLWidget*, double, double, double, double)
+KbPlot::axis_xb	kbplot.h	/^		Line *axis_xt, *axis_xb, *axis_yl, *axis_yr;$/;"	m	class:KbPlot	access:private
+KbPlot::axis_xt	kbplot.h	/^		Line *axis_xt, *axis_xb, *axis_yl, *axis_yr;$/;"	m	class:KbPlot	access:private
+KbPlot::axis_yl	kbplot.h	/^		Line *axis_xt, *axis_xb, *axis_yl, *axis_yr;$/;"	m	class:KbPlot	access:private
+KbPlot::axis_yr	kbplot.h	/^		Line *axis_xt, *axis_xb, *axis_yl, *axis_yr;$/;"	m	class:KbPlot	access:private
+KbPlot::container	kbplot.h	/^		GLWidget *container;$/;"	m	class:KbPlot	access:private
+KbPlot::drawAxis	kbplot.cpp	/^void KbPlot::drawAxis(){$/;"	f	class:KbPlot	signature:()
+KbPlot::drawAxis	kbplot.h	/^		void drawAxis();$/;"	p	class:KbPlot	access:private	signature:()
+KbPlot::drawBg	kbplot.h	/^		void drawBg();$/;"	p	class:KbPlot	access:private	signature:()
+KbPlot::drawNumbers	kbplot.h	/^		void drawNumbers();$/;"	p	class:KbPlot	access:private	signature:()
+KbPlot::gl_to_m_x	kbplot.h	/^		double gl_to_m_x(double);$/;"	p	class:KbPlot	access:public	signature:(double)
+KbPlot::gl_to_m_y	kbplot.h	/^		double gl_to_m_y(double);$/;"	p	class:KbPlot	access:public	signature:(double)
+KbPlot::m_to_gl_x	kbplot.cpp	/^double KbPlot::m_to_gl_x(double x){$/;"	f	class:KbPlot	signature:(double x)
+KbPlot::m_to_gl_x	kbplot.h	/^		double m_to_gl_x(double);$/;"	p	class:KbPlot	access:public	signature:(double)
+KbPlot::m_to_gl_y	kbplot.cpp	/^double KbPlot::m_to_gl_y(double y){$/;"	f	class:KbPlot	signature:(double y)
+KbPlot::m_to_gl_y	kbplot.h	/^		double m_to_gl_y(double);$/;"	p	class:KbPlot	access:public	signature:(double)
+KbPlot::m_to_pix_x	kbplot.cpp	/^int KbPlot::m_to_pix_x(double x){$/;"	f	class:KbPlot	signature:(double x)
+KbPlot::m_to_pix_x	kbplot.h	/^		int m_to_pix_x(double);$/;"	p	class:KbPlot	access:public	signature:(double)
+KbPlot::m_to_pix_y	kbplot.cpp	/^int KbPlot::m_to_pix_y(double y){$/;"	f	class:KbPlot	signature:(double y)
+KbPlot::m_to_pix_y	kbplot.h	/^		int m_to_pix_y(double);$/;"	p	class:KbPlot	access:public	signature:(double)
+KbPlot::mouseMoveEvent	kbplot.cpp	/^void KbPlot::mouseMoveEvent(int x, int y){$/;"	f	class:KbPlot	signature:(int x, int y)
+KbPlot::mouseMoveEvent	kbplot.h	/^		virtual void mouseMoveEvent(int,int);$/;"	p	class:KbPlot	access:public	implementation:virtual	signature:(int,int)
+KbPlot::mousePressEvent	kbplot.cpp	/^void KbPlot::mousePressEvent(int,int){$/;"	f	class:KbPlot	signature:(int,int)
+KbPlot::mousePressEvent	kbplot.h	/^		virtual void mousePressEvent(int,int);$/;"	p	class:KbPlot	access:public	implementation:virtual	signature:(int,int)
+KbPlot::mouseReleaseEvent	kbplot.cpp	/^void KbPlot::mouseReleaseEvent(int,int){$/;"	f	class:KbPlot	signature:(int,int)
+KbPlot::mouseReleaseEvent	kbplot.h	/^		virtual void mouseReleaseEvent(int,int);$/;"	p	class:KbPlot	access:public	implementation:virtual	signature:(int,int)
+KbPlot::pix_to_m_x	kbplot.cpp	/^double KbPlot::pix_to_m_x(int x){$/;"	f	class:KbPlot	signature:(int x)
+KbPlot::pix_to_m_x	kbplot.h	/^		double pix_to_m_x(int);$/;"	p	class:KbPlot	access:public	signature:(int)
+KbPlot::pix_to_m_y	kbplot.cpp	/^double KbPlot::pix_to_m_y(int y){$/;"	f	class:KbPlot	signature:(int y)
+KbPlot::pix_to_m_y	kbplot.h	/^		double pix_to_m_y(int);$/;"	p	class:KbPlot	access:public	signature:(int)
+KbPlot::setRanges	kbplot.cpp	/^void KbPlot::setRanges(double _xmin, double _xmax, double _ymin, double _ymax){$/;"	f	class:KbPlot	signature:(double _xmin, double _xmax, double _ymin, double _ymax)
+KbPlot::setRanges	kbplot.h	/^		void setRanges(double,double,double,double);$/;"	p	class:KbPlot	access:public	signature:(double,double,double,double)
+KbPlot::xmax	kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
+KbPlot::xmin	kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
+KbPlot::xticks	kbplot.h	/^		std::vector<Line*> xticks;$/;"	m	class:KbPlot	access:private
+KbPlot::ymax	kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
+KbPlot::ymin	kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
+KbPlot::yticks	kbplot.h	/^		std::vector<Line*> yticks;$/;"	m	class:KbPlot	access:private
+KbPlot::~KbPlot	kbplot.cpp	/^KbPlot::~KbPlot(){$/;"	f	class:KbPlot	signature:()
+KbPlot::~KbPlot	kbplot.h	/^		~KbPlot();$/;"	p	class:KbPlot	access:public	signature:()
+LFLAGS	Makefile	/^LFLAGS        = -Wl,-O1,--sort-common,--as-needed,-z,relro -Wl,-O1$/;"	m
+LIBS	Makefile	/^LIBS          = $(SUBLIBS) -lQt5OpenGL -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread $/;"	m
+LINK	Makefile	/^LINK          = g++$/;"	m
+Line	glwidget.cpp	/^Line::Line(double _x1, double _y1, double _x2, double _y2): x1(_x1), x2(_x2), y1(_y1), y2(_y2) { } $/;"	f	class:Line	signature:(double _x1, double _y1, double _x2, double _y2)
+Line	glwidget.h	/^	Line(double,double,double,double);$/;"	p	class:Line	access:public	signature:(double,double,double,double)
+Line	glwidget.h	/^class Line : public Primitive {$/;"	c	inherits:Primitive
+Line::Line	glwidget.cpp	/^Line::Line(double _x1, double _y1, double _x2, double _y2): x1(_x1), x2(_x2), y1(_y1), y2(_y2) { } $/;"	f	class:Line	signature:(double _x1, double _y1, double _x2, double _y2)
+Line::Line	glwidget.h	/^	Line(double,double,double,double);$/;"	p	class:Line	access:public	signature:(double,double,double,double)
+Line::draw	glwidget.cpp	/^void Line::draw() const {$/;"	f	class:Line	signature:() const
+Line::draw	glwidget.h	/^	virtual void draw() const;$/;"	p	class:Line	access:public	implementation:virtual	signature:() const
+Line::get_x1	glwidget.cpp	/^double Line::get_x1(){$/;"	f	class:Line	signature:()
+Line::get_x1	glwidget.h	/^	double get_x1();$/;"	p	class:Line	access:public	signature:()
+Line::get_x2	glwidget.cpp	/^double Line::get_x2(){$/;"	f	class:Line	signature:()
+Line::get_x2	glwidget.h	/^	double get_x2();$/;"	p	class:Line	access:public	signature:()
+Line::get_y1	glwidget.cpp	/^double Line::get_y1(){$/;"	f	class:Line	signature:()
+Line::get_y1	glwidget.h	/^	double get_y1();$/;"	p	class:Line	access:public	signature:()
+Line::get_y2	glwidget.cpp	/^double Line::get_y2(){$/;"	f	class:Line	signature:()
+Line::get_y2	glwidget.h	/^	double get_y2();$/;"	p	class:Line	access:public	signature:()
+Line::setCoordinates	glwidget.cpp	/^void Line::setCoordinates(double _x1, double _y1, double _x2, double _y2){$/;"	f	class:Line	signature:(double _x1, double _y1, double _x2, double _y2)
+Line::setCoordinates	glwidget.h	/^	void setCoordinates(double,double,double,double);$/;"	p	class:Line	access:public	signature:(double,double,double,double)
+Line::x1	glwidget.h	/^	double x1,x2,y1,y2;$/;"	m	class:Line	access:private
+Line::x2	glwidget.h	/^	double x1,x2,y1,y2;$/;"	m	class:Line	access:private
+Line::y1	glwidget.h	/^	double x1,x2,y1,y2;$/;"	m	class:Line	access:private
+Line::y2	glwidget.h	/^	double x1,x2,y1,y2;$/;"	m	class:Line	access:private
+Line::~Line	glwidget.h	/^	virtual ~Line(){};$/;"	f	class:Line	access:public	implementation:virtual	signature:()
+LineStyle	kbplot.h	/^		LineStyle();$/;"	p	class:LineStyle	access:public	signature:()
+LineStyle	kbplot.h	/^class LineStyle : public Style {$/;"	c	inherits:Style
+LineStyle::LineStyle	kbplot.h	/^		LineStyle();$/;"	p	class:LineStyle	access:public	signature:()
+LineStyle::stroke	kbplot.h	/^		unsigned int stroke;$/;"	m	class:LineStyle	access:public
+LineStyle::thickness	kbplot.h	/^		unsigned int thickness;$/;"	m	class:LineStyle	access:public
+MAKEFILE	Makefile	/^MAKEFILE      = Makefile$/;"	m
+MKDIR	Makefile	/^MKDIR         = mkdir -p$/;"	m
+MOVE	Makefile	/^MOVE          = mv -f$/;"	m
+MarkStyle	kbplot.h	/^		MarkStyle();$/;"	p	class:MarkStyle	access:public	signature:()
+MarkStyle	kbplot.h	/^class MarkStyle : public Style {$/;"	c	inherits:Style
+MarkStyle::MarkStyle	kbplot.h	/^		MarkStyle();$/;"	p	class:MarkStyle	access:public	signature:()
+MarkStyle::size	kbplot.h	/^		unsigned int size;$/;"	m	class:MarkStyle	access:public
+OBJECTS	Makefile	/^OBJECTS       = glwidget.o \\$/;"	m
+OBJECTS_DIR	Makefile	/^OBJECTS_DIR   = .\/$/;"	m
+Polyline	glwidget.cpp	/^Polyline::Polyline(std::vector<double> *vs){$/;"	f	class:Polyline	signature:(std::vector<double> *vs)
+Polyline	glwidget.h	/^	Polyline(std::vector<double> *);$/;"	p	class:Polyline	access:public	signature:(std::vector<double> *)
+Polyline	glwidget.h	/^class Polyline : public Primitive {$/;"	c	inherits:Primitive
+Polyline::Polyline	glwidget.cpp	/^Polyline::Polyline(std::vector<double> *vs){$/;"	f	class:Polyline	signature:(std::vector<double> *vs)
+Polyline::Polyline	glwidget.h	/^	Polyline(std::vector<double> *);$/;"	p	class:Polyline	access:public	signature:(std::vector<double> *)
+Polyline::draw	glwidget.cpp	/^void Polyline::draw() const{$/;"	f	class:Polyline	signature:() const
+Polyline::draw	glwidget.h	/^	virtual void draw() const;$/;"	p	class:Polyline	access:public	implementation:virtual	signature:() const
+Polyline::values	glwidget.h	/^	std::vector<double> *values;$/;"	m	class:Polyline	access:private
+Polyline::~Polyline	glwidget.h	/^	virtual ~Polyline(){};$/;"	f	class:Polyline	access:public	implementation:virtual	signature:()
+Primitive	glwidget.h	/^class Primitive {$/;"	c
+Primitive::after_draw	glwidget.cpp	/^void Primitive::after_draw()const{$/;"	f	class:Primitive	signature:() const
+Primitive::after_draw	glwidget.h	/^		void after_draw()const;$/;"	p	class:Primitive	access:protected	signature:() const
+Primitive::before_draw	glwidget.cpp	/^void Primitive::before_draw()const{$/;"	f	class:Primitive	signature:() const
+Primitive::before_draw	glwidget.h	/^		void before_draw()const;$/;"	p	class:Primitive	access:protected	signature:() const
+Primitive::draw	glwidget.h	/^		virtual void draw() const = 0;$/;"	p	class:Primitive	access:public	implementation:pure virtual	signature:() const
+Primitive::isTranslated	glwidget.h	/^		bool isTranslated = false;$/;"	m	class:Primitive	access:protected
+Primitive::setTranslation	glwidget.cpp	/^void Primitive::setTranslation(bool b){$/;"	f	class:Primitive	signature:(bool b)
+Primitive::setTranslation	glwidget.cpp	/^void Primitive::setTranslation(double x, double y){$/;"	f	class:Primitive	signature:(double x, double y)
+Primitive::setTranslation	glwidget.h	/^		void setTranslation(bool);$/;"	p	class:Primitive	access:public	signature:(bool)
+Primitive::setTranslation	glwidget.h	/^		void setTranslation(double,double);$/;"	p	class:Primitive	access:public	signature:(double,double)
+Primitive::trX	glwidget.h	/^		double trX, trY;$/;"	m	class:Primitive	access:protected
+Primitive::trY	glwidget.h	/^		double trX, trY;$/;"	m	class:Primitive	access:protected
+Primitive::~Primitive	glwidget.h	/^		virtual ~Primitive(){};$/;"	f	class:Primitive	access:public	implementation:virtual	signature:()
+QMAKE	Makefile	/^QMAKE         = \/usr\/lib\/qt\/bin\/qmake$/;"	m
+QMAKE_TARGET	Makefile	/^QMAKE_TARGET  = kbplot$/;"	m
+QT_MOC_LITERAL	moc_glwidget.cpp	25;"	d	file:
+QT_MOC_LITERAL	moc_glwidget.cpp	36;"	d	file:
+QT_MOC_LITERAL	moc_widget.cpp	25;"	d	file:
+QT_MOC_LITERAL	moc_widget.cpp	36;"	d	file:
+RANLIB	Makefile	/^RANLIB        = $/;"	m
+SED	Makefile	/^SED           = sed$/;"	m
+SOURCES	Makefile	/^SOURCES       = glwidget.cpp \\$/;"	m
+STRIP	Makefile	/^STRIP         = strip$/;"	m
+SYMLINK	Makefile	/^SYMLINK       = ln -f -s$/;"	m
+Style	kbplot.h	/^		Style ();$/;"	p	class:Style	access:public	signature:()
+Style	kbplot.h	/^class Style {$/;"	c
+Style::Style	kbplot.h	/^		Style ();$/;"	p	class:Style	access:public	signature:()
+Style::color	kbplot.h	/^		unsigned int color;$/;"	m	class:Style	access:public
+Style::~Style	kbplot.h	/^		virtual ~Style ();$/;"	p	class:Style	access:public	implementation:virtual	signature:()
+TAR	Makefile	/^TAR           = tar -cf$/;"	m
+TARGET	Makefile	/^TARGET        = kbplot$/;"	m
+Widget::metaObject	moc_widget.cpp	/^const QMetaObject *Widget::metaObject() const$/;"	f	class:Widget	signature:() const
+Widget::qt_metacall	moc_widget.cpp	/^int Widget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:Widget	signature:(QMetaObject::Call _c, int _id, void **_a)
+Widget::qt_metacast	moc_widget.cpp	/^void *Widget::qt_metacast(const char *_clname)$/;"	f	class:Widget	signature:(const char *_clname)
+Widget::qt_static_metacall	moc_widget.cpp	/^void Widget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:Widget	signature:(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+Widget::staticMetaObject	moc_widget.cpp	/^const QMetaObject Widget::staticMetaObject = {$/;"	m	class:Widget	file:
+addObject	glwidget.cpp	/^void GLWidget::addObject(string key, Primitive *p){$/;"	f	class:GLWidget	signature:(string key, Primitive *p)
+addObject	glwidget.h	/^	void addObject(string, Primitive*);$/;"	p	class:GLWidget	access:public	signature:(string, Primitive*)
+after_draw	glwidget.cpp	/^void Primitive::after_draw()const{$/;"	f	class:Primitive	signature:() const
+after_draw	glwidget.h	/^		void after_draw()const;$/;"	p	class:Primitive	access:protected	signature:() const
+axis_xb	kbplot.h	/^		Line *axis_xt, *axis_xb, *axis_yl, *axis_yr;$/;"	m	class:KbPlot	access:private
+axis_xt	kbplot.h	/^		Line *axis_xt, *axis_xb, *axis_yl, *axis_yr;$/;"	m	class:KbPlot	access:private
+axis_yl	kbplot.h	/^		Line *axis_xt, *axis_xb, *axis_yl, *axis_yr;$/;"	m	class:KbPlot	access:private
+axis_yr	kbplot.h	/^		Line *axis_xt, *axis_xb, *axis_yl, *axis_yr;$/;"	m	class:KbPlot	access:private
+before_draw	glwidget.cpp	/^void Primitive::before_draw()const{$/;"	f	class:Primitive	signature:() const
+before_draw	glwidget.h	/^		void before_draw()const;$/;"	p	class:Primitive	access:protected	signature:() const
+color	kbplot.h	/^		unsigned int color;$/;"	m	class:Style	access:public
+container	kbplot.h	/^		GLWidget *container;$/;"	m	class:KbPlot	access:private
+data	moc_glwidget.cpp	/^    QByteArrayData data[1];$/;"	m	struct:qt_meta_stringdata_GLWidget_t	file:	access:public
+data	moc_widget.cpp	/^    QByteArrayData data[1];$/;"	m	struct:qt_meta_stringdata_Widget_t	file:	access:public
+deleteObject	glwidget.h	/^	void deleteObject(int);$/;"	p	class:GLWidget	access:public	signature:(int)
+draw	glwidget.cpp	/^void Line::draw() const {$/;"	f	class:Line	signature:() const
+draw	glwidget.cpp	/^void Polyline::draw() const{$/;"	f	class:Polyline	signature:() const
+draw	glwidget.h	/^		virtual void draw() const = 0;$/;"	p	class:Primitive	access:public	implementation:pure virtual	signature:() const
+draw	glwidget.h	/^	virtual void draw() const;$/;"	p	class:Line	access:public	implementation:virtual	signature:() const
+draw	glwidget.h	/^	virtual void draw() const;$/;"	p	class:Polyline	access:public	implementation:virtual	signature:() const
+draw	kbplot.h	/^		void draw();$/;"	p	class:DataSet	access:public	signature:()
+drawAxis	kbplot.cpp	/^void KbPlot::drawAxis(){$/;"	f	class:KbPlot	signature:()
+drawAxis	kbplot.h	/^		void drawAxis();$/;"	p	class:KbPlot	access:private	signature:()
+drawBg	kbplot.h	/^		void drawBg();$/;"	p	class:KbPlot	access:private	signature:()
+drawNumbers	kbplot.h	/^		void drawNumbers();$/;"	p	class:KbPlot	access:private	signature:()
+get_x1	glwidget.cpp	/^double Line::get_x1(){$/;"	f	class:Line	signature:()
+get_x1	glwidget.h	/^	double get_x1();$/;"	p	class:Line	access:public	signature:()
+get_x2	glwidget.cpp	/^double Line::get_x2(){$/;"	f	class:Line	signature:()
+get_x2	glwidget.h	/^	double get_x2();$/;"	p	class:Line	access:public	signature:()
+get_y1	glwidget.cpp	/^double Line::get_y1(){$/;"	f	class:Line	signature:()
+get_y1	glwidget.h	/^	double get_y1();$/;"	p	class:Line	access:public	signature:()
+get_y2	glwidget.cpp	/^double Line::get_y2(){$/;"	f	class:Line	signature:()
+get_y2	glwidget.h	/^	double get_y2();$/;"	p	class:Line	access:public	signature:()
+gl_to_m_x	kbplot.h	/^		double gl_to_m_x(double);$/;"	p	class:KbPlot	access:public	signature:(double)
+gl_to_m_y	kbplot.h	/^		double gl_to_m_y(double);$/;"	p	class:KbPlot	access:public	signature:(double)
+gl_to_scr_x	glwidget.cpp	/^int GLWidget::gl_to_scr_x(double x){$/;"	f	class:GLWidget	signature:(double x)
+gl_to_scr_x	glwidget.h	/^	int gl_to_scr_x(double);$/;"	p	class:GLWidget	access:public	signature:(double)
+gl_to_scr_y	glwidget.cpp	/^int GLWidget::gl_to_scr_y(double y){$/;"	f	class:GLWidget	signature:(double y)
+gl_to_scr_y	glwidget.h	/^	int gl_to_scr_y(double);$/;"	p	class:GLWidget	access:public	signature:(double)
+initializeGL	glwidget.cpp	/^void GLWidget::initializeGL() {$/;"	f	class:GLWidget	signature:()
+initializeGL	glwidget.h	/^	void initializeGL();$/;"	p	class:GLWidget	access:public	signature:()
+isTranslated	glwidget.h	/^		bool isTranslated = false;$/;"	m	class:Primitive	access:protected
+m_to_gl_x	kbplot.cpp	/^double KbPlot::m_to_gl_x(double x){$/;"	f	class:KbPlot	signature:(double x)
+m_to_gl_x	kbplot.h	/^		double m_to_gl_x(double);$/;"	p	class:KbPlot	access:public	signature:(double)
+m_to_gl_y	kbplot.cpp	/^double KbPlot::m_to_gl_y(double y){$/;"	f	class:KbPlot	signature:(double y)
+m_to_gl_y	kbplot.h	/^		double m_to_gl_y(double);$/;"	p	class:KbPlot	access:public	signature:(double)
+m_to_pix_x	kbplot.cpp	/^int KbPlot::m_to_pix_x(double x){$/;"	f	class:KbPlot	signature:(double x)
+m_to_pix_x	kbplot.h	/^		int m_to_pix_x(double);$/;"	p	class:KbPlot	access:public	signature:(double)
+m_to_pix_y	kbplot.cpp	/^int KbPlot::m_to_pix_y(double y){$/;"	f	class:KbPlot	signature:(double y)
+m_to_pix_y	kbplot.h	/^		int m_to_pix_y(double);$/;"	p	class:KbPlot	access:public	signature:(double)
+main	main.cpp	/^int main(int argc, char *argv[])$/;"	f	signature:(int argc, char *argv[])
+metaObject	moc_glwidget.cpp	/^const QMetaObject *GLWidget::metaObject() const$/;"	f	class:GLWidget	signature:() const
+metaObject	moc_widget.cpp	/^const QMetaObject *Widget::metaObject() const$/;"	f	class:Widget	signature:() const
+mouseListeners	glwidget.h	/^	std::vector<IMouseEventListener*> mouseListeners;$/;"	m	class:GLWidget	access:private
+mouseMoveEvent	event.h	/^	virtual void mouseMoveEvent(int,int)=0;$/;"	p	class:IMouseEventListener	access:public	implementation:pure virtual	signature:(int,int)
+mouseMoveEvent	glwidget.cpp	/^void GLWidget::mouseMoveEvent(QMouseEvent *e){$/;"	f	class:GLWidget	signature:(QMouseEvent *e)
+mouseMoveEvent	glwidget.h	/^	void mouseMoveEvent(QMouseEvent *e);$/;"	p	class:GLWidget	access:public	signature:(QMouseEvent *e)
+mouseMoveEvent	kbplot.cpp	/^void KbPlot::mouseMoveEvent(int x, int y){$/;"	f	class:KbPlot	signature:(int x, int y)
+mouseMoveEvent	kbplot.h	/^		virtual void mouseMoveEvent(int,int);$/;"	p	class:KbPlot	access:public	implementation:virtual	signature:(int,int)
+mousePressEvent	event.h	/^	virtual void mousePressEvent(int,int)=0;$/;"	p	class:IMouseEventListener	access:public	implementation:pure virtual	signature:(int,int)
+mousePressEvent	kbplot.cpp	/^void KbPlot::mousePressEvent(int,int){$/;"	f	class:KbPlot	signature:(int,int)
+mousePressEvent	kbplot.h	/^		virtual void mousePressEvent(int,int);$/;"	p	class:KbPlot	access:public	implementation:virtual	signature:(int,int)
+mouseReleaseEvent	event.h	/^	virtual void mouseReleaseEvent(int,int)=0;$/;"	p	class:IMouseEventListener	access:public	implementation:pure virtual	signature:(int,int)
+mouseReleaseEvent	glwidget.cpp	/^void GLWidget::mouseReleaseEvent(QMouseEvent *e){$/;"	f	class:GLWidget	signature:(QMouseEvent *e)
+mouseReleaseEvent	glwidget.h	/^	void mouseReleaseEvent(QMouseEvent *e);$/;"	p	class:GLWidget	access:public	signature:(QMouseEvent *e)
+mouseReleaseEvent	kbplot.cpp	/^void KbPlot::mouseReleaseEvent(int,int){$/;"	f	class:KbPlot	signature:(int,int)
+mouseReleaseEvent	kbplot.h	/^		virtual void mouseReleaseEvent(int,int);$/;"	p	class:KbPlot	access:public	implementation:virtual	signature:(int,int)
+mouseX	glwidget.h	/^	int mouseX, mouseY;$/;"	m	class:GLWidget	access:private
+mouseY	glwidget.h	/^	int mouseX, mouseY;$/;"	m	class:GLWidget	access:private
+objects	glwidget.h	/^	std::map<string, Primitive*> objects;$/;"	m	class:GLWidget	access:private
+paintGL	glwidget.cpp	/^void GLWidget::paintGL(){$/;"	f	class:GLWidget	signature:()
+paintGL	glwidget.h	/^	void paintGL();$/;"	p	class:GLWidget	access:public	signature:()
+pix_to_m_x	kbplot.cpp	/^double KbPlot::pix_to_m_x(int x){$/;"	f	class:KbPlot	signature:(int x)
+pix_to_m_x	kbplot.h	/^		double pix_to_m_x(int);$/;"	p	class:KbPlot	access:public	signature:(int)
+pix_to_m_y	kbplot.cpp	/^double KbPlot::pix_to_m_y(int y){$/;"	f	class:KbPlot	signature:(int y)
+pix_to_m_y	kbplot.h	/^		double pix_to_m_y(int);$/;"	p	class:KbPlot	access:public	signature:(int)
+qt_meta_data_GLWidget	moc_glwidget.cpp	/^static const uint qt_meta_data_GLWidget[] = {$/;"	v	file:
+qt_meta_data_Widget	moc_widget.cpp	/^static const uint qt_meta_data_Widget[] = {$/;"	v	file:
+qt_meta_stringdata_GLWidget	moc_glwidget.cpp	/^static const qt_meta_stringdata_GLWidget_t qt_meta_stringdata_GLWidget = {$/;"	v	file:
+qt_meta_stringdata_GLWidget_t	moc_glwidget.cpp	/^struct qt_meta_stringdata_GLWidget_t {$/;"	s	file:
+qt_meta_stringdata_GLWidget_t::data	moc_glwidget.cpp	/^    QByteArrayData data[1];$/;"	m	struct:qt_meta_stringdata_GLWidget_t	file:	access:public
+qt_meta_stringdata_GLWidget_t::stringdata	moc_glwidget.cpp	/^    char stringdata[10];$/;"	m	struct:qt_meta_stringdata_GLWidget_t	file:	access:public
+qt_meta_stringdata_Widget	moc_widget.cpp	/^static const qt_meta_stringdata_Widget_t qt_meta_stringdata_Widget = {$/;"	v	file:
+qt_meta_stringdata_Widget_t	moc_widget.cpp	/^struct qt_meta_stringdata_Widget_t {$/;"	s	file:
+qt_meta_stringdata_Widget_t::data	moc_widget.cpp	/^    QByteArrayData data[1];$/;"	m	struct:qt_meta_stringdata_Widget_t	file:	access:public
+qt_meta_stringdata_Widget_t::stringdata	moc_widget.cpp	/^    char stringdata[8];$/;"	m	struct:qt_meta_stringdata_Widget_t	file:	access:public
+qt_metacall	moc_glwidget.cpp	/^int GLWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:GLWidget	signature:(QMetaObject::Call _c, int _id, void **_a)
+qt_metacall	moc_widget.cpp	/^int Widget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:Widget	signature:(QMetaObject::Call _c, int _id, void **_a)
+qt_metacast	moc_glwidget.cpp	/^void *GLWidget::qt_metacast(const char *_clname)$/;"	f	class:GLWidget	signature:(const char *_clname)
+qt_metacast	moc_widget.cpp	/^void *Widget::qt_metacast(const char *_clname)$/;"	f	class:Widget	signature:(const char *_clname)
+qt_static_metacall	moc_glwidget.cpp	/^void GLWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:GLWidget	signature:(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+qt_static_metacall	moc_widget.cpp	/^void Widget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:Widget	signature:(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+resizeGL	glwidget.cpp	/^void GLWidget::resizeGL(int nw, int nh){$/;"	f	class:GLWidget	signature:(int nw, int nh)
+resizeGL	glwidget.h	/^	void resizeGL(int nw, int nh);$/;"	p	class:GLWidget	access:public	signature:(int nw, int nh)
+scr_to_gl_x	glwidget.cpp	/^double GLWidget::scr_to_gl_x(int x){$/;"	f	class:GLWidget	signature:(int x)
+scr_to_gl_x	glwidget.h	/^	double scr_to_gl_x(int);$/;"	p	class:GLWidget	access:public	signature:(int)
+scr_to_gl_y	glwidget.cpp	/^double GLWidget::scr_to_gl_y(int y){$/;"	f	class:GLWidget	signature:(int y)
+scr_to_gl_y	glwidget.h	/^	double scr_to_gl_y(int);$/;"	p	class:GLWidget	access:public	signature:(int)
+setCoordinates	glwidget.cpp	/^void Line::setCoordinates(double _x1, double _y1, double _x2, double _y2){$/;"	f	class:Line	signature:(double _x1, double _y1, double _x2, double _y2)
+setCoordinates	glwidget.h	/^	void setCoordinates(double,double,double,double);$/;"	p	class:Line	access:public	signature:(double,double,double,double)
+setRanges	kbplot.cpp	/^void KbPlot::setRanges(double _xmin, double _xmax, double _ymin, double _ymax){$/;"	f	class:KbPlot	signature:(double _xmin, double _xmax, double _ymin, double _ymax)
+setRanges	kbplot.h	/^		void setRanges(double,double,double,double);$/;"	p	class:KbPlot	access:public	signature:(double,double,double,double)
+setTranslation	glwidget.cpp	/^void Primitive::setTranslation(bool b){$/;"	f	class:Primitive	signature:(bool b)
+setTranslation	glwidget.cpp	/^void Primitive::setTranslation(double x, double y){$/;"	f	class:Primitive	signature:(double x, double y)
+setTranslation	glwidget.h	/^		void setTranslation(bool);$/;"	p	class:Primitive	access:public	signature:(bool)
+setTranslation	glwidget.h	/^		void setTranslation(double,double);$/;"	p	class:Primitive	access:public	signature:(double,double)
+setWorkingArea	glwidget.h	/^	void setWorkingArea(double xmin, double xmax, double ymin, double ymax);$/;"	p	class:GLWidget	access:public	signature:(double xmin, double xmax, double ymin, double ymax)
+size	kbplot.h	/^		unsigned int size;$/;"	m	class:MarkStyle	access:public
+staticMetaObject	moc_glwidget.cpp	/^const QMetaObject GLWidget::staticMetaObject = {$/;"	m	class:GLWidget	file:
+staticMetaObject	moc_widget.cpp	/^const QMetaObject Widget::staticMetaObject = {$/;"	m	class:Widget	file:
+stringdata	moc_glwidget.cpp	/^    char stringdata[10];$/;"	m	struct:qt_meta_stringdata_GLWidget_t	file:	access:public
+stringdata	moc_widget.cpp	/^    char stringdata[8];$/;"	m	struct:qt_meta_stringdata_Widget_t	file:	access:public
+stroke	kbplot.h	/^		unsigned int stroke;$/;"	m	class:LineStyle	access:public
+subscribeToMouse	glwidget.cpp	/^void GLWidget::subscribeToMouse(IMouseEventListener*l){$/;"	f	class:GLWidget	signature:(IMouseEventListener*l)
+subscribeToMouse	glwidget.h	/^	void subscribeToMouse(IMouseEventListener*);$/;"	p	class:GLWidget	access:public	signature:(IMouseEventListener*)
+thickness	kbplot.h	/^		unsigned int thickness;$/;"	m	class:LineStyle	access:public
+trX	glwidget.h	/^		double trX, trY;$/;"	m	class:Primitive	access:protected
+trY	glwidget.h	/^		double trX, trY;$/;"	m	class:Primitive	access:protected
+values	glwidget.h	/^	std::vector<double> *values;$/;"	m	class:Polyline	access:private
+wlines	kbplot.h	/^		bool wlines;$/;"	m	class:DataSet	access:private
+wmarks	kbplot.h	/^		bool wmarks;$/;"	m	class:DataSet	access:private
+x1	glwidget.h	/^	double x1,x2,y1,y2;$/;"	m	class:Line	access:private
+x2	glwidget.h	/^	double x1,x2,y1,y2;$/;"	m	class:Line	access:private
+xmax	kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
+xmin	kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
+xpos	glwidget.h	/^	double xpos, ypos;$/;"	m	class:GLWidget	access:public
+xticks	kbplot.h	/^		std::vector<Line*> xticks;$/;"	m	class:KbPlot	access:private
+y1	glwidget.h	/^	double x1,x2,y1,y2;$/;"	m	class:Line	access:private
+y2	glwidget.h	/^	double x1,x2,y1,y2;$/;"	m	class:Line	access:private
+ymax	kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
+ymin	kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
+ypos	glwidget.h	/^	double xpos, ypos;$/;"	m	class:GLWidget	access:public
+yticks	kbplot.h	/^		std::vector<Line*> yticks;$/;"	m	class:KbPlot	access:private
+~IMouseEventListener	event.h	/^	virtual ~IMouseEventListener() {};$/;"	f	class:IMouseEventListener	access:public	implementation:virtual	signature:()
+~KbPlot	kbplot.cpp	/^KbPlot::~KbPlot(){$/;"	f	class:KbPlot	signature:()
+~KbPlot	kbplot.h	/^		~KbPlot();$/;"	p	class:KbPlot	access:public	signature:()
+~Line	glwidget.h	/^	virtual ~Line(){};$/;"	f	class:Line	access:public	implementation:virtual	signature:()
+~Polyline	glwidget.h	/^	virtual ~Polyline(){};$/;"	f	class:Polyline	access:public	implementation:virtual	signature:()
+~Primitive	glwidget.h	/^		virtual ~Primitive(){};$/;"	f	class:Primitive	access:public	implementation:virtual	signature:()
+~Style	kbplot.h	/^		virtual ~Style ();$/;"	p	class:Style	access:public	implementation:virtual	signature:()
