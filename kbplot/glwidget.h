@@ -40,6 +40,8 @@ public:
 	void deleteObject(int);
 
 	void subscribeToMouse(IMouseEventListener*);
+
+	void setWorkingArea(double xmin, double xmax, double ymin, double ymax);
 };
 
 class Primitive {

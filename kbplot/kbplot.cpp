@@ -66,6 +66,7 @@ void KbPlot::setRanges(double _xmin, double _xmax, double _ymin, double _ymax){
 		(*i)->setCoordinates(m_to_gl_x(x), -0.98, m_to_gl_x(x), -0.97);
 		x+=dx;
 	}
+	container->setWorkingArea(xmin,xmax,ymin,ymax);
 }
 
 double KbPlot::pix_to_m_x(int x){
@@ -98,9 +99,9 @@ void KbPlot::mouseMoveEvent(int x, int y){
 	static int px = x;
 	qDebug()<<"We are in kbplot and we know about mouse";
 	qDebug()<<"kbplot: x:" << x << " y: " << y;
-	qDebug()<<"kbplot: pix_to_m_x:" << pix_to_m_x(x);
-	double dx = (xmax-xmin)*(double)(px - x)/container->width();
+	double dx = (xmax-xmin)*(double)(px - x)/(double)container->width();
 	qDebug()<<"kbplot: dx:" << dx ;
+	qDebug()<<"Ranges: "<<xmin<<" "<<xmax<<" "<<ymin<<" "<<ymax;
 	setRanges(xmin + dx, xmax + dx, ymin, ymax);
 	drawAxis();
 	px = x;
@@ -110,5 +111,6 @@ void KbPlot::mousePressEvent(int,int){
 }
 
 void KbPlot::mouseReleaseEvent(int,int){
+	qDebug()<<"We are in kbplot and we know about mouse release";
 	setRanges(-1.0, 1.0, -1.0, 1.0);
 }

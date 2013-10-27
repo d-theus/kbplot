@@ -11,28 +11,19 @@ GLWidget::GLWidget(QWidget *parent): QGLWidget(parent)
 }
 
 void GLWidget::initializeGL() {
-	glMatrixMode(GL_PROJECTION);
-	glOrtho(-1.0, 1.0, 1.0, -1.0, -1.0, 0.0);
-	glLoadIdentity();
+	setWorkingArea(-2.0, 2.0, -1.0, 1.0);
 }
 
 void GLWidget::paintGL(){
-	qDebug() << "Painting GL";
-
-	glMatrixMode(GL_PROJECTION);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	glTranslatef(xpos, ypos, 0);
 
 
-	qDebug() << "Looping through objects";
 	for(std::map<string, Primitive*>::const_iterator i = this->objects.begin(); i != this->objects.end(); i++){
-		qDebug() << "Calling draw";
 		(*i).second->draw();
 	}
-	qDebug() << "Done looping";
 }
 
 void GLWidget::resizeGL(int nw, int nh){
@@ -41,28 +32,16 @@ void GLWidget::resizeGL(int nw, int nh){
 }
 
 void GLWidget::mouseMoveEvent(QMouseEvent *e){
-	qDebug() << "Debug mouse: " << e->x() << " " << e->y();
-	qDebug() << "Xpos " << xpos;
-	qDebug() << "Ypos " << ypos;
-	double x = e->x() - width()/2;
-	double y = e->y() - height()/2;
-	double dx = x - mouseX;
-	double dy = y - mouseY;
-
-	xpos += 2*dx/width();
-	ypos -= 2*dy/height();
-	mouseX = x;
-	mouseY = y;
-	updateGL();
-
 	for(std::vector<IMouseEventListener*>::const_iterator i = this->mouseListeners.begin(); i != mouseListeners.end(); i++){
 		(*i)->mouseMoveEvent(e->x(), e->y());
 	}
+	updateGL();
 }
 
 void GLWidget::mouseReleaseEvent(QMouseEvent *e){
-	xpos = 0.0;
-	ypos = 0.0;
+	for(std::vector<IMouseEventListener*>::const_iterator i = this->mouseListeners.begin(); i != mouseListeners.end(); i++){
+		(*i)->mouseReleaseEvent(e->x(), e->y());
+	}
 	updateGL();
 }
 
@@ -90,6 +69,12 @@ void GLWidget::subscribeToMouse(IMouseEventListener*l){
 	this->mouseListeners.push_back(l);
 }
 
+void GLWidget::setWorkingArea(double xmin, double xmax, double ymin, double ymax){
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	glOrtho(xmin, xmax, ymin, ymax, -1.0, 0.0);
+}
+
 void Primitive::setTranslation(double x, double y){
 	this->isTranslated = true;
 	this->trX = x;
@@ -102,6 +87,10 @@ void Primitive::setTranslation(bool b){
 
 void Primitive::before_draw()const{
 	if(isTranslated){
+		glMatrixMode(GL_PROJECTION);
+		glPushMatrix();
+		glLoadIdentity();
+
 		glMatrixMode(GL_MODELVIEW);
 		glPushMatrix();
 		glLoadIdentity();
@@ -111,6 +100,9 @@ void Primitive::before_draw()const{
 
 void Primitive::after_draw()const{
 	if(isTranslated){
+		glMatrixMode(GL_MODELVIEW);
+		glPopMatrix();
+		glMatrixMode(GL_PROJECTION);
 		glPopMatrix();
 	}
 }
