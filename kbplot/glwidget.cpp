@@ -1,0 +1,167 @@
+#include "glwidget.h"
+#include<QDebug>
+
+GLWidget::GLWidget(QWidget *parent): QGLWidget(parent)
+{
+	setFormat(QGLFormat(QGL::SingleBuffer));
+	xpos = 0.0;
+	ypos = 0.0;
+	initializeGL();
+	qDebug() << "Initialized GL";
+}
+
+void GLWidget::initializeGL() {
+	setWorkingArea(-2.0, 2.0, -1.0, 1.0);
+}
+
+void GLWidget::paintGL(){
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+
+
+	for(std::map<string, Primitive*>::const_iterator i = this->objects.begin(); i != this->objects.end(); i++){
+		(*i).second->draw();
+	}
+}
+
+void GLWidget::resizeGL(int nw, int nh){
+	glMatrixMode(GL_PROJECTION);
+	glViewport(0,0, width(), height());
+}
+
+void GLWidget::mouseMoveEvent(QMouseEvent *e){
+	for(std::vector<IMouseEventListener*>::const_iterator i = this->mouseListeners.begin(); i != mouseListeners.end(); i++){
+		(*i)->mouseMoveEvent(e->x(), e->y());
+	}
+	updateGL();
+}
+
+void GLWidget::mouseReleaseEvent(QMouseEvent *e){
+	for(std::vector<IMouseEventListener*>::const_iterator i = this->mouseListeners.begin(); i != mouseListeners.end(); i++){
+		(*i)->mouseReleaseEvent(e->x(), e->y());
+	}
+	updateGL();
+}
+
+void GLWidget::addObject(string key, Primitive *p){
+	this->objects[key] = p;
+}
+
+double GLWidget::scr_to_gl_x(int x){
+	return (double)(this->width() - x)/this->width();
+}
+
+double GLWidget::scr_to_gl_y(int y){
+	return (double)(this->height() - y)/this->height();
+}
+
+int GLWidget::gl_to_scr_x(double x){
+	return (double)(this->width()) * (x - 1.0);
+}
+
+int GLWidget::gl_to_scr_y(double y){
+	return (double)(this->width()) * (y - 1.0);
+}
+
+void GLWidget::subscribeToMouse(IMouseEventListener*l){
+	this->mouseListeners.push_back(l);
+}
+
+void GLWidget::setWorkingArea(double xmin, double xmax, double ymin, double ymax){
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	glOrtho(xmin, xmax, ymin, ymax, -1.0, 0.0);
+}
+
+void Primitive::setTranslation(double x, double y){
+	this->isTranslated = true;
+	this->trX = x;
+	this->trY = y;
+}
+
+void Primitive::setTranslation(bool b){
+	this->isTranslated = b;
+}
+
+void Primitive::before_draw()const{
+	if(isTranslated){
+		glMatrixMode(GL_PROJECTION);
+		glPushMatrix();
+		glLoadIdentity();
+
+		glMatrixMode(GL_MODELVIEW);
+		glPushMatrix();
+		glLoadIdentity();
+		glTranslated(trX, trY,0.0);
+	}
+}
+
+void Primitive::after_draw()const{
+	if(isTranslated){
+		glMatrixMode(GL_MODELVIEW);
+		glPopMatrix();
+		glMatrixMode(GL_PROJECTION);
+		glPopMatrix();
+	}
+}
+
+Polyline::Polyline(std::vector<double> *vs){
+	this->values = vs;
+}
+
+void Polyline::draw() const{
+	qDebug()<<"We are in draw";
+	if(this->values == NULL) return;
+	qDebug()<<"Checking if values valid";
+	this->values->size();
+
+	before_draw();
+	
+	glBegin(GL_LINE_STRIP);
+	for (std::vector<double>::const_iterator i = this->values->begin(); i != this->values->end() && i+1 != this->values->end(); i+=2) {
+		qDebug() << "x:"; *i;
+		qDebug() << "y:" ; *(i+1);
+		glVertex2d(*i, *(i+1));
+	}
+	glEnd();
+
+	after_draw();
+}
+
+Line::Line(double _x1, double _y1, double _x2, double _y2): x1(_x1), x2(_x2), y1(_y1), y2(_y2) { } 
+
+void Line::setCoordinates(double _x1, double _y1, double _x2, double _y2){
+	x1 = _x1;
+	x2 = _x2;
+	y1 = _y1;
+	y2 = _y2;
+}
+
+void Line::draw() const {
+	before_draw();
+
+	glBegin(GL_LINE_STRIP);
+	glVertex2d(x1,y1);
+	glVertex2d(x2,y2);
+	glEnd();
+
+	after_draw();
+}
+
+double Line::get_x1(){
+	return this->x1;
+}
+
+double Line::get_x2(){
+	return this->x2;
+}
+
+double Line::get_y1(){
+	return this->y1;
+}
+
+double Line::get_y2(){
+	return this->y2;
+}

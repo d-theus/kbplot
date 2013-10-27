@@ -15,3 +15,8 @@
 # various
 *.pdf
 *.swp
+
+kbplot/tags
+kbplot/kbplot
+
+kbplot/moc_*.cpp
