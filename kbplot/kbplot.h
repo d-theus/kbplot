@@ -23,14 +23,17 @@ class KbPlot : IMouseEventListener {
 		virtual void mouseMoveEvent(int,int);
 		virtual void mousePressEvent(int,int);
 		virtual void mouseReleaseEvent(int,int);
+		virtual void mouseScrollEvent(int);
 	private:
 		void drawAxis();
 		void drawNumbers();
 		void drawBg();
 
 		Line *axis_xt, *axis_xb, *axis_yl, *axis_yr;
-		std::vector<Line*> xticks;
-		std::vector<Line*> yticks;
+		std::vector<Line*> xticks_t;
+		std::vector<Line*> xticks_b;
+		std::vector<Line*> yticks_t;
+		std::vector<Line*> yticks_b;
 
 		GLWidget *container;
 

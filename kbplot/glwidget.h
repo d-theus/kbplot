@@ -80,5 +80,25 @@ private:
 	double x1,x2,y1,y2;
 };
 
+typedef enum {
+	MRK_TYPE_DOT,
+	MRK_TYPE_CROSS
+} MarkerType;
+
+class Marker : public Primitive {
+public:
+	Marker (double x, double y, MarkerType type,size_t size);
+	virtual ~Marker (){};
+
+	virtual void draw() const;
+	void setType(MarkerType type);
+	void setCoordinates(double x, double y);
+private:
+	double x,y;
+	MarkerType type;
+	size_t size;
+};
+
+
 
 #endif // GLWIDGET_H

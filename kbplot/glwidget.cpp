@@ -165,3 +165,23 @@ double Line::get_y1(){
 double Line::get_y2(){
 	return this->y2;
 }
+
+Marker::Marker(double x, double y, MarkerType type, size_t size = 5){
+	this -> x = x;
+	this -> y = y;
+	this -> type = type;
+	this -> size = size;
+}
+
+void Marker::draw() const{
+	before_draw();
+
+	
+	glPointSize(this->size);
+	glBegin(GL_POINTS);
+	glVertex2d(this->x, this->y);
+	glEnd();
+
+	after_draw();
+}
+

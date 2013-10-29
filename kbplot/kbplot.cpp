@@ -11,8 +11,9 @@ void KbPlot::drawAxis(){
 KbPlot::KbPlot(GLWidget *_container, double _xmin, double _xmax, double _ymin, double _ymax){
 	int i;
 
-	for (i = 0; i < 21; i++) {
-		xticks.push_back(new Line(0,0,1,1));
+	for (i = 0; i < 31; i++) {
+		xticks_t.push_back(new Line(0,0,1,1));
+		xticks_b.push_back(new Line(0,0,1,1));
 	}
 
 	setRanges(_xmin, _xmax, _ymin, _ymax);
@@ -35,12 +36,12 @@ KbPlot::KbPlot(GLWidget *_container, double _xmin, double _xmax, double _ymin, d
 		axis_yl->setTranslation(0.0,0.0);
 		axis_yr->setTranslation(0.0,0.0);
 
-		i = 0;
-		for(std::vector<Line*>::iterator it= xticks.begin(); it != xticks.end(); it++){
-			std::stringstream id;
-			id << "tick_x_" << i++;
-			(*it)->setTranslation(0.0, 0.0);
-			container -> addObject(id.str(), (Primitive*)(*it));
+		for (int i = 0; i < xticks_t.size(); i++) {
+			std::stringstream id1, id2;
+			id1 << "tick_xt_" << i;
+			id2 << "tick_xb_" << i;
+			container -> addObject(id1.str(), (Primitive*)(xticks_t[i]));
+			container -> addObject(id2.str(), (Primitive*)(xticks_b[i]));
 		}
 
 		container->subscribeToMouse(this);
@@ -48,7 +49,10 @@ KbPlot::KbPlot(GLWidget *_container, double _xmin, double _xmax, double _ymin, d
 }
 
 KbPlot::~KbPlot(){
-	for(std::vector<Line*>::iterator i = xticks.begin(); i != xticks.end(); i++){
+	for(std::vector<Line*>::iterator i = xticks_t.begin(); i != xticks_t.end(); i++){
+		delete *i;
+	}
+	for(std::vector<Line*>::iterator i = xticks_b.begin(); i != xticks_b.end(); i++){
 		delete *i;
 	}
 }
@@ -58,14 +62,16 @@ void KbPlot::setRanges(double _xmin, double _xmax, double _ymin, double _ymax){
 	ymin = _ymin;
 	ymax = _ymax;
 
-	double dx = pow(10, floor(log10((xmax - xmin)/2.0)) -1);
+	//double dx = pow(10, floor(log10((xmax - xmin)/2.0)) -1);
+	double dx = 0.1;
 	double x = floor(xmin);
 
-
-	for(std::vector<Line*>::iterator i = xticks.begin(); i != xticks.end(); i++){
-		(*i)->setCoordinates(m_to_gl_x(x), -0.98, m_to_gl_x(x), -0.97);
+	for (int i = 0; i < xticks_t.size(); i++) {
+		xticks_t[i]->setCoordinates(x, -0.98, x, -0.97);
+		xticks_b[i]->setCoordinates(x, 0.98, x, 0.97);
 		x+=dx;
 	}
+
 	container->setWorkingArea(xmin,xmax,ymin,ymax);
 }
 
@@ -113,4 +119,7 @@ void KbPlot::mousePressEvent(int,int){
 void KbPlot::mouseReleaseEvent(int,int){
 	qDebug()<<"We are in kbplot and we know about mouse release";
 	setRanges(-1.0, 1.0, -1.0, 1.0);
+}
+
+void KbPlot::mouseScrollEvent(int a){
 }
