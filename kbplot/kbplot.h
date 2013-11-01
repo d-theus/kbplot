@@ -1,30 +1,34 @@
 #include "glwidget.h"
 #include "event.h"
 
+struct DataSet {
+		DataSet(std::vector<double> *data);
+		virtual ~DataSet();
+
+		bool wlines = false;
+		bool wmarks = true;
+
+		GraphicalObject *gobj[2];
+};
+
 
 class KbPlot : IMouseEventListener {
 	public:
+		static const double c_frameThickness = 0.02;
+		static const double c_tickLength = 0.02;
+		 
 		KbPlot(GLWidget*, double, double, double, double);
 		~KbPlot();
 		void setRanges(double,double,double,double);
-
-		int m_to_pix_x(double);
-		int m_to_pix_y(double);
-
-		double m_to_gl_x(double);
-		double m_to_gl_y(double);
-
-		double gl_to_m_x(double);
-		double gl_to_m_y(double);
-
-		double pix_to_m_x(int);
-		double pix_to_m_y(int);
+		void addData(DataSet &ds);
+		void draw();
 
 		virtual void mouseMoveEvent(int,int);
 		virtual void mousePressEvent(int,int);
 		virtual void mouseReleaseEvent(int,int);
 		virtual void mouseScrollEvent(int);
 	private:
+
 		void drawAxis();
 		void drawNumbers();
 		void drawBg();
@@ -38,36 +42,5 @@ class KbPlot : IMouseEventListener {
 		GLWidget *container;
 
 		double xmax, ymax, xmin, ymin;
+		vector<DataSet> datasets;
 };
-
-class DataSet {
-	public:
-		DataSet (const std::vector<double> &data);
-		void draw();
-
-	private:
-		bool wlines;
-		bool wmarks;
-};
-
-class Style {
-	public:
-		Style ();
-		virtual ~Style ();
-
-		unsigned int color;
-};
-
-class LineStyle : public Style {
-	public:
-		LineStyle();
-		unsigned int stroke;
-		unsigned int thickness;
-};
-
-class MarkStyle : public Style {
-	public:
-		MarkStyle();
-		unsigned int size;
-};
-

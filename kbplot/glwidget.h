@@ -5,24 +5,24 @@
 #include <QtOpenGL>
 #include <map>
 #include <string>
-#include "event.h"
 
-class Primitive;
-class Polyline;
+#include "event.h"
+#include "graphical_object.h"
+
 
 using std::string;
+using std::vector;
+using std::map;
 
 class GLWidget : public QGLWidget
 {
 	Q_OBJECT
 
 	int mouseX, mouseY;
-	std::map<string, Primitive*> objects;
-	std::vector<IMouseEventListener*> mouseListeners;
+	map<string, GraphicalObject*> objects;
+	vector<IMouseEventListener*> mouseListeners;
 
 public:
-	double xpos, ypos;
-
 	GLWidget(QWidget *parent = 0);
 	void initializeGL();
 	void resizeGL(int nw, int nh);
@@ -36,7 +36,7 @@ public:
 	int gl_to_scr_x(double);
 	int gl_to_scr_y(double);
 
-	void addObject(string, Primitive*);
+	void addObject(string, GraphicalObject*);
 	void deleteObject(int);
 
 	void subscribeToMouse(IMouseEventListener*);
@@ -44,60 +44,6 @@ public:
 	void setWorkingArea(double xmin, double xmax, double ymin, double ymax);
 };
 
-class Primitive {
-	protected:
-		bool isTranslated = false;
-		double trX, trY;
-		void before_draw()const;
-		void after_draw()const;
-	public:
-		virtual ~Primitive(){};
-		virtual void draw() const = 0;
-		void setTranslation(double,double);
-		void setTranslation(bool);
-};
-
-class Polyline : public Primitive {
-public:
-	Polyline(std::vector<double> *);
-	virtual void draw() const;
-	virtual ~Polyline(){};
-private:
-	std::vector<double> *values;
-};
-
-class Line : public Primitive {
-public:
-	Line(double,double,double,double);
-	virtual void draw() const;
-	virtual ~Line(){};
-	void setCoordinates(double,double,double,double);
-	double get_x1();
-	double get_x2();
-	double get_y1();
-	double get_y2();
-private:
-	double x1,x2,y1,y2;
-};
-
-typedef enum {
-	MRK_TYPE_DOT,
-	MRK_TYPE_CROSS
-} MarkerType;
-
-class Marker : public Primitive {
-public:
-	Marker (double x, double y, MarkerType type,size_t size);
-	virtual ~Marker (){};
-
-	virtual void draw() const;
-	void setType(MarkerType type);
-	void setCoordinates(double x, double y);
-private:
-	double x,y;
-	MarkerType type;
-	size_t size;
-};
 
 
 

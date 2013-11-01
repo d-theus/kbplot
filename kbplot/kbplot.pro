@@ -3,11 +3,11 @@
 ######################################################################
 
 QT += core gui opengl
-QMAKE_CXXFLAGS += -std=c++11 -w
+QMAKE_CXXFLAGS += -w -DDEBUG
 TEMPLATE = app
 TARGET = kbplot
 INCLUDEPATH += .
 
 # Input
-HEADERS += glwidget.h kbplot.h event.h
-SOURCES += glwidget.cpp main.cpp kbplot.cpp
+HEADERS += glwidget.h kbplot.h event.h graphical_object.h
+SOURCES += glwidget.cpp main.cpp kbplot.cpp graphical_object.cpp
