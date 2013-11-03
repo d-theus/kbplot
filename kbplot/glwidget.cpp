@@ -4,10 +4,23 @@
 #include <QDebug>
 #endif
 
-GLWidget::GLWidget(QWidget *parent): QGLWidget(parent)
+GLWidget::GLWidget(): QGLWidget()
 {
 	setFormat(QGLFormat(QGL::SingleBuffer));
 	initializeGL();
+}
+
+void GLWidget::GLpaint(){
+	this -> paintGL();
+}
+void GLWidget::GLinitialize(){
+	this -> initializeGL();
+}
+void GLWidget::GLresize(int nw, int nh){
+	this -> resizeGL(nw,nh);
+}
+void GLWidget::GLupdate(){
+	this -> updateGL();
 }
 
 void GLWidget::initializeGL() {
@@ -49,19 +62,19 @@ void GLWidget::addObject(string key, GraphicalObject *p){
 	this->objects[key] = p;
 }
 
-double GLWidget::scr_to_gl_x(int x){
+double GLWidget::trScreenToGLx(int x){
 	return (double)(this->width() - x)/this->width();
 }
 
-double GLWidget::scr_to_gl_y(int y){
+double GLWidget::trScreenToGLy(int y){
 	return (double)(this->height() - y)/this->height();
 }
 
-int GLWidget::gl_to_scr_x(double x){
+int GLWidget::trGLToScreenx(double x){
 	return (double)(this->width()) * (x - 1.0);
 }
 
-int GLWidget::gl_to_scr_y(double y){
+int GLWidget::trGLToScreeny(double y){
 	return (double)(this->width()) * (y - 1.0);
 }
 

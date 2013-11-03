@@ -7,6 +7,7 @@
 #include <string>
 
 #include "event.h"
+#include "aglwidget.h"
 #include "graphical_object.h"
 
 
@@ -14,7 +15,7 @@ using std::string;
 using std::vector;
 using std::map;
 
-class GLWidget : public QGLWidget
+class GLWidget : public QGLWidget, public AGLWidget
 {
 	Q_OBJECT
 
@@ -23,25 +24,36 @@ class GLWidget : public QGLWidget
 	vector<IMouseEventListener*> mouseListeners;
 
 public:
-	GLWidget(QWidget *parent = 0);
+	GLWidget();
+	virtual ~GLWidget(){};
+
+	//Qt part
 	void initializeGL();
 	void resizeGL(int nw, int nh);
 	void paintGL();
 
+	//Adapter part
+	virtual void GLpaint();
+	virtual void GLresize(int nw, int nh);
+	virtual void GLupdate();
+	virtual void GLinitialize();
+
+	//Qt part
 	void mouseMoveEvent(QMouseEvent *e);
 	void mouseReleaseEvent(QMouseEvent *e);
+	//Adapter part
+	virtual void subscribeToMouse(IMouseEventListener*);
 
-	double scr_to_gl_x(int);
-	double scr_to_gl_y(int);
-	int gl_to_scr_x(double);
-	int gl_to_scr_y(double);
+	virtual double trScreenToGLx(int);
+	virtual double trScreenToGLy(int);
+	virtual int trGLToScreenx(double);
+	virtual int trGLToScreeny(double);
 
-	void addObject(string, GraphicalObject*);
-	void deleteObject(int);
+	virtual void addObject(string, GraphicalObject*);
+	virtual void clearScene(){};
 
-	void subscribeToMouse(IMouseEventListener*);
 
-	void setWorkingArea(double xmin, double xmax, double ymin, double ymax);
+	virtual void setWorkingArea(double xmin, double xmax, double ymin, double ymax);
 };
 
 

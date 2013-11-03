@@ -4,6 +4,20 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.8	//
+AGLWIDGET_H	aglwidget.h	2;"	d
+AGLWidget	aglwidget.h	/^class AGLWidget {$/;"	c
+AGLWidget::GLinitialize	aglwidget.h	/^	virtual void GLinitialize()=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:()
+AGLWidget::GLpaint	aglwidget.h	/^	virtual void GLpaint()=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:()
+AGLWidget::GLresize	aglwidget.h	/^	virtual void GLresize(int,int)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(int,int)
+AGLWidget::addObject	aglwidget.h	/^	virtual void addObject(string, GraphicalObject*)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(string, GraphicalObject*)
+AGLWidget::clearScene	aglwidget.h	/^	virtual void clearScene()=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:()
+AGLWidget::setWorkingArea	aglwidget.h	/^	virtual void setWorkingArea(double, double, double, double)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(double, double, double, double)
+AGLWidget::subscribeToMouse	aglwidget.h	/^	virtual void subscribeToMouse(IMouseEventListener *subscriber)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(IMouseEventListener *subscriber)
+AGLWidget::trGLToScreenx	aglwidget.h	/^	virtual int trGLToScreenx(double)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(double)
+AGLWidget::trGLToScreeny	aglwidget.h	/^	virtual int trGLToScreeny(double)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(double)
+AGLWidget::trScreenToGLx	aglwidget.h	/^	virtual double trScreenToGLx(int)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(int)
+AGLWidget::trScreenToGLy	aglwidget.h	/^	virtual double trScreenToGLy(int)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(int)
+AGLWidget::~AGLWidget	aglwidget.h	/^	virtual ~AGLWidget(){};$/;"	f	class:AGLWidget	access:public	implementation:virtual	signature:()
 AR	Makefile	/^AR            = ar cqs$/;"	m
 CC	Makefile	/^CC            = gcc$/;"	m
 CFLAGS	Makefile	/^CFLAGS        = -pipe -march=x86-64 -mtune=generic -O2 -pipe -fstack-protector --param=ssp-buffer-size=4 -Wall -W -D_REENTRANT -fPIE $(DEFINES)$/;"	m
@@ -31,18 +45,26 @@ DataSet::~DataSet	kbplot.cpp	/^DataSet::~DataSet(){$/;"	f	class:DataSet	signatur
 DataSet::~DataSet	kbplot.h	/^		virtual ~DataSet();$/;"	p	struct:DataSet	access:public	implementation:virtual	signature:()
 EVENT_H	event.h	2;"	d
 GLWIDGET_H	glwidget.h	2;"	d
-GLWidget	glwidget.cpp	/^GLWidget::GLWidget(QWidget *parent): QGLWidget(parent)$/;"	f	class:GLWidget	signature:(QWidget *parent)
-GLWidget	glwidget.h	/^	GLWidget(QWidget *parent = 0);$/;"	p	class:GLWidget	access:public	signature:(QWidget *parent = 0)
-GLWidget	glwidget.h	/^class GLWidget : public QGLWidget$/;"	c	inherits:QGLWidget
-GLWidget::GLWidget	glwidget.cpp	/^GLWidget::GLWidget(QWidget *parent): QGLWidget(parent)$/;"	f	class:GLWidget	signature:(QWidget *parent)
-GLWidget::GLWidget	glwidget.h	/^	GLWidget(QWidget *parent = 0);$/;"	p	class:GLWidget	access:public	signature:(QWidget *parent = 0)
+GLWidget	glwidget.cpp	/^GLWidget::GLWidget(): QGLWidget()$/;"	f	class:GLWidget	signature:()
+GLWidget	glwidget.h	/^	GLWidget();$/;"	p	class:GLWidget	access:public	signature:()
+GLWidget	glwidget.h	/^class GLWidget : public QGLWidget, public AGLWidget$/;"	c	inherits:QGLWidget,AGLWidget
+GLWidget::GLWidget	glwidget.cpp	/^GLWidget::GLWidget(): QGLWidget()$/;"	f	class:GLWidget	signature:()
+GLWidget::GLWidget	glwidget.h	/^	GLWidget();$/;"	p	class:GLWidget	access:public	signature:()
+GLWidget::GLinitialize	glwidget.cpp	/^void GLWidget::GLinitialize(){$/;"	f	class:GLWidget	signature:()
+GLWidget::GLinitialize	glwidget.h	/^	virtual void GLinitialize();$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:()
+GLWidget::GLpaint	glwidget.cpp	/^void GLWidget::GLpaint(){$/;"	f	class:GLWidget	signature:()
+GLWidget::GLpaint	glwidget.h	/^	virtual void GLpaint();$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:()
+GLWidget::GLresize	glwidget.cpp	/^void GLWidget::GLresize(int nw, int nh){$/;"	f	class:GLWidget	signature:(int nw, int nh)
+GLWidget::GLresize	glwidget.h	/^	virtual void GLresize(int nw, int nh);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(int nw, int nh)
+GLWidget::GLupdate	glwidget.cpp	/^void GLWidget::GLupdate(){$/;"	f	class:GLWidget	signature:()
+GLWidget::GLupdate	glwidget.h	/^	virtual void GLupdate();$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:()
 GLWidget::addObject	glwidget.cpp	/^void GLWidget::addObject(string key, GraphicalObject *p){$/;"	f	class:GLWidget	signature:(string key, GraphicalObject *p)
-GLWidget::addObject	glwidget.h	/^	void addObject(string, GraphicalObject*);$/;"	p	class:GLWidget	access:public	signature:(string, GraphicalObject*)
-GLWidget::deleteObject	glwidget.h	/^	void deleteObject(int);$/;"	p	class:GLWidget	access:public	signature:(int)
+GLWidget::addObject	glwidget.h	/^	virtual void addObject(string, GraphicalObject*);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(string, GraphicalObject*)
+GLWidget::clearScene	glwidget.h	/^	virtual void clearScene(){};$/;"	f	class:GLWidget	access:public	implementation:virtual	signature:()
 GLWidget::gl_to_scr_x	glwidget.cpp	/^int GLWidget::gl_to_scr_x(double x){$/;"	f	class:GLWidget	signature:(double x)
-GLWidget::gl_to_scr_x	glwidget.h	/^	int gl_to_scr_x(double);$/;"	p	class:GLWidget	access:public	signature:(double)
+GLWidget::gl_to_scr_x	glwidget.h	/^	virtual int gl_to_scr_x(double);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(double)
 GLWidget::gl_to_scr_y	glwidget.cpp	/^int GLWidget::gl_to_scr_y(double y){$/;"	f	class:GLWidget	signature:(double y)
-GLWidget::gl_to_scr_y	glwidget.h	/^	int gl_to_scr_y(double);$/;"	p	class:GLWidget	access:public	signature:(double)
+GLWidget::gl_to_scr_y	glwidget.h	/^	virtual int gl_to_scr_y(double);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(double)
 GLWidget::initializeGL	glwidget.cpp	/^void GLWidget::initializeGL() {$/;"	f	class:GLWidget	signature:()
 GLWidget::initializeGL	glwidget.h	/^	void initializeGL();$/;"	p	class:GLWidget	access:public	signature:()
 GLWidget::metaObject	moc_glwidget.cpp	/^const QMetaObject *GLWidget::metaObject() const$/;"	f	class:GLWidget	signature:() const
@@ -62,14 +84,26 @@ GLWidget::qt_static_metacall	moc_glwidget.cpp	/^void GLWidget::qt_static_metacal
 GLWidget::resizeGL	glwidget.cpp	/^void GLWidget::resizeGL(int nw, int nh){$/;"	f	class:GLWidget	signature:(int nw, int nh)
 GLWidget::resizeGL	glwidget.h	/^	void resizeGL(int nw, int nh);$/;"	p	class:GLWidget	access:public	signature:(int nw, int nh)
 GLWidget::scr_to_gl_x	glwidget.cpp	/^double GLWidget::scr_to_gl_x(int x){$/;"	f	class:GLWidget	signature:(int x)
-GLWidget::scr_to_gl_x	glwidget.h	/^	double scr_to_gl_x(int);$/;"	p	class:GLWidget	access:public	signature:(int)
+GLWidget::scr_to_gl_x	glwidget.h	/^	virtual double scr_to_gl_x(int);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(int)
 GLWidget::scr_to_gl_y	glwidget.cpp	/^double GLWidget::scr_to_gl_y(int y){$/;"	f	class:GLWidget	signature:(int y)
-GLWidget::scr_to_gl_y	glwidget.h	/^	double scr_to_gl_y(int);$/;"	p	class:GLWidget	access:public	signature:(int)
+GLWidget::scr_to_gl_y	glwidget.h	/^	virtual double scr_to_gl_y(int);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(int)
 GLWidget::setWorkingArea	glwidget.cpp	/^void GLWidget::setWorkingArea(double xmin, double xmax, double ymin, double ymax){$/;"	f	class:GLWidget	signature:(double xmin, double xmax, double ymin, double ymax)
-GLWidget::setWorkingArea	glwidget.h	/^	void setWorkingArea(double xmin, double xmax, double ymin, double ymax);$/;"	p	class:GLWidget	access:public	signature:(double xmin, double xmax, double ymin, double ymax)
+GLWidget::setWorkingArea	glwidget.h	/^	virtual void setWorkingArea(double xmin, double xmax, double ymin, double ymax);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(double xmin, double xmax, double ymin, double ymax)
 GLWidget::staticMetaObject	moc_glwidget.cpp	/^const QMetaObject GLWidget::staticMetaObject = {$/;"	m	class:GLWidget	file:
 GLWidget::subscribeToMouse	glwidget.cpp	/^void GLWidget::subscribeToMouse(IMouseEventListener*l){$/;"	f	class:GLWidget	signature:(IMouseEventListener*l)
-GLWidget::subscribeToMouse	glwidget.h	/^	void subscribeToMouse(IMouseEventListener*);$/;"	p	class:GLWidget	access:public	signature:(IMouseEventListener*)
+GLWidget::subscribeToMouse	glwidget.h	/^	virtual void subscribeToMouse(IMouseEventListener*);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(IMouseEventListener*)
+GLWidget::~GLWidget	glwidget.h	/^	virtual ~GLWidget(){};$/;"	f	class:GLWidget	access:public	implementation:virtual	signature:()
+GLinitialize	aglwidget.h	/^	virtual void GLinitialize()=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:()
+GLinitialize	glwidget.cpp	/^void GLWidget::GLinitialize(){$/;"	f	class:GLWidget	signature:()
+GLinitialize	glwidget.h	/^	virtual void GLinitialize();$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:()
+GLpaint	aglwidget.h	/^	virtual void GLpaint()=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:()
+GLpaint	glwidget.cpp	/^void GLWidget::GLpaint(){$/;"	f	class:GLWidget	signature:()
+GLpaint	glwidget.h	/^	virtual void GLpaint();$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:()
+GLresize	aglwidget.h	/^	virtual void GLresize(int,int)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(int,int)
+GLresize	glwidget.cpp	/^void GLWidget::GLresize(int nw, int nh){$/;"	f	class:GLWidget	signature:(int nw, int nh)
+GLresize	glwidget.h	/^	virtual void GLresize(int nw, int nh);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(int nw, int nh)
+GLupdate	glwidget.cpp	/^void GLWidget::GLupdate(){$/;"	f	class:GLWidget	signature:()
+GLupdate	glwidget.h	/^	virtual void GLupdate();$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:()
 GRAPHICAL_OBJECT	graphical_object.h	2;"	d
 GraphicalObject	graphical_object.h	/^class GraphicalObject {$/;"	c
 GraphicalObject::after_draw	graphical_object.cpp	/^void GraphicalObject::after_draw()const{$/;"	f	class:GraphicalObject	signature:() const
@@ -112,8 +146,8 @@ KbPlot::axis_xb	kbplot.h	/^		Line *axis_xt, *axis_xb, *axis_yl, *axis_yr;$/;"	m	
 KbPlot::axis_xt	kbplot.h	/^		Line *axis_xt, *axis_xb, *axis_yl, *axis_yr;$/;"	m	class:KbPlot	access:private
 KbPlot::axis_yl	kbplot.h	/^		Line *axis_xt, *axis_xb, *axis_yl, *axis_yr;$/;"	m	class:KbPlot	access:private
 KbPlot::axis_yr	kbplot.h	/^		Line *axis_xt, *axis_xb, *axis_yl, *axis_yr;$/;"	m	class:KbPlot	access:private
-KbPlot::c_frameThickness	kbplot.h	/^		const c_frameThickness = 0.02;$/;"	m	class:KbPlot	access:private
-KbPlot::c_tickLength	kbplot.h	/^		const c_tickLength = 0.02;$/;"	m	class:KbPlot	access:private
+KbPlot::c_frameThickness	kbplot.h	/^		static const double c_frameThickness = 0.02;$/;"	m	class:KbPlot	access:public
+KbPlot::c_tickLength	kbplot.h	/^		static const double c_tickLength = 0.02;$/;"	m	class:KbPlot	access:public
 KbPlot::container	kbplot.h	/^		GLWidget *container;$/;"	m	class:KbPlot	access:private
 KbPlot::datasets	kbplot.h	/^		vector<DataSet> datasets;$/;"	m	class:KbPlot	access:private
 KbPlot::draw	kbplot.cpp	/^void KbPlot::draw(){$/;"	f	class:KbPlot	signature:()
@@ -232,8 +266,9 @@ TAR	Makefile	/^TAR           = tar -cf$/;"	m
 TARGET	Makefile	/^TARGET        = kbplot$/;"	m
 addData	kbplot.cpp	/^void KbPlot::addData(DataSet &ds){$/;"	f	class:KbPlot	signature:(DataSet &ds)
 addData	kbplot.h	/^		void addData(DataSet &ds);$/;"	p	class:KbPlot	access:public	signature:(DataSet &ds)
+addObject	aglwidget.h	/^	virtual void addObject(string, GraphicalObject*)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(string, GraphicalObject*)
 addObject	glwidget.cpp	/^void GLWidget::addObject(string key, GraphicalObject *p){$/;"	f	class:GLWidget	signature:(string key, GraphicalObject *p)
-addObject	glwidget.h	/^	void addObject(string, GraphicalObject*);$/;"	p	class:GLWidget	access:public	signature:(string, GraphicalObject*)
+addObject	glwidget.h	/^	virtual void addObject(string, GraphicalObject*);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(string, GraphicalObject*)
 after_draw	graphical_object.cpp	/^void GraphicalObject::after_draw()const{$/;"	f	class:GraphicalObject	signature:() const
 after_draw	graphical_object.h	/^		void after_draw()const;$/;"	p	class:GraphicalObject	access:protected	signature:() const
 axis_xb	kbplot.h	/^		Line *axis_xt, *axis_xb, *axis_yl, *axis_yr;$/;"	m	class:KbPlot	access:private
@@ -242,13 +277,14 @@ axis_yl	kbplot.h	/^		Line *axis_xt, *axis_xb, *axis_yl, *axis_yr;$/;"	m	class:Kb
 axis_yr	kbplot.h	/^		Line *axis_xt, *axis_xb, *axis_yl, *axis_yr;$/;"	m	class:KbPlot	access:private
 before_draw	graphical_object.cpp	/^void GraphicalObject::before_draw()const{$/;"	f	class:GraphicalObject	signature:() const
 before_draw	graphical_object.h	/^		void before_draw()const;$/;"	p	class:GraphicalObject	access:protected	signature:() const
-c_frameThickness	kbplot.h	/^		const c_frameThickness = 0.02;$/;"	m	class:KbPlot	access:private
-c_tickLength	kbplot.h	/^		const c_tickLength = 0.02;$/;"	m	class:KbPlot	access:private
+c_frameThickness	kbplot.h	/^		static const double c_frameThickness = 0.02;$/;"	m	class:KbPlot	access:public
+c_tickLength	kbplot.h	/^		static const double c_tickLength = 0.02;$/;"	m	class:KbPlot	access:public
+clearScene	aglwidget.h	/^	virtual void clearScene()=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:()
+clearScene	glwidget.h	/^	virtual void clearScene(){};$/;"	f	class:GLWidget	access:public	implementation:virtual	signature:()
 container	kbplot.h	/^		GLWidget *container;$/;"	m	class:KbPlot	access:private
 data	graphical_object.h	/^		vector<double> *data;$/;"	m	class:MarkerSet	access:private
 data	moc_glwidget.cpp	/^    QByteArrayData data[1];$/;"	m	struct:qt_meta_stringdata_GLWidget_t	file:	access:public
 datasets	kbplot.h	/^		vector<DataSet> datasets;$/;"	m	class:KbPlot	access:private
-deleteObject	glwidget.h	/^	void deleteObject(int);$/;"	p	class:GLWidget	access:public	signature:(int)
 draw	graphical_object.cpp	/^void Line::draw() const {$/;"	f	class:Line	signature:() const
 draw	graphical_object.cpp	/^void MarkerSet::draw() const{$/;"	f	class:MarkerSet	signature:() const
 draw	graphical_object.cpp	/^void Polyline::draw() const{$/;"	f	class:Polyline	signature:() const
@@ -271,9 +307,9 @@ get_y1	graphical_object.h	/^		double get_y1();$/;"	p	class:Line	access:public	si
 get_y2	graphical_object.cpp	/^double Line::get_y2(){$/;"	f	class:Line	signature:()
 get_y2	graphical_object.h	/^		double get_y2();$/;"	p	class:Line	access:public	signature:()
 gl_to_scr_x	glwidget.cpp	/^int GLWidget::gl_to_scr_x(double x){$/;"	f	class:GLWidget	signature:(double x)
-gl_to_scr_x	glwidget.h	/^	int gl_to_scr_x(double);$/;"	p	class:GLWidget	access:public	signature:(double)
+gl_to_scr_x	glwidget.h	/^	virtual int gl_to_scr_x(double);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(double)
 gl_to_scr_y	glwidget.cpp	/^int GLWidget::gl_to_scr_y(double y){$/;"	f	class:GLWidget	signature:(double y)
-gl_to_scr_y	glwidget.h	/^	int gl_to_scr_y(double);$/;"	p	class:GLWidget	access:public	signature:(double)
+gl_to_scr_y	glwidget.h	/^	virtual int gl_to_scr_y(double);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(double)
 gobj	kbplot.h	/^		GraphicalObject *gobj[2];$/;"	m	struct:DataSet	access:public
 initializeGL	glwidget.cpp	/^void GLWidget::initializeGL() {$/;"	f	class:GLWidget	signature:()
 initializeGL	glwidget.h	/^	void initializeGL();$/;"	p	class:GLWidget	access:public	signature:()
@@ -321,9 +357,9 @@ resizeGL	glwidget.h	/^	void resizeGL(int nw, int nh);$/;"	p	class:GLWidget	acces
 scX	graphical_object.h	/^		double scX, scY;$/;"	m	class:GraphicalObject	access:protected
 scY	graphical_object.h	/^		double scX, scY;$/;"	m	class:GraphicalObject	access:protected
 scr_to_gl_x	glwidget.cpp	/^double GLWidget::scr_to_gl_x(int x){$/;"	f	class:GLWidget	signature:(int x)
-scr_to_gl_x	glwidget.h	/^	double scr_to_gl_x(int);$/;"	p	class:GLWidget	access:public	signature:(int)
+scr_to_gl_x	glwidget.h	/^	virtual double scr_to_gl_x(int);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(int)
 scr_to_gl_y	glwidget.cpp	/^double GLWidget::scr_to_gl_y(int y){$/;"	f	class:GLWidget	signature:(int y)
-scr_to_gl_y	glwidget.h	/^	double scr_to_gl_y(int);$/;"	p	class:GLWidget	access:public	signature:(int)
+scr_to_gl_y	glwidget.h	/^	virtual double scr_to_gl_y(int);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(int)
 setCoordinates	graphical_object.cpp	/^void Line::setCoordinates(double _x1, double _y1, double _x2, double _y2){$/;"	f	class:Line	signature:(double _x1, double _y1, double _x2, double _y2)
 setCoordinates	graphical_object.h	/^		void setCoordinates(double,double,double,double);$/;"	p	class:Line	access:public	signature:(double,double,double,double)
 setFixed	graphical_object.cpp	/^void GraphicalObject::setFixed(bool b){$/;"	f	class:GraphicalObject	signature:(bool b)
@@ -334,13 +370,19 @@ setScale	graphical_object.cpp	/^void GraphicalObject::setScale(bool b){$/;"	f	cl
 setScale	graphical_object.cpp	/^void GraphicalObject::setScale(double x, double y){$/;"	f	class:GraphicalObject	signature:(double x, double y)
 setScale	graphical_object.h	/^		void setScale(bool);$/;"	p	class:GraphicalObject	access:public	signature:(bool)
 setScale	graphical_object.h	/^		void setScale(double,double);$/;"	p	class:GraphicalObject	access:public	signature:(double,double)
+setWorkingArea	aglwidget.h	/^	virtual void setWorkingArea(double, double, double, double)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(double, double, double, double)
 setWorkingArea	glwidget.cpp	/^void GLWidget::setWorkingArea(double xmin, double xmax, double ymin, double ymax){$/;"	f	class:GLWidget	signature:(double xmin, double xmax, double ymin, double ymax)
-setWorkingArea	glwidget.h	/^	void setWorkingArea(double xmin, double xmax, double ymin, double ymax);$/;"	p	class:GLWidget	access:public	signature:(double xmin, double xmax, double ymin, double ymax)
+setWorkingArea	glwidget.h	/^	virtual void setWorkingArea(double xmin, double xmax, double ymin, double ymax);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(double xmin, double xmax, double ymin, double ymax)
 staticMetaObject	moc_glwidget.cpp	/^const QMetaObject GLWidget::staticMetaObject = {$/;"	m	class:GLWidget	file:
 stringdata	moc_glwidget.cpp	/^    char stringdata[10];$/;"	m	struct:qt_meta_stringdata_GLWidget_t	file:	access:public
 style	graphical_object.h	/^		Style style;$/;"	m	class:GraphicalObject	access:public
+subscribeToMouse	aglwidget.h	/^	virtual void subscribeToMouse(IMouseEventListener *subscriber)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(IMouseEventListener *subscriber)
 subscribeToMouse	glwidget.cpp	/^void GLWidget::subscribeToMouse(IMouseEventListener*l){$/;"	f	class:GLWidget	signature:(IMouseEventListener*l)
-subscribeToMouse	glwidget.h	/^	void subscribeToMouse(IMouseEventListener*);$/;"	p	class:GLWidget	access:public	signature:(IMouseEventListener*)
+subscribeToMouse	glwidget.h	/^	virtual void subscribeToMouse(IMouseEventListener*);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(IMouseEventListener*)
+trGLToScreenx	aglwidget.h	/^	virtual int trGLToScreenx(double)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(double)
+trGLToScreeny	aglwidget.h	/^	virtual int trGLToScreeny(double)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(double)
+trScreenToGLx	aglwidget.h	/^	virtual double trScreenToGLx(int)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(int)
+trScreenToGLy	aglwidget.h	/^	virtual double trScreenToGLy(int)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(int)
 trX	graphical_object.h	/^		double trX, trY;$/;"	m	class:GraphicalObject	access:protected
 trY	graphical_object.h	/^		double trX, trY;$/;"	m	class:GraphicalObject	access:protected
 values	graphical_object.h	/^		vector<double> *values;$/;"	m	class:Polyline	access:private
@@ -358,8 +400,10 @@ ymax	kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:priva
 ymin	kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
 yticks_b	kbplot.h	/^		std::vector<Line*> yticks_b;$/;"	m	class:KbPlot	access:private
 yticks_t	kbplot.h	/^		std::vector<Line*> yticks_t;$/;"	m	class:KbPlot	access:private
+~AGLWidget	aglwidget.h	/^	virtual ~AGLWidget(){};$/;"	f	class:AGLWidget	access:public	implementation:virtual	signature:()
 ~DataSet	kbplot.cpp	/^DataSet::~DataSet(){$/;"	f	class:DataSet	signature:()
 ~DataSet	kbplot.h	/^		virtual ~DataSet();$/;"	p	struct:DataSet	access:public	implementation:virtual	signature:()
+~GLWidget	glwidget.h	/^	virtual ~GLWidget(){};$/;"	f	class:GLWidget	access:public	implementation:virtual	signature:()
 ~GraphicalObject	graphical_object.h	/^		virtual ~GraphicalObject(){};$/;"	f	class:GraphicalObject	access:public	implementation:virtual	signature:()
 ~IMouseEventListener	event.h	/^	virtual ~IMouseEventListener() {};$/;"	f	class:IMouseEventListener	access:public	implementation:virtual	signature:()
 ~KbPlot	kbplot.cpp	/^KbPlot::~KbPlot(){$/;"	f	class:KbPlot	signature:()
