@@ -30,24 +30,34 @@ KbPlot::KbPlot(GLWidget *_container, double _xmin, double _xmax, double _ymin, d
 	}
 
 	const double framePos = 1.0 - KbPlot::c_frameThickness;
-	axis_xt = new Line(-framePos, framePos, framePos, framePos);
-	axis_xb = new Line(-framePos, -framePos, framePos, -framePos);
-	axis_yl = new Line(-framePos, framePos, -framePos, -framePos);
-	axis_yr = new Line(framePos, -framePos, framePos, framePos);
+	
+	v1.push_back(-1.0);
+	v1.push_back(1.0);
+
+	v1.push_back(-1.0);
+	v1.push_back(-1.0);
+
+	v1.push_back(1.0);
+	v1.push_back(-1.0);
+
+	v1.push_back(1.0);
+	v1.push_back(1.0);
+
+	v1.push_back(-1.0);
+	v1.push_back(1.0);
+
+
+	frame = new Polyline(&v1);
+	frame->style.lineColor = 0x444444FF;
+	frame->style.lineThickness = 15.0;
 
 
 	this->container = _container;
 	if(container != NULL){
 
-		container -> addObject("axis_xt", (GraphicalObject*)axis_xt);
-		container -> addObject("axis_xb", (GraphicalObject*)axis_xb);
-		container -> addObject("axis_yl", (GraphicalObject*)axis_yl);
-		container -> addObject("axis_yr", (GraphicalObject*)axis_yr);
+		container -> addObject("frame", (GraphicalObject*)frame);
 
-		axis_xt->setFixed();
-		axis_xb->setFixed();
-		axis_yl->setFixed();
-		axis_yr->setFixed();
+		frame->setFixed();
 
 		for (int i = 0; i < xticks_t.size(); i++) {
 			std::stringstream id1, id2;
@@ -56,10 +66,6 @@ KbPlot::KbPlot(GLWidget *_container, double _xmin, double _xmax, double _ymin, d
 
 			container -> addObject(id1.str(), (GraphicalObject*)(xticks_t[i]));
 			container -> addObject(id2.str(), (GraphicalObject*)(xticks_b[i]));
-
-			const double scale = 1.0 - KbPlot::c_frameThickness;
-			xticks_t[i]->setScale(scale, scale);
-			xticks_b[i]->setScale(scale, scale);
 		}
 
 		setRanges(_xmin, _xmax, _ymin, _ymax);
@@ -82,8 +88,7 @@ void KbPlot::setRanges(double _xmin, double _xmax, double _ymin, double _ymax){
 	ymax = _ymax;
 
 	double dx = 0.5;
-	double tick_len = (ymax - ymin)/100.0; //TODO: mathToGl?
-	double tick_offset = (ymax-ymin)/2 *KbPlot::c_tickLength;
+	double tick_len = (ymax - ymin)/200.0; //TODO: mathToGl?
 	double x = floor(xmin);
 
 	for (int i = 0; i < xticks_t.size(); i++) {
@@ -119,8 +124,6 @@ void KbPlot::mouseScrollEvent(int a){
 
 void KbPlot::addData(DataSet &ds){
 	this->datasets.push_back(ds);
-	ds.gobj[0]->setScale(0.98, 0.98);
-	ds.gobj[1]->setScale(0.98, 0.98);
 }
 
 void KbPlot::draw(){

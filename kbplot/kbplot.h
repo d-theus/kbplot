@@ -33,11 +33,12 @@ class KbPlot : IMouseEventListener {
 		void drawNumbers();
 		void drawBg();
 
-		Line *axis_xt, *axis_xb, *axis_yl, *axis_yr;
+		Polyline *frame;
 		std::vector<Line*> xticks_t;
 		std::vector<Line*> xticks_b;
 		std::vector<Line*> yticks_t;
 		std::vector<Line*> yticks_b;
+		vector<double> v1;
 
 		GLWidget *container;
 

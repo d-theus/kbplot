@@ -40,6 +40,15 @@ void GraphicalObject::before_draw()const{
 		glLoadIdentity();
 		glScaled(scX, scY,0.0);
 	}
+	
+	const unsigned int c = this -> style.lineColor;
+	const unsigned int r = 0xFF000000;
+	const unsigned int g = 0x00FF0000;
+	const unsigned int b = 0x0000FF00;
+	const unsigned int a = 0x000000FF;
+
+	glColor4ub((c&r)>>24, (c&g)>>16, (c&b)>>8, c&a);
+	glLineWidth(this -> style.lineThickness);
 }
 
 void GraphicalObject::after_draw()const{
@@ -80,6 +89,29 @@ void Polyline::draw() const{
 	after_draw();
 }
 
+Polygon::Polygon(vector<double> *d){
+	this -> data = d;
+}
+
+void Polygon::draw()const{
+	qDebug() << "drawing polygon";
+	before_draw();
+
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	glBegin(GL_POLYGON);
+
+	qDebug() << "iterating through data";
+	for(vector<double>::const_iterator i = 
+			data->begin(); i != data->end() && i+1 != data->end(); i+=2){
+		qDebug() << "i";
+		glVertex2d(*(i), *(i+1));
+	}
+	qDebug() << "iterating through data : DONE";
+	
+	glEnd();
+	after_draw();
+}
+
 Line::Line(double _x1, double _y1, double _x2, double _y2): x1(_x1), x2(_x2), y1(_y1), y2(_y2) { } 
 
 void Line::setCoordinates(double _x1, double _y1, double _x2, double _y2){
@@ -100,22 +132,6 @@ void Line::draw() const {
 	after_draw();
 }
 
-double Line::get_x1(){
-	return this->x1;
-}
-
-double Line::get_x2(){
-	return this->x2;
-}
-
-double Line::get_y1(){
-	return this->y1;
-}
-
-double Line::get_y2(){
-	return this->y2;
-}
-
 MarkerSet::MarkerSet(vector<double> *data){
 	this -> data = data;
 }
@@ -128,7 +144,7 @@ void MarkerSet::draw() const{
 	glPointSize(this -> style.markerSize);
 	glBegin(GL_POINTS);
 	for(vector<double>::const_iterator
-			i = data->begin(); i != data->end(); i++){
+			i = data->begin(); i+1 != data->end(); i++){
 		glVertex2d((*i), *(i+1));
 	}
 	glEnd();

@@ -25,8 +25,8 @@ struct Style {
 	} MarkerType;
 
 	LineStroke lineStroke;
-	unsigned int lineColor;
-	unsigned int lineThickness;
+	unsigned int lineColor = 0xFFFFFFFF;
+	float lineThickness = 1.0;
 
 	MarkerType markerType = MARK_SQUARE;
 	unsigned int markerSize = 5;
@@ -66,13 +66,19 @@ class Line : public GraphicalObject {
 		virtual void draw() const;
 		virtual ~Line(){};
 		void setCoordinates(double,double,double,double);
-		double get_x1();
-		double get_x2();
-		double get_y1();
-		double get_y2();
 	private:
 		double x1,x2,y1,y2;
 };
+
+class Polygon : public GraphicalObject {
+	public:
+		Polygon(vector<double> *);
+		virtual void draw() const;
+		virtual ~Polygon(){};
+	private:
+		vector<double> *data;
+};
+
 
 typedef enum {
 	MRK_TYPE_DOT,
