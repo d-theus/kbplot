@@ -2,32 +2,48 @@
 #include "event.h"
 
 struct DataSet {
-		DataSet(std::vector<double> *data);
+	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;
+		DataSet(std::vector<double> *data, LinesPointsEnabler lp = WITH_LINES);
 		virtual ~DataSet();
 
-		bool wlines = false;
-		bool wmarks = true;
+		bool withLines;
+		bool withPoints;
 
-		GraphicalObject *gobj[2];
+		GraphicalObject *polyline;
+		GraphicalObject *markerset;
 };
 
 
 class KbPlot : IMouseEventListener {
 	public:
-		static const double c_frameThickness = 0.02;
-		static const double c_tickLength = 0.02;
-		 
 		KbPlot(GLWidget*, double, double, double, double);
+		KbPlot(GLWidget*);
 		~KbPlot();
+
 		void setRanges(double,double,double,double);
 		void addData(DataSet &ds);
+
+		void setGrid(bool);
+
+		void setBackground(const string filename);
+		void setBackground(const unsigned int color);
+
+		void setXTick(double);
+		void setYTick(double);
+
 		void draw();
+		void exportAsImage(const string filename);
 
 		virtual void mouseMoveEvent(int,int);
 		virtual void mousePressEvent(int,int);
 		virtual void mouseReleaseEvent(int,int);
 		virtual void mouseScrollEvent(int);
+
+		Style gridStyle;
+		bool gridEnabled;
 	private:
+		static const double c_frameThickness = 0.02;
+		static const double c_tickLength = 0.02;
 
 		void drawAxis();
 		void drawNumbers();

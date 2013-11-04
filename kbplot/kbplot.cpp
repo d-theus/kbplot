@@ -5,17 +5,29 @@
 #include <algorithm>
 #include <functional>
 
-DataSet::DataSet(vector<double> *data){
-	this -> gobj[0] = (GraphicalObject*) new Polyline(data);
-	this -> gobj[1] = (GraphicalObject*) new MarkerSet(data);
+DataSet::DataSet(vector<double> *data, LinesPointsEnabler lp){
+	if (lp == WITH_LINES) {
+		this -> withLines = true;
+		this -> withPoints = false;
+	}
+	else if (lp == WITH_POINTS) {
+		this -> withLines = false;
+		this -> withPoints = true;
+	}
+	else if (lp == WITH_LINESPOINTS) {
+		this -> withLines = true;
+		this -> withPoints = true;
+	}
 
+	if(withLines) this -> polyline = (GraphicalObject*) new Polyline(data);
+	if(withPoints) this -> markerset = (GraphicalObject*) new MarkerSet(data);
 
 }
 
 DataSet::~DataSet(){
 	qDebug() << "Deleting dataset";
-	delete(this -> gobj[0]);
-	delete(this -> gobj[1]);
+	if(withLines) delete polyline;
+	if(withPoints) delete markerset;
 }
 
 
@@ -147,8 +159,8 @@ void KbPlot::draw(){
 	qDebug() << "Kbplot::draw(){";
 	for(std::vector<DataSet>::iterator i = 
 			datasets.begin(); i != datasets.end(); i++){
-		container->addObject("ds1_l", i->gobj[0]);
-		container->addObject("ds1_p", i->gobj[1]);
+		if(i->withLines) container->addObject("ds1_l", i->polyline);
+		if(i->withPoints) container->addObject("ds1_p", i->markerset);
 	}
 	qDebug() << "}";
 }

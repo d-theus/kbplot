@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 
     v->push_back(3.0);
     v->push_back(9.0);
-    DataSet ds(v);
+    DataSet ds(v, DataSet::WITH_POINTS);
     p.addData(ds);
     p.draw();
     w.show();
