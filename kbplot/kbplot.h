@@ -36,8 +36,8 @@ class KbPlot : IMouseEventListener {
 		Polyline *frame;
 		std::vector<Line*> xticks_t;
 		std::vector<Line*> xticks_b;
-		std::vector<Line*> yticks_t;
-		std::vector<Line*> yticks_b;
+		std::vector<Line*> yticks_r;
+		std::vector<Line*> yticks_l;
 		vector<double> v1;
 
 		GLWidget *container;
