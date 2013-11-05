@@ -5,6 +5,9 @@
 #include <map>
 #include <string>
 #include <GL/gl.h>
+#include <QDebug>
+
+#include "txy.h"
 
 using std::vector;
 using std::string;
@@ -43,7 +46,6 @@ class GraphicalObject {
 	public:
 		virtual ~GraphicalObject(){};
 		virtual void draw() const = 0;
-//TODO: put em together if possible
 		void setScale(double,double);
 		void setScale(bool);
 		void setFixed(bool b = true);
@@ -53,11 +55,11 @@ class GraphicalObject {
 
 class Polyline : public GraphicalObject {
 	public:
-		Polyline(vector<double> *);
+		Polyline(vector<Txy> *data);
 		virtual void draw() const;
-		virtual ~Polyline(){};
+		virtual ~Polyline(){qDebug() << "Destroying polyline";};
 	private:
-		vector<double> *values;
+		vector<Txy> *data;
 };
 
 class Line : public GraphicalObject {
@@ -72,11 +74,11 @@ class Line : public GraphicalObject {
 
 class Polygon : public GraphicalObject {
 	public:
-		Polygon(vector<double> *);
+		Polygon(vector<Txy> *);
 		virtual void draw() const;
 		virtual ~Polygon(){};
 	private:
-		vector<double> *data;
+		vector<Txy> *data;
 };
 
 
@@ -87,13 +89,13 @@ typedef enum {
 
 class MarkerSet : public GraphicalObject {
 	public:
-		MarkerSet (vector<double> *data);
+		MarkerSet (vector<Txy> *data);
 		virtual ~MarkerSet (){};
 
 		virtual void draw() const;
 
 	private:
-		vector<double> *data;
+		vector<Txy> *data;
 };
 
 

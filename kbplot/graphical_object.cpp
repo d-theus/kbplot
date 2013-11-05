@@ -4,15 +4,6 @@
 #include <QDebug>
 #endif
 
-//void GraphicalObject::setTranslation(double x, double y){
-	//this->isTranslated = true;
-	//this->trX = x;
-	//this->trY = y;
-//}
-
-//void GraphicalObject::setTranslation(bool b){
-	//this->isTranslated = b;
-//}
 
 void GraphicalObject::setScale(double x, double y){
 	this->isScaled = true;
@@ -68,28 +59,28 @@ void GraphicalObject::after_draw()const{
 	}
 }
 
-Polyline::Polyline(std::vector<double> *vs){
-	this->values = vs;
+Polyline::Polyline(std::vector<Txy> *data){
+	this->data = data;
 }
 
 void Polyline::draw() const{
 	qDebug()<<"We are in draw";
-	if(this->values == NULL) return;
-	qDebug()<<"Checking if values valid";
-	this->values->size();
+	if(this->data == NULL) return;
+	qDebug()<<"Checking if data valid";
+	this->data->size();
 
 	before_draw();
 	
 	glBegin(GL_LINE_STRIP);
-	for (std::vector<double>::const_iterator i = this->values->begin(); i != this->values->end() && i+1 != this->values->end(); i+=2) {
-		glVertex2d(*i, *(i+1));
+	for (vector<Txy>::const_iterator i = data->begin(); i != data->end(); i++) {
+		glVertex2d(i->x, i->y);
 	}
 	glEnd();
 
 	after_draw();
 }
 
-Polygon::Polygon(vector<double> *d){
+Polygon::Polygon(vector<Txy> *d){
 	this -> data = d;
 }
 
@@ -101,10 +92,10 @@ void Polygon::draw()const{
 	glBegin(GL_POLYGON);
 
 	qDebug() << "iterating through data";
-	for(vector<double>::const_iterator i = 
-			data->begin(); i != data->end() && i+1 != data->end(); i+=2){
+	for(vector<Txy>::const_iterator i = 
+			data->begin(); i != data->end(); i++){
 		qDebug() << "i";
-		glVertex2d(*(i), *(i+1));
+		glVertex2d(i->x, i->y);
 	}
 	qDebug() << "iterating through data : DONE";
 	
@@ -132,7 +123,7 @@ void Line::draw() const {
 	after_draw();
 }
 
-MarkerSet::MarkerSet(vector<double> *data){
+MarkerSet::MarkerSet(vector<Txy> *data){
 	this -> data = data;
 }
 
@@ -143,9 +134,9 @@ void MarkerSet::draw() const{
 	
 	glPointSize(this -> style.markerSize);
 	glBegin(GL_POINTS);
-	for(vector<double>::const_iterator
-			i = data->begin(); i+1 != data->end(); i++){
-		glVertex2d((*i), *(i+1));
+	for(vector<Txy>::const_iterator
+			i = data->begin(); i != data->end(); i++){
+		glVertex2d(i->x, i->y);
 	}
 	glEnd();
 

@@ -1,9 +1,13 @@
 #include "glwidget.h"
 #include "event.h"
+#include "txy.h"
+
+using std::vector;
 
 struct DataSet {
 	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;
-		DataSet(std::vector<double> *data, LinesPointsEnabler lp = WITH_LINES);
+		DataSet(vector<Txy> *data, LinesPointsEnabler lp = WITH_LINES);
+		DataSet(const DataSet &){};
 		virtual ~DataSet();
 
 		bool withLines;
@@ -21,7 +25,7 @@ class KbPlot : IMouseEventListener {
 		~KbPlot();
 
 		void setRanges(double,double,double,double);
-		void addData(DataSet &ds);
+		void addData(const DataSet *ds);
 
 		void setGrid(bool);
 
@@ -54,10 +58,10 @@ class KbPlot : IMouseEventListener {
 		std::vector<Line*> xticks_b;
 		std::vector<Line*> yticks_r;
 		std::vector<Line*> yticks_l;
-		vector<double> v1;
+		vector<Txy> v1;
 
 		GLWidget *container;
 
 		double xmax, ymax, xmin, ymin;
-		vector<DataSet> datasets;
+		vector<const DataSet*> datasets;
 };

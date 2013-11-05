@@ -5,7 +5,7 @@
 #include <algorithm>
 #include <functional>
 
-DataSet::DataSet(vector<double> *data, LinesPointsEnabler lp){
+DataSet::DataSet(vector<Txy> *data, LinesPointsEnabler lp){
 	if (lp == WITH_LINES) {
 		this -> withLines = true;
 		this -> withPoints = false;
@@ -25,9 +25,12 @@ DataSet::DataSet(vector<double> *data, LinesPointsEnabler lp){
 }
 
 DataSet::~DataSet(){
-	qDebug() << "Deleting dataset";
+	qDebug() << "Deleting dataset" << this << "{";
+	qDebug() << "polyline" << polyline;
 	if(withLines) delete polyline;
+	qDebug() << "marker set" << markerset;
 	if(withPoints) delete markerset;
+	qDebug() << "}";
 }
 
 
@@ -45,21 +48,11 @@ KbPlot::KbPlot(GLWidget *_container, double _xmin, double _xmax, double _ymin, d
 
 	const double framePos = 1.0 - KbPlot::c_frameThickness;
 	
-	v1.push_back(-1.0);
-	v1.push_back(1.0);
-
-	v1.push_back(-1.0);
-	v1.push_back(-1.0);
-
-	v1.push_back(1.0);
-	v1.push_back(-1.0);
-
-	v1.push_back(1.0);
-	v1.push_back(1.0);
-
-	v1.push_back(-1.0);
-	v1.push_back(1.0);
-
+	v1.push_back(Txy(-1.0, 1.0));
+	v1.push_back(Txy(-1.0, -1.0));
+	v1.push_back(Txy(1.0, -1.0));
+	v1.push_back(Txy(1.0, 1.0));
+	v1.push_back(Txy(-1.0, 1.0));
 
 	frame = new Polyline(&v1);
 	frame->style.lineColor = 0x444444FF;
@@ -92,6 +85,7 @@ KbPlot::KbPlot(GLWidget *_container, double _xmin, double _xmax, double _ymin, d
 }
 
 KbPlot::~KbPlot(){
+	qDebug() << "Kbplot destructor{";
 	for(std::vector<Line*>::iterator i = xticks_t.begin(); i != xticks_t.end(); i++){
 		delete *i;
 	}
@@ -104,7 +98,9 @@ KbPlot::~KbPlot(){
 	for(std::vector<Line*>::iterator i = yticks_l.begin(); i != yticks_l.end(); i++){
 		delete *i;
 	}
+	qDebug() << "}";
 }
+
 void KbPlot::setRanges(double _xmin, double _xmax, double _ymin, double _ymax){
 	xmin = _xmin;
 	xmax = _xmax;
@@ -151,16 +147,16 @@ void KbPlot::mouseReleaseEvent(int,int){
 void KbPlot::mouseScrollEvent(int a){
 }
 
-void KbPlot::addData(DataSet &ds){
+void KbPlot::addData(const DataSet *ds){
 	this->datasets.push_back(ds);
 }
 
 void KbPlot::draw(){
 	qDebug() << "Kbplot::draw(){";
-	for(std::vector<DataSet>::iterator i = 
+	for(vector<const DataSet *>::iterator i = 
 			datasets.begin(); i != datasets.end(); i++){
-		if(i->withLines) container->addObject("ds1_l", i->polyline);
-		if(i->withPoints) container->addObject("ds1_p", i->markerset);
+		if((*i)->withLines) container->addObject("ds1_l", (*i)->polyline);
+		if((*i)->withPoints) container->addObject("ds1_p", (*i)->markerset);
 	}
 	qDebug() << "}";
 }
