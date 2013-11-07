@@ -18,7 +18,8 @@ int main(int argc, char *argv[])
 
     DataSet ds(v, DataSet::WITH_LINESPOINTS);
     p.addData(&ds);
-    p.draw();
     w.show();
+    p.setRanges(-5.1, 5.0, -1.0, 10.0);
+    p.draw();
     return a.exec();
 }

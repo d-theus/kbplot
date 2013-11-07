@@ -63,5 +63,6 @@ class KbPlot : IMouseEventListener {
 		GLWidget *container;
 
 		double xmax, ymax, xmin, ymin;
+		double xtick, ytick;
 		vector<const DataSet*> datasets;
 };

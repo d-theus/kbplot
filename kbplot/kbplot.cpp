@@ -79,8 +79,10 @@ KbPlot::KbPlot(GLWidget *_container, double _xmin, double _xmax, double _ymin, d
 			container -> addObject(id4.str(), (GraphicalObject*)(yticks_l[i]));
 		}
 
-		setRanges(_xmin, _xmax, _ymin, _ymax);
+		this->xtick = (xmax - xmin)/20.0;
+		this->ytick = (ymax - ymin)/20.0;
 		container->subscribeToMouse(this);
+		setRanges(_xmin, _xmax, _ymin, _ymax);
 	}
 }
 
@@ -111,8 +113,8 @@ void KbPlot::setRanges(double _xmin, double _xmax, double _ymin, double _ymax){
 	double dy = 0.5;
 	double xtick_len = (ymax - ymin)/200.0; //TODO: mathToGl?
 	double ytick_len = (ymax - ymin)/200.0; //TODO: mathToGl?
-	double x = floor(xmin);
-	double y = floor(ymin);
+	double x = double(floor(xmin));
+	double y = double(floor(ymin));
 
 	for (int i = 0; i < xticks_t.size(); i++) {
 		xticks_t[i]->setCoordinates(x, ymax, x, ymax - xtick_len);
@@ -124,6 +126,15 @@ void KbPlot::setRanges(double _xmin, double _xmax, double _ymin, double _ymax){
 	}
 
 	container->setWorkingArea(_xmin,_xmax,_ymin,_ymax);
+	container->GLpaint();
+}
+
+void KbPlot::setXTick(double xt){
+	this -> xtick = xt;
+}
+
+void KbPlot::setYTick(double yt){
+	this -> ytick = yt;
 }
 
 void KbPlot::mouseMoveEvent(int x, int y){
@@ -132,7 +143,6 @@ void KbPlot::mouseMoveEvent(int x, int y){
 	double dx = (xmax-xmin)*(double)(px - x)/(double)container->width();
 	double dy = (ymax-ymin)*(double)(y - py)/(double)container->height();
 	setRanges(xmin + dx, xmax + dx, ymin + dy, ymax + dy);
-	drawAxis();
 	px = x;
 	py = y;
 }
@@ -142,9 +152,15 @@ void KbPlot::mousePressEvent(int,int){
 
 void KbPlot::mouseReleaseEvent(int,int){
 	qDebug()<<"We are in kbplot and we know about mouse release";
+	container->GLpaint();
 }
 
 void KbPlot::mouseScrollEvent(int a){
+	double xrange = xmax - xmin;
+	double yrange = ymax - ymin;
+	double xscale = xrange*10e-5 * (double)a;
+	double yscale = yrange*10e-5 * (double)a;
+	setRanges(xmin-xscale, xmax+xscale, ymin-yscale, ymax+yscale);
 }
 
 void KbPlot::addData(const DataSet *ds){
@@ -158,5 +174,7 @@ void KbPlot::draw(){
 		if((*i)->withLines) container->addObject("ds1_l", (*i)->polyline);
 		if((*i)->withPoints) container->addObject("ds1_p", (*i)->markerset);
 	}
+	container -> resizeGL(container->width(), container->height());
+	container -> GLpaint();
 	qDebug() << "}";
 }

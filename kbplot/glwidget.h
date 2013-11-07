@@ -41,6 +41,7 @@ public:
 	//Qt part
 	void mouseMoveEvent(QMouseEvent *e);
 	void mouseReleaseEvent(QMouseEvent *e);
+	void wheelEvent(QWheelEvent *e);
 	//Adapter part
 	virtual void subscribeToMouse(IMouseEventListener*);
 

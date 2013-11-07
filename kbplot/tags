@@ -33,14 +33,21 @@ DEL_DIR	Makefile	/^DEL_DIR       = rmdir$/;"	m
 DEL_FILE	Makefile	/^DEL_FILE      = rm -f$/;"	m
 DESTDIR	Makefile	/^DESTDIR       = #avoid trailing-slash linebreak$/;"	m
 DIST	Makefile	/^DIST          = \/usr\/lib\/qt\/mkspecs\/features\/spec_pre.prf \\$/;"	m
-DataSet	kbplot.cpp	/^DataSet::DataSet(vector<double> *data){$/;"	f	class:DataSet	signature:(vector<double> *data)
-DataSet	kbplot.h	/^		DataSet(std::vector<double> *data);$/;"	p	struct:DataSet	access:public	signature:(std::vector<double> *data)
+DataSet	kbplot.cpp	/^DataSet::DataSet(vector<Txy> *data, LinesPointsEnabler lp){$/;"	f	class:DataSet	signature:(vector<Txy> *data, LinesPointsEnabler lp)
+DataSet	kbplot.h	/^		DataSet(const DataSet &){};$/;"	f	struct:DataSet	access:public	signature:(const DataSet &)
+DataSet	kbplot.h	/^		DataSet(vector<Txy> *data, LinesPointsEnabler lp = WITH_LINES);$/;"	p	struct:DataSet	access:public	signature:(vector<Txy> *data, LinesPointsEnabler lp = WITH_LINES)
 DataSet	kbplot.h	/^struct DataSet {$/;"	s
-DataSet::DataSet	kbplot.cpp	/^DataSet::DataSet(vector<double> *data){$/;"	f	class:DataSet	signature:(vector<double> *data)
-DataSet::DataSet	kbplot.h	/^		DataSet(std::vector<double> *data);$/;"	p	struct:DataSet	access:public	signature:(std::vector<double> *data)
-DataSet::gobj	kbplot.h	/^		GraphicalObject *gobj[2];$/;"	m	struct:DataSet	access:public
-DataSet::wlines	kbplot.h	/^		bool wlines = false;$/;"	m	struct:DataSet	access:public
-DataSet::wmarks	kbplot.h	/^		bool wmarks = true;$/;"	m	struct:DataSet	access:public
+DataSet::DataSet	kbplot.cpp	/^DataSet::DataSet(vector<Txy> *data, LinesPointsEnabler lp){$/;"	f	class:DataSet	signature:(vector<Txy> *data, LinesPointsEnabler lp)
+DataSet::DataSet	kbplot.h	/^		DataSet(const DataSet &){};$/;"	f	struct:DataSet	access:public	signature:(const DataSet &)
+DataSet::DataSet	kbplot.h	/^		DataSet(vector<Txy> *data, LinesPointsEnabler lp = WITH_LINES);$/;"	p	struct:DataSet	access:public	signature:(vector<Txy> *data, LinesPointsEnabler lp = WITH_LINES)
+DataSet::LinesPointsEnabler	kbplot.h	/^	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;$/;"	t	struct:DataSet	typeref:enum:DataSet::__anon4	access:public
+DataSet::WITH_LINES	kbplot.h	/^	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;$/;"	e	enum:DataSet::__anon4
+DataSet::WITH_LINESPOINTS	kbplot.h	/^	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;$/;"	e	enum:DataSet::__anon4
+DataSet::WITH_POINTS	kbplot.h	/^	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;$/;"	e	enum:DataSet::__anon4
+DataSet::markerset	kbplot.h	/^		GraphicalObject *markerset;$/;"	m	struct:DataSet	access:public
+DataSet::polyline	kbplot.h	/^		GraphicalObject *polyline;$/;"	m	struct:DataSet	access:public
+DataSet::withLines	kbplot.h	/^		bool withLines;$/;"	m	struct:DataSet	access:public
+DataSet::withPoints	kbplot.h	/^		bool withPoints;$/;"	m	struct:DataSet	access:public
 DataSet::~DataSet	kbplot.cpp	/^DataSet::~DataSet(){$/;"	f	class:DataSet	signature:()
 DataSet::~DataSet	kbplot.h	/^		virtual ~DataSet();$/;"	p	struct:DataSet	access:public	implementation:virtual	signature:()
 EVENT_H	event.h	2;"	d
@@ -61,10 +68,6 @@ GLWidget::GLupdate	glwidget.h	/^	virtual void GLupdate();$/;"	p	class:GLWidget	a
 GLWidget::addObject	glwidget.cpp	/^void GLWidget::addObject(string key, GraphicalObject *p){$/;"	f	class:GLWidget	signature:(string key, GraphicalObject *p)
 GLWidget::addObject	glwidget.h	/^	virtual void addObject(string, GraphicalObject*);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(string, GraphicalObject*)
 GLWidget::clearScene	glwidget.h	/^	virtual void clearScene(){};$/;"	f	class:GLWidget	access:public	implementation:virtual	signature:()
-GLWidget::gl_to_scr_x	glwidget.cpp	/^int GLWidget::gl_to_scr_x(double x){$/;"	f	class:GLWidget	signature:(double x)
-GLWidget::gl_to_scr_x	glwidget.h	/^	virtual int gl_to_scr_x(double);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(double)
-GLWidget::gl_to_scr_y	glwidget.cpp	/^int GLWidget::gl_to_scr_y(double y){$/;"	f	class:GLWidget	signature:(double y)
-GLWidget::gl_to_scr_y	glwidget.h	/^	virtual int gl_to_scr_y(double);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(double)
 GLWidget::initializeGL	glwidget.cpp	/^void GLWidget::initializeGL() {$/;"	f	class:GLWidget	signature:()
 GLWidget::initializeGL	glwidget.h	/^	void initializeGL();$/;"	p	class:GLWidget	access:public	signature:()
 GLWidget::metaObject	moc_glwidget.cpp	/^const QMetaObject *GLWidget::metaObject() const$/;"	f	class:GLWidget	signature:() const
@@ -83,15 +86,21 @@ GLWidget::qt_metacast	moc_glwidget.cpp	/^void *GLWidget::qt_metacast(const char 
 GLWidget::qt_static_metacall	moc_glwidget.cpp	/^void GLWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)$/;"	f	class:GLWidget	signature:(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 GLWidget::resizeGL	glwidget.cpp	/^void GLWidget::resizeGL(int nw, int nh){$/;"	f	class:GLWidget	signature:(int nw, int nh)
 GLWidget::resizeGL	glwidget.h	/^	void resizeGL(int nw, int nh);$/;"	p	class:GLWidget	access:public	signature:(int nw, int nh)
-GLWidget::scr_to_gl_x	glwidget.cpp	/^double GLWidget::scr_to_gl_x(int x){$/;"	f	class:GLWidget	signature:(int x)
-GLWidget::scr_to_gl_x	glwidget.h	/^	virtual double scr_to_gl_x(int);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(int)
-GLWidget::scr_to_gl_y	glwidget.cpp	/^double GLWidget::scr_to_gl_y(int y){$/;"	f	class:GLWidget	signature:(int y)
-GLWidget::scr_to_gl_y	glwidget.h	/^	virtual double scr_to_gl_y(int);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(int)
 GLWidget::setWorkingArea	glwidget.cpp	/^void GLWidget::setWorkingArea(double xmin, double xmax, double ymin, double ymax){$/;"	f	class:GLWidget	signature:(double xmin, double xmax, double ymin, double ymax)
 GLWidget::setWorkingArea	glwidget.h	/^	virtual void setWorkingArea(double xmin, double xmax, double ymin, double ymax);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(double xmin, double xmax, double ymin, double ymax)
 GLWidget::staticMetaObject	moc_glwidget.cpp	/^const QMetaObject GLWidget::staticMetaObject = {$/;"	m	class:GLWidget	file:
 GLWidget::subscribeToMouse	glwidget.cpp	/^void GLWidget::subscribeToMouse(IMouseEventListener*l){$/;"	f	class:GLWidget	signature:(IMouseEventListener*l)
 GLWidget::subscribeToMouse	glwidget.h	/^	virtual void subscribeToMouse(IMouseEventListener*);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(IMouseEventListener*)
+GLWidget::trGLToScreenx	glwidget.cpp	/^int GLWidget::trGLToScreenx(double x){$/;"	f	class:GLWidget	signature:(double x)
+GLWidget::trGLToScreenx	glwidget.h	/^	virtual int trGLToScreenx(double);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(double)
+GLWidget::trGLToScreeny	glwidget.cpp	/^int GLWidget::trGLToScreeny(double y){$/;"	f	class:GLWidget	signature:(double y)
+GLWidget::trGLToScreeny	glwidget.h	/^	virtual int trGLToScreeny(double);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(double)
+GLWidget::trScreenToGLx	glwidget.cpp	/^double GLWidget::trScreenToGLx(int x){$/;"	f	class:GLWidget	signature:(int x)
+GLWidget::trScreenToGLx	glwidget.h	/^	virtual double trScreenToGLx(int);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(int)
+GLWidget::trScreenToGLy	glwidget.cpp	/^double GLWidget::trScreenToGLy(int y){$/;"	f	class:GLWidget	signature:(int y)
+GLWidget::trScreenToGLy	glwidget.h	/^	virtual double trScreenToGLy(int);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(int)
+GLWidget::wheelEvent	glwidget.cpp	/^void GLWidget::wheelEvent(QWheelEvent *e){$/;"	f	class:GLWidget	signature:(QWheelEvent *e)
+GLWidget::wheelEvent	glwidget.h	/^	void wheelEvent(QWheelEvent *e);$/;"	p	class:GLWidget	access:public	signature:(QWheelEvent *e)
 GLWidget::~GLWidget	glwidget.h	/^	virtual ~GLWidget(){};$/;"	f	class:GLWidget	access:public	implementation:virtual	signature:()
 GLinitialize	aglwidget.h	/^	virtual void GLinitialize()=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:()
 GLinitialize	glwidget.cpp	/^void GLWidget::GLinitialize(){$/;"	f	class:GLWidget	signature:()
@@ -136,26 +145,28 @@ INSTALL_DIR	Makefile	/^INSTALL_DIR   = $(COPY_DIR)$/;"	m
 INSTALL_FILE	Makefile	/^INSTALL_FILE  = install -m 644 -p$/;"	m
 INSTALL_PROGRAM	Makefile	/^INSTALL_PROGRAM = install -m 755 -p$/;"	m
 KbPlot	kbplot.cpp	/^KbPlot::KbPlot(GLWidget *_container, double _xmin, double _xmax, double _ymin, double _ymax){$/;"	f	class:KbPlot	signature:(GLWidget *_container, double _xmin, double _xmax, double _ymin, double _ymax)
+KbPlot	kbplot.h	/^		KbPlot(GLWidget*);$/;"	p	class:KbPlot	access:public	signature:(GLWidget*)
 KbPlot	kbplot.h	/^		KbPlot(GLWidget*, double, double, double, double);$/;"	p	class:KbPlot	access:public	signature:(GLWidget*, double, double, double, double)
 KbPlot	kbplot.h	/^class KbPlot : IMouseEventListener {$/;"	c	inherits:IMouseEventListener
 KbPlot::KbPlot	kbplot.cpp	/^KbPlot::KbPlot(GLWidget *_container, double _xmin, double _xmax, double _ymin, double _ymax){$/;"	f	class:KbPlot	signature:(GLWidget *_container, double _xmin, double _xmax, double _ymin, double _ymax)
+KbPlot::KbPlot	kbplot.h	/^		KbPlot(GLWidget*);$/;"	p	class:KbPlot	access:public	signature:(GLWidget*)
 KbPlot::KbPlot	kbplot.h	/^		KbPlot(GLWidget*, double, double, double, double);$/;"	p	class:KbPlot	access:public	signature:(GLWidget*, double, double, double, double)
-KbPlot::addData	kbplot.cpp	/^void KbPlot::addData(DataSet &ds){$/;"	f	class:KbPlot	signature:(DataSet &ds)
-KbPlot::addData	kbplot.h	/^		void addData(DataSet &ds);$/;"	p	class:KbPlot	access:public	signature:(DataSet &ds)
-KbPlot::axis_xb	kbplot.h	/^		Line *axis_xt, *axis_xb, *axis_yl, *axis_yr;$/;"	m	class:KbPlot	access:private
-KbPlot::axis_xt	kbplot.h	/^		Line *axis_xt, *axis_xb, *axis_yl, *axis_yr;$/;"	m	class:KbPlot	access:private
-KbPlot::axis_yl	kbplot.h	/^		Line *axis_xt, *axis_xb, *axis_yl, *axis_yr;$/;"	m	class:KbPlot	access:private
-KbPlot::axis_yr	kbplot.h	/^		Line *axis_xt, *axis_xb, *axis_yl, *axis_yr;$/;"	m	class:KbPlot	access:private
-KbPlot::c_frameThickness	kbplot.h	/^		static const double c_frameThickness = 0.02;$/;"	m	class:KbPlot	access:public
-KbPlot::c_tickLength	kbplot.h	/^		static const double c_tickLength = 0.02;$/;"	m	class:KbPlot	access:public
+KbPlot::addData	kbplot.cpp	/^void KbPlot::addData(const DataSet *ds){$/;"	f	class:KbPlot	signature:(const DataSet *ds)
+KbPlot::addData	kbplot.h	/^		void addData(const DataSet *ds);$/;"	p	class:KbPlot	access:public	signature:(const DataSet *ds)
+KbPlot::c_frameThickness	kbplot.h	/^		static const double c_frameThickness = 0.02;$/;"	m	class:KbPlot	access:private
+KbPlot::c_tickLength	kbplot.h	/^		static const double c_tickLength = 0.02;$/;"	m	class:KbPlot	access:private
 KbPlot::container	kbplot.h	/^		GLWidget *container;$/;"	m	class:KbPlot	access:private
-KbPlot::datasets	kbplot.h	/^		vector<DataSet> datasets;$/;"	m	class:KbPlot	access:private
+KbPlot::datasets	kbplot.h	/^		vector<const DataSet*> datasets;$/;"	m	class:KbPlot	access:private
 KbPlot::draw	kbplot.cpp	/^void KbPlot::draw(){$/;"	f	class:KbPlot	signature:()
 KbPlot::draw	kbplot.h	/^		void draw();$/;"	p	class:KbPlot	access:public	signature:()
 KbPlot::drawAxis	kbplot.cpp	/^void KbPlot::drawAxis(){$/;"	f	class:KbPlot	signature:()
 KbPlot::drawAxis	kbplot.h	/^		void drawAxis();$/;"	p	class:KbPlot	access:private	signature:()
 KbPlot::drawBg	kbplot.h	/^		void drawBg();$/;"	p	class:KbPlot	access:private	signature:()
 KbPlot::drawNumbers	kbplot.h	/^		void drawNumbers();$/;"	p	class:KbPlot	access:private	signature:()
+KbPlot::exportAsImage	kbplot.h	/^		void exportAsImage(const string filename);$/;"	p	class:KbPlot	access:public	signature:(const string filename)
+KbPlot::frame	kbplot.h	/^		Polyline *frame;$/;"	m	class:KbPlot	access:private
+KbPlot::gridEnabled	kbplot.h	/^		bool gridEnabled;$/;"	m	class:KbPlot	access:public
+KbPlot::gridStyle	kbplot.h	/^		Style gridStyle;$/;"	m	class:KbPlot	access:public
 KbPlot::mouseMoveEvent	kbplot.cpp	/^void KbPlot::mouseMoveEvent(int x, int y){$/;"	f	class:KbPlot	signature:(int x, int y)
 KbPlot::mouseMoveEvent	kbplot.h	/^		virtual void mouseMoveEvent(int,int);$/;"	p	class:KbPlot	access:public	implementation:virtual	signature:(int,int)
 KbPlot::mousePressEvent	kbplot.cpp	/^void KbPlot::mousePressEvent(int,int){$/;"	f	class:KbPlot	signature:(int,int)
@@ -164,16 +175,24 @@ KbPlot::mouseReleaseEvent	kbplot.cpp	/^void KbPlot::mouseReleaseEvent(int,int){$
 KbPlot::mouseReleaseEvent	kbplot.h	/^		virtual void mouseReleaseEvent(int,int);$/;"	p	class:KbPlot	access:public	implementation:virtual	signature:(int,int)
 KbPlot::mouseScrollEvent	kbplot.cpp	/^void KbPlot::mouseScrollEvent(int a){$/;"	f	class:KbPlot	signature:(int a)
 KbPlot::mouseScrollEvent	kbplot.h	/^		virtual void mouseScrollEvent(int);$/;"	p	class:KbPlot	access:public	implementation:virtual	signature:(int)
+KbPlot::setBackground	kbplot.h	/^		void setBackground(const string filename);$/;"	p	class:KbPlot	access:public	signature:(const string filename)
+KbPlot::setBackground	kbplot.h	/^		void setBackground(const unsigned int color);$/;"	p	class:KbPlot	access:public	signature:(const unsigned int color)
+KbPlot::setGrid	kbplot.h	/^		void setGrid(bool);$/;"	p	class:KbPlot	access:public	signature:(bool)
 KbPlot::setRanges	kbplot.cpp	/^void KbPlot::setRanges(double _xmin, double _xmax, double _ymin, double _ymax){$/;"	f	class:KbPlot	signature:(double _xmin, double _xmax, double _ymin, double _ymax)
 KbPlot::setRanges	kbplot.h	/^		void setRanges(double,double,double,double);$/;"	p	class:KbPlot	access:public	signature:(double,double,double,double)
+KbPlot::setXTick	kbplot.h	/^		void setXTick(double);$/;"	p	class:KbPlot	access:public	signature:(double)
+KbPlot::setYTick	kbplot.h	/^		void setYTick(double);$/;"	p	class:KbPlot	access:public	signature:(double)
+KbPlot::v1	kbplot.h	/^		vector<Txy> v1;$/;"	m	class:KbPlot	access:private
 KbPlot::xmax	kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
 KbPlot::xmin	kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
+KbPlot::xtick	kbplot.h	/^		double xtick, ytick;$/;"	m	class:KbPlot	access:private
 KbPlot::xticks_b	kbplot.h	/^		std::vector<Line*> xticks_b;$/;"	m	class:KbPlot	access:private
 KbPlot::xticks_t	kbplot.h	/^		std::vector<Line*> xticks_t;$/;"	m	class:KbPlot	access:private
 KbPlot::ymax	kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
 KbPlot::ymin	kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
-KbPlot::yticks_b	kbplot.h	/^		std::vector<Line*> yticks_b;$/;"	m	class:KbPlot	access:private
-KbPlot::yticks_t	kbplot.h	/^		std::vector<Line*> yticks_t;$/;"	m	class:KbPlot	access:private
+KbPlot::ytick	kbplot.h	/^		double xtick, ytick;$/;"	m	class:KbPlot	access:private
+KbPlot::yticks_l	kbplot.h	/^		std::vector<Line*> yticks_l;$/;"	m	class:KbPlot	access:private
+KbPlot::yticks_r	kbplot.h	/^		std::vector<Line*> yticks_r;$/;"	m	class:KbPlot	access:private
 KbPlot::~KbPlot	kbplot.cpp	/^KbPlot::~KbPlot(){$/;"	f	class:KbPlot	signature:()
 KbPlot::~KbPlot	kbplot.h	/^		~KbPlot();$/;"	p	class:KbPlot	access:public	signature:()
 LFLAGS	Makefile	/^LFLAGS        = -Wl,-O1,--sort-common,--as-needed,-z,relro -Wl,-O1$/;"	m
@@ -190,14 +209,6 @@ Line::Line	graphical_object.cpp	/^Line::Line(double _x1, double _y1, double _x2,
 Line::Line	graphical_object.h	/^		Line(double,double,double,double);$/;"	p	class:Line	access:public	signature:(double,double,double,double)
 Line::draw	graphical_object.cpp	/^void Line::draw() const {$/;"	f	class:Line	signature:() const
 Line::draw	graphical_object.h	/^		virtual void draw() const;$/;"	p	class:Line	access:public	implementation:virtual	signature:() const
-Line::get_x1	graphical_object.cpp	/^double Line::get_x1(){$/;"	f	class:Line	signature:()
-Line::get_x1	graphical_object.h	/^		double get_x1();$/;"	p	class:Line	access:public	signature:()
-Line::get_x2	graphical_object.cpp	/^double Line::get_x2(){$/;"	f	class:Line	signature:()
-Line::get_x2	graphical_object.h	/^		double get_x2();$/;"	p	class:Line	access:public	signature:()
-Line::get_y1	graphical_object.cpp	/^double Line::get_y1(){$/;"	f	class:Line	signature:()
-Line::get_y1	graphical_object.h	/^		double get_y1();$/;"	p	class:Line	access:public	signature:()
-Line::get_y2	graphical_object.cpp	/^double Line::get_y2(){$/;"	f	class:Line	signature:()
-Line::get_y2	graphical_object.h	/^		double get_y2();$/;"	p	class:Line	access:public	signature:()
 Line::setCoordinates	graphical_object.cpp	/^void Line::setCoordinates(double _x1, double _y1, double _x2, double _y2){$/;"	f	class:Line	signature:(double _x1, double _y1, double _x2, double _y2)
 Line::setCoordinates	graphical_object.h	/^		void setCoordinates(double,double,double,double);$/;"	p	class:Line	access:public	signature:(double,double,double,double)
 Line::x1	graphical_object.h	/^		double x1,x2,y1,y2;$/;"	m	class:Line	access:private
@@ -206,6 +217,7 @@ Line::y1	graphical_object.h	/^		double x1,x2,y1,y2;$/;"	m	class:Line	access:priv
 Line::y2	graphical_object.h	/^		double x1,x2,y1,y2;$/;"	m	class:Line	access:private
 Line::~Line	graphical_object.h	/^		virtual ~Line(){};$/;"	f	class:Line	access:public	implementation:virtual	signature:()
 LineStroke	graphical_object.h	/^	} LineStroke;$/;"	t	struct:Style	typeref:enum:Style::__anon1	access:public
+LinesPointsEnabler	kbplot.h	/^	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;$/;"	t	struct:DataSet	typeref:enum:DataSet::__anon4	access:public
 MAKEFILE	Makefile	/^MAKEFILE      = Makefile$/;"	m
 MARK_CROSS	graphical_object.h	/^		MARK_CROSS$/;"	e	enum:Style::__anon2
 MARK_DOT	graphical_object.h	/^		MARK_DOT,$/;"	e	enum:Style::__anon2
@@ -215,12 +227,12 @@ MKDIR	Makefile	/^MKDIR         = mkdir -p$/;"	m
 MOVE	Makefile	/^MOVE          = mv -f$/;"	m
 MRK_TYPE_CROSS	graphical_object.h	/^	MRK_TYPE_CROSS$/;"	e	enum:__anon3
 MRK_TYPE_DOT	graphical_object.h	/^	MRK_TYPE_DOT,$/;"	e	enum:__anon3
-MarkerSet	graphical_object.cpp	/^MarkerSet::MarkerSet(vector<double> *data){$/;"	f	class:MarkerSet	signature:(vector<double> *data)
-MarkerSet	graphical_object.h	/^		MarkerSet (vector<double> *data);$/;"	p	class:MarkerSet	access:public	signature:(vector<double> *data)
+MarkerSet	graphical_object.cpp	/^MarkerSet::MarkerSet(vector<Txy> *data){$/;"	f	class:MarkerSet	signature:(vector<Txy> *data)
+MarkerSet	graphical_object.h	/^		MarkerSet (vector<Txy> *data);$/;"	p	class:MarkerSet	access:public	signature:(vector<Txy> *data)
 MarkerSet	graphical_object.h	/^class MarkerSet : public GraphicalObject {$/;"	c	inherits:GraphicalObject
-MarkerSet::MarkerSet	graphical_object.cpp	/^MarkerSet::MarkerSet(vector<double> *data){$/;"	f	class:MarkerSet	signature:(vector<double> *data)
-MarkerSet::MarkerSet	graphical_object.h	/^		MarkerSet (vector<double> *data);$/;"	p	class:MarkerSet	access:public	signature:(vector<double> *data)
-MarkerSet::data	graphical_object.h	/^		vector<double> *data;$/;"	m	class:MarkerSet	access:private
+MarkerSet::MarkerSet	graphical_object.cpp	/^MarkerSet::MarkerSet(vector<Txy> *data){$/;"	f	class:MarkerSet	signature:(vector<Txy> *data)
+MarkerSet::MarkerSet	graphical_object.h	/^		MarkerSet (vector<Txy> *data);$/;"	p	class:MarkerSet	access:public	signature:(vector<Txy> *data)
+MarkerSet::data	graphical_object.h	/^		vector<Txy> *data;$/;"	m	class:MarkerSet	access:private
 MarkerSet::draw	graphical_object.cpp	/^void MarkerSet::draw() const{$/;"	f	class:MarkerSet	signature:() const
 MarkerSet::draw	graphical_object.h	/^		virtual void draw() const;$/;"	p	class:MarkerSet	access:public	implementation:virtual	signature:() const
 MarkerSet::~MarkerSet	graphical_object.h	/^		virtual ~MarkerSet (){};$/;"	f	class:MarkerSet	access:public	implementation:virtual	signature:()
@@ -228,15 +240,24 @@ MarkerType	graphical_object.h	/^	} MarkerType;$/;"	t	struct:Style	typeref:enum:S
 MarkerType	graphical_object.h	/^} MarkerType;$/;"	t	typeref:enum:__anon3
 OBJECTS	Makefile	/^OBJECTS       = glwidget.o \\$/;"	m
 OBJECTS_DIR	Makefile	/^OBJECTS_DIR   = .\/$/;"	m
-Polyline	graphical_object.cpp	/^Polyline::Polyline(std::vector<double> *vs){$/;"	f	class:Polyline	signature:(std::vector<double> *vs)
-Polyline	graphical_object.h	/^		Polyline(vector<double> *);$/;"	p	class:Polyline	access:public	signature:(vector<double> *)
+Polygon	graphical_object.cpp	/^Polygon::Polygon(vector<Txy> *d){$/;"	f	class:Polygon	signature:(vector<Txy> *d)
+Polygon	graphical_object.h	/^		Polygon(vector<Txy> *);$/;"	p	class:Polygon	access:public	signature:(vector<Txy> *)
+Polygon	graphical_object.h	/^class Polygon : public GraphicalObject {$/;"	c	inherits:GraphicalObject
+Polygon::Polygon	graphical_object.cpp	/^Polygon::Polygon(vector<Txy> *d){$/;"	f	class:Polygon	signature:(vector<Txy> *d)
+Polygon::Polygon	graphical_object.h	/^		Polygon(vector<Txy> *);$/;"	p	class:Polygon	access:public	signature:(vector<Txy> *)
+Polygon::data	graphical_object.h	/^		vector<Txy> *data;$/;"	m	class:Polygon	access:private
+Polygon::draw	graphical_object.cpp	/^void Polygon::draw()const{$/;"	f	class:Polygon	signature:() const
+Polygon::draw	graphical_object.h	/^		virtual void draw() const;$/;"	p	class:Polygon	access:public	implementation:virtual	signature:() const
+Polygon::~Polygon	graphical_object.h	/^		virtual ~Polygon(){};$/;"	f	class:Polygon	access:public	implementation:virtual	signature:()
+Polyline	graphical_object.cpp	/^Polyline::Polyline(std::vector<Txy> *data){$/;"	f	class:Polyline	signature:(std::vector<Txy> *data)
+Polyline	graphical_object.h	/^		Polyline(vector<Txy> *data);$/;"	p	class:Polyline	access:public	signature:(vector<Txy> *data)
 Polyline	graphical_object.h	/^class Polyline : public GraphicalObject {$/;"	c	inherits:GraphicalObject
-Polyline::Polyline	graphical_object.cpp	/^Polyline::Polyline(std::vector<double> *vs){$/;"	f	class:Polyline	signature:(std::vector<double> *vs)
-Polyline::Polyline	graphical_object.h	/^		Polyline(vector<double> *);$/;"	p	class:Polyline	access:public	signature:(vector<double> *)
+Polyline::Polyline	graphical_object.cpp	/^Polyline::Polyline(std::vector<Txy> *data){$/;"	f	class:Polyline	signature:(std::vector<Txy> *data)
+Polyline::Polyline	graphical_object.h	/^		Polyline(vector<Txy> *data);$/;"	p	class:Polyline	access:public	signature:(vector<Txy> *data)
+Polyline::data	graphical_object.h	/^		vector<Txy> *data;$/;"	m	class:Polyline	access:private
 Polyline::draw	graphical_object.cpp	/^void Polyline::draw() const{$/;"	f	class:Polyline	signature:() const
 Polyline::draw	graphical_object.h	/^		virtual void draw() const;$/;"	p	class:Polyline	access:public	implementation:virtual	signature:() const
-Polyline::values	graphical_object.h	/^		vector<double> *values;$/;"	m	class:Polyline	access:private
-Polyline::~Polyline	graphical_object.h	/^		virtual ~Polyline(){};$/;"	f	class:Polyline	access:public	implementation:virtual	signature:()
+Polyline::~Polyline	graphical_object.h	/^		virtual ~Polyline(){qDebug() << "Destroying polyline";};$/;"	f	class:Polyline	access:public	implementation:virtual	signature:()
 QMAKE	Makefile	/^QMAKE         = \/usr\/lib\/qt\/bin\/qmake$/;"	m
 QMAKE_TARGET	Makefile	/^QMAKE_TARGET  = kbplot$/;"	m
 QT_MOC_LITERAL	moc_glwidget.cpp	25;"	d	file:
@@ -257,40 +278,49 @@ Style::MARK_DOT	graphical_object.h	/^		MARK_DOT,$/;"	e	enum:Style::__anon2
 Style::MARK_SQUARE	graphical_object.h	/^		MARK_SQUARE,$/;"	e	enum:Style::__anon2
 Style::MARK_TRIANGLE	graphical_object.h	/^		MARK_TRIANGLE,$/;"	e	enum:Style::__anon2
 Style::MarkerType	graphical_object.h	/^	} MarkerType;$/;"	t	struct:Style	typeref:enum:Style::__anon2	access:public
-Style::lineColor	graphical_object.h	/^	unsigned int lineColor;$/;"	m	struct:Style	access:public
+Style::lineColor	graphical_object.h	/^	unsigned int lineColor = 0xFFFFFFFF;$/;"	m	struct:Style	access:public
 Style::lineStroke	graphical_object.h	/^	LineStroke lineStroke;$/;"	m	struct:Style	access:public
-Style::lineThickness	graphical_object.h	/^	unsigned int lineThickness;$/;"	m	struct:Style	access:public
+Style::lineThickness	graphical_object.h	/^	float lineThickness = 1.0;$/;"	m	struct:Style	access:public
 Style::markerSize	graphical_object.h	/^	unsigned int markerSize = 5;$/;"	m	struct:Style	access:public
 Style::markerType	graphical_object.h	/^	MarkerType markerType = MARK_SQUARE;$/;"	m	struct:Style	access:public
 TAR	Makefile	/^TAR           = tar -cf$/;"	m
 TARGET	Makefile	/^TARGET        = kbplot$/;"	m
-addData	kbplot.cpp	/^void KbPlot::addData(DataSet &ds){$/;"	f	class:KbPlot	signature:(DataSet &ds)
-addData	kbplot.h	/^		void addData(DataSet &ds);$/;"	p	class:KbPlot	access:public	signature:(DataSet &ds)
+TXY_H	txy.h	2;"	d
+Txy	txy.h	/^	Txy(double _x, double _y){x = _x; y = _y;}$/;"	f	struct:Txy	access:public	signature:(double _x, double _y)
+Txy	txy.h	/^struct Txy $/;"	s
+Txy::Txy	txy.h	/^	Txy(double _x, double _y){x = _x; y = _y;}$/;"	f	struct:Txy	access:public	signature:(double _x, double _y)
+Txy::x	txy.h	/^	double x,y;$/;"	m	struct:Txy	access:public
+Txy::y	txy.h	/^	double x,y;$/;"	m	struct:Txy	access:public
+WITH_LINES	kbplot.h	/^	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;$/;"	e	enum:DataSet::__anon4
+WITH_LINESPOINTS	kbplot.h	/^	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;$/;"	e	enum:DataSet::__anon4
+WITH_POINTS	kbplot.h	/^	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;$/;"	e	enum:DataSet::__anon4
+addData	kbplot.cpp	/^void KbPlot::addData(const DataSet *ds){$/;"	f	class:KbPlot	signature:(const DataSet *ds)
+addData	kbplot.h	/^		void addData(const DataSet *ds);$/;"	p	class:KbPlot	access:public	signature:(const DataSet *ds)
 addObject	aglwidget.h	/^	virtual void addObject(string, GraphicalObject*)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(string, GraphicalObject*)
 addObject	glwidget.cpp	/^void GLWidget::addObject(string key, GraphicalObject *p){$/;"	f	class:GLWidget	signature:(string key, GraphicalObject *p)
 addObject	glwidget.h	/^	virtual void addObject(string, GraphicalObject*);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(string, GraphicalObject*)
 after_draw	graphical_object.cpp	/^void GraphicalObject::after_draw()const{$/;"	f	class:GraphicalObject	signature:() const
 after_draw	graphical_object.h	/^		void after_draw()const;$/;"	p	class:GraphicalObject	access:protected	signature:() const
-axis_xb	kbplot.h	/^		Line *axis_xt, *axis_xb, *axis_yl, *axis_yr;$/;"	m	class:KbPlot	access:private
-axis_xt	kbplot.h	/^		Line *axis_xt, *axis_xb, *axis_yl, *axis_yr;$/;"	m	class:KbPlot	access:private
-axis_yl	kbplot.h	/^		Line *axis_xt, *axis_xb, *axis_yl, *axis_yr;$/;"	m	class:KbPlot	access:private
-axis_yr	kbplot.h	/^		Line *axis_xt, *axis_xb, *axis_yl, *axis_yr;$/;"	m	class:KbPlot	access:private
 before_draw	graphical_object.cpp	/^void GraphicalObject::before_draw()const{$/;"	f	class:GraphicalObject	signature:() const
 before_draw	graphical_object.h	/^		void before_draw()const;$/;"	p	class:GraphicalObject	access:protected	signature:() const
-c_frameThickness	kbplot.h	/^		static const double c_frameThickness = 0.02;$/;"	m	class:KbPlot	access:public
-c_tickLength	kbplot.h	/^		static const double c_tickLength = 0.02;$/;"	m	class:KbPlot	access:public
+c_frameThickness	kbplot.h	/^		static const double c_frameThickness = 0.02;$/;"	m	class:KbPlot	access:private
+c_tickLength	kbplot.h	/^		static const double c_tickLength = 0.02;$/;"	m	class:KbPlot	access:private
 clearScene	aglwidget.h	/^	virtual void clearScene()=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:()
 clearScene	glwidget.h	/^	virtual void clearScene(){};$/;"	f	class:GLWidget	access:public	implementation:virtual	signature:()
 container	kbplot.h	/^		GLWidget *container;$/;"	m	class:KbPlot	access:private
-data	graphical_object.h	/^		vector<double> *data;$/;"	m	class:MarkerSet	access:private
+data	graphical_object.h	/^		vector<Txy> *data;$/;"	m	class:MarkerSet	access:private
+data	graphical_object.h	/^		vector<Txy> *data;$/;"	m	class:Polygon	access:private
+data	graphical_object.h	/^		vector<Txy> *data;$/;"	m	class:Polyline	access:private
 data	moc_glwidget.cpp	/^    QByteArrayData data[1];$/;"	m	struct:qt_meta_stringdata_GLWidget_t	file:	access:public
-datasets	kbplot.h	/^		vector<DataSet> datasets;$/;"	m	class:KbPlot	access:private
+datasets	kbplot.h	/^		vector<const DataSet*> datasets;$/;"	m	class:KbPlot	access:private
 draw	graphical_object.cpp	/^void Line::draw() const {$/;"	f	class:Line	signature:() const
 draw	graphical_object.cpp	/^void MarkerSet::draw() const{$/;"	f	class:MarkerSet	signature:() const
+draw	graphical_object.cpp	/^void Polygon::draw()const{$/;"	f	class:Polygon	signature:() const
 draw	graphical_object.cpp	/^void Polyline::draw() const{$/;"	f	class:Polyline	signature:() const
 draw	graphical_object.h	/^		virtual void draw() const = 0;$/;"	p	class:GraphicalObject	access:public	implementation:pure virtual	signature:() const
 draw	graphical_object.h	/^		virtual void draw() const;$/;"	p	class:Line	access:public	implementation:virtual	signature:() const
 draw	graphical_object.h	/^		virtual void draw() const;$/;"	p	class:MarkerSet	access:public	implementation:virtual	signature:() const
+draw	graphical_object.h	/^		virtual void draw() const;$/;"	p	class:Polygon	access:public	implementation:virtual	signature:() const
 draw	graphical_object.h	/^		virtual void draw() const;$/;"	p	class:Polyline	access:public	implementation:virtual	signature:() const
 draw	kbplot.cpp	/^void KbPlot::draw(){$/;"	f	class:KbPlot	signature:()
 draw	kbplot.h	/^		void draw();$/;"	p	class:KbPlot	access:public	signature:()
@@ -298,29 +328,21 @@ drawAxis	kbplot.cpp	/^void KbPlot::drawAxis(){$/;"	f	class:KbPlot	signature:()
 drawAxis	kbplot.h	/^		void drawAxis();$/;"	p	class:KbPlot	access:private	signature:()
 drawBg	kbplot.h	/^		void drawBg();$/;"	p	class:KbPlot	access:private	signature:()
 drawNumbers	kbplot.h	/^		void drawNumbers();$/;"	p	class:KbPlot	access:private	signature:()
-get_x1	graphical_object.cpp	/^double Line::get_x1(){$/;"	f	class:Line	signature:()
-get_x1	graphical_object.h	/^		double get_x1();$/;"	p	class:Line	access:public	signature:()
-get_x2	graphical_object.cpp	/^double Line::get_x2(){$/;"	f	class:Line	signature:()
-get_x2	graphical_object.h	/^		double get_x2();$/;"	p	class:Line	access:public	signature:()
-get_y1	graphical_object.cpp	/^double Line::get_y1(){$/;"	f	class:Line	signature:()
-get_y1	graphical_object.h	/^		double get_y1();$/;"	p	class:Line	access:public	signature:()
-get_y2	graphical_object.cpp	/^double Line::get_y2(){$/;"	f	class:Line	signature:()
-get_y2	graphical_object.h	/^		double get_y2();$/;"	p	class:Line	access:public	signature:()
-gl_to_scr_x	glwidget.cpp	/^int GLWidget::gl_to_scr_x(double x){$/;"	f	class:GLWidget	signature:(double x)
-gl_to_scr_x	glwidget.h	/^	virtual int gl_to_scr_x(double);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(double)
-gl_to_scr_y	glwidget.cpp	/^int GLWidget::gl_to_scr_y(double y){$/;"	f	class:GLWidget	signature:(double y)
-gl_to_scr_y	glwidget.h	/^	virtual int gl_to_scr_y(double);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(double)
-gobj	kbplot.h	/^		GraphicalObject *gobj[2];$/;"	m	struct:DataSet	access:public
+exportAsImage	kbplot.h	/^		void exportAsImage(const string filename);$/;"	p	class:KbPlot	access:public	signature:(const string filename)
+frame	kbplot.h	/^		Polyline *frame;$/;"	m	class:KbPlot	access:private
+gridEnabled	kbplot.h	/^		bool gridEnabled;$/;"	m	class:KbPlot	access:public
+gridStyle	kbplot.h	/^		Style gridStyle;$/;"	m	class:KbPlot	access:public
 initializeGL	glwidget.cpp	/^void GLWidget::initializeGL() {$/;"	f	class:GLWidget	signature:()
 initializeGL	glwidget.h	/^	void initializeGL();$/;"	p	class:GLWidget	access:public	signature:()
 isFixed	graphical_object.h	/^		bool isFixed= false;$/;"	m	class:GraphicalObject	access:protected
 isScaled	graphical_object.h	/^		bool isScaled = false;$/;"	m	class:GraphicalObject	access:protected
-lineColor	graphical_object.h	/^	unsigned int lineColor;$/;"	m	struct:Style	access:public
+lineColor	graphical_object.h	/^	unsigned int lineColor = 0xFFFFFFFF;$/;"	m	struct:Style	access:public
 lineStroke	graphical_object.h	/^	LineStroke lineStroke;$/;"	m	struct:Style	access:public
-lineThickness	graphical_object.h	/^	unsigned int lineThickness;$/;"	m	struct:Style	access:public
+lineThickness	graphical_object.h	/^	float lineThickness = 1.0;$/;"	m	struct:Style	access:public
 main	main.cpp	/^int main(int argc, char *argv[])$/;"	f	signature:(int argc, char *argv[])
 markerSize	graphical_object.h	/^	unsigned int markerSize = 5;$/;"	m	struct:Style	access:public
 markerType	graphical_object.h	/^	MarkerType markerType = MARK_SQUARE;$/;"	m	struct:Style	access:public
+markerset	kbplot.h	/^		GraphicalObject *markerset;$/;"	m	struct:DataSet	access:public
 metaObject	moc_glwidget.cpp	/^const QMetaObject *GLWidget::metaObject() const$/;"	f	class:GLWidget	signature:() const
 mouseListeners	glwidget.h	/^	vector<IMouseEventListener*> mouseListeners;$/;"	m	class:GLWidget	access:private
 mouseMoveEvent	event.h	/^	virtual void mouseMoveEvent(int,int)=0;$/;"	p	class:IMouseEventListener	access:public	implementation:pure virtual	signature:(int,int)
@@ -344,6 +366,7 @@ mouseY	glwidget.h	/^	int mouseX, mouseY;$/;"	m	class:GLWidget	access:private
 objects	glwidget.h	/^	map<string, GraphicalObject*> objects;$/;"	m	class:GLWidget	access:private
 paintGL	glwidget.cpp	/^void GLWidget::paintGL(){$/;"	f	class:GLWidget	signature:()
 paintGL	glwidget.h	/^	void paintGL();$/;"	p	class:GLWidget	access:public	signature:()
+polyline	kbplot.h	/^		GraphicalObject *polyline;$/;"	m	struct:DataSet	access:public
 qt_meta_data_GLWidget	moc_glwidget.cpp	/^static const uint qt_meta_data_GLWidget[] = {$/;"	v	file:
 qt_meta_stringdata_GLWidget	moc_glwidget.cpp	/^static const qt_meta_stringdata_GLWidget_t qt_meta_stringdata_GLWidget = {$/;"	v	file:
 qt_meta_stringdata_GLWidget_t	moc_glwidget.cpp	/^struct qt_meta_stringdata_GLWidget_t {$/;"	s	file:
@@ -356,14 +379,13 @@ resizeGL	glwidget.cpp	/^void GLWidget::resizeGL(int nw, int nh){$/;"	f	class:GLW
 resizeGL	glwidget.h	/^	void resizeGL(int nw, int nh);$/;"	p	class:GLWidget	access:public	signature:(int nw, int nh)
 scX	graphical_object.h	/^		double scX, scY;$/;"	m	class:GraphicalObject	access:protected
 scY	graphical_object.h	/^		double scX, scY;$/;"	m	class:GraphicalObject	access:protected
-scr_to_gl_x	glwidget.cpp	/^double GLWidget::scr_to_gl_x(int x){$/;"	f	class:GLWidget	signature:(int x)
-scr_to_gl_x	glwidget.h	/^	virtual double scr_to_gl_x(int);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(int)
-scr_to_gl_y	glwidget.cpp	/^double GLWidget::scr_to_gl_y(int y){$/;"	f	class:GLWidget	signature:(int y)
-scr_to_gl_y	glwidget.h	/^	virtual double scr_to_gl_y(int);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(int)
+setBackground	kbplot.h	/^		void setBackground(const string filename);$/;"	p	class:KbPlot	access:public	signature:(const string filename)
+setBackground	kbplot.h	/^		void setBackground(const unsigned int color);$/;"	p	class:KbPlot	access:public	signature:(const unsigned int color)
 setCoordinates	graphical_object.cpp	/^void Line::setCoordinates(double _x1, double _y1, double _x2, double _y2){$/;"	f	class:Line	signature:(double _x1, double _y1, double _x2, double _y2)
 setCoordinates	graphical_object.h	/^		void setCoordinates(double,double,double,double);$/;"	p	class:Line	access:public	signature:(double,double,double,double)
 setFixed	graphical_object.cpp	/^void GraphicalObject::setFixed(bool b){$/;"	f	class:GraphicalObject	signature:(bool b)
 setFixed	graphical_object.h	/^		void setFixed(bool b = true);$/;"	p	class:GraphicalObject	access:public	signature:(bool b = true)
+setGrid	kbplot.h	/^		void setGrid(bool);$/;"	p	class:KbPlot	access:public	signature:(bool)
 setRanges	kbplot.cpp	/^void KbPlot::setRanges(double _xmin, double _xmax, double _ymin, double _ymax){$/;"	f	class:KbPlot	signature:(double _xmin, double _xmax, double _ymin, double _ymax)
 setRanges	kbplot.h	/^		void setRanges(double,double,double,double);$/;"	p	class:KbPlot	access:public	signature:(double,double,double,double)
 setScale	graphical_object.cpp	/^void GraphicalObject::setScale(bool b){$/;"	f	class:GraphicalObject	signature:(bool b)
@@ -373,6 +395,8 @@ setScale	graphical_object.h	/^		void setScale(double,double);$/;"	p	class:Graphi
 setWorkingArea	aglwidget.h	/^	virtual void setWorkingArea(double, double, double, double)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(double, double, double, double)
 setWorkingArea	glwidget.cpp	/^void GLWidget::setWorkingArea(double xmin, double xmax, double ymin, double ymax){$/;"	f	class:GLWidget	signature:(double xmin, double xmax, double ymin, double ymax)
 setWorkingArea	glwidget.h	/^	virtual void setWorkingArea(double xmin, double xmax, double ymin, double ymax);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(double xmin, double xmax, double ymin, double ymax)
+setXTick	kbplot.h	/^		void setXTick(double);$/;"	p	class:KbPlot	access:public	signature:(double)
+setYTick	kbplot.h	/^		void setYTick(double);$/;"	p	class:KbPlot	access:public	signature:(double)
 staticMetaObject	moc_glwidget.cpp	/^const QMetaObject GLWidget::staticMetaObject = {$/;"	m	class:GLWidget	file:
 stringdata	moc_glwidget.cpp	/^    char stringdata[10];$/;"	m	struct:qt_meta_stringdata_GLWidget_t	file:	access:public
 style	graphical_object.h	/^		Style style;$/;"	m	class:GraphicalObject	access:public
@@ -380,26 +404,40 @@ subscribeToMouse	aglwidget.h	/^	virtual void subscribeToMouse(IMouseEventListene
 subscribeToMouse	glwidget.cpp	/^void GLWidget::subscribeToMouse(IMouseEventListener*l){$/;"	f	class:GLWidget	signature:(IMouseEventListener*l)
 subscribeToMouse	glwidget.h	/^	virtual void subscribeToMouse(IMouseEventListener*);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(IMouseEventListener*)
 trGLToScreenx	aglwidget.h	/^	virtual int trGLToScreenx(double)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(double)
+trGLToScreenx	glwidget.cpp	/^int GLWidget::trGLToScreenx(double x){$/;"	f	class:GLWidget	signature:(double x)
+trGLToScreenx	glwidget.h	/^	virtual int trGLToScreenx(double);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(double)
 trGLToScreeny	aglwidget.h	/^	virtual int trGLToScreeny(double)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(double)
+trGLToScreeny	glwidget.cpp	/^int GLWidget::trGLToScreeny(double y){$/;"	f	class:GLWidget	signature:(double y)
+trGLToScreeny	glwidget.h	/^	virtual int trGLToScreeny(double);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(double)
 trScreenToGLx	aglwidget.h	/^	virtual double trScreenToGLx(int)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(int)
+trScreenToGLx	glwidget.cpp	/^double GLWidget::trScreenToGLx(int x){$/;"	f	class:GLWidget	signature:(int x)
+trScreenToGLx	glwidget.h	/^	virtual double trScreenToGLx(int);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(int)
 trScreenToGLy	aglwidget.h	/^	virtual double trScreenToGLy(int)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(int)
+trScreenToGLy	glwidget.cpp	/^double GLWidget::trScreenToGLy(int y){$/;"	f	class:GLWidget	signature:(int y)
+trScreenToGLy	glwidget.h	/^	virtual double trScreenToGLy(int);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(int)
 trX	graphical_object.h	/^		double trX, trY;$/;"	m	class:GraphicalObject	access:protected
 trY	graphical_object.h	/^		double trX, trY;$/;"	m	class:GraphicalObject	access:protected
-values	graphical_object.h	/^		vector<double> *values;$/;"	m	class:Polyline	access:private
-wlines	kbplot.h	/^		bool wlines = false;$/;"	m	struct:DataSet	access:public
-wmarks	kbplot.h	/^		bool wmarks = true;$/;"	m	struct:DataSet	access:public
+v1	kbplot.h	/^		vector<Txy> v1;$/;"	m	class:KbPlot	access:private
+wheelEvent	glwidget.cpp	/^void GLWidget::wheelEvent(QWheelEvent *e){$/;"	f	class:GLWidget	signature:(QWheelEvent *e)
+wheelEvent	glwidget.h	/^	void wheelEvent(QWheelEvent *e);$/;"	p	class:GLWidget	access:public	signature:(QWheelEvent *e)
+withLines	kbplot.h	/^		bool withLines;$/;"	m	struct:DataSet	access:public
+withPoints	kbplot.h	/^		bool withPoints;$/;"	m	struct:DataSet	access:public
+x	txy.h	/^	double x,y;$/;"	m	struct:Txy	access:public
 x1	graphical_object.h	/^		double x1,x2,y1,y2;$/;"	m	class:Line	access:private
 x2	graphical_object.h	/^		double x1,x2,y1,y2;$/;"	m	class:Line	access:private
 xmax	kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
 xmin	kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
+xtick	kbplot.h	/^		double xtick, ytick;$/;"	m	class:KbPlot	access:private
 xticks_b	kbplot.h	/^		std::vector<Line*> xticks_b;$/;"	m	class:KbPlot	access:private
 xticks_t	kbplot.h	/^		std::vector<Line*> xticks_t;$/;"	m	class:KbPlot	access:private
+y	txy.h	/^	double x,y;$/;"	m	struct:Txy	access:public
 y1	graphical_object.h	/^		double x1,x2,y1,y2;$/;"	m	class:Line	access:private
 y2	graphical_object.h	/^		double x1,x2,y1,y2;$/;"	m	class:Line	access:private
 ymax	kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
 ymin	kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
-yticks_b	kbplot.h	/^		std::vector<Line*> yticks_b;$/;"	m	class:KbPlot	access:private
-yticks_t	kbplot.h	/^		std::vector<Line*> yticks_t;$/;"	m	class:KbPlot	access:private
+ytick	kbplot.h	/^		double xtick, ytick;$/;"	m	class:KbPlot	access:private
+yticks_l	kbplot.h	/^		std::vector<Line*> yticks_l;$/;"	m	class:KbPlot	access:private
+yticks_r	kbplot.h	/^		std::vector<Line*> yticks_r;$/;"	m	class:KbPlot	access:private
 ~AGLWidget	aglwidget.h	/^	virtual ~AGLWidget(){};$/;"	f	class:AGLWidget	access:public	implementation:virtual	signature:()
 ~DataSet	kbplot.cpp	/^DataSet::~DataSet(){$/;"	f	class:DataSet	signature:()
 ~DataSet	kbplot.h	/^		virtual ~DataSet();$/;"	p	struct:DataSet	access:public	implementation:virtual	signature:()
@@ -410,4 +448,5 @@ yticks_t	kbplot.h	/^		std::vector<Line*> yticks_t;$/;"	m	class:KbPlot	access:pri
 ~KbPlot	kbplot.h	/^		~KbPlot();$/;"	p	class:KbPlot	access:public	signature:()
 ~Line	graphical_object.h	/^		virtual ~Line(){};$/;"	f	class:Line	access:public	implementation:virtual	signature:()
 ~MarkerSet	graphical_object.h	/^		virtual ~MarkerSet (){};$/;"	f	class:MarkerSet	access:public	implementation:virtual	signature:()
-~Polyline	graphical_object.h	/^		virtual ~Polyline(){};$/;"	f	class:Polyline	access:public	implementation:virtual	signature:()
+~Polygon	graphical_object.h	/^		virtual ~Polygon(){};$/;"	f	class:Polygon	access:public	implementation:virtual	signature:()
+~Polyline	graphical_object.h	/^		virtual ~Polyline(){qDebug() << "Destroying polyline";};$/;"	f	class:Polyline	access:public	implementation:virtual	signature:()

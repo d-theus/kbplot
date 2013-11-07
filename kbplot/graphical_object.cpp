@@ -64,9 +64,7 @@ Polyline::Polyline(std::vector<Txy> *data){
 }
 
 void Polyline::draw() const{
-	qDebug()<<"We are in draw";
 	if(this->data == NULL) return;
-	qDebug()<<"Checking if data valid";
 	this->data->size();
 
 	before_draw();
