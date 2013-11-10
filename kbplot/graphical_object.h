@@ -5,6 +5,8 @@
 #include <map>
 #include <string>
 #include <GL/gl.h>
+#include <GL/glu.h>
+#include <drawtext.h>
 #include <QDebug>
 
 #include "txy.h"
@@ -27,18 +29,52 @@ struct Style {
 		MARK_CROSS
 	} MarkerType;
 
+	typedef enum {
+		TEXT_FONT_MONO,
+		TEXT_FONT_HELVETICA
+	} TextFont;
+
+	typedef enum {
+		TEXT_ITALIC,
+		TEXT_BOLD,
+		TEXT_UNDERLINED,
+		TEXT_UNDECOR
+	} TextStyle;
+
+	typedef enum {
+		TEXT_SIZE_10,
+		TEXT_SIZE_14,
+		TEXT_SIZE_18
+	} TextSize;
+
+	typedef enum {
+		TEXT_ALIGN_TOPLEFT,
+		TEXT_ALIGN_TOPRIGHT,
+		TEXT_ALIGN_BOTLEFT,
+		TEXT_ALIGN_BOTRIGHT
+	} TextAlignment;
+
 	LineStroke lineStroke;
 	unsigned int lineColor = 0xFFFFFFFF;
 	float lineThickness = 1.0;
 
 	MarkerType markerType = MARK_SQUARE;
 	unsigned int markerSize = 5;
+
+	TextSize textSize = TEXT_SIZE_14;
+	TextFont textFont = TEXT_FONT_HELVETICA;
+	TextStyle textStyle = TEXT_UNDECOR;
+	TextAlignment textAlignment = TEXT_ALIGN_TOPLEFT;
+
+	Style();
+	struct dtx_font *font;
 };
 
 class GraphicalObject {
 	protected:
 		bool isFixed= false;
 		bool isScaled = false;
+		bool isTranslated = false;
 		double trX, trY;
 		double scX, scY;
 		void before_draw()const;
@@ -47,8 +83,10 @@ class GraphicalObject {
 		virtual ~GraphicalObject(){};
 		virtual void draw() const = 0;
 		void setScale(double,double);
+		void setTranslation(double,double);
 		void setScale(bool);
 		void setFixed(bool b = true);
+		void setTranslated(bool);
 
 		Style style;
 };
@@ -96,6 +134,17 @@ class MarkerSet : public GraphicalObject {
 
 	private:
 		vector<Txy> *data;
+};
+
+class Text : public GraphicalObject {
+	public:
+		Text(const string &text, double size, double x, double y);
+		~Text(){};
+		virtual void draw()const;
+
+	private:
+		double x, y, size;
+		string text;
 };
 
 

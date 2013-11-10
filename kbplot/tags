@@ -40,10 +40,10 @@ DataSet	kbplot.h	/^struct DataSet {$/;"	s
 DataSet::DataSet	kbplot.cpp	/^DataSet::DataSet(vector<Txy> *data, LinesPointsEnabler lp){$/;"	f	class:DataSet	signature:(vector<Txy> *data, LinesPointsEnabler lp)
 DataSet::DataSet	kbplot.h	/^		DataSet(const DataSet &){};$/;"	f	struct:DataSet	access:public	signature:(const DataSet &)
 DataSet::DataSet	kbplot.h	/^		DataSet(vector<Txy> *data, LinesPointsEnabler lp = WITH_LINES);$/;"	p	struct:DataSet	access:public	signature:(vector<Txy> *data, LinesPointsEnabler lp = WITH_LINES)
-DataSet::LinesPointsEnabler	kbplot.h	/^	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;$/;"	t	struct:DataSet	typeref:enum:DataSet::__anon4	access:public
-DataSet::WITH_LINES	kbplot.h	/^	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;$/;"	e	enum:DataSet::__anon4
-DataSet::WITH_LINESPOINTS	kbplot.h	/^	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;$/;"	e	enum:DataSet::__anon4
-DataSet::WITH_POINTS	kbplot.h	/^	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;$/;"	e	enum:DataSet::__anon4
+DataSet::LinesPointsEnabler	kbplot.h	/^	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;$/;"	t	struct:DataSet	typeref:enum:DataSet::__anon8	access:public
+DataSet::WITH_LINES	kbplot.h	/^	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;$/;"	e	enum:DataSet::__anon8
+DataSet::WITH_LINESPOINTS	kbplot.h	/^	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;$/;"	e	enum:DataSet::__anon8
+DataSet::WITH_POINTS	kbplot.h	/^	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;$/;"	e	enum:DataSet::__anon8
 DataSet::markerset	kbplot.h	/^		GraphicalObject *markerset;$/;"	m	struct:DataSet	access:public
 DataSet::polyline	kbplot.h	/^		GraphicalObject *polyline;$/;"	m	struct:DataSet	access:public
 DataSet::withLines	kbplot.h	/^		bool withLines;$/;"	m	struct:DataSet	access:public
@@ -180,7 +180,9 @@ KbPlot::setBackground	kbplot.h	/^		void setBackground(const unsigned int color);
 KbPlot::setGrid	kbplot.h	/^		void setGrid(bool);$/;"	p	class:KbPlot	access:public	signature:(bool)
 KbPlot::setRanges	kbplot.cpp	/^void KbPlot::setRanges(double _xmin, double _xmax, double _ymin, double _ymax){$/;"	f	class:KbPlot	signature:(double _xmin, double _xmax, double _ymin, double _ymax)
 KbPlot::setRanges	kbplot.h	/^		void setRanges(double,double,double,double);$/;"	p	class:KbPlot	access:public	signature:(double,double,double,double)
+KbPlot::setXTick	kbplot.cpp	/^void KbPlot::setXTick(double xt){$/;"	f	class:KbPlot	signature:(double xt)
 KbPlot::setXTick	kbplot.h	/^		void setXTick(double);$/;"	p	class:KbPlot	access:public	signature:(double)
+KbPlot::setYTick	kbplot.cpp	/^void KbPlot::setYTick(double yt){$/;"	f	class:KbPlot	signature:(double yt)
 KbPlot::setYTick	kbplot.h	/^		void setYTick(double);$/;"	p	class:KbPlot	access:public	signature:(double)
 KbPlot::v1	kbplot.h	/^		vector<Txy> v1;$/;"	m	class:KbPlot	access:private
 KbPlot::xmax	kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
@@ -196,7 +198,7 @@ KbPlot::yticks_r	kbplot.h	/^		std::vector<Line*> yticks_r;$/;"	m	class:KbPlot	ac
 KbPlot::~KbPlot	kbplot.cpp	/^KbPlot::~KbPlot(){$/;"	f	class:KbPlot	signature:()
 KbPlot::~KbPlot	kbplot.h	/^		~KbPlot();$/;"	p	class:KbPlot	access:public	signature:()
 LFLAGS	Makefile	/^LFLAGS        = -Wl,-O1,--sort-common,--as-needed,-z,relro -Wl,-O1$/;"	m
-LIBS	Makefile	/^LIBS          = $(SUBLIBS) -lQt5OpenGL -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread $/;"	m
+LIBS	Makefile	/^LIBS          = $(SUBLIBS) -ldrawtext -lQt5OpenGL -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread $/;"	m
 LINE_DASHED	graphical_object.h	/^		LINE_DASHED,$/;"	e	enum:Style::__anon1
 LINE_DASH_DOTTED	graphical_object.h	/^		LINE_DASH_DOTTED$/;"	e	enum:Style::__anon1
 LINE_DOTTED	graphical_object.h	/^		LINE_DOTTED,$/;"	e	enum:Style::__anon1
@@ -217,7 +219,7 @@ Line::y1	graphical_object.h	/^		double x1,x2,y1,y2;$/;"	m	class:Line	access:priv
 Line::y2	graphical_object.h	/^		double x1,x2,y1,y2;$/;"	m	class:Line	access:private
 Line::~Line	graphical_object.h	/^		virtual ~Line(){};$/;"	f	class:Line	access:public	implementation:virtual	signature:()
 LineStroke	graphical_object.h	/^	} LineStroke;$/;"	t	struct:Style	typeref:enum:Style::__anon1	access:public
-LinesPointsEnabler	kbplot.h	/^	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;$/;"	t	struct:DataSet	typeref:enum:DataSet::__anon4	access:public
+LinesPointsEnabler	kbplot.h	/^	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;$/;"	t	struct:DataSet	typeref:enum:DataSet::__anon8	access:public
 MAKEFILE	Makefile	/^MAKEFILE      = Makefile$/;"	m
 MARK_CROSS	graphical_object.h	/^		MARK_CROSS$/;"	e	enum:Style::__anon2
 MARK_DOT	graphical_object.h	/^		MARK_DOT,$/;"	e	enum:Style::__anon2
@@ -225,8 +227,8 @@ MARK_SQUARE	graphical_object.h	/^		MARK_SQUARE,$/;"	e	enum:Style::__anon2
 MARK_TRIANGLE	graphical_object.h	/^		MARK_TRIANGLE,$/;"	e	enum:Style::__anon2
 MKDIR	Makefile	/^MKDIR         = mkdir -p$/;"	m
 MOVE	Makefile	/^MOVE          = mv -f$/;"	m
-MRK_TYPE_CROSS	graphical_object.h	/^	MRK_TYPE_CROSS$/;"	e	enum:__anon3
-MRK_TYPE_DOT	graphical_object.h	/^	MRK_TYPE_DOT,$/;"	e	enum:__anon3
+MRK_TYPE_CROSS	graphical_object.h	/^	MRK_TYPE_CROSS$/;"	e	enum:__anon7
+MRK_TYPE_DOT	graphical_object.h	/^	MRK_TYPE_DOT,$/;"	e	enum:__anon7
 MarkerSet	graphical_object.cpp	/^MarkerSet::MarkerSet(vector<Txy> *data){$/;"	f	class:MarkerSet	signature:(vector<Txy> *data)
 MarkerSet	graphical_object.h	/^		MarkerSet (vector<Txy> *data);$/;"	p	class:MarkerSet	access:public	signature:(vector<Txy> *data)
 MarkerSet	graphical_object.h	/^class MarkerSet : public GraphicalObject {$/;"	c	inherits:GraphicalObject
@@ -237,7 +239,7 @@ MarkerSet::draw	graphical_object.cpp	/^void MarkerSet::draw() const{$/;"	f	class
 MarkerSet::draw	graphical_object.h	/^		virtual void draw() const;$/;"	p	class:MarkerSet	access:public	implementation:virtual	signature:() const
 MarkerSet::~MarkerSet	graphical_object.h	/^		virtual ~MarkerSet (){};$/;"	f	class:MarkerSet	access:public	implementation:virtual	signature:()
 MarkerType	graphical_object.h	/^	} MarkerType;$/;"	t	struct:Style	typeref:enum:Style::__anon2	access:public
-MarkerType	graphical_object.h	/^} MarkerType;$/;"	t	typeref:enum:__anon3
+MarkerType	graphical_object.h	/^} MarkerType;$/;"	t	typeref:enum:__anon7
 OBJECTS	Makefile	/^OBJECTS       = glwidget.o \\$/;"	m
 OBJECTS_DIR	Makefile	/^OBJECTS_DIR   = .\/$/;"	m
 Polygon	graphical_object.cpp	/^Polygon::Polygon(vector<Txy> *d){$/;"	f	class:Polygon	signature:(vector<Txy> *d)
@@ -267,6 +269,8 @@ SED	Makefile	/^SED           = sed$/;"	m
 SOURCES	Makefile	/^SOURCES       = glwidget.cpp \\$/;"	m
 STRIP	Makefile	/^STRIP         = strip$/;"	m
 SYMLINK	Makefile	/^SYMLINK       = ln -f -s$/;"	m
+Style	graphical_object.cpp	/^Style::Style(){$/;"	f	class:Style	signature:()
+Style	graphical_object.h	/^	Style();$/;"	p	struct:Style	access:public	signature:()
 Style	graphical_object.h	/^struct Style {$/;"	s
 Style::LINE_DASHED	graphical_object.h	/^		LINE_DASHED,$/;"	e	enum:Style::__anon1
 Style::LINE_DASH_DOTTED	graphical_object.h	/^		LINE_DASH_DOTTED$/;"	e	enum:Style::__anon1
@@ -278,22 +282,74 @@ Style::MARK_DOT	graphical_object.h	/^		MARK_DOT,$/;"	e	enum:Style::__anon2
 Style::MARK_SQUARE	graphical_object.h	/^		MARK_SQUARE,$/;"	e	enum:Style::__anon2
 Style::MARK_TRIANGLE	graphical_object.h	/^		MARK_TRIANGLE,$/;"	e	enum:Style::__anon2
 Style::MarkerType	graphical_object.h	/^	} MarkerType;$/;"	t	struct:Style	typeref:enum:Style::__anon2	access:public
+Style::Style	graphical_object.cpp	/^Style::Style(){$/;"	f	class:Style	signature:()
+Style::Style	graphical_object.h	/^	Style();$/;"	p	struct:Style	access:public	signature:()
+Style::TEXT_ALIGN_BOTLEFT	graphical_object.h	/^		TEXT_ALIGN_BOTLEFT,$/;"	e	enum:Style::__anon6
+Style::TEXT_ALIGN_BOTRIGHT	graphical_object.h	/^		TEXT_ALIGN_BOTRIGHT$/;"	e	enum:Style::__anon6
+Style::TEXT_ALIGN_TOPLEFT	graphical_object.h	/^		TEXT_ALIGN_TOPLEFT,$/;"	e	enum:Style::__anon6
+Style::TEXT_ALIGN_TOPRIGHT	graphical_object.h	/^		TEXT_ALIGN_TOPRIGHT,$/;"	e	enum:Style::__anon6
+Style::TEXT_BOLD	graphical_object.h	/^		TEXT_BOLD,$/;"	e	enum:Style::__anon4
+Style::TEXT_FONT_HELVETICA	graphical_object.h	/^		TEXT_FONT_HELVETICA$/;"	e	enum:Style::__anon3
+Style::TEXT_FONT_MONO	graphical_object.h	/^		TEXT_FONT_MONO,$/;"	e	enum:Style::__anon3
+Style::TEXT_ITALIC	graphical_object.h	/^		TEXT_ITALIC,$/;"	e	enum:Style::__anon4
+Style::TEXT_SIZE_10	graphical_object.h	/^		TEXT_SIZE_10,$/;"	e	enum:Style::__anon5
+Style::TEXT_SIZE_14	graphical_object.h	/^		TEXT_SIZE_14,$/;"	e	enum:Style::__anon5
+Style::TEXT_SIZE_18	graphical_object.h	/^		TEXT_SIZE_18$/;"	e	enum:Style::__anon5
+Style::TEXT_UNDECOR	graphical_object.h	/^		TEXT_UNDECOR$/;"	e	enum:Style::__anon4
+Style::TEXT_UNDERLINED	graphical_object.h	/^		TEXT_UNDERLINED,$/;"	e	enum:Style::__anon4
+Style::TextAlignment	graphical_object.h	/^	} TextAlignment;$/;"	t	struct:Style	typeref:enum:Style::__anon6	access:public
+Style::TextFont	graphical_object.h	/^	} TextFont;$/;"	t	struct:Style	typeref:enum:Style::__anon3	access:public
+Style::TextSize	graphical_object.h	/^	} TextSize;$/;"	t	struct:Style	typeref:enum:Style::__anon5	access:public
+Style::TextStyle	graphical_object.h	/^	} TextStyle;$/;"	t	struct:Style	typeref:enum:Style::__anon4	access:public
+Style::font	graphical_object.h	/^	struct dtx_font *font;$/;"	m	struct:Style	typeref:struct:Style::dtx_font	access:private
 Style::lineColor	graphical_object.h	/^	unsigned int lineColor = 0xFFFFFFFF;$/;"	m	struct:Style	access:public
 Style::lineStroke	graphical_object.h	/^	LineStroke lineStroke;$/;"	m	struct:Style	access:public
 Style::lineThickness	graphical_object.h	/^	float lineThickness = 1.0;$/;"	m	struct:Style	access:public
 Style::markerSize	graphical_object.h	/^	unsigned int markerSize = 5;$/;"	m	struct:Style	access:public
 Style::markerType	graphical_object.h	/^	MarkerType markerType = MARK_SQUARE;$/;"	m	struct:Style	access:public
+Style::textAlignment	graphical_object.h	/^	TextAlignment textAlignment = TEXT_ALIGN_TOPLEFT;$/;"	m	struct:Style	access:public
+Style::textFont	graphical_object.h	/^	TextFont textFont = TEXT_FONT_HELVETICA;$/;"	m	struct:Style	access:public
+Style::textSize	graphical_object.h	/^	TextSize textSize = TEXT_SIZE_14;$/;"	m	struct:Style	access:public
+Style::textStyle	graphical_object.h	/^	TextStyle textStyle = TEXT_UNDECOR;$/;"	m	struct:Style	access:public
 TAR	Makefile	/^TAR           = tar -cf$/;"	m
 TARGET	Makefile	/^TARGET        = kbplot$/;"	m
+TEXT_ALIGN_BOTLEFT	graphical_object.h	/^		TEXT_ALIGN_BOTLEFT,$/;"	e	enum:Style::__anon6
+TEXT_ALIGN_BOTRIGHT	graphical_object.h	/^		TEXT_ALIGN_BOTRIGHT$/;"	e	enum:Style::__anon6
+TEXT_ALIGN_TOPLEFT	graphical_object.h	/^		TEXT_ALIGN_TOPLEFT,$/;"	e	enum:Style::__anon6
+TEXT_ALIGN_TOPRIGHT	graphical_object.h	/^		TEXT_ALIGN_TOPRIGHT,$/;"	e	enum:Style::__anon6
+TEXT_BOLD	graphical_object.h	/^		TEXT_BOLD,$/;"	e	enum:Style::__anon4
+TEXT_FONT_HELVETICA	graphical_object.h	/^		TEXT_FONT_HELVETICA$/;"	e	enum:Style::__anon3
+TEXT_FONT_MONO	graphical_object.h	/^		TEXT_FONT_MONO,$/;"	e	enum:Style::__anon3
+TEXT_ITALIC	graphical_object.h	/^		TEXT_ITALIC,$/;"	e	enum:Style::__anon4
+TEXT_SIZE_10	graphical_object.h	/^		TEXT_SIZE_10,$/;"	e	enum:Style::__anon5
+TEXT_SIZE_14	graphical_object.h	/^		TEXT_SIZE_14,$/;"	e	enum:Style::__anon5
+TEXT_SIZE_18	graphical_object.h	/^		TEXT_SIZE_18$/;"	e	enum:Style::__anon5
+TEXT_UNDECOR	graphical_object.h	/^		TEXT_UNDECOR$/;"	e	enum:Style::__anon4
+TEXT_UNDERLINED	graphical_object.h	/^		TEXT_UNDERLINED,$/;"	e	enum:Style::__anon4
 TXY_H	txy.h	2;"	d
+Text	graphical_object.cpp	/^Text::Text(const string &text){$/;"	f	class:Text	signature:(const string &text)
+Text	graphical_object.h	/^	Text(const string &text);$/;"	p	class:Text	access:public	signature:(const string &text)
+Text	graphical_object.h	/^class Text : public GraphicalObject {$/;"	c	inherits:GraphicalObject
+Text::Text	graphical_object.cpp	/^Text::Text(const string &text){$/;"	f	class:Text	signature:(const string &text)
+Text::Text	graphical_object.h	/^	Text(const string &text);$/;"	p	class:Text	access:public	signature:(const string &text)
+Text::draw	graphical_object.cpp	/^void Text::draw()const{$/;"	f	class:Text	signature:() const
+Text::draw	graphical_object.h	/^	virtual void draw()const;$/;"	p	class:Text	access:public	implementation:virtual	signature:() const
+Text::text	graphical_object.h	/^	string text;$/;"	m	class:Text	access:private
+Text::x	graphical_object.h	/^	double x, y;$/;"	m	class:Text	access:private
+Text::y	graphical_object.h	/^	double x, y;$/;"	m	class:Text	access:private
+Text::~Text	graphical_object.h	/^	~Text(){};$/;"	f	class:Text	access:public	signature:()
+TextAlignment	graphical_object.h	/^	} TextAlignment;$/;"	t	struct:Style	typeref:enum:Style::__anon6	access:public
+TextFont	graphical_object.h	/^	} TextFont;$/;"	t	struct:Style	typeref:enum:Style::__anon3	access:public
+TextSize	graphical_object.h	/^	} TextSize;$/;"	t	struct:Style	typeref:enum:Style::__anon5	access:public
+TextStyle	graphical_object.h	/^	} TextStyle;$/;"	t	struct:Style	typeref:enum:Style::__anon4	access:public
 Txy	txy.h	/^	Txy(double _x, double _y){x = _x; y = _y;}$/;"	f	struct:Txy	access:public	signature:(double _x, double _y)
 Txy	txy.h	/^struct Txy $/;"	s
 Txy::Txy	txy.h	/^	Txy(double _x, double _y){x = _x; y = _y;}$/;"	f	struct:Txy	access:public	signature:(double _x, double _y)
 Txy::x	txy.h	/^	double x,y;$/;"	m	struct:Txy	access:public
 Txy::y	txy.h	/^	double x,y;$/;"	m	struct:Txy	access:public
-WITH_LINES	kbplot.h	/^	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;$/;"	e	enum:DataSet::__anon4
-WITH_LINESPOINTS	kbplot.h	/^	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;$/;"	e	enum:DataSet::__anon4
-WITH_POINTS	kbplot.h	/^	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;$/;"	e	enum:DataSet::__anon4
+WITH_LINES	kbplot.h	/^	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;$/;"	e	enum:DataSet::__anon8
+WITH_LINESPOINTS	kbplot.h	/^	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;$/;"	e	enum:DataSet::__anon8
+WITH_POINTS	kbplot.h	/^	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;$/;"	e	enum:DataSet::__anon8
 addData	kbplot.cpp	/^void KbPlot::addData(const DataSet *ds){$/;"	f	class:KbPlot	signature:(const DataSet *ds)
 addData	kbplot.h	/^		void addData(const DataSet *ds);$/;"	p	class:KbPlot	access:public	signature:(const DataSet *ds)
 addObject	aglwidget.h	/^	virtual void addObject(string, GraphicalObject*)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(string, GraphicalObject*)
@@ -317,11 +373,13 @@ draw	graphical_object.cpp	/^void Line::draw() const {$/;"	f	class:Line	signature
 draw	graphical_object.cpp	/^void MarkerSet::draw() const{$/;"	f	class:MarkerSet	signature:() const
 draw	graphical_object.cpp	/^void Polygon::draw()const{$/;"	f	class:Polygon	signature:() const
 draw	graphical_object.cpp	/^void Polyline::draw() const{$/;"	f	class:Polyline	signature:() const
+draw	graphical_object.cpp	/^void Text::draw()const{$/;"	f	class:Text	signature:() const
 draw	graphical_object.h	/^		virtual void draw() const = 0;$/;"	p	class:GraphicalObject	access:public	implementation:pure virtual	signature:() const
 draw	graphical_object.h	/^		virtual void draw() const;$/;"	p	class:Line	access:public	implementation:virtual	signature:() const
 draw	graphical_object.h	/^		virtual void draw() const;$/;"	p	class:MarkerSet	access:public	implementation:virtual	signature:() const
 draw	graphical_object.h	/^		virtual void draw() const;$/;"	p	class:Polygon	access:public	implementation:virtual	signature:() const
 draw	graphical_object.h	/^		virtual void draw() const;$/;"	p	class:Polyline	access:public	implementation:virtual	signature:() const
+draw	graphical_object.h	/^	virtual void draw()const;$/;"	p	class:Text	access:public	implementation:virtual	signature:() const
 draw	kbplot.cpp	/^void KbPlot::draw(){$/;"	f	class:KbPlot	signature:()
 draw	kbplot.h	/^		void draw();$/;"	p	class:KbPlot	access:public	signature:()
 drawAxis	kbplot.cpp	/^void KbPlot::drawAxis(){$/;"	f	class:KbPlot	signature:()
@@ -329,6 +387,7 @@ drawAxis	kbplot.h	/^		void drawAxis();$/;"	p	class:KbPlot	access:private	signatu
 drawBg	kbplot.h	/^		void drawBg();$/;"	p	class:KbPlot	access:private	signature:()
 drawNumbers	kbplot.h	/^		void drawNumbers();$/;"	p	class:KbPlot	access:private	signature:()
 exportAsImage	kbplot.h	/^		void exportAsImage(const string filename);$/;"	p	class:KbPlot	access:public	signature:(const string filename)
+font	graphical_object.h	/^	struct dtx_font *font;$/;"	m	struct:Style	typeref:struct:Style::dtx_font	access:private
 frame	kbplot.h	/^		Polyline *frame;$/;"	m	class:KbPlot	access:private
 gridEnabled	kbplot.h	/^		bool gridEnabled;$/;"	m	class:KbPlot	access:public
 gridStyle	kbplot.h	/^		Style gridStyle;$/;"	m	class:KbPlot	access:public
@@ -395,7 +454,9 @@ setScale	graphical_object.h	/^		void setScale(double,double);$/;"	p	class:Graphi
 setWorkingArea	aglwidget.h	/^	virtual void setWorkingArea(double, double, double, double)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(double, double, double, double)
 setWorkingArea	glwidget.cpp	/^void GLWidget::setWorkingArea(double xmin, double xmax, double ymin, double ymax){$/;"	f	class:GLWidget	signature:(double xmin, double xmax, double ymin, double ymax)
 setWorkingArea	glwidget.h	/^	virtual void setWorkingArea(double xmin, double xmax, double ymin, double ymax);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(double xmin, double xmax, double ymin, double ymax)
+setXTick	kbplot.cpp	/^void KbPlot::setXTick(double xt){$/;"	f	class:KbPlot	signature:(double xt)
 setXTick	kbplot.h	/^		void setXTick(double);$/;"	p	class:KbPlot	access:public	signature:(double)
+setYTick	kbplot.cpp	/^void KbPlot::setYTick(double yt){$/;"	f	class:KbPlot	signature:(double yt)
 setYTick	kbplot.h	/^		void setYTick(double);$/;"	p	class:KbPlot	access:public	signature:(double)
 staticMetaObject	moc_glwidget.cpp	/^const QMetaObject GLWidget::staticMetaObject = {$/;"	m	class:GLWidget	file:
 stringdata	moc_glwidget.cpp	/^    char stringdata[10];$/;"	m	struct:qt_meta_stringdata_GLWidget_t	file:	access:public
@@ -403,6 +464,11 @@ style	graphical_object.h	/^		Style style;$/;"	m	class:GraphicalObject	access:pub
 subscribeToMouse	aglwidget.h	/^	virtual void subscribeToMouse(IMouseEventListener *subscriber)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(IMouseEventListener *subscriber)
 subscribeToMouse	glwidget.cpp	/^void GLWidget::subscribeToMouse(IMouseEventListener*l){$/;"	f	class:GLWidget	signature:(IMouseEventListener*l)
 subscribeToMouse	glwidget.h	/^	virtual void subscribeToMouse(IMouseEventListener*);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(IMouseEventListener*)
+text	graphical_object.h	/^	string text;$/;"	m	class:Text	access:private
+textAlignment	graphical_object.h	/^	TextAlignment textAlignment = TEXT_ALIGN_TOPLEFT;$/;"	m	struct:Style	access:public
+textFont	graphical_object.h	/^	TextFont textFont = TEXT_FONT_HELVETICA;$/;"	m	struct:Style	access:public
+textSize	graphical_object.h	/^	TextSize textSize = TEXT_SIZE_14;$/;"	m	struct:Style	access:public
+textStyle	graphical_object.h	/^	TextStyle textStyle = TEXT_UNDECOR;$/;"	m	struct:Style	access:public
 trGLToScreenx	aglwidget.h	/^	virtual int trGLToScreenx(double)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(double)
 trGLToScreenx	glwidget.cpp	/^int GLWidget::trGLToScreenx(double x){$/;"	f	class:GLWidget	signature:(double x)
 trGLToScreenx	glwidget.h	/^	virtual int trGLToScreenx(double);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(double)
@@ -422,6 +488,7 @@ wheelEvent	glwidget.cpp	/^void GLWidget::wheelEvent(QWheelEvent *e){$/;"	f	class
 wheelEvent	glwidget.h	/^	void wheelEvent(QWheelEvent *e);$/;"	p	class:GLWidget	access:public	signature:(QWheelEvent *e)
 withLines	kbplot.h	/^		bool withLines;$/;"	m	struct:DataSet	access:public
 withPoints	kbplot.h	/^		bool withPoints;$/;"	m	struct:DataSet	access:public
+x	graphical_object.h	/^	double x, y;$/;"	m	class:Text	access:private
 x	txy.h	/^	double x,y;$/;"	m	struct:Txy	access:public
 x1	graphical_object.h	/^		double x1,x2,y1,y2;$/;"	m	class:Line	access:private
 x2	graphical_object.h	/^		double x1,x2,y1,y2;$/;"	m	class:Line	access:private
@@ -430,6 +497,7 @@ xmin	kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:priva
 xtick	kbplot.h	/^		double xtick, ytick;$/;"	m	class:KbPlot	access:private
 xticks_b	kbplot.h	/^		std::vector<Line*> xticks_b;$/;"	m	class:KbPlot	access:private
 xticks_t	kbplot.h	/^		std::vector<Line*> xticks_t;$/;"	m	class:KbPlot	access:private
+y	graphical_object.h	/^	double x, y;$/;"	m	class:Text	access:private
 y	txy.h	/^	double x,y;$/;"	m	struct:Txy	access:public
 y1	graphical_object.h	/^		double x1,x2,y1,y2;$/;"	m	class:Line	access:private
 y2	graphical_object.h	/^		double x1,x2,y1,y2;$/;"	m	class:Line	access:private
@@ -450,3 +518,4 @@ yticks_r	kbplot.h	/^		std::vector<Line*> yticks_r;$/;"	m	class:KbPlot	access:pri
 ~MarkerSet	graphical_object.h	/^		virtual ~MarkerSet (){};$/;"	f	class:MarkerSet	access:public	implementation:virtual	signature:()
 ~Polygon	graphical_object.h	/^		virtual ~Polygon(){};$/;"	f	class:Polygon	access:public	implementation:virtual	signature:()
 ~Polyline	graphical_object.h	/^		virtual ~Polyline(){qDebug() << "Destroying polyline";};$/;"	f	class:Polyline	access:public	implementation:virtual	signature:()
+~Text	graphical_object.h	/^	~Text(){};$/;"	f	class:Text	access:public	signature:()

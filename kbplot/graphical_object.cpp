@@ -5,6 +5,11 @@
 #endif
 
 
+Style::Style(){
+	if(!(font = dtx_open_font("Ubuntu-R.ttf", 16))){
+		fprintf(stderr, "Unable to open font");
+	}
+}
 void GraphicalObject::setScale(double x, double y){
 	this->isScaled = true;
 	this->scX = x;
@@ -19,17 +24,27 @@ void GraphicalObject::setFixed(bool b){
 	this -> isFixed = b;
 }
 
+void GraphicalObject::setTranslation(double x, double y){
+	this -> isTranslated = true;
+	this -> trX = x;
+	this -> trY = y;
+}
+
+void GraphicalObject::setTranslated(bool b){
+	this -> isTranslated = b;
+}
+
 void GraphicalObject::before_draw()const{
 	if(isFixed){
 		glMatrixMode(GL_PROJECTION);
 		glPushMatrix();
 		glLoadIdentity();
 	}
-	if (isScaled) {
+	if (isScaled || isTranslated) {
 		glMatrixMode(GL_MODELVIEW);
-		glPushMatrix();
 		glLoadIdentity();
-		glScaled(scX, scY,0.0);
+		if (isTranslated) glTranslated(trX, trY, 1.0);
+		if (isScaled) glScaled(scX, scY, 1.0);
 	}
 	
 	const unsigned int c = this -> style.lineColor;
@@ -43,17 +58,11 @@ void GraphicalObject::before_draw()const{
 }
 
 void GraphicalObject::after_draw()const{
-	//if(isTranslated){
-		//glMatrixMode(GL_MODELVIEW);
-		//glPopMatrix();
-		//glMatrixMode(GL_PROJECTION);
-		//glPopMatrix();
-	//}
 	if (isFixed) {
 		glMatrixMode(GL_PROJECTION);
 		glPopMatrix();
 	}
-	if (isScaled) {
+	if (isTranslated || isScaled){
 		glMatrixMode(GL_MODELVIEW);
 		glPopMatrix();
 	}
@@ -140,3 +149,23 @@ void MarkerSet::draw() const{
 
 	after_draw();
 }
+
+Text::Text(const string &text, double size, double x, double y){
+	this -> x = x;
+	this -> y = y;
+	this -> text = text;
+	double scaleFactor = size * style.textSize / 500.0;
+	this -> setTranslation(x,y);
+	this -> setScale(scaleFactor, scaleFactor);
+}
+
+void Text::draw()const{
+	before_draw();
+
+	dtx_prepare(this->style.font, 24);
+	dtx_use_font(this->style.font,24);
+	dtx_string(this->text.c_str());
+
+	after_draw();
+}
+
