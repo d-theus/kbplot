@@ -30,24 +30,11 @@ struct Style {
 	} MarkerType;
 
 	typedef enum {
-		TEXT_FONT_MONO,
-		TEXT_FONT_HELVETICA
-	} TextFont;
-
-	typedef enum {
-		TEXT_ITALIC,
-		TEXT_BOLD,
-		TEXT_UNDERLINED,
-		TEXT_UNDECOR
-	} TextStyle;
-
-	typedef enum {
-		TEXT_SIZE_10,
-		TEXT_SIZE_14,
-		TEXT_SIZE_18
-	} TextSize;
-
-	typedef enum {
+		TEXT_ALIGN_CENTER,
+		TEXT_ALIGN_TOP,
+		TEXT_ALIGN_BOTTOM,
+		TEXT_ALIGN_LEFT,
+		TEXT_ALIGN_RIGHT,
 		TEXT_ALIGN_TOPLEFT,
 		TEXT_ALIGN_TOPRIGHT,
 		TEXT_ALIGN_BOTLEFT,
@@ -61,13 +48,11 @@ struct Style {
 	MarkerType markerType = MARK_SQUARE;
 	unsigned int markerSize = 5;
 
-	TextSize textSize = TEXT_SIZE_14;
-	TextFont textFont = TEXT_FONT_HELVETICA;
-	TextStyle textStyle = TEXT_UNDECOR;
-	TextAlignment textAlignment = TEXT_ALIGN_TOPLEFT;
+	TextAlignment textAlignment = TEXT_ALIGN_CENTER;
+	size_t fontSize = 16;
+	string fontName = "Ubuntu-R.ttf";
 
 	Style();
-	struct dtx_font *font;
 };
 
 class GraphicalObject {
@@ -75,18 +60,22 @@ class GraphicalObject {
 		bool isFixed= false;
 		bool isScaled = false;
 		bool isTranslated = false;
+
 		double trX, trY;
 		double scX, scY;
+
 		void before_draw()const;
 		void after_draw()const;
 	public:
 		virtual ~GraphicalObject(){};
 		virtual void draw() const = 0;
+
 		void setScale(double,double);
 		void setTranslation(double,double);
-		void setScale(bool);
-		void setFixed(bool b = true);
-		void setTranslated(bool);
+
+		void toggleFixed(bool b = true);
+		void toggleScaled(bool b = true);
+		void toggleTranslated(bool b = true);
 
 		Style style;
 };
@@ -145,6 +134,7 @@ class Text : public GraphicalObject {
 	private:
 		double x, y, size;
 		string text;
+		struct dtx_font *font;
 };
 
 

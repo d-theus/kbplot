@@ -64,7 +64,7 @@ KbPlot::KbPlot(GLWidget *_container, double _xmin, double _xmax, double _ymin, d
 
 		container -> addObject("frame", (GraphicalObject*)frame);
 
-		frame->setFixed();
+		frame->toggleFixed();
 
 		for (int i = 0; i < xticks_t.size(); i++) {
 			std::stringstream id1, id2, id3, id4;

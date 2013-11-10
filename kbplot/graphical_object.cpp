@@ -6,22 +6,11 @@
 
 
 Style::Style(){
-	if(!(font = dtx_open_font("Ubuntu-R.ttf", 16))){
-		fprintf(stderr, "Unable to open font");
-	}
 }
 void GraphicalObject::setScale(double x, double y){
 	this->isScaled = true;
 	this->scX = x;
 	this->scY = y;
-}
-
-void GraphicalObject::setScale(bool b){
-	this->isScaled = b;
-}
-
-void GraphicalObject::setFixed(bool b){
-	this -> isFixed = b;
 }
 
 void GraphicalObject::setTranslation(double x, double y){
@@ -30,7 +19,15 @@ void GraphicalObject::setTranslation(double x, double y){
 	this -> trY = y;
 }
 
-void GraphicalObject::setTranslated(bool b){
+void GraphicalObject::toggleScaled(bool b){
+	this->isScaled = b;
+}
+
+void GraphicalObject::toggleFixed(bool b){
+	this -> isFixed = b;
+}
+
+void GraphicalObject::toggleTranslated(bool b){
 	this -> isTranslated = b;
 }
 
@@ -42,8 +39,9 @@ void GraphicalObject::before_draw()const{
 	}
 	if (isScaled || isTranslated) {
 		glMatrixMode(GL_MODELVIEW);
+		glPushMatrix();
 		glLoadIdentity();
-		if (isTranslated) glTranslated(trX, trY, 1.0);
+		if (isTranslated) glTranslated(trX, trY, 0.0);
 		if (isScaled) glScaled(scX, scY, 1.0);
 	}
 	
@@ -151,10 +149,13 @@ void MarkerSet::draw() const{
 }
 
 Text::Text(const string &text, double size, double x, double y){
+	if(!(font = dtx_open_font("Ubuntu-R.ttf", 16))){
+		fprintf(stderr, "Unable to open font");
+	}
 	this -> x = x;
 	this -> y = y;
 	this -> text = text;
-	double scaleFactor = size * style.textSize / 500.0;
+	double scaleFactor = size / 500.0;
 	this -> setTranslation(x,y);
 	this -> setScale(scaleFactor, scaleFactor);
 }
@@ -162,8 +163,8 @@ Text::Text(const string &text, double size, double x, double y){
 void Text::draw()const{
 	before_draw();
 
-	dtx_prepare(this->style.font, 24);
-	dtx_use_font(this->style.font,24);
+	dtx_prepare(this->font, 24);
+	dtx_use_font(this->font,24);
 	dtx_string(this->text.c_str());
 
 	after_draw();

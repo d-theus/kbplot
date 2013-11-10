@@ -9,7 +9,7 @@ public:
 	virtual ~AGLWidget(){};
 
 	virtual void GLpaint()=0;
-	virtual void GLresize(int,int)=0;
+	virtual void GLresize(int nh,int nw)=0;
 	virtual void GLinitialize()=0;
 
 	virtual void subscribeToMouse(IMouseEventListener *subscriber)=0;
@@ -23,7 +23,7 @@ public:
 	virtual void clearScene()=0;
 
 
-	virtual void setWorkingArea(double, double, double, double)=0;
+	virtual void setWorkingArea(double xmin, double xmax, double ymin, double ymax)=0;
 };
 
 #endif

@@ -20,11 +20,11 @@ struct DataSet {
 
 class KbPlot : IMouseEventListener {
 	public:
-		KbPlot(GLWidget*, double, double, double, double);
+		KbPlot(GLWidget*, double xmin, double xmax, double ymin, double ymax);
 		KbPlot(GLWidget*);
 		~KbPlot();
 
-		void setRanges(double,double,double,double);
+		void setRanges(double xmin, double xmax, double ymin, double ymax);
 		void addData(const DataSet *ds);
 
 		void setGrid(bool);
@@ -34,20 +34,22 @@ class KbPlot : IMouseEventListener {
 
 		void setXTick(double);
 		void setYTick(double);
+		void setGridTicksX(int);
+		void setGridTicksY(int);
 
 		void draw();
 		void exportAsImage(const string filename);
 
-		virtual void mouseMoveEvent(int,int);
-		virtual void mousePressEvent(int,int);
-		virtual void mouseReleaseEvent(int,int);
-		virtual void mouseScrollEvent(int);
+		virtual void mouseMoveEvent(int x,int y);
+		virtual void mousePressEvent(int x,int y);
+		virtual void mouseReleaseEvent(int x,int y);
+		virtual void mouseScrollEvent(int angle);
 
 		Style gridStyle;
 		bool gridEnabled;
 	private:
 		static const double c_frameThickness = 0.02;
-		static const double c_tickLength = 0.02;
+		static const double c_tickLength = 0.2;
 
 		void drawAxis();
 		void drawNumbers();
@@ -64,5 +66,6 @@ class KbPlot : IMouseEventListener {
 
 		double xmax, ymax, xmin, ymin;
 		double xtick, ytick;
+
 		vector<const DataSet*> datasets;
 };
