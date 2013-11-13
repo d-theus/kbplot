@@ -149,8 +149,8 @@ void MarkerSet::draw() const{
 }
 
 Text::Text(const string &text, double size, double x, double y){
-	if(!(font = dtx_open_font("Ubuntu-R.ttf", 16))){
-		fprintf(stderr, "Unable to open font");
+	if(!(font = dtx_open_font("./res/Ubuntu-R.ttf", 16))){
+		fprintf(stderr, "Unable to open font\n");
 	}
 	this -> x = x;
 	this -> y = y;

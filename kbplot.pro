@@ -3,12 +3,12 @@
 ######################################################################
 
 QT += core gui opengl
-LIBS += -L. -L/usr/local/lib -ldrawtext -lGL -lGLU -lGLEW
+LIBS += -L./lib -ldrawtext -lGL -lGLU -lGLEW
 QMAKE_CXXFLAGS += -w -DDEBUG
 TEMPLATE = app
-TARGET = kbplot
-INCLUDEPATH += .
+TARGET = ./bin/kbplot
+INCLUDEPATH += ./h
 
 # Input
-HEADERS += glwidget.h kbplot.h event.h graphical_object.h txy.h
-SOURCES += glwidget.cpp main.cpp kbplot.cpp graphical_object.cpp
+HEADERS += h/aglwidget.h h/glwidget.h h/kbplot.h h/event.h h/graphical_object.h h/txy.h
+SOURCES += src/glwidget.cpp src/main.cpp src/kbplot.cpp src/graphical_object.cpp
