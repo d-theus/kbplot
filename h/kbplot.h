@@ -27,15 +27,24 @@ class KbPlot : IMouseEventListener {
 		void setRanges(double xmin, double xmax, double ymin, double ymax);
 		void addData(const DataSet *ds);
 
-		void setGrid(bool);
-
 		void setBackground(const string filename);
 		void setBackground(const unsigned int color);
 
-		void setXTick(double);
-		void setYTick(double);
-		void setGridTicksX(int);
-		void setGridTicksY(int);
+		void setAxisTick(double);
+		void setAxisXTick(double);
+		void setAxisYTick(double);
+		void setAxisXName(const string);
+		void setAxisYName(const string);
+
+		void setGridTick(const int);
+		void setGridXTick(const int);
+		void setGridYTick(const int);
+		void setGridStroke(const Style::LineStroke)  ;
+		void setGridXStroke(const Style::LineStroke) ;
+		void setGridYStroke(const Style::LineStroke) ;
+
+		void setGridThickness(const unsigned int);
+		void setGridColor(const unsigned int);
 
 		void draw();
 		void exportAsImage(const string filename);
@@ -44,16 +53,9 @@ class KbPlot : IMouseEventListener {
 		virtual void mousePressEvent(int x,int y);
 		virtual void mouseReleaseEvent(int x,int y);
 		virtual void mouseScrollEvent(int angle);
-
-		Style gridStyle;
-		bool gridEnabled;
 	private:
 		static const double c_frameThickness = 0.02;
 		static const double c_tickLength = 0.2;
-
-		void drawAxis();
-		void drawNumbers();
-		void drawBg();
 
 		Polyline *frame;
 		std::vector<Line*> xticks_t;
@@ -68,4 +70,6 @@ class KbPlot : IMouseEventListener {
 		double xtick, ytick;
 
 		vector<const DataSet*> datasets;
+
+		Style stAxisX, stAxisY, stBkgnd, stGridX, stGridY;
 };

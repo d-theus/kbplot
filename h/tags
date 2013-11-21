@@ -1,0 +1,363 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+AGLWIDGET_H	aglwidget.h	2;"	d
+AGLWidget	aglwidget.h	/^class AGLWidget {$/;"	c
+AGLWidget::GLinitialize	aglwidget.h	/^	virtual void GLinitialize()=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:()
+AGLWidget::GLpaint	aglwidget.h	/^	virtual void GLpaint()=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:()
+AGLWidget::GLresize	aglwidget.h	/^	virtual void GLresize(int nh,int nw)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(int nh,int nw)
+AGLWidget::addObject	aglwidget.h	/^	virtual void addObject(string, GraphicalObject*)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(string, GraphicalObject*)
+AGLWidget::clearScene	aglwidget.h	/^	virtual void clearScene()=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:()
+AGLWidget::setWorkingArea	aglwidget.h	/^	virtual void setWorkingArea(double xmin, double xmax, double ymin, double ymax)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(double xmin, double xmax, double ymin, double ymax)
+AGLWidget::subscribeToMouse	aglwidget.h	/^	virtual void subscribeToMouse(IMouseEventListener *subscriber)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(IMouseEventListener *subscriber)
+AGLWidget::trGLToScreenx	aglwidget.h	/^	virtual int trGLToScreenx(double)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(double)
+AGLWidget::trGLToScreeny	aglwidget.h	/^	virtual int trGLToScreeny(double)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(double)
+AGLWidget::trScreenToGLx	aglwidget.h	/^	virtual double trScreenToGLx(int)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(int)
+AGLWidget::trScreenToGLy	aglwidget.h	/^	virtual double trScreenToGLy(int)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(int)
+AGLWidget::~AGLWidget	aglwidget.h	/^	virtual ~AGLWidget(){};$/;"	f	class:AGLWidget	access:public	implementation:virtual	signature:()
+DataSet	kbplot.h	/^		DataSet(const DataSet &){};$/;"	f	struct:DataSet	access:public	signature:(const DataSet &)
+DataSet	kbplot.h	/^		DataSet(vector<Txy> *data, LinesPointsEnabler lp = WITH_LINES);$/;"	p	struct:DataSet	access:public	signature:(vector<Txy> *data, LinesPointsEnabler lp = WITH_LINES)
+DataSet	kbplot.h	/^struct DataSet {$/;"	s
+DataSet::DataSet	kbplot.h	/^		DataSet(const DataSet &){};$/;"	f	struct:DataSet	access:public	signature:(const DataSet &)
+DataSet::DataSet	kbplot.h	/^		DataSet(vector<Txy> *data, LinesPointsEnabler lp = WITH_LINES);$/;"	p	struct:DataSet	access:public	signature:(vector<Txy> *data, LinesPointsEnabler lp = WITH_LINES)
+DataSet::LinesPointsEnabler	kbplot.h	/^	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;$/;"	t	struct:DataSet	typeref:enum:DataSet::__anon5	access:public
+DataSet::WITH_LINES	kbplot.h	/^	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;$/;"	e	enum:DataSet::__anon5
+DataSet::WITH_LINESPOINTS	kbplot.h	/^	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;$/;"	e	enum:DataSet::__anon5
+DataSet::WITH_POINTS	kbplot.h	/^	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;$/;"	e	enum:DataSet::__anon5
+DataSet::markerset	kbplot.h	/^		GraphicalObject *markerset;$/;"	m	struct:DataSet	access:public
+DataSet::polyline	kbplot.h	/^		GraphicalObject *polyline;$/;"	m	struct:DataSet	access:public
+DataSet::withLines	kbplot.h	/^		bool withLines;$/;"	m	struct:DataSet	access:public
+DataSet::withPoints	kbplot.h	/^		bool withPoints;$/;"	m	struct:DataSet	access:public
+DataSet::~DataSet	kbplot.h	/^		virtual ~DataSet();$/;"	p	struct:DataSet	access:public	implementation:virtual	signature:()
+EVENT_H	event.h	2;"	d
+GLWIDGET_H	glwidget.h	2;"	d
+GLWidget	glwidget.h	/^	GLWidget();$/;"	p	class:GLWidget	access:public	signature:()
+GLWidget	glwidget.h	/^class GLWidget : public QGLWidget, public AGLWidget$/;"	c	inherits:QGLWidget,AGLWidget
+GLWidget::GLWidget	glwidget.h	/^	GLWidget();$/;"	p	class:GLWidget	access:public	signature:()
+GLWidget::GLinitialize	glwidget.h	/^	virtual void GLinitialize();$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:()
+GLWidget::GLpaint	glwidget.h	/^	virtual void GLpaint();$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:()
+GLWidget::GLresize	glwidget.h	/^	virtual void GLresize(int nw, int nh);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(int nw, int nh)
+GLWidget::GLupdate	glwidget.h	/^	virtual void GLupdate();$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:()
+GLWidget::addObject	glwidget.h	/^	virtual void addObject(string, GraphicalObject*);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(string, GraphicalObject*)
+GLWidget::clearScene	glwidget.h	/^	virtual void clearScene(){};$/;"	f	class:GLWidget	access:public	implementation:virtual	signature:()
+GLWidget::initializeGL	glwidget.h	/^	void initializeGL();$/;"	p	class:GLWidget	access:public	signature:()
+GLWidget::mouseListeners	glwidget.h	/^	vector<IMouseEventListener*> mouseListeners;$/;"	m	class:GLWidget	access:private
+GLWidget::mouseMoveEvent	glwidget.h	/^	void mouseMoveEvent(QMouseEvent *e);$/;"	p	class:GLWidget	access:public	signature:(QMouseEvent *e)
+GLWidget::mouseReleaseEvent	glwidget.h	/^	void mouseReleaseEvent(QMouseEvent *e);$/;"	p	class:GLWidget	access:public	signature:(QMouseEvent *e)
+GLWidget::mouseX	glwidget.h	/^	int mouseX, mouseY;$/;"	m	class:GLWidget	access:private
+GLWidget::mouseY	glwidget.h	/^	int mouseX, mouseY;$/;"	m	class:GLWidget	access:private
+GLWidget::objects	glwidget.h	/^	map<string, GraphicalObject*> objects;$/;"	m	class:GLWidget	access:private
+GLWidget::paintGL	glwidget.h	/^	void paintGL();$/;"	p	class:GLWidget	access:public	signature:()
+GLWidget::resizeGL	glwidget.h	/^	void resizeGL(int nw, int nh);$/;"	p	class:GLWidget	access:public	signature:(int nw, int nh)
+GLWidget::setWorkingArea	glwidget.h	/^	virtual void setWorkingArea(double xmin, double xmax, double ymin, double ymax);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(double xmin, double xmax, double ymin, double ymax)
+GLWidget::subscribeToMouse	glwidget.h	/^	virtual void subscribeToMouse(IMouseEventListener*);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(IMouseEventListener*)
+GLWidget::trGLToScreenx	glwidget.h	/^	virtual int trGLToScreenx(double);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(double)
+GLWidget::trGLToScreeny	glwidget.h	/^	virtual int trGLToScreeny(double);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(double)
+GLWidget::trScreenToGLx	glwidget.h	/^	virtual double trScreenToGLx(int);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(int)
+GLWidget::trScreenToGLy	glwidget.h	/^	virtual double trScreenToGLy(int);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(int)
+GLWidget::wheelEvent	glwidget.h	/^	void wheelEvent(QWheelEvent *e);$/;"	p	class:GLWidget	access:public	signature:(QWheelEvent *e)
+GLWidget::~GLWidget	glwidget.h	/^	virtual ~GLWidget(){};$/;"	f	class:GLWidget	access:public	implementation:virtual	signature:()
+GLinitialize	aglwidget.h	/^	virtual void GLinitialize()=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:()
+GLinitialize	glwidget.h	/^	virtual void GLinitialize();$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:()
+GLpaint	aglwidget.h	/^	virtual void GLpaint()=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:()
+GLpaint	glwidget.h	/^	virtual void GLpaint();$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:()
+GLresize	aglwidget.h	/^	virtual void GLresize(int nh,int nw)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(int nh,int nw)
+GLresize	glwidget.h	/^	virtual void GLresize(int nw, int nh);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(int nw, int nh)
+GLupdate	glwidget.h	/^	virtual void GLupdate();$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:()
+GRAPHICAL_OBJECT	graphical_object.h	2;"	d
+GraphicalObject	graphical_object.h	/^class GraphicalObject {$/;"	c
+GraphicalObject::after_draw	graphical_object.h	/^		void after_draw()const;$/;"	p	class:GraphicalObject	access:protected	signature:() const
+GraphicalObject::before_draw	graphical_object.h	/^		void before_draw()const;$/;"	p	class:GraphicalObject	access:protected	signature:() const
+GraphicalObject::draw	graphical_object.h	/^		virtual void draw() const = 0;$/;"	p	class:GraphicalObject	access:public	implementation:pure virtual	signature:() const
+GraphicalObject::isFixed	graphical_object.h	/^		bool isFixed= false;$/;"	m	class:GraphicalObject	access:protected
+GraphicalObject::isScaled	graphical_object.h	/^		bool isScaled = false;$/;"	m	class:GraphicalObject	access:protected
+GraphicalObject::isTranslated	graphical_object.h	/^		bool isTranslated = false;$/;"	m	class:GraphicalObject	access:protected
+GraphicalObject::scX	graphical_object.h	/^		double scX, scY;$/;"	m	class:GraphicalObject	access:protected
+GraphicalObject::scY	graphical_object.h	/^		double scX, scY;$/;"	m	class:GraphicalObject	access:protected
+GraphicalObject::setScale	graphical_object.h	/^		void setScale(double,double);$/;"	p	class:GraphicalObject	access:public	signature:(double,double)
+GraphicalObject::setTranslation	graphical_object.h	/^		void setTranslation(double,double);$/;"	p	class:GraphicalObject	access:public	signature:(double,double)
+GraphicalObject::style	graphical_object.h	/^		Style style;$/;"	m	class:GraphicalObject	access:public
+GraphicalObject::toggleFixed	graphical_object.h	/^		void toggleFixed(bool b = true);$/;"	p	class:GraphicalObject	access:public	signature:(bool b = true)
+GraphicalObject::toggleScaled	graphical_object.h	/^		void toggleScaled(bool b = true);$/;"	p	class:GraphicalObject	access:public	signature:(bool b = true)
+GraphicalObject::toggleTranslated	graphical_object.h	/^		void toggleTranslated(bool b = true);$/;"	p	class:GraphicalObject	access:public	signature:(bool b = true)
+GraphicalObject::trX	graphical_object.h	/^		double trX, trY;$/;"	m	class:GraphicalObject	access:protected
+GraphicalObject::trY	graphical_object.h	/^		double trX, trY;$/;"	m	class:GraphicalObject	access:protected
+GraphicalObject::~GraphicalObject	graphical_object.h	/^		virtual ~GraphicalObject(){};$/;"	f	class:GraphicalObject	access:public	implementation:virtual	signature:()
+IMouseEventListener	event.h	/^class IMouseEventListener {$/;"	c
+IMouseEventListener::mouseMoveEvent	event.h	/^	virtual void mouseMoveEvent(int,int)=0;$/;"	p	class:IMouseEventListener	access:public	implementation:pure virtual	signature:(int,int)
+IMouseEventListener::mousePressEvent	event.h	/^	virtual void mousePressEvent(int,int)=0;$/;"	p	class:IMouseEventListener	access:public	implementation:pure virtual	signature:(int,int)
+IMouseEventListener::mouseReleaseEvent	event.h	/^	virtual void mouseReleaseEvent(int,int)=0;$/;"	p	class:IMouseEventListener	access:public	implementation:pure virtual	signature:(int,int)
+IMouseEventListener::mouseScrollEvent	event.h	/^	virtual void mouseScrollEvent(int)=0;$/;"	p	class:IMouseEventListener	access:public	implementation:pure virtual	signature:(int)
+IMouseEventListener::~IMouseEventListener	event.h	/^	virtual ~IMouseEventListener() {};$/;"	f	class:IMouseEventListener	access:public	implementation:virtual	signature:()
+KbPlot	kbplot.h	/^		KbPlot(GLWidget*);$/;"	p	class:KbPlot	access:public	signature:(GLWidget*)
+KbPlot	kbplot.h	/^		KbPlot(GLWidget*, double xmin, double xmax, double ymin, double ymax);$/;"	p	class:KbPlot	access:public	signature:(GLWidget*, double xmin, double xmax, double ymin, double ymax)
+KbPlot	kbplot.h	/^class KbPlot : IMouseEventListener {$/;"	c	inherits:IMouseEventListener
+KbPlot::KbPlot	kbplot.h	/^		KbPlot(GLWidget*);$/;"	p	class:KbPlot	access:public	signature:(GLWidget*)
+KbPlot::KbPlot	kbplot.h	/^		KbPlot(GLWidget*, double xmin, double xmax, double ymin, double ymax);$/;"	p	class:KbPlot	access:public	signature:(GLWidget*, double xmin, double xmax, double ymin, double ymax)
+KbPlot::addData	kbplot.h	/^		void addData(const DataSet *ds);$/;"	p	class:KbPlot	access:public	signature:(const DataSet *ds)
+KbPlot::c_frameThickness	kbplot.h	/^		static const double c_frameThickness = 0.02;$/;"	m	class:KbPlot	access:private
+KbPlot::c_tickLength	kbplot.h	/^		static const double c_tickLength = 0.2;$/;"	m	class:KbPlot	access:private
+KbPlot::container	kbplot.h	/^		GLWidget *container;$/;"	m	class:KbPlot	access:private
+KbPlot::datasets	kbplot.h	/^		vector<const DataSet*> datasets;$/;"	m	class:KbPlot	access:private
+KbPlot::draw	kbplot.h	/^		void draw();$/;"	p	class:KbPlot	access:public	signature:()
+KbPlot::exportAsImage	kbplot.h	/^		void exportAsImage(const string filename);$/;"	p	class:KbPlot	access:public	signature:(const string filename)
+KbPlot::frame	kbplot.h	/^		Polyline *frame;$/;"	m	class:KbPlot	access:private
+KbPlot::mouseMoveEvent	kbplot.h	/^		virtual void mouseMoveEvent(int x,int y);$/;"	p	class:KbPlot	access:public	implementation:virtual	signature:(int x,int y)
+KbPlot::mousePressEvent	kbplot.h	/^		virtual void mousePressEvent(int x,int y);$/;"	p	class:KbPlot	access:public	implementation:virtual	signature:(int x,int y)
+KbPlot::mouseReleaseEvent	kbplot.h	/^		virtual void mouseReleaseEvent(int x,int y);$/;"	p	class:KbPlot	access:public	implementation:virtual	signature:(int x,int y)
+KbPlot::mouseScrollEvent	kbplot.h	/^		virtual void mouseScrollEvent(int angle);$/;"	p	class:KbPlot	access:public	implementation:virtual	signature:(int angle)
+KbPlot::setAxisTick	kbplot.h	/^		void setAxisTick(double);$/;"	p	class:KbPlot	access:public	signature:(double)
+KbPlot::setAxisXName	kbplot.h	/^		void setAxisXName(const string);$/;"	p	class:KbPlot	access:public	signature:(const string)
+KbPlot::setAxisXTick	kbplot.h	/^		void setAxisXTick(double);$/;"	p	class:KbPlot	access:public	signature:(double)
+KbPlot::setAxisYName	kbplot.h	/^		void setAxisYName(const string);$/;"	p	class:KbPlot	access:public	signature:(const string)
+KbPlot::setAxisYTick	kbplot.h	/^		void setAxisYTick(double);$/;"	p	class:KbPlot	access:public	signature:(double)
+KbPlot::setBackground	kbplot.h	/^		void setBackground(const string filename);$/;"	p	class:KbPlot	access:public	signature:(const string filename)
+KbPlot::setBackground	kbplot.h	/^		void setBackground(const unsigned int color);$/;"	p	class:KbPlot	access:public	signature:(const unsigned int color)
+KbPlot::setGridColor	kbplot.h	/^		void setGridColor(const unsigned int);$/;"	p	class:KbPlot	access:public	signature:(const unsigned int)
+KbPlot::setGridThickness	kbplot.h	/^		void setGridThickness(const unsigned int);$/;"	p	class:KbPlot	access:public	signature:(const unsigned int)
+KbPlot::setGridTick	kbplot.h	/^		void setGridTick(int);$/;"	p	class:KbPlot	access:public	signature:(int)
+KbPlot::setGridXTick	kbplot.h	/^		void setGridXTick(int);$/;"	p	class:KbPlot	access:public	signature:(int)
+KbPlot::setGridYTick	kbplot.h	/^		void setGridYTick(int);$/;"	p	class:KbPlot	access:public	signature:(int)
+KbPlot::setRanges	kbplot.h	/^		void setRanges(double xmin, double xmax, double ymin, double ymax);$/;"	p	class:KbPlot	access:public	signature:(double xmin, double xmax, double ymin, double ymax)
+KbPlot::v1	kbplot.h	/^		vector<Txy> v1;$/;"	m	class:KbPlot	access:private
+KbPlot::xmax	kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
+KbPlot::xmin	kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
+KbPlot::xtick	kbplot.h	/^		double xtick, ytick;$/;"	m	class:KbPlot	access:private
+KbPlot::xticks_b	kbplot.h	/^		std::vector<Line*> xticks_b;$/;"	m	class:KbPlot	access:private
+KbPlot::xticks_t	kbplot.h	/^		std::vector<Line*> xticks_t;$/;"	m	class:KbPlot	access:private
+KbPlot::ymax	kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
+KbPlot::ymin	kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
+KbPlot::ytick	kbplot.h	/^		double xtick, ytick;$/;"	m	class:KbPlot	access:private
+KbPlot::yticks_l	kbplot.h	/^		std::vector<Line*> yticks_l;$/;"	m	class:KbPlot	access:private
+KbPlot::yticks_r	kbplot.h	/^		std::vector<Line*> yticks_r;$/;"	m	class:KbPlot	access:private
+KbPlot::~KbPlot	kbplot.h	/^		~KbPlot();$/;"	p	class:KbPlot	access:public	signature:()
+LINE_DASHED	graphical_object.h	/^		LINE_DASHED,$/;"	e	enum:Style::__anon1
+LINE_DASH_DOTTED	graphical_object.h	/^		LINE_DASH_DOTTED$/;"	e	enum:Style::__anon1
+LINE_DOTTED	graphical_object.h	/^		LINE_DOTTED,$/;"	e	enum:Style::__anon1
+LINE_STD	graphical_object.h	/^		LINE_STD,$/;"	e	enum:Style::__anon1
+Line	graphical_object.h	/^		Line(double,double,double,double);$/;"	p	class:Line	access:public	signature:(double,double,double,double)
+Line	graphical_object.h	/^class Line : public GraphicalObject {$/;"	c	inherits:GraphicalObject
+Line::Line	graphical_object.h	/^		Line(double,double,double,double);$/;"	p	class:Line	access:public	signature:(double,double,double,double)
+Line::draw	graphical_object.h	/^		virtual void draw() const;$/;"	p	class:Line	access:public	implementation:virtual	signature:() const
+Line::setCoordinates	graphical_object.h	/^		void setCoordinates(double,double,double,double);$/;"	p	class:Line	access:public	signature:(double,double,double,double)
+Line::x1	graphical_object.h	/^		double x1,x2,y1,y2;$/;"	m	class:Line	access:private
+Line::x2	graphical_object.h	/^		double x1,x2,y1,y2;$/;"	m	class:Line	access:private
+Line::y1	graphical_object.h	/^		double x1,x2,y1,y2;$/;"	m	class:Line	access:private
+Line::y2	graphical_object.h	/^		double x1,x2,y1,y2;$/;"	m	class:Line	access:private
+Line::~Line	graphical_object.h	/^		virtual ~Line(){};$/;"	f	class:Line	access:public	implementation:virtual	signature:()
+LineStroke	graphical_object.h	/^	} LineStroke;$/;"	t	struct:Style	typeref:enum:Style::__anon1	access:public
+LinesPointsEnabler	kbplot.h	/^	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;$/;"	t	struct:DataSet	typeref:enum:DataSet::__anon5	access:public
+MARK_CROSS	graphical_object.h	/^		MARK_CROSS$/;"	e	enum:Style::__anon2
+MARK_DOT	graphical_object.h	/^		MARK_DOT,$/;"	e	enum:Style::__anon2
+MARK_SQUARE	graphical_object.h	/^		MARK_SQUARE,$/;"	e	enum:Style::__anon2
+MARK_TRIANGLE	graphical_object.h	/^		MARK_TRIANGLE,$/;"	e	enum:Style::__anon2
+MRK_TYPE_CROSS	graphical_object.h	/^	MRK_TYPE_CROSS$/;"	e	enum:__anon4
+MRK_TYPE_DOT	graphical_object.h	/^	MRK_TYPE_DOT,$/;"	e	enum:__anon4
+MarkerSet	graphical_object.h	/^		MarkerSet (vector<Txy> *data);$/;"	p	class:MarkerSet	access:public	signature:(vector<Txy> *data)
+MarkerSet	graphical_object.h	/^class MarkerSet : public GraphicalObject {$/;"	c	inherits:GraphicalObject
+MarkerSet::MarkerSet	graphical_object.h	/^		MarkerSet (vector<Txy> *data);$/;"	p	class:MarkerSet	access:public	signature:(vector<Txy> *data)
+MarkerSet::data	graphical_object.h	/^		vector<Txy> *data;$/;"	m	class:MarkerSet	access:private
+MarkerSet::draw	graphical_object.h	/^		virtual void draw() const;$/;"	p	class:MarkerSet	access:public	implementation:virtual	signature:() const
+MarkerSet::~MarkerSet	graphical_object.h	/^		virtual ~MarkerSet (){};$/;"	f	class:MarkerSet	access:public	implementation:virtual	signature:()
+MarkerType	graphical_object.h	/^	} MarkerType;$/;"	t	struct:Style	typeref:enum:Style::__anon2	access:public
+MarkerType	graphical_object.h	/^} MarkerType;$/;"	t	typeref:enum:__anon4
+Polygon	graphical_object.h	/^		Polygon(vector<Txy> *);$/;"	p	class:Polygon	access:public	signature:(vector<Txy> *)
+Polygon	graphical_object.h	/^class Polygon : public GraphicalObject {$/;"	c	inherits:GraphicalObject
+Polygon::Polygon	graphical_object.h	/^		Polygon(vector<Txy> *);$/;"	p	class:Polygon	access:public	signature:(vector<Txy> *)
+Polygon::data	graphical_object.h	/^		vector<Txy> *data;$/;"	m	class:Polygon	access:private
+Polygon::draw	graphical_object.h	/^		virtual void draw() const;$/;"	p	class:Polygon	access:public	implementation:virtual	signature:() const
+Polygon::~Polygon	graphical_object.h	/^		virtual ~Polygon(){};$/;"	f	class:Polygon	access:public	implementation:virtual	signature:()
+Polyline	graphical_object.h	/^		Polyline(vector<Txy> *data);$/;"	p	class:Polyline	access:public	signature:(vector<Txy> *data)
+Polyline	graphical_object.h	/^class Polyline : public GraphicalObject {$/;"	c	inherits:GraphicalObject
+Polyline::Polyline	graphical_object.h	/^		Polyline(vector<Txy> *data);$/;"	p	class:Polyline	access:public	signature:(vector<Txy> *data)
+Polyline::data	graphical_object.h	/^		vector<Txy> *data;$/;"	m	class:Polyline	access:private
+Polyline::draw	graphical_object.h	/^		virtual void draw() const;$/;"	p	class:Polyline	access:public	implementation:virtual	signature:() const
+Polyline::~Polyline	graphical_object.h	/^		virtual ~Polyline(){qDebug() << "Destroying polyline";};$/;"	f	class:Polyline	access:public	implementation:virtual	signature:()
+Style	graphical_object.h	/^	Style();$/;"	p	struct:Style	access:public	signature:()
+Style	graphical_object.h	/^struct Style {$/;"	s
+Style::LINE_DASHED	graphical_object.h	/^		LINE_DASHED,$/;"	e	enum:Style::__anon1
+Style::LINE_DASH_DOTTED	graphical_object.h	/^		LINE_DASH_DOTTED$/;"	e	enum:Style::__anon1
+Style::LINE_DOTTED	graphical_object.h	/^		LINE_DOTTED,$/;"	e	enum:Style::__anon1
+Style::LINE_STD	graphical_object.h	/^		LINE_STD,$/;"	e	enum:Style::__anon1
+Style::LineStroke	graphical_object.h	/^	} LineStroke;$/;"	t	struct:Style	typeref:enum:Style::__anon1	access:public
+Style::MARK_CROSS	graphical_object.h	/^		MARK_CROSS$/;"	e	enum:Style::__anon2
+Style::MARK_DOT	graphical_object.h	/^		MARK_DOT,$/;"	e	enum:Style::__anon2
+Style::MARK_SQUARE	graphical_object.h	/^		MARK_SQUARE,$/;"	e	enum:Style::__anon2
+Style::MARK_TRIANGLE	graphical_object.h	/^		MARK_TRIANGLE,$/;"	e	enum:Style::__anon2
+Style::MarkerType	graphical_object.h	/^	} MarkerType;$/;"	t	struct:Style	typeref:enum:Style::__anon2	access:public
+Style::Style	graphical_object.h	/^	Style();$/;"	p	struct:Style	access:public	signature:()
+Style::TEXT_ALIGN_BOTLEFT	graphical_object.h	/^		TEXT_ALIGN_BOTLEFT,$/;"	e	enum:Style::__anon3
+Style::TEXT_ALIGN_BOTRIGHT	graphical_object.h	/^		TEXT_ALIGN_BOTRIGHT$/;"	e	enum:Style::__anon3
+Style::TEXT_ALIGN_BOTTOM	graphical_object.h	/^		TEXT_ALIGN_BOTTOM,$/;"	e	enum:Style::__anon3
+Style::TEXT_ALIGN_CENTER	graphical_object.h	/^		TEXT_ALIGN_CENTER,$/;"	e	enum:Style::__anon3
+Style::TEXT_ALIGN_LEFT	graphical_object.h	/^		TEXT_ALIGN_LEFT,$/;"	e	enum:Style::__anon3
+Style::TEXT_ALIGN_RIGHT	graphical_object.h	/^		TEXT_ALIGN_RIGHT,$/;"	e	enum:Style::__anon3
+Style::TEXT_ALIGN_TOP	graphical_object.h	/^		TEXT_ALIGN_TOP,$/;"	e	enum:Style::__anon3
+Style::TEXT_ALIGN_TOPLEFT	graphical_object.h	/^		TEXT_ALIGN_TOPLEFT,$/;"	e	enum:Style::__anon3
+Style::TEXT_ALIGN_TOPRIGHT	graphical_object.h	/^		TEXT_ALIGN_TOPRIGHT,$/;"	e	enum:Style::__anon3
+Style::TextAlignment	graphical_object.h	/^	} TextAlignment;$/;"	t	struct:Style	typeref:enum:Style::__anon3	access:public
+Style::fontName	graphical_object.h	/^	string fontName = "Ubuntu-R.ttf";$/;"	m	struct:Style	access:public
+Style::fontSize	graphical_object.h	/^	size_t fontSize = 16;$/;"	m	struct:Style	access:public
+Style::lineColor	graphical_object.h	/^	unsigned int lineColor = 0xFFFFFFFF;$/;"	m	struct:Style	access:public
+Style::lineStroke	graphical_object.h	/^	LineStroke lineStroke;$/;"	m	struct:Style	access:public
+Style::lineThickness	graphical_object.h	/^	float lineThickness = 1.0;$/;"	m	struct:Style	access:public
+Style::markerSize	graphical_object.h	/^	unsigned int markerSize = 5;$/;"	m	struct:Style	access:public
+Style::markerType	graphical_object.h	/^	MarkerType markerType = MARK_SQUARE;$/;"	m	struct:Style	access:public
+Style::textAlignment	graphical_object.h	/^	TextAlignment textAlignment = TEXT_ALIGN_CENTER;$/;"	m	struct:Style	access:public
+TEXT_ALIGN_BOTLEFT	graphical_object.h	/^		TEXT_ALIGN_BOTLEFT,$/;"	e	enum:Style::__anon3
+TEXT_ALIGN_BOTRIGHT	graphical_object.h	/^		TEXT_ALIGN_BOTRIGHT$/;"	e	enum:Style::__anon3
+TEXT_ALIGN_BOTTOM	graphical_object.h	/^		TEXT_ALIGN_BOTTOM,$/;"	e	enum:Style::__anon3
+TEXT_ALIGN_CENTER	graphical_object.h	/^		TEXT_ALIGN_CENTER,$/;"	e	enum:Style::__anon3
+TEXT_ALIGN_LEFT	graphical_object.h	/^		TEXT_ALIGN_LEFT,$/;"	e	enum:Style::__anon3
+TEXT_ALIGN_RIGHT	graphical_object.h	/^		TEXT_ALIGN_RIGHT,$/;"	e	enum:Style::__anon3
+TEXT_ALIGN_TOP	graphical_object.h	/^		TEXT_ALIGN_TOP,$/;"	e	enum:Style::__anon3
+TEXT_ALIGN_TOPLEFT	graphical_object.h	/^		TEXT_ALIGN_TOPLEFT,$/;"	e	enum:Style::__anon3
+TEXT_ALIGN_TOPRIGHT	graphical_object.h	/^		TEXT_ALIGN_TOPRIGHT,$/;"	e	enum:Style::__anon3
+TXY_H	txy.h	2;"	d
+Text	graphical_object.h	/^		Text(const string &text, double size, double x, double y);$/;"	p	class:Text	access:public	signature:(const string &text, double size, double x, double y)
+Text	graphical_object.h	/^class Text : public GraphicalObject {$/;"	c	inherits:GraphicalObject
+Text::Text	graphical_object.h	/^		Text(const string &text, double size, double x, double y);$/;"	p	class:Text	access:public	signature:(const string &text, double size, double x, double y)
+Text::draw	graphical_object.h	/^		virtual void draw()const;$/;"	p	class:Text	access:public	implementation:virtual	signature:() const
+Text::font	graphical_object.h	/^		struct dtx_font *font;$/;"	m	class:Text	typeref:struct:Text::dtx_font	access:private
+Text::size	graphical_object.h	/^		double x, y, size;$/;"	m	class:Text	access:private
+Text::text	graphical_object.h	/^		string text;$/;"	m	class:Text	access:private
+Text::x	graphical_object.h	/^		double x, y, size;$/;"	m	class:Text	access:private
+Text::y	graphical_object.h	/^		double x, y, size;$/;"	m	class:Text	access:private
+Text::~Text	graphical_object.h	/^		~Text(){};$/;"	f	class:Text	access:public	signature:()
+TextAlignment	graphical_object.h	/^	} TextAlignment;$/;"	t	struct:Style	typeref:enum:Style::__anon3	access:public
+Txy	txy.h	/^	Txy(double _x, double _y){x = _x; y = _y;}$/;"	f	struct:Txy	access:public	signature:(double _x, double _y)
+Txy	txy.h	/^struct Txy $/;"	s
+Txy::Txy	txy.h	/^	Txy(double _x, double _y){x = _x; y = _y;}$/;"	f	struct:Txy	access:public	signature:(double _x, double _y)
+Txy::x	txy.h	/^	double x,y;$/;"	m	struct:Txy	access:public
+Txy::y	txy.h	/^	double x,y;$/;"	m	struct:Txy	access:public
+WITH_LINES	kbplot.h	/^	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;$/;"	e	enum:DataSet::__anon5
+WITH_LINESPOINTS	kbplot.h	/^	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;$/;"	e	enum:DataSet::__anon5
+WITH_POINTS	kbplot.h	/^	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;$/;"	e	enum:DataSet::__anon5
+addData	kbplot.h	/^		void addData(const DataSet *ds);$/;"	p	class:KbPlot	access:public	signature:(const DataSet *ds)
+addObject	aglwidget.h	/^	virtual void addObject(string, GraphicalObject*)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(string, GraphicalObject*)
+addObject	glwidget.h	/^	virtual void addObject(string, GraphicalObject*);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(string, GraphicalObject*)
+after_draw	graphical_object.h	/^		void after_draw()const;$/;"	p	class:GraphicalObject	access:protected	signature:() const
+before_draw	graphical_object.h	/^		void before_draw()const;$/;"	p	class:GraphicalObject	access:protected	signature:() const
+c_frameThickness	kbplot.h	/^		static const double c_frameThickness = 0.02;$/;"	m	class:KbPlot	access:private
+c_tickLength	kbplot.h	/^		static const double c_tickLength = 0.2;$/;"	m	class:KbPlot	access:private
+clearScene	aglwidget.h	/^	virtual void clearScene()=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:()
+clearScene	glwidget.h	/^	virtual void clearScene(){};$/;"	f	class:GLWidget	access:public	implementation:virtual	signature:()
+container	kbplot.h	/^		GLWidget *container;$/;"	m	class:KbPlot	access:private
+data	graphical_object.h	/^		vector<Txy> *data;$/;"	m	class:MarkerSet	access:private
+data	graphical_object.h	/^		vector<Txy> *data;$/;"	m	class:Polygon	access:private
+data	graphical_object.h	/^		vector<Txy> *data;$/;"	m	class:Polyline	access:private
+datasets	kbplot.h	/^		vector<const DataSet*> datasets;$/;"	m	class:KbPlot	access:private
+draw	graphical_object.h	/^		virtual void draw() const = 0;$/;"	p	class:GraphicalObject	access:public	implementation:pure virtual	signature:() const
+draw	graphical_object.h	/^		virtual void draw() const;$/;"	p	class:Line	access:public	implementation:virtual	signature:() const
+draw	graphical_object.h	/^		virtual void draw() const;$/;"	p	class:MarkerSet	access:public	implementation:virtual	signature:() const
+draw	graphical_object.h	/^		virtual void draw() const;$/;"	p	class:Polygon	access:public	implementation:virtual	signature:() const
+draw	graphical_object.h	/^		virtual void draw() const;$/;"	p	class:Polyline	access:public	implementation:virtual	signature:() const
+draw	graphical_object.h	/^		virtual void draw()const;$/;"	p	class:Text	access:public	implementation:virtual	signature:() const
+draw	kbplot.h	/^		void draw();$/;"	p	class:KbPlot	access:public	signature:()
+exportAsImage	kbplot.h	/^		void exportAsImage(const string filename);$/;"	p	class:KbPlot	access:public	signature:(const string filename)
+font	graphical_object.h	/^		struct dtx_font *font;$/;"	m	class:Text	typeref:struct:Text::dtx_font	access:private
+fontName	graphical_object.h	/^	string fontName = "Ubuntu-R.ttf";$/;"	m	struct:Style	access:public
+fontSize	graphical_object.h	/^	size_t fontSize = 16;$/;"	m	struct:Style	access:public
+frame	kbplot.h	/^		Polyline *frame;$/;"	m	class:KbPlot	access:private
+initializeGL	glwidget.h	/^	void initializeGL();$/;"	p	class:GLWidget	access:public	signature:()
+isFixed	graphical_object.h	/^		bool isFixed= false;$/;"	m	class:GraphicalObject	access:protected
+isScaled	graphical_object.h	/^		bool isScaled = false;$/;"	m	class:GraphicalObject	access:protected
+isTranslated	graphical_object.h	/^		bool isTranslated = false;$/;"	m	class:GraphicalObject	access:protected
+lineColor	graphical_object.h	/^	unsigned int lineColor = 0xFFFFFFFF;$/;"	m	struct:Style	access:public
+lineStroke	graphical_object.h	/^	LineStroke lineStroke;$/;"	m	struct:Style	access:public
+lineThickness	graphical_object.h	/^	float lineThickness = 1.0;$/;"	m	struct:Style	access:public
+markerSize	graphical_object.h	/^	unsigned int markerSize = 5;$/;"	m	struct:Style	access:public
+markerType	graphical_object.h	/^	MarkerType markerType = MARK_SQUARE;$/;"	m	struct:Style	access:public
+markerset	kbplot.h	/^		GraphicalObject *markerset;$/;"	m	struct:DataSet	access:public
+mouseListeners	glwidget.h	/^	vector<IMouseEventListener*> mouseListeners;$/;"	m	class:GLWidget	access:private
+mouseMoveEvent	event.h	/^	virtual void mouseMoveEvent(int,int)=0;$/;"	p	class:IMouseEventListener	access:public	implementation:pure virtual	signature:(int,int)
+mouseMoveEvent	glwidget.h	/^	void mouseMoveEvent(QMouseEvent *e);$/;"	p	class:GLWidget	access:public	signature:(QMouseEvent *e)
+mouseMoveEvent	kbplot.h	/^		virtual void mouseMoveEvent(int x,int y);$/;"	p	class:KbPlot	access:public	implementation:virtual	signature:(int x,int y)
+mousePressEvent	event.h	/^	virtual void mousePressEvent(int,int)=0;$/;"	p	class:IMouseEventListener	access:public	implementation:pure virtual	signature:(int,int)
+mousePressEvent	kbplot.h	/^		virtual void mousePressEvent(int x,int y);$/;"	p	class:KbPlot	access:public	implementation:virtual	signature:(int x,int y)
+mouseReleaseEvent	event.h	/^	virtual void mouseReleaseEvent(int,int)=0;$/;"	p	class:IMouseEventListener	access:public	implementation:pure virtual	signature:(int,int)
+mouseReleaseEvent	glwidget.h	/^	void mouseReleaseEvent(QMouseEvent *e);$/;"	p	class:GLWidget	access:public	signature:(QMouseEvent *e)
+mouseReleaseEvent	kbplot.h	/^		virtual void mouseReleaseEvent(int x,int y);$/;"	p	class:KbPlot	access:public	implementation:virtual	signature:(int x,int y)
+mouseScrollEvent	event.h	/^	virtual void mouseScrollEvent(int)=0;$/;"	p	class:IMouseEventListener	access:public	implementation:pure virtual	signature:(int)
+mouseScrollEvent	kbplot.h	/^		virtual void mouseScrollEvent(int angle);$/;"	p	class:KbPlot	access:public	implementation:virtual	signature:(int angle)
+mouseX	glwidget.h	/^	int mouseX, mouseY;$/;"	m	class:GLWidget	access:private
+mouseY	glwidget.h	/^	int mouseX, mouseY;$/;"	m	class:GLWidget	access:private
+objects	glwidget.h	/^	map<string, GraphicalObject*> objects;$/;"	m	class:GLWidget	access:private
+paintGL	glwidget.h	/^	void paintGL();$/;"	p	class:GLWidget	access:public	signature:()
+polyline	kbplot.h	/^		GraphicalObject *polyline;$/;"	m	struct:DataSet	access:public
+resizeGL	glwidget.h	/^	void resizeGL(int nw, int nh);$/;"	p	class:GLWidget	access:public	signature:(int nw, int nh)
+scX	graphical_object.h	/^		double scX, scY;$/;"	m	class:GraphicalObject	access:protected
+scY	graphical_object.h	/^		double scX, scY;$/;"	m	class:GraphicalObject	access:protected
+setAxisTick	kbplot.h	/^		void setAxisTick(double);$/;"	p	class:KbPlot	access:public	signature:(double)
+setAxisXName	kbplot.h	/^		void setAxisXName(const string);$/;"	p	class:KbPlot	access:public	signature:(const string)
+setAxisXTick	kbplot.h	/^		void setAxisXTick(double);$/;"	p	class:KbPlot	access:public	signature:(double)
+setAxisYName	kbplot.h	/^		void setAxisYName(const string);$/;"	p	class:KbPlot	access:public	signature:(const string)
+setAxisYTick	kbplot.h	/^		void setAxisYTick(double);$/;"	p	class:KbPlot	access:public	signature:(double)
+setBackground	kbplot.h	/^		void setBackground(const string filename);$/;"	p	class:KbPlot	access:public	signature:(const string filename)
+setBackground	kbplot.h	/^		void setBackground(const unsigned int color);$/;"	p	class:KbPlot	access:public	signature:(const unsigned int color)
+setCoordinates	graphical_object.h	/^		void setCoordinates(double,double,double,double);$/;"	p	class:Line	access:public	signature:(double,double,double,double)
+setGridColor	kbplot.h	/^		void setGridColor(const unsigned int);$/;"	p	class:KbPlot	access:public	signature:(const unsigned int)
+setGridThickness	kbplot.h	/^		void setGridThickness(const unsigned int);$/;"	p	class:KbPlot	access:public	signature:(const unsigned int)
+setGridTick	kbplot.h	/^		void setGridTick(int);$/;"	p	class:KbPlot	access:public	signature:(int)
+setGridXTick	kbplot.h	/^		void setGridXTick(int);$/;"	p	class:KbPlot	access:public	signature:(int)
+setGridYTick	kbplot.h	/^		void setGridYTick(int);$/;"	p	class:KbPlot	access:public	signature:(int)
+setRanges	kbplot.h	/^		void setRanges(double xmin, double xmax, double ymin, double ymax);$/;"	p	class:KbPlot	access:public	signature:(double xmin, double xmax, double ymin, double ymax)
+setScale	graphical_object.h	/^		void setScale(double,double);$/;"	p	class:GraphicalObject	access:public	signature:(double,double)
+setTranslation	graphical_object.h	/^		void setTranslation(double,double);$/;"	p	class:GraphicalObject	access:public	signature:(double,double)
+setWorkingArea	aglwidget.h	/^	virtual void setWorkingArea(double xmin, double xmax, double ymin, double ymax)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(double xmin, double xmax, double ymin, double ymax)
+setWorkingArea	glwidget.h	/^	virtual void setWorkingArea(double xmin, double xmax, double ymin, double ymax);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(double xmin, double xmax, double ymin, double ymax)
+size	graphical_object.h	/^		double x, y, size;$/;"	m	class:Text	access:private
+style	graphical_object.h	/^		Style style;$/;"	m	class:GraphicalObject	access:public
+subscribeToMouse	aglwidget.h	/^	virtual void subscribeToMouse(IMouseEventListener *subscriber)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(IMouseEventListener *subscriber)
+subscribeToMouse	glwidget.h	/^	virtual void subscribeToMouse(IMouseEventListener*);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(IMouseEventListener*)
+text	graphical_object.h	/^		string text;$/;"	m	class:Text	access:private
+textAlignment	graphical_object.h	/^	TextAlignment textAlignment = TEXT_ALIGN_CENTER;$/;"	m	struct:Style	access:public
+toggleFixed	graphical_object.h	/^		void toggleFixed(bool b = true);$/;"	p	class:GraphicalObject	access:public	signature:(bool b = true)
+toggleScaled	graphical_object.h	/^		void toggleScaled(bool b = true);$/;"	p	class:GraphicalObject	access:public	signature:(bool b = true)
+toggleTranslated	graphical_object.h	/^		void toggleTranslated(bool b = true);$/;"	p	class:GraphicalObject	access:public	signature:(bool b = true)
+trGLToScreenx	aglwidget.h	/^	virtual int trGLToScreenx(double)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(double)
+trGLToScreenx	glwidget.h	/^	virtual int trGLToScreenx(double);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(double)
+trGLToScreeny	aglwidget.h	/^	virtual int trGLToScreeny(double)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(double)
+trGLToScreeny	glwidget.h	/^	virtual int trGLToScreeny(double);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(double)
+trScreenToGLx	aglwidget.h	/^	virtual double trScreenToGLx(int)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(int)
+trScreenToGLx	glwidget.h	/^	virtual double trScreenToGLx(int);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(int)
+trScreenToGLy	aglwidget.h	/^	virtual double trScreenToGLy(int)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(int)
+trScreenToGLy	glwidget.h	/^	virtual double trScreenToGLy(int);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(int)
+trX	graphical_object.h	/^		double trX, trY;$/;"	m	class:GraphicalObject	access:protected
+trY	graphical_object.h	/^		double trX, trY;$/;"	m	class:GraphicalObject	access:protected
+v1	kbplot.h	/^		vector<Txy> v1;$/;"	m	class:KbPlot	access:private
+wheelEvent	glwidget.h	/^	void wheelEvent(QWheelEvent *e);$/;"	p	class:GLWidget	access:public	signature:(QWheelEvent *e)
+withLines	kbplot.h	/^		bool withLines;$/;"	m	struct:DataSet	access:public
+withPoints	kbplot.h	/^		bool withPoints;$/;"	m	struct:DataSet	access:public
+x	graphical_object.h	/^		double x, y, size;$/;"	m	class:Text	access:private
+x	txy.h	/^	double x,y;$/;"	m	struct:Txy	access:public
+x1	graphical_object.h	/^		double x1,x2,y1,y2;$/;"	m	class:Line	access:private
+x2	graphical_object.h	/^		double x1,x2,y1,y2;$/;"	m	class:Line	access:private
+xmax	kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
+xmin	kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
+xtick	kbplot.h	/^		double xtick, ytick;$/;"	m	class:KbPlot	access:private
+xticks_b	kbplot.h	/^		std::vector<Line*> xticks_b;$/;"	m	class:KbPlot	access:private
+xticks_t	kbplot.h	/^		std::vector<Line*> xticks_t;$/;"	m	class:KbPlot	access:private
+y	graphical_object.h	/^		double x, y, size;$/;"	m	class:Text	access:private
+y	txy.h	/^	double x,y;$/;"	m	struct:Txy	access:public
+y1	graphical_object.h	/^		double x1,x2,y1,y2;$/;"	m	class:Line	access:private
+y2	graphical_object.h	/^		double x1,x2,y1,y2;$/;"	m	class:Line	access:private
+ymax	kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
+ymin	kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
+ytick	kbplot.h	/^		double xtick, ytick;$/;"	m	class:KbPlot	access:private
+yticks_l	kbplot.h	/^		std::vector<Line*> yticks_l;$/;"	m	class:KbPlot	access:private
+yticks_r	kbplot.h	/^		std::vector<Line*> yticks_r;$/;"	m	class:KbPlot	access:private
+~AGLWidget	aglwidget.h	/^	virtual ~AGLWidget(){};$/;"	f	class:AGLWidget	access:public	implementation:virtual	signature:()
+~DataSet	kbplot.h	/^		virtual ~DataSet();$/;"	p	struct:DataSet	access:public	implementation:virtual	signature:()
+~GLWidget	glwidget.h	/^	virtual ~GLWidget(){};$/;"	f	class:GLWidget	access:public	implementation:virtual	signature:()
+~GraphicalObject	graphical_object.h	/^		virtual ~GraphicalObject(){};$/;"	f	class:GraphicalObject	access:public	implementation:virtual	signature:()
+~IMouseEventListener	event.h	/^	virtual ~IMouseEventListener() {};$/;"	f	class:IMouseEventListener	access:public	implementation:virtual	signature:()
+~KbPlot	kbplot.h	/^		~KbPlot();$/;"	p	class:KbPlot	access:public	signature:()
+~Line	graphical_object.h	/^		virtual ~Line(){};$/;"	f	class:Line	access:public	implementation:virtual	signature:()
+~MarkerSet	graphical_object.h	/^		virtual ~MarkerSet (){};$/;"	f	class:MarkerSet	access:public	implementation:virtual	signature:()
+~Polygon	graphical_object.h	/^		virtual ~Polygon(){};$/;"	f	class:Polygon	access:public	implementation:virtual	signature:()
+~Polyline	graphical_object.h	/^		virtual ~Polyline(){qDebug() << "Destroying polyline";};$/;"	f	class:Polyline	access:public	implementation:virtual	signature:()
+~Text	graphical_object.h	/^		~Text(){};$/;"	f	class:Text	access:public	signature:()
