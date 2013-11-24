@@ -5,13 +5,9 @@
 using std::vector;
 
 struct DataSet {
-	typedef enum { WITH_LINES, WITH_POINTS, WITH_LINESPOINTS } LinesPointsEnabler;
-		DataSet(vector<Txy> *data, LinesPointsEnabler lp = WITH_LINES);
+		DataSet(vector<Txy> *data);
 		DataSet(const DataSet &){};
 		virtual ~DataSet();
-
-		bool withLines;
-		bool withPoints;
 
 		GraphicalObject *polyline;
 		GraphicalObject *markerset;

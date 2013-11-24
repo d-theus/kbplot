@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     v->push_back(Txy(3.0,9.0));
     Text td("d", 10, 3.0,9.0);
 
-    DataSet ds(v, DataSet::WITH_LINESPOINTS);
+    DataSet ds(v);
     p.addData(&ds);
     w.show();
     p.setRanges(-5.1, 5.0, -1.0, 10.0);

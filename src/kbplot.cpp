@@ -5,23 +5,7 @@
 #include <algorithm>
 #include <functional>
 
-DataSet::DataSet(vector<Txy> *data, LinesPointsEnabler lp){
-	if (lp == WITH_LINES) {
-		this -> withLines = true;
-		this -> withPoints = false;
-	}
-	else if (lp == WITH_POINTS) {
-		this -> withLines = false;
-		this -> withPoints = true;
-	}
-	else if (lp == WITH_LINESPOINTS) {
-		this -> withLines = true;
-		this -> withPoints = true;
-	}
-
-	if(withLines) this -> polyline = (GraphicalObject*) new Polyline(data);
-	if(withPoints) this -> markerset = (GraphicalObject*) new MarkerSet(data);
-
+DataSet::DataSet(vector<Txy> *data){
 }
 
 DataSet::~DataSet(){
