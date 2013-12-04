@@ -54,13 +54,20 @@ class KbPlot : IMouseEventListener {
 		double axisAdjustMin(double min, double tick);//snap to powers of 10
 		void axisRebuild(); //build new ticks collections
 
+		void gridRebuild(); //build new ticks collections
+
 
 
 		Polyline *frame;
+
 		std::vector<Line*> xticks_t;
 		std::vector<Line*> xticks_b;
 		std::vector<Line*> yticks_r;
 		std::vector<Line*> yticks_l;
+
+		std::vector<Line*> xgrid;
+		std::vector<Line*> ygrid;
+
 		vector<Txy> framePoints;
 
 		GLWidget *container;
@@ -68,7 +75,7 @@ class KbPlot : IMouseEventListener {
 
 		double xmax, ymax, xmin, ymin;
 		double xtick, ytick;
-		double gridx, gridy;
+		double xgtick, ygtick;
 
 		vector<const DataSet*> datasets;
 

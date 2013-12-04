@@ -24,7 +24,7 @@ vector<Txy> * DataSet::getData()const{
 KbPlot::KbPlot(GLWidget *_container, double _xmin, double _xmax, double _ymin, double _ymax){
 
 	xtick = ytick = 0;
-	gridx = gridy = 0;
+	xgtick = ygtick = 0;
 
 
 	const double framePos = 1.0 - KbPlot::c_frameThickness;
@@ -64,29 +64,40 @@ void KbPlot::setRanges(double _xmin, double _xmax, double _ymin, double _ymax){
 
 	if(xtick < 1e-300) xtick = (xmax - xmin)/20.0;
 	if(ytick < 1e-300) ytick = (ymax - ymin)/20.0;
-	qDebug() << "ytick: " << ytick;
 
-	double dx = xtick;
-	double dy = ytick;
+	if(xgtick < 1e-300) xgtick = xtick;
+	if(ygtick < 1e-300) ygtick = ytick;
+
 	double xtick_len = (ymax - ymin)/200.0; //TODO: mathToGl?
 	double ytick_len = (xmax - xmin)/200.0; //TODO: mathToGl?
-	qDebug() << "ytick len" << ytick_len;
 	double x = axisAdjustMin(xmin, xtick);
 	double y = axisAdjustMin(ymin, ytick);
-	qDebug() << "xmin\tymin\tnewxm\tnewym";
-	qDebug() << xmin << "\t" << ymin << "\t" << x << "\t" << y;
 
 	container -> addObject("frame", (GraphicalObject*)frame);
+
 	axisRebuild();
+	gridRebuild();
 
 	for (int i = 0; i < xticks_t.size(); i++) {
 		xticks_t[i]->setCoordinates(x, ymax, x, ymax - xtick_len);
 		xticks_b[i]->setCoordinates(x, ymin, x, ymin + xtick_len);
+		x+=xtick;
+	}
+	for (int i = 0; i < yticks_l.size(); i++) {
 		yticks_l[i]->setCoordinates(xmax, y, xmax - ytick_len, y); 
 		yticks_r[i]->setCoordinates(xmin, y, xmin + ytick_len, y);
+		y+=ytick;
+	}
 
-		x+=dx;
-		y+=dy;
+	x = axisAdjustMin(xmin, xtick);
+	y = axisAdjustMin(ymin, ytick);
+	for (int i = 0; i < xgrid.size(); i++) {
+		xgrid[i]->setCoordinates(x, ymin, x, ymax);
+		x += xgtick;
+	}
+	for (int i = 0; i < ygrid.size(); i++) {
+		ygrid[i]->setCoordinates(xmax, y, xmin, y);
+		y += ygtick;
 	}
 
 	container->setWorkingArea(_xmin,_xmax,_ymin,_ymax);
@@ -196,3 +207,37 @@ void KbPlot::axisRebuild(){
 		container -> addObject(id2.str(), (GraphicalObject*)(yticks_l[i]));
 	}
 }
+
+void KbPlot::gridRebuild(){
+	for(std::vector<Line*>::iterator i = 
+			xgrid.begin(); i != xgrid.end(); i++){
+		delete(*i);
+	}
+	for(std::vector<Line*>::iterator i = 
+			ygrid.begin(); i != ygrid.end(); i++){
+		delete(*i);
+	}
+	
+
+	container->removeWithPrefix("grid");
+
+	xgrid.clear();
+	ygrid.clear();
+
+	int xticksCount = (xmax - xmin) / xgtick + 10;
+	int yticksCount = (ymax - ymin) / ygtick + 10;
+
+	for (int i = 0; i < xticksCount; i++) {
+		std::stringstream id;
+		xgrid.push_back(new Line(0,0,0,0));
+		id << "grid_x_" << i;
+		container -> addObject(id.str(), (GraphicalObject*)(xgrid[i]));
+	}
+	for (int i = 0; i < yticksCount; i++) {
+		std::stringstream id;
+		ygrid.push_back(new Line(0,0,0,0));
+		id << "grid_y_" << i;
+		container -> addObject(id.str(), (GraphicalObject*)(ygrid[i]));
+	}
+}
+
