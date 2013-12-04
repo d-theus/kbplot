@@ -25,7 +25,7 @@ class GLWidget : public QGLWidget, public AGLWidget
 
 public:
 	GLWidget();
-	virtual ~GLWidget(){};
+	virtual ~GLWidget();
 
 	//Qt part
 	void initializeGL();
@@ -52,13 +52,11 @@ public:
 	virtual int trGLToScreeny(double);
 
 	virtual void addObject(string, GraphicalObject*);
-	virtual void clearScene(){};
+	virtual void removeWithPrefix(string);
+	virtual void removeAt(int);
+	virtual void clearScene();
 
 
 	virtual void setWorkingArea(double xmin, double xmax, double ymin, double ymax);
 };
-
-
-
-
 #endif // GLWIDGET_H

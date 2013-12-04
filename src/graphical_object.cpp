@@ -7,6 +7,7 @@
 
 Style::Style(){
 }
+
 void GraphicalObject::setScale(double x, double y){
 	this->isScaled = true;
 	this->scX = x;
@@ -148,23 +149,27 @@ void MarkerSet::draw() const{
 	after_draw();
 }
 
-Text::Text(const string &text, double size, double x, double y){
-	if(!(font = dtx_open_font("./res/Ubuntu-R.ttf", 16))){
+Text::Text(const string &text, size_t size, double x, double y){
+	if(!(font = dtx_open_font("./res/Ubuntu-R.ttf", 32))){
 		fprintf(stderr, "Unable to open font\n");
 	}
 	this -> x = x;
 	this -> y = y;
 	this -> text = text;
-	double scaleFactor = size / 500.0;
+	this -> size = size;
 	this -> setTranslation(x,y);
-	this -> setScale(scaleFactor, scaleFactor);
 }
 
 void Text::draw()const{
+	//getting screen sizes in pixels
+	GLint vp[4];//viewport
+	glGetIntegerv(GL_VIEWPORT, vp);
+	int w = vp[2], h = vp[3];
+
 	before_draw();
 
-	dtx_prepare(this->font, 24);
-	dtx_use_font(this->font,24);
+	dtx_prepare(this->font, 32);
+	dtx_use_font(this->font,32);
 	dtx_string(this->text.c_str());
 
 	after_draw();

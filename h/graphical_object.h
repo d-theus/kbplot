@@ -127,12 +127,13 @@ class MarkerSet : public GraphicalObject {
 
 class Text : public GraphicalObject {
 	public:
-		Text(const string &text, double size, double x, double y);
+		Text(const string &text, size_t size, double x, double y);
 		~Text(){};
 		virtual void draw()const;
 
 	private:
-		double x, y, size;
+		double x, y;
+		size_t size;
 		string text;
 		struct dtx_font *font;
 };

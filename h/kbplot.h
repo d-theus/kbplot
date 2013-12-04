@@ -6,11 +6,10 @@ using std::vector;
 
 struct DataSet {
 		DataSet(vector<Txy> *data);
-		DataSet(const DataSet &){};
+		vector<Txy> *getData()const;
 		virtual ~DataSet();
-
-		GraphicalObject *polyline;
-		GraphicalObject *markerset;
+	private:
+		vector<Txy> *data;
 };
 
 
@@ -21,7 +20,6 @@ class KbPlot : IMouseEventListener {
 		~KbPlot();
 
 		void setRanges(double xmin, double xmax, double ymin, double ymax);
-		void addData(const DataSet *ds);
 
 		void setBackground(const string filename);
 		void setBackground(const unsigned int color);
@@ -42,7 +40,7 @@ class KbPlot : IMouseEventListener {
 		void setGridThickness(const unsigned int);
 		void setGridColor(const unsigned int);
 
-		void draw();
+		void draw(DataSet &ds, Style &s);
 		void exportAsImage(const string filename);
 
 		virtual void mouseMoveEvent(int x,int y);
@@ -53,17 +51,24 @@ class KbPlot : IMouseEventListener {
 		static const double c_frameThickness = 0.02;
 		static const double c_tickLength = 0.2;
 
+		double axisAdjustMin(double min, double tick);//snap to powers of 10
+		void axisRebuild(); //build new ticks collections
+
+
+
 		Polyline *frame;
 		std::vector<Line*> xticks_t;
 		std::vector<Line*> xticks_b;
 		std::vector<Line*> yticks_r;
 		std::vector<Line*> yticks_l;
-		vector<Txy> v1;
+		vector<Txy> framePoints;
 
 		GLWidget *container;
+		bool mouseNewMovement = true;
 
 		double xmax, ymax, xmin, ymin;
 		double xtick, ytick;
+		double gridx, gridy;
 
 		vector<const DataSet*> datasets;
 

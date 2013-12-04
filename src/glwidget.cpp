@@ -10,6 +10,22 @@ GLWidget::GLWidget(): QGLWidget()
 	initializeGL();
 }
 
+ GLWidget::~GLWidget(){
+	 this->clearScene();
+}
+
+void GLWidget::clearScene(){
+	qDebug() << "glwidget::deleting gobjects";
+	for(map<string, GraphicalObject*>::iterator i = 
+			objects.begin(); i != objects.end(); i++){
+		delete i->second;
+	}
+	qDebug() << "glwidget::clearing collection";
+	objects.clear();
+}
+
+
+
 void GLWidget::GLpaint(){
 	this -> paintGL();
 }
@@ -52,12 +68,14 @@ void GLWidget::mouseMoveEvent(QMouseEvent *e){
 		(*i)->mouseMoveEvent(e->x(), e->y());
 	}
 }
-
 void GLWidget::mouseReleaseEvent(QMouseEvent *e){
 	for(std::vector<IMouseEventListener*>::const_iterator i = this->mouseListeners.begin(); i != mouseListeners.end(); i++){
 		(*i)->mouseReleaseEvent(e->x(), e->y());
 	}
 }
+void GLWidget::mousePressEvent(QMouseEvent *e){
+}
+
 void GLWidget::wheelEvent(QWheelEvent *e){
 	for(std::vector<IMouseEventListener*>::const_iterator i = this->mouseListeners.begin(); i != mouseListeners.end(); i++){
 		(*i)->mouseScrollEvent(e->delta());
@@ -93,4 +111,25 @@ void GLWidget::setWorkingArea(double xmin, double xmax, double ymin, double ymax
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glOrtho(xmin, xmax, ymin, ymax, -1.0, 0.0);
+}
+
+void GLWidget::removeWithPrefix(string key){
+	qDebug() << "removeWithPrefix(){";
+	map<string, GraphicalObject*>::iterator it = objects.begin();
+	vector<map<string, GraphicalObject*>::iterator> toErase;
+	for(; it != objects.end(); it++){
+		if(it->first.substr(0,key.size()) == key){
+			toErase.push_back(it);
+			qDebug() << "found: " << it->first.c_str();
+		}
+	}
+	for(std::vector<map<string, GraphicalObject*>::iterator>::iterator i = 
+			toErase.begin(); i != toErase.end(); i++){
+		objects.erase(*i);
+	}
+	
+	qDebug() << "}";
+}
+
+void GLWidget::removeAt(int){
 }

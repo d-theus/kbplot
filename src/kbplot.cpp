@@ -1,3 +1,8 @@
+/*
+ *TODO: make fixed string key parts constants
+ *
+ */
+
 #include "kbplot.h"
 #include <sstream>
 #include <vector>
@@ -6,62 +11,40 @@
 #include <functional>
 
 DataSet::DataSet(vector<Txy> *data){
+	this -> data = data;
 }
 
 DataSet::~DataSet(){
-	qDebug() << "Deleting dataset" << this << "{";
-	qDebug() << "polyline" << polyline;
-	if(withLines) delete polyline;
-	qDebug() << "marker set" << markerset;
-	if(withPoints) delete markerset;
-	qDebug() << "}";
 }
 
-
-void KbPlot::drawAxis(){
+vector<Txy> * DataSet::getData()const{
+	return this->data;
 }
 
 KbPlot::KbPlot(GLWidget *_container, double _xmin, double _xmax, double _ymin, double _ymax){
 
-	for (int i = 0; i < 31; i++) {
-		xticks_t.push_back(new Line(0,0,1,1));
-		xticks_b.push_back(new Line(0,0,1,1));
-		yticks_l.push_back(new Line(0,0,1,1));
-		yticks_r.push_back(new Line(0,0,1,1));
-	}
+	xtick = ytick = 0;
+	gridx = gridy = 0;
+
 
 	const double framePos = 1.0 - KbPlot::c_frameThickness;
 	
-	v1.push_back(Txy(-1.0, 1.0));
-	v1.push_back(Txy(-1.0, -1.0));
-	v1.push_back(Txy(1.0, -1.0));
-	v1.push_back(Txy(1.0, 1.0));
-	v1.push_back(Txy(-1.0, 1.0));
+	framePoints.push_back(Txy(-1.0, 1.0));
+	framePoints.push_back(Txy(-1.0, -1.0));
+	framePoints.push_back(Txy(1.0, -1.0));
+	framePoints.push_back(Txy(1.0, 1.0));
+	framePoints.push_back(Txy(-1.0, 1.0));
 
-	frame = new Polyline(&v1);
+	frame = new Polyline(&framePoints);
 	frame->style.lineColor = 0x444444FF;
 	frame->style.lineThickness = 15.0;
+	frame->toggleFixed();
 
 
 	this->container = _container;
 	if(container != NULL){
 
-		container -> addObject("frame", (GraphicalObject*)frame);
-
-		frame->toggleFixed();
-
-		for (int i = 0; i < xticks_t.size(); i++) {
-			std::stringstream id1, id2, id3, id4;
-			id1 << "tick_xt_" << i;
-			id2 << "tick_xb_" << i;
-			id3 << "tick_yr_" << i;
-			id4 << "tick_yl_" << i;
-
-			container -> addObject(id1.str(), (GraphicalObject*)(xticks_t[i]));
-			container -> addObject(id2.str(), (GraphicalObject*)(xticks_b[i]));
-			container -> addObject(id3.str(), (GraphicalObject*)(yticks_r[i]));
-			container -> addObject(id4.str(), (GraphicalObject*)(yticks_l[i]));
-		}
+		axisRebuild();
 
 		this->xtick = (xmax - xmin)/20.0;
 		this->ytick = (ymax - ymin)/20.0;
@@ -71,20 +54,6 @@ KbPlot::KbPlot(GLWidget *_container, double _xmin, double _xmax, double _ymin, d
 }
 
 KbPlot::~KbPlot(){
-	qDebug() << "Kbplot destructor{";
-	for(std::vector<Line*>::iterator i = xticks_t.begin(); i != xticks_t.end(); i++){
-		delete *i;
-	}
-	for(std::vector<Line*>::iterator i = xticks_b.begin(); i != xticks_b.end(); i++){
-		delete *i;
-	}
-	for(std::vector<Line*>::iterator i = yticks_r.begin(); i != yticks_r.end(); i++){
-		delete *i;
-	}
-	for(std::vector<Line*>::iterator i = yticks_l.begin(); i != yticks_l.end(); i++){
-		delete *i;
-	}
-	qDebug() << "}";
 }
 
 void KbPlot::setRanges(double _xmin, double _xmax, double _ymin, double _ymax){
@@ -93,18 +62,29 @@ void KbPlot::setRanges(double _xmin, double _xmax, double _ymin, double _ymax){
 	ymin = _ymin;
 	ymax = _ymax;
 
-	double dx = 0.5;
-	double dy = 0.5;
+	if(xtick < 1e-300) xtick = (xmax - xmin)/20.0;
+	if(ytick < 1e-300) ytick = (ymax - ymin)/20.0;
+	qDebug() << "ytick: " << ytick;
+
+	double dx = xtick;
+	double dy = ytick;
 	double xtick_len = (ymax - ymin)/200.0; //TODO: mathToGl?
-	double ytick_len = (ymax - ymin)/200.0; //TODO: mathToGl?
-	double x = double(floor(xmin));
-	double y = double(floor(ymin));
+	double ytick_len = (xmax - xmin)/200.0; //TODO: mathToGl?
+	qDebug() << "ytick len" << ytick_len;
+	double x = axisAdjustMin(xmin, xtick);
+	double y = axisAdjustMin(ymin, ytick);
+	qDebug() << "xmin\tymin\tnewxm\tnewym";
+	qDebug() << xmin << "\t" << ymin << "\t" << x << "\t" << y;
+
+	container -> addObject("frame", (GraphicalObject*)frame);
+	axisRebuild();
 
 	for (int i = 0; i < xticks_t.size(); i++) {
 		xticks_t[i]->setCoordinates(x, ymax, x, ymax - xtick_len);
 		xticks_b[i]->setCoordinates(x, ymin, x, ymin + xtick_len);
-		yticks_l[i]->setCoordinates(xmax, y, xmax - ytick_len, y);
+		yticks_l[i]->setCoordinates(xmax, y, xmax - ytick_len, y); 
 		yticks_r[i]->setCoordinates(xmin, y, xmin + ytick_len, y);
+
 		x+=dx;
 		y+=dy;
 	}
@@ -113,17 +93,15 @@ void KbPlot::setRanges(double _xmin, double _xmax, double _ymin, double _ymax){
 	container->GLpaint();
 }
 
-void KbPlot::setXTick(double xt){
-	this -> xtick = xt;
-}
-
-void KbPlot::setYTick(double yt){
-	this -> ytick = yt;
+void KbPlot::mousePressEvent(int x, int y){
+	mouseNewMovement = true;
 }
 
 void KbPlot::mouseMoveEvent(int x, int y){
 	static int px = x;
 	static int py = y;
+	if(mouseNewMovement) {px = x; py = y;} //Avoid long jumps when release point
+	mouseNewMovement = false;//		is far from new press point
 	double dx = (xmax-xmin)*(double)(px - x)/(double)container->width();
 	double dy = (ymax-ymin)*(double)(y - py)/(double)container->height();
 	setRanges(xmin + dx, xmax + dx, ymin + dy, ymax + dy);
@@ -131,12 +109,8 @@ void KbPlot::mouseMoveEvent(int x, int y){
 	py = y;
 }
 
-void KbPlot::mousePressEvent(int,int){
-}
-
 void KbPlot::mouseReleaseEvent(int,int){
-	qDebug()<<"We are in kbplot and we know about mouse release";
-	container->GLpaint();
+	mouseNewMovement = true;
 }
 
 void KbPlot::mouseScrollEvent(int a){
@@ -147,18 +121,78 @@ void KbPlot::mouseScrollEvent(int a){
 	setRanges(xmin-xscale, xmax+xscale, ymin-yscale, ymax+yscale);
 }
 
-void KbPlot::addData(const DataSet *ds){
-	this->datasets.push_back(ds);
-}
-
-void KbPlot::draw(){
+void KbPlot::draw(DataSet &ds, Style &s){
 	qDebug() << "Kbplot::draw(){";
-	for(vector<const DataSet *>::iterator i = 
-			datasets.begin(); i != datasets.end(); i++){
-		if((*i)->withLines) container->addObject("ds1_l", (*i)->polyline);
-		if((*i)->withPoints) container->addObject("ds1_p", (*i)->markerset);
-	}
-	container -> resizeGL(container->width(), container->height());
+	if(s.lineThickness > 0) 
+		container->addObject("ds1_l",(GraphicalObject*)(new Polyline(ds.getData())));
+	if(s.markerSize > 0) 
+		container->addObject("ds1_p",(GraphicalObject*)(new MarkerSet(ds.getData())));
+	container -> setWorkingArea(xmin, xmax, ymin, ymax); //ensure
 	container -> GLpaint();
 	qDebug() << "}";
+}
+
+double KbPlot::axisAdjustMin(double min, double tick){
+	double pow10tick = floor(log10(tick));
+
+	min /= pow(10, pow10tick);
+	min = floor(min);
+	min *= pow(10, pow10tick);
+
+	return min;
+}
+
+void KbPlot::axisRebuild(){
+	for(vector<Line*>::iterator i = 
+			xticks_t.begin(); i != xticks_t.end(); i++){
+		delete(*i);
+	}
+	for(vector<Line*>::iterator i = 
+			xticks_b.begin(); i != xticks_b.end(); i++){
+		delete(*i);
+	}
+	for(vector<Line*>::iterator i = 
+			yticks_r.begin(); i != yticks_r.end(); i++){
+		delete(*i);
+	}
+	for(vector<Line*>::iterator i = 
+			yticks_l.begin(); i != yticks_l.end(); i++){
+		delete(*i);
+	}
+	container->removeWithPrefix("tick");
+
+	xticks_t.clear();
+	xticks_b.clear();
+	yticks_l.clear();
+	yticks_r.clear();
+
+	int xticksCount = (xmax - xmin) / xtick + 10;
+	int yticksCount = (ymax - ymin) / ytick + 10;
+
+	for (int i = 0; i < xticksCount; i++) {
+		xticks_t.push_back(new Line(0,0,1,1));
+		xticks_b.push_back(new Line(0,0,1,1));
+	}
+	for (int i = 0; i < yticksCount; i++) {
+		yticks_l.push_back(new Line(0,0,1,1));
+		yticks_r.push_back(new Line(0,0,1,1));
+	}
+
+	for (int i = 0; i < xticks_t.size(); i++) {
+		std::stringstream id1, id2;
+		id1 << "tick_xt_" << i;
+		id2 << "tick_xb_" << i;
+
+		container -> addObject(id1.str(), (GraphicalObject*)(xticks_t[i]));
+		container -> addObject(id2.str(), (GraphicalObject*)(xticks_b[i]));
+	}
+
+	for (int i = 0; i < yticks_l.size(); i++) {
+		std::stringstream id1, id2;
+		id1 << "tick_yr_" << i;
+		id2 << "tick_yl_" << i;
+
+		container -> addObject(id1.str(), (GraphicalObject*)(yticks_r[i]));
+		container -> addObject(id2.str(), (GraphicalObject*)(yticks_l[i]));
+	}
 }

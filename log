@@ -1,0 +1,18 @@
+"Qt Warning - invalid keysym: dead_actute" 
+setWorkingArea( -5 , 5 , -1 , 10 ) 
+paintGL() 
+resizeGL() 
+setWorkingArea( -5.1 , 5 , -1 , 10 ) 
+paintGL() 
+main()::p.draw() 
+Kbplot::draw(){ 
+paintGL() 
+} 
+main()::p.draw() -- done 
+resizeGL() 
+paintGL() 
+paintGL() 
+glwidget::deleting gobjects 
+Destroying polyline 
+Destroying polyline 
+glwidget::clearing collection 
