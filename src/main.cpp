@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     Style s;
     s.lineColor = 0x00FF0000;
     s.lineThickness = 1.0;
-    s.markerSize = 5;
+    s.markerSize = 10;
     w.show();
 
     p.draw(ds, s);

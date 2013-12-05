@@ -47,10 +47,12 @@ struct Style {
 
 	MarkerType markerType = MARK_SQUARE;
 	unsigned int markerSize = 5;
+	unsigned int markerColor = 0xFFFFFFFF;
 
 	TextAlignment textAlignment = TEXT_ALIGN_CENTER;
 	size_t fontSize = 16;
 	string fontName = "Ubuntu-R.ttf";
+	unsigned int textColor = 0xFFFFFFFF;
 
 	Style();
 };

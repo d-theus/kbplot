@@ -5,6 +5,10 @@
 #ifdef DEBUG
 #include <QDebug>
 #endif
+const unsigned int maskr = 0xFF000000;
+const unsigned int maskg = 0x00FF0000;
+const unsigned int maskb = 0x0000FF00;
+const unsigned int maska = 0x000000FF;
 
 Style::Style(){
 }
@@ -47,13 +51,6 @@ void GraphicalObject::before_draw()const{
 		if (isScaled) glScaled(scX, scY, 1.0);
 	}
 	
-	const unsigned int c = this -> style.lineColor;
-	const unsigned int r = 0xFF000000;
-	const unsigned int g = 0x00FF0000;
-	const unsigned int b = 0x0000FF00;
-	const unsigned int a = 0x000000FF;
-
-	glColor4ub((c&r)>>24, (c&g)>>16, (c&b)>>8, c&a);
 	glLineWidth(this -> style.lineThickness);
 }
 
@@ -77,6 +74,9 @@ void Polyline::draw() const{
 	this->data->size();
 
 	before_draw();
+
+	const unsigned int c = this -> style.lineColor;
+	glColor4ub((c&maskr)>>24, (c&maskg)>>16, (c&maskb)>>8, c&maska);
 	
 	glBegin(GL_LINE_STRIP);
 	for (vector<Txy>::const_iterator i = data->begin(); i != data->end(); i++) {
@@ -122,6 +122,9 @@ void Line::setCoordinates(double _x1, double _y1, double _x2, double _y2){
 void Line::draw() const {
 	before_draw();
 
+	const unsigned int c = this -> style.lineColor;
+	glColor4ub((c&maskr)>>24, (c&maskg)>>16, (c&maskb)>>8, c&maska);
+
 	glBegin(GL_LINE_STRIP);
 	glVertex2d(x1,y1);
 	glVertex2d(x2,y2);
@@ -152,6 +155,9 @@ void MarkerSet::draw() const{
 	GLfloat vertices[][2] = { {-hside,vside}, {hside,vside}, {hside,-vside}, {-hside,-vside}};
 
 	before_draw();
+
+	const unsigned int c = this -> style.markerColor;
+	glColor4ub((c&maskr)>>24, (c&maskg)>>16, (c&maskb)>>8, c&maska);
 
 	glPointSize(this -> style.markerSize);
 	for(vector<Txy>::const_iterator
@@ -193,6 +199,9 @@ void Text::draw()const{
 	int w = vp[2], h = vp[3];
 
 	before_draw();
+
+	const unsigned int c = this -> style.textColor;
+	glColor4ub((c&maskr)>>24, (c&maskg)>>16, (c&maskb)>>8, c&maska);
 
 	dtx_prepare(this->font, 32);
 	dtx_use_font(this->font,32);
