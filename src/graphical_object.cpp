@@ -1,5 +1,6 @@
 #include "graphical_object.h"
 #include "txy.h"
+#include "utilities.h"
 
 #ifdef DEBUG
 #include <QDebug>
@@ -136,9 +137,19 @@ MarkerSet::MarkerSet(vector<Txy> *data){
 void MarkerSet::draw() const{
 	if (data == NULL || data->size() == 0) return;
 
-	GLfloat hside = style.markerSize/2;
+	float ms = style.markerSize;
+	float sw = myglScreenWH().x;
+	float sh = myglScreenWH().y;
+	float pw = myglPlaneWH().x;
+	float ph = myglPlaneWH().y;
+
+	float rx = pw/sw;//how much is 1 pixel?
+	float ry = ph/sh;
+
+	GLfloat hside = rx*ms/2;
+	GLfloat vside = ry*ms/2;
 	
-	static const GLfloat vertices[][2] = { {-hside,hside}, {hside,hside}, {hside,-hside}, {-hside,-hside}};
+	GLfloat vertices[][2] = { {-hside,vside}, {hside,vside}, {hside,-vside}, {-hside,-vside}};
 
 	before_draw();
 
@@ -151,21 +162,14 @@ void MarkerSet::draw() const{
 		glPushMatrix();
 		glTranslated(i->x, i->y, 0);
 
-		glMatrixMode(GL_PROJECTION);
-		glPushMatrix();
-		glLoadIdentity();
-
 		glBegin(GL_QUADS);
 		glVertex2fv(vertices[0]);
 		glVertex2fv(vertices[1]);
 		glVertex2fv(vertices[2]);
 		glVertex2fv(vertices[3]);
 		glEnd();
-		glPopMatrix();
 
-		glMatrixMode(GL_MODELVIEW);
 		glPopMatrix();
-
 	}
 
 	after_draw();

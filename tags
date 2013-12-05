@@ -436,9 +436,13 @@ mouseScrollEvent	h/kbplot.h	/^		virtual void mouseScrollEvent(int angle);$/;"	p	
 mouseScrollEvent	src/kbplot.cpp	/^void KbPlot::mouseScrollEvent(int a){$/;"	f	class:KbPlot	signature:(int a)
 mouseX	h/glwidget.h	/^	int mouseX, mouseY;$/;"	m	class:GLWidget	access:private
 mouseY	h/glwidget.h	/^	int mouseX, mouseY;$/;"	m	class:GLWidget	access:private
-myglTrObjectScreen	h/utilities.h	/^Txy myglTrObjectScreen(double x, double y);$/;"	p	signature:(double x, double y)
+myglObjectPlaneWH	h/utilities.h	/^Txy myglObjectPlaneWH();\/\/Получить размеры видимой плоскости (ширина, высота)$/;"	p	signature:()
+myglObjectPlaneWH	src/utilities.cpp	/^Txy myglObjectPlaneWH(){$/;"	f	signature:()
+myglScreenWH	h/utilities.h	/^Txy myglScreenWH();\/\/Получить размеры экрана(ш,в)$/;"	p	signature:()
+myglScreenWH	src/utilities.cpp	/^Txy myglScreenWH(){$/;"	f	signature:()
+myglTrObjectScreen	h/utilities.h	/^Txy myglTrObjectScreen(double x, double y); \/\/Математику в координаты экрана$/;"	p	signature:(double x, double y)
 myglTrObjectScreen	src/utilities.cpp	/^Txy myglTrObjectScreen(double x,double y){$/;"	f	signature:(double x,double y)
-myglTrScreenObject	h/utilities.h	/^Txy myglTrScreenObject(double x, double y);$/;"	p	signature:(double x, double y)
+myglTrScreenObject	h/utilities.h	/^Txy myglTrScreenObject(double x, double y); \/\/К-ы экрана в математику$/;"	p	signature:(double x, double y)
 myglTrScreenObject	src/utilities.cpp	/^Txy myglTrScreenObject(double x, double y){$/;"	f	signature:(double x, double y)
 objects	h/glwidget.h	/^	map<string, GraphicalObject*> objects;$/;"	m	class:GLWidget	access:private
 paintGL	h/glwidget.h	/^	void paintGL();$/;"	p	class:GLWidget	access:public	signature:()

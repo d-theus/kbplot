@@ -36,9 +36,15 @@ Txy myglTrScreenObject(double x, double y){
 	return Txy(ox,oy);
 }
 
-Txy myglObjectPlaneWH(){
+Txy myglPlaneWH(){
 	GLint vp[4];
 	glGetIntegerv(GL_VIEWPORT,vp);
 	Txy tl = myglTrScreenObject(0,0), br = myglTrScreenObject(vp[2],vp[3]);
 	return Txy(br.x-tl.x, - (br.y - tl.y));
+}
+
+Txy myglScreenWH(){
+	GLint vp[4];
+	glGetIntegerv(GL_VIEWPORT,vp);
+	return Txy(vp[2],vp[3]);
 }

@@ -120,11 +120,6 @@ void KbPlot::mouseMoveEvent(int x, int y){
 	setRanges(xmin + dx, xmax + dx, ymin + dy, ymax + dy);
 	px = x;
 	py = y;
-	Txy t = myglTrScreenObject(x,y);
-	qDebug() << "mouse:"<<x<<";"<<y;
-	qDebug() << "math:" <<t.x<<";"<<t.y;
-	t = myglObjectPlaneWH();
-	qDebug() << "also, plain wh:" << t.x << "x" << t.y;
 }
 
 void KbPlot::mouseReleaseEvent(int,int){
@@ -137,6 +132,8 @@ void KbPlot::mouseScrollEvent(int a){
 	double xscale = xrange*10e-5 * (double)a;
 	double yscale = yrange*10e-5 * (double)a;
 	setRanges(xmin-xscale, xmax+xscale, ymin-yscale, ymax+yscale);
+	Txy t = myglPlaneWH();
+	qDebug() << "plane wh: " << t.x << "; " << t.y;
 }
 
 void KbPlot::draw(DataSet &ds, Style &s){

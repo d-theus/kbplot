@@ -12,6 +12,7 @@
 
 Txy myglTrObjectScreen(double x, double y); //Математику в координаты экрана
 Txy myglTrScreenObject(double x, double y); //К-ы экрана в математику
-Txy myglObjectPlaneWH();//Получить размеры видимой плоскости (ширина, высота)
+Txy myglPlaneWH();//Получить размеры видимой плоскости (ширина, высота)
+Txy myglScreenWH();//Получить размеры экрана(ш,в)
 
 #endif
