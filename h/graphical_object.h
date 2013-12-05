@@ -41,7 +41,7 @@ struct Style {
 		TEXT_ALIGN_BOTRIGHT
 	} TextAlignment;
 
-	LineStroke lineStroke;
+	LineStroke lineStroke = LINE_STD;
 	unsigned int lineColor = 0xFFFFFFFF;
 	float lineThickness = 1.0;
 
@@ -139,4 +139,7 @@ class Text : public GraphicalObject {
 };
 
 
+static const unsigned char markerTexes[][64] = {
+{ 0,0,0,0,0,0,0,0, 0,0,0,1,1,0,0,0, 0,0,0,1,1,0,0,0, 0,0,1,1,1,1,0,0, 0,1,1,1,1,1,1,0, 0,1,1,1,1,1,1,0, 1,1,1,1,1,1,1,1, 0,0,0,0,0,0,0,0 }
+};
 #endif

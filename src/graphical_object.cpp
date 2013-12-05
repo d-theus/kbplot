@@ -1,9 +1,9 @@
 #include "graphical_object.h"
+#include "txy.h"
 
 #ifdef DEBUG
 #include <QDebug>
 #endif
-
 
 Style::Style(){
 }
@@ -136,15 +136,37 @@ MarkerSet::MarkerSet(vector<Txy> *data){
 void MarkerSet::draw() const{
 	if (data == NULL || data->size() == 0) return;
 
-	before_draw();
+	GLfloat hside = style.markerSize/2;
 	
+	static const GLfloat vertices[][2] = { {-hside,hside}, {hside,hside}, {hside,-hside}, {-hside,-hside}};
+
+	before_draw();
+
 	glPointSize(this -> style.markerSize);
-	glBegin(GL_POINTS);
 	for(vector<Txy>::const_iterator
 			i = data->begin(); i != data->end(); i++){
-		glVertex2d(i->x, i->y);
+
+
+		glMatrixMode(GL_MODELVIEW);
+		glPushMatrix();
+		glTranslated(i->x, i->y, 0);
+
+		glMatrixMode(GL_PROJECTION);
+		glPushMatrix();
+		glLoadIdentity();
+
+		glBegin(GL_QUADS);
+		glVertex2fv(vertices[0]);
+		glVertex2fv(vertices[1]);
+		glVertex2fv(vertices[2]);
+		glVertex2fv(vertices[3]);
+		glEnd();
+		glPopMatrix();
+
+		glMatrixMode(GL_MODELVIEW);
+		glPopMatrix();
+
 	}
-	glEnd();
 
 	after_draw();
 }

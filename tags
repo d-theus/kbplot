@@ -170,8 +170,8 @@ KbPlot::draw	src/kbplot.cpp	/^void KbPlot::draw(DataSet &ds, Style &s){$/;"	f	cl
 KbPlot::exportAsImage	h/kbplot.h	/^		void exportAsImage(const string filename);$/;"	p	class:KbPlot	access:public	signature:(const string filename)
 KbPlot::frame	h/kbplot.h	/^		Polyline *frame;$/;"	m	class:KbPlot	access:private
 KbPlot::framePoints	h/kbplot.h	/^		vector<Txy> framePoints;$/;"	m	class:KbPlot	access:private
-KbPlot::gridx	h/kbplot.h	/^		double gridx, gridy;$/;"	m	class:KbPlot	access:private
-KbPlot::gridy	h/kbplot.h	/^		double gridx, gridy;$/;"	m	class:KbPlot	access:private
+KbPlot::gridRebuild	h/kbplot.h	/^		void gridRebuild(); \/\/build new ticks collections$/;"	p	class:KbPlot	access:private	signature:()
+KbPlot::gridRebuild	src/kbplot.cpp	/^void KbPlot::gridRebuild(){$/;"	f	class:KbPlot	signature:()
 KbPlot::mouseMoveEvent	h/kbplot.h	/^		virtual void mouseMoveEvent(int x,int y);$/;"	p	class:KbPlot	access:public	implementation:virtual	signature:(int x,int y)
 KbPlot::mouseMoveEvent	src/kbplot.cpp	/^void KbPlot::mouseMoveEvent(int x, int y){$/;"	f	class:KbPlot	signature:(int x, int y)
 KbPlot::mouseNewMovement	h/kbplot.h	/^		bool mouseNewMovement = true;$/;"	m	class:KbPlot	access:private
@@ -203,11 +203,15 @@ KbPlot::stAxisY	h/kbplot.h	/^		Style stAxisX, stAxisY, stBkgnd, stGridX, stGridY
 KbPlot::stBkgnd	h/kbplot.h	/^		Style stAxisX, stAxisY, stBkgnd, stGridX, stGridY;$/;"	m	class:KbPlot	access:private
 KbPlot::stGridX	h/kbplot.h	/^		Style stAxisX, stAxisY, stBkgnd, stGridX, stGridY;$/;"	m	class:KbPlot	access:private
 KbPlot::stGridY	h/kbplot.h	/^		Style stAxisX, stAxisY, stBkgnd, stGridX, stGridY;$/;"	m	class:KbPlot	access:private
+KbPlot::xgrid	h/kbplot.h	/^		std::vector<Line*> xgrid;$/;"	m	class:KbPlot	access:private
+KbPlot::xgtick	h/kbplot.h	/^		double xgtick, ygtick;$/;"	m	class:KbPlot	access:private
 KbPlot::xmax	h/kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
 KbPlot::xmin	h/kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
 KbPlot::xtick	h/kbplot.h	/^		double xtick, ytick;$/;"	m	class:KbPlot	access:private
 KbPlot::xticks_b	h/kbplot.h	/^		std::vector<Line*> xticks_b;$/;"	m	class:KbPlot	access:private
 KbPlot::xticks_t	h/kbplot.h	/^		std::vector<Line*> xticks_t;$/;"	m	class:KbPlot	access:private
+KbPlot::ygrid	h/kbplot.h	/^		std::vector<Line*> ygrid;$/;"	m	class:KbPlot	access:private
+KbPlot::ygtick	h/kbplot.h	/^		double xgtick, ygtick;$/;"	m	class:KbPlot	access:private
 KbPlot::ymax	h/kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
 KbPlot::ymin	h/kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
 KbPlot::ytick	h/kbplot.h	/^		double xtick, ytick;$/;"	m	class:KbPlot	access:private
@@ -314,7 +318,7 @@ Style::TextAlignment	h/graphical_object.h	/^	} TextAlignment;$/;"	t	struct:Style
 Style::fontName	h/graphical_object.h	/^	string fontName = "Ubuntu-R.ttf";$/;"	m	struct:Style	access:public
 Style::fontSize	h/graphical_object.h	/^	size_t fontSize = 16;$/;"	m	struct:Style	access:public
 Style::lineColor	h/graphical_object.h	/^	unsigned int lineColor = 0xFFFFFFFF;$/;"	m	struct:Style	access:public
-Style::lineStroke	h/graphical_object.h	/^	LineStroke lineStroke;$/;"	m	struct:Style	access:public
+Style::lineStroke	h/graphical_object.h	/^	LineStroke lineStroke = LINE_STD;$/;"	m	struct:Style	access:public
 Style::lineThickness	h/graphical_object.h	/^	float lineThickness = 1.0;$/;"	m	struct:Style	access:public
 Style::markerSize	h/graphical_object.h	/^	unsigned int markerSize = 5;$/;"	m	struct:Style	access:public
 Style::markerType	h/graphical_object.h	/^	MarkerType markerType = MARK_SQUARE;$/;"	m	struct:Style	access:public
@@ -350,6 +354,7 @@ Txy	h/txy.h	/^struct Txy $/;"	s
 Txy::Txy	h/txy.h	/^	Txy(double _x, double _y){x = _x; y = _y;}$/;"	f	struct:Txy	access:public	signature:(double _x, double _y)
 Txy::x	h/txy.h	/^	double x,y;$/;"	m	struct:Txy	access:public
 Txy::y	h/txy.h	/^	double x,y;$/;"	m	struct:Txy	access:public
+UTILITIES_H	h/utilities.h	2;"	d
 addObject	h/aglwidget.h	/^	virtual void addObject(string, GraphicalObject*)=0;$/;"	p	class:AGLWidget	access:public	implementation:pure virtual	signature:(string, GraphicalObject*)
 addObject	h/glwidget.h	/^	virtual void addObject(string, GraphicalObject*);$/;"	p	class:GLWidget	access:public	implementation:virtual	signature:(string, GraphicalObject*)
 addObject	src/glwidget.cpp	/^void GLWidget::addObject(string key, GraphicalObject *p){$/;"	f	class:GLWidget	signature:(string key, GraphicalObject *p)
@@ -394,18 +399,19 @@ frame	h/kbplot.h	/^		Polyline *frame;$/;"	m	class:KbPlot	access:private
 framePoints	h/kbplot.h	/^		vector<Txy> framePoints;$/;"	m	class:KbPlot	access:private
 getData	h/kbplot.h	/^		vector<Txy> *getData()const;$/;"	p	struct:DataSet	access:public	signature:() const
 getData	src/kbplot.cpp	/^vector<Txy> * DataSet::getData()const{$/;"	f	class:DataSet	signature:() const
-gridx	h/kbplot.h	/^		double gridx, gridy;$/;"	m	class:KbPlot	access:private
-gridy	h/kbplot.h	/^		double gridx, gridy;$/;"	m	class:KbPlot	access:private
+gridRebuild	h/kbplot.h	/^		void gridRebuild(); \/\/build new ticks collections$/;"	p	class:KbPlot	access:private	signature:()
+gridRebuild	src/kbplot.cpp	/^void KbPlot::gridRebuild(){$/;"	f	class:KbPlot	signature:()
 initializeGL	h/glwidget.h	/^	void initializeGL();$/;"	p	class:GLWidget	access:public	signature:()
 initializeGL	src/glwidget.cpp	/^void GLWidget::initializeGL() {$/;"	f	class:GLWidget	signature:()
 isFixed	h/graphical_object.h	/^		bool isFixed= false;$/;"	m	class:GraphicalObject	access:protected
 isScaled	h/graphical_object.h	/^		bool isScaled = false;$/;"	m	class:GraphicalObject	access:protected
 isTranslated	h/graphical_object.h	/^		bool isTranslated = false;$/;"	m	class:GraphicalObject	access:protected
 lineColor	h/graphical_object.h	/^	unsigned int lineColor = 0xFFFFFFFF;$/;"	m	struct:Style	access:public
-lineStroke	h/graphical_object.h	/^	LineStroke lineStroke;$/;"	m	struct:Style	access:public
+lineStroke	h/graphical_object.h	/^	LineStroke lineStroke = LINE_STD;$/;"	m	struct:Style	access:public
 lineThickness	h/graphical_object.h	/^	float lineThickness = 1.0;$/;"	m	struct:Style	access:public
 main	src/main.cpp	/^int main(int argc, char *argv[])$/;"	f	signature:(int argc, char *argv[])
 markerSize	h/graphical_object.h	/^	unsigned int markerSize = 5;$/;"	m	struct:Style	access:public
+markerTexes	h/graphical_object.h	/^static const unsigned char markerTexes[][64] = {$/;"	v
 markerType	h/graphical_object.h	/^	MarkerType markerType = MARK_SQUARE;$/;"	m	struct:Style	access:public
 metaObject	moc_glwidget.cpp	/^const QMetaObject *GLWidget::metaObject() const$/;"	f	class:GLWidget	signature:() const
 mouseListeners	h/glwidget.h	/^	vector<IMouseEventListener*> mouseListeners;$/;"	m	class:GLWidget	access:private
@@ -430,6 +436,10 @@ mouseScrollEvent	h/kbplot.h	/^		virtual void mouseScrollEvent(int angle);$/;"	p	
 mouseScrollEvent	src/kbplot.cpp	/^void KbPlot::mouseScrollEvent(int a){$/;"	f	class:KbPlot	signature:(int a)
 mouseX	h/glwidget.h	/^	int mouseX, mouseY;$/;"	m	class:GLWidget	access:private
 mouseY	h/glwidget.h	/^	int mouseX, mouseY;$/;"	m	class:GLWidget	access:private
+myglTrObjectScreen	h/utilities.h	/^Txy myglTrObjectScreen(double x, double y);$/;"	p	signature:(double x, double y)
+myglTrObjectScreen	src/utilities.cpp	/^Txy myglTrObjectScreen(double x,double y){$/;"	f	signature:(double x,double y)
+myglTrScreenObject	h/utilities.h	/^Txy myglTrScreenObject(double x, double y);$/;"	p	signature:(double x, double y)
+myglTrScreenObject	src/utilities.cpp	/^Txy myglTrScreenObject(double x, double y){$/;"	f	signature:(double x, double y)
 objects	h/glwidget.h	/^	map<string, GraphicalObject*> objects;$/;"	m	class:GLWidget	access:private
 paintGL	h/glwidget.h	/^	void paintGL();$/;"	p	class:GLWidget	access:public	signature:()
 paintGL	src/glwidget.cpp	/^void GLWidget::paintGL(){$/;"	f	class:GLWidget	signature:()
@@ -515,6 +525,8 @@ x	h/graphical_object.h	/^		double x, y;$/;"	m	class:Text	access:private
 x	h/txy.h	/^	double x,y;$/;"	m	struct:Txy	access:public
 x1	h/graphical_object.h	/^		double x1,x2,y1,y2;$/;"	m	class:Line	access:private
 x2	h/graphical_object.h	/^		double x1,x2,y1,y2;$/;"	m	class:Line	access:private
+xgrid	h/kbplot.h	/^		std::vector<Line*> xgrid;$/;"	m	class:KbPlot	access:private
+xgtick	h/kbplot.h	/^		double xgtick, ygtick;$/;"	m	class:KbPlot	access:private
 xmax	h/kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
 xmin	h/kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
 xtick	h/kbplot.h	/^		double xtick, ytick;$/;"	m	class:KbPlot	access:private
@@ -524,6 +536,8 @@ y	h/graphical_object.h	/^		double x, y;$/;"	m	class:Text	access:private
 y	h/txy.h	/^	double x,y;$/;"	m	struct:Txy	access:public
 y1	h/graphical_object.h	/^		double x1,x2,y1,y2;$/;"	m	class:Line	access:private
 y2	h/graphical_object.h	/^		double x1,x2,y1,y2;$/;"	m	class:Line	access:private
+ygrid	h/kbplot.h	/^		std::vector<Line*> ygrid;$/;"	m	class:KbPlot	access:private
+ygtick	h/kbplot.h	/^		double xgtick, ygtick;$/;"	m	class:KbPlot	access:private
 ymax	h/kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
 ymin	h/kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
 ytick	h/kbplot.h	/^		double xtick, ytick;$/;"	m	class:KbPlot	access:private

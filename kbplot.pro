@@ -10,5 +10,5 @@ TARGET = ./bin/kbplot
 INCLUDEPATH += ./h
 
 # Input
-HEADERS += h/aglwidget.h h/glwidget.h h/kbplot.h h/event.h h/graphical_object.h h/txy.h
-SOURCES += src/glwidget.cpp src/main.cpp src/kbplot.cpp src/graphical_object.cpp
+HEADERS += h/aglwidget.h h/glwidget.h h/kbplot.h h/event.h h/graphical_object.h h/txy.h h/utilities.h
+SOURCES += src/glwidget.cpp src/main.cpp src/kbplot.cpp src/graphical_object.cpp src/utilities.cpp

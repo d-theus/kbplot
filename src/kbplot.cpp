@@ -3,12 +3,14 @@
  *
  */
 
-#include "kbplot.h"
 #include <sstream>
 #include <vector>
 #include <cmath>
 #include <algorithm>
 #include <functional>
+
+#include "kbplot.h"
+#include "utilities.h"
 
 DataSet::DataSet(vector<Txy> *data){
 	this -> data = data;
@@ -118,6 +120,11 @@ void KbPlot::mouseMoveEvent(int x, int y){
 	setRanges(xmin + dx, xmax + dx, ymin + dy, ymax + dy);
 	px = x;
 	py = y;
+	Txy t = myglTrScreenObject(x,y);
+	qDebug() << "mouse:"<<x<<";"<<y;
+	qDebug() << "math:" <<t.x<<";"<<t.y;
+	t = myglObjectPlaneWH();
+	qDebug() << "also, plain wh:" << t.x << "x" << t.y;
 }
 
 void KbPlot::mouseReleaseEvent(int,int){
@@ -134,10 +141,16 @@ void KbPlot::mouseScrollEvent(int a){
 
 void KbPlot::draw(DataSet &ds, Style &s){
 	qDebug() << "Kbplot::draw(){";
-	if(s.lineThickness > 0) 
-		container->addObject("ds1_l",(GraphicalObject*)(new Polyline(ds.getData())));
-	if(s.markerSize > 0) 
-		container->addObject("ds1_p",(GraphicalObject*)(new MarkerSet(ds.getData())));
+	if(s.lineThickness > 0) {
+		GraphicalObject *pl = new Polyline(ds.getData());
+		pl->style = s;
+		container->addObject("ds1_l",pl);
+	}
+	if(s.markerSize > 0) {
+		GraphicalObject *ms = new MarkerSet(ds.getData());
+		ms->style = s;
+		container->addObject("ds1_p",ms);
+	}
 	container -> setWorkingArea(xmin, xmax, ymin, ymax); //ensure
 	container -> GLpaint();
 	qDebug() << "}";
