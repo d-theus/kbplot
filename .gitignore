@@ -18,5 +18,6 @@
 
 kbplot/tags
 kbplot/kbplot
+bin
 
 kbplot/moc_*.cpp
