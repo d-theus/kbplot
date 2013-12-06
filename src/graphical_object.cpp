@@ -234,6 +234,7 @@ void MarkerSet::draw() const{
 	}
 
 	glDisable(GL_TEXTURE_2D);
+	glDisable(GL_BLEND);
 	after_draw();
 }
 

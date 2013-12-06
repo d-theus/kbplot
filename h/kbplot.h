@@ -69,8 +69,6 @@ class KbPlot : IMouseEventListener {
 
 		void gridRebuild(); //build new ticks collections
 
-
-
 		Polyline *frame;
 
 		std::vector<Line*> xticks_t;
@@ -90,7 +88,6 @@ class KbPlot : IMouseEventListener {
 		double xtick, ytick;
 		double xgtick, ygtick;
 
-		vector<const DataSet*> datasets;
-
+		size_t datasetCounter;
 		Style stAxisX, stAxisY, stBkgnd, stGridX, stGridY;
 };

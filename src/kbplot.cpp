@@ -28,6 +28,8 @@ KbPlot::KbPlot(GLWidget *_container, double _xmin, double _xmax, double _ymin, d
 	xtick = ytick = 0;
 	xgtick = ygtick = 0;
 
+	datasetCounter = 0;
+
 
 	const double framePos = 1.0 - KbPlot::c_frameThickness;
 	
@@ -138,18 +140,23 @@ void KbPlot::mouseScrollEvent(int a){
 
 void KbPlot::draw(DataSet &ds, Style &s){
 	qDebug() << "Kbplot::draw(){";
+	std::stringstream id;
 	if(s.lineThickness > 0) {
 		GraphicalObject *pl = new Polyline(ds.getData());
 		pl->style = s;
-		container->addObject("ds1_l",pl);
+		id << "datasetline" << datasetCounter;
+		container->addObject(id.str(),pl);
 	}
+	id.clear();
 	if(s.markerSize > 0) {
 		GraphicalObject *ms = new MarkerSet(ds.getData());
 		ms->style = s;
-		container->addObject("ds1_p",ms);
+		id << "datasetmark" << datasetCounter;
+		container->addObject(id.str(),ms);
 	}
 	container -> setWorkingArea(xmin, xmax, ymin, ymax); //ensure
 	container -> GLpaint();
+	datasetCounter++;
 	qDebug() << "}";
 }
 

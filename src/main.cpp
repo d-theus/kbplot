@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     GLWidget w;
-    KbPlot p(&w, -50.0, 50.0, -1.0, 10.0);
+    KbPlot p(&w, -10.0, 500.0, -1.0, 100.0);
     std::vector<Txy> *v = new std::vector<Txy>();
 
     v->push_back(Txy(0.0,0.0));
