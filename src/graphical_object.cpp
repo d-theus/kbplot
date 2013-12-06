@@ -139,6 +139,46 @@ MarkerSet::MarkerSet(vector<Txy> *data){
 
 void MarkerSet::draw() const{
 	if (data == NULL || data->size() == 0) return;
+	static const GLubyte textures[][8*8*1] = {{
+		255,0,0,0,0,0,0,255,
+		0,255,0,0,0,0,255,0,
+		0,0,255,0,0,255,0,0,
+		0,0,0,255,255,0,0,0,
+		0,0,0,255,255,0,0,0,
+		0,0,255,0,0,255,0,0,
+		0,255,0,0,0,0,255,0,
+		255,0,0,0,0,0,0,255
+	},
+	{
+		255,255,255,255,255,255,255,255,
+		255,255,255,255,255,255,255,255,
+		255,255,255,255,255,255,255,255,
+		255,255,255,255,255,255,255,255,
+		255,255,255,255,255,255,255,255,
+		255,255,255,255,255,255,255,255,
+		255,255,255,255,255,255,255,255,
+		255,255,255,255,255,255,255,255
+	},
+	{
+		0,0,255,255,255,255,0,0,
+		0,255,255,255,255,255,255,0,
+		255,255,255,255,255,255,255,255,
+		255,255,255,255,255,255,255,255,
+		255,255,255,255,255,255,255,255,
+		255,255,255,255,255,255,255,255,
+		0,255,255,255,255,255,255,0,
+		0,0,255,255,255,255,0,0
+	},
+	{
+		0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
+		0  ,0  ,0  ,255,255,0  ,0  ,0  ,
+		0  ,0  ,255,255,255,255,0  ,0  ,
+		0  ,0  ,255,255,255,255,255,0  ,
+		0  ,255,255,255,255,255,255,0  ,
+		255,255,255,255,255,255,255,255,
+		0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,
+		0  ,0  ,0  ,0  ,0  ,0  ,0  ,0 
+	}};
 
 	float ms = style.markerSize;
 	float sw = myglScreenWH().x;
@@ -159,25 +199,41 @@ void MarkerSet::draw() const{
 	const unsigned int c = this -> style.markerColor;
 	glColor4ub((c&maskr)>>24, (c&maskg)>>16, (c&maskb)>>8, c&maska);
 
-	glPointSize(this -> style.markerSize);
+	unsigned int tex = 0;
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_TEXTURE_2D);
+	glActiveTexture(GL_TEXTURE0);
+	glGenTextures(1, &tex);
+	glBindTexture(GL_TEXTURE_2D, tex);
+	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexImage2D(GL_TEXTURE_2D,0,GL_LUMINANCE,8,8,0,GL_LUMINANCE,GL_UNSIGNED_BYTE,textures[this->style.markerType]);
+
+
 	for(vector<Txy>::const_iterator
 			i = data->begin(); i != data->end(); i++){
-
 
 		glMatrixMode(GL_MODELVIEW);
 		glPushMatrix();
 		glTranslated(i->x, i->y, 0);
 
 		glBegin(GL_QUADS);
+		glTexCoord2f(0.0,0.0);
 		glVertex2fv(vertices[0]);
+		glTexCoord2f(1.0,0.0);
 		glVertex2fv(vertices[1]);
+		glTexCoord2f(1.0,1.0);
 		glVertex2fv(vertices[2]);
+		glTexCoord2f(0.0,1.0);
 		glVertex2fv(vertices[3]);
 		glEnd();
 
 		glPopMatrix();
 	}
 
+	glDisable(GL_TEXTURE_2D);
 	after_draw();
 }
 

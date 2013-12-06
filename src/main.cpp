@@ -18,9 +18,11 @@ int main(int argc, char *argv[])
 
     DataSet ds(v);
     Style s;
-    s.lineColor = 0x00FF0000;
+    s.lineColor = 0x00FF00FF;
     s.lineThickness = 1.0;
-    s.markerSize = 10;
+    s.markerSize = 30;
+    s.markerColor = 0xFF000055;
+    s.markerType = Style::MARK_DOT;
     w.show();
 
     p.draw(ds, s);

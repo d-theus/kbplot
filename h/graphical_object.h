@@ -23,10 +23,10 @@ struct Style {
 	} LineStroke;
 
 	typedef enum {
-		MARK_DOT,
+		MARK_CROSS,
 		MARK_SQUARE,
-		MARK_TRIANGLE,
-		MARK_CROSS
+		MARK_DOT,
+		MARK_TRIANGLE
 	} MarkerType;
 
 	typedef enum {
@@ -45,7 +45,7 @@ struct Style {
 	unsigned int lineColor = 0xFFFFFFFF;
 	float lineThickness = 1.0;
 
-	MarkerType markerType = MARK_SQUARE;
+	MarkerType markerType = MARK_CROSS;
 	unsigned int markerSize = 5;
 	unsigned int markerColor = 0xFFFFFFFF;
 
@@ -141,7 +141,22 @@ class Text : public GraphicalObject {
 };
 
 
-static const unsigned char markerTexes[][64] = {
-{ 0,0,0,0,0,0,0,0, 0,0,0,1,1,0,0,0, 0,0,0,1,1,0,0,0, 0,0,1,1,1,1,0,0, 0,1,1,1,1,1,1,0, 0,1,1,1,1,1,1,0, 1,1,1,1,1,1,1,1, 0,0,0,0,0,0,0,0 }
-};
+const GLubyte markerTexes[][64] ={{
+		//0,0,0,0,0,0,0,0,
+		//0,0,0,0,0,0,0,0,
+		//0,0,0,255,255,0,0,0,
+		//0,0,255,255,255,255,0,0,
+		//0,255,255,255,255,255,255,0,
+		//255,255,255,255,255,255,255,255,
+		//0,0,0,0,0,0,0,0,
+		//0,0,0,0,0,0,0,0
+		255,255,255,255,255,255,255,255,
+		255,255,255,255,255,255,255,255,
+		255,255,255,255,255,255,255,255,
+		255,255,255,255,255,255,255,255,
+		255,255,255,255,255,255,255,255,
+		255,255,255,255,255,255,255,255,
+		255,255,255,255,255,255,255,255,
+		255,255,255,255,255,255,255,255
+}};
 #endif

@@ -320,9 +320,11 @@ Style::fontSize	h/graphical_object.h	/^	size_t fontSize = 16;$/;"	m	struct:Style
 Style::lineColor	h/graphical_object.h	/^	unsigned int lineColor = 0xFFFFFFFF;$/;"	m	struct:Style	access:public
 Style::lineStroke	h/graphical_object.h	/^	LineStroke lineStroke = LINE_STD;$/;"	m	struct:Style	access:public
 Style::lineThickness	h/graphical_object.h	/^	float lineThickness = 1.0;$/;"	m	struct:Style	access:public
+Style::markerColor	h/graphical_object.h	/^	unsigned int markerColor = 0xFFFFFFFF;$/;"	m	struct:Style	access:public
 Style::markerSize	h/graphical_object.h	/^	unsigned int markerSize = 5;$/;"	m	struct:Style	access:public
 Style::markerType	h/graphical_object.h	/^	MarkerType markerType = MARK_SQUARE;$/;"	m	struct:Style	access:public
 Style::textAlignment	h/graphical_object.h	/^	TextAlignment textAlignment = TEXT_ALIGN_CENTER;$/;"	m	struct:Style	access:public
+Style::textColor	h/graphical_object.h	/^	unsigned int textColor = 0xFFFFFFFF;$/;"	m	struct:Style	access:public
 TAR	Makefile	/^TAR           = tar -cf$/;"	m
 TARGET	Makefile	/^TARGET        = bin\/kbplot$/;"	m
 TEXT_ALIGN_BOTLEFT	h/graphical_object.h	/^		TEXT_ALIGN_BOTLEFT,$/;"	e	enum:Style::__anon3
@@ -410,9 +412,14 @@ lineColor	h/graphical_object.h	/^	unsigned int lineColor = 0xFFFFFFFF;$/;"	m	str
 lineStroke	h/graphical_object.h	/^	LineStroke lineStroke = LINE_STD;$/;"	m	struct:Style	access:public
 lineThickness	h/graphical_object.h	/^	float lineThickness = 1.0;$/;"	m	struct:Style	access:public
 main	src/main.cpp	/^int main(int argc, char *argv[])$/;"	f	signature:(int argc, char *argv[])
+markerColor	h/graphical_object.h	/^	unsigned int markerColor = 0xFFFFFFFF;$/;"	m	struct:Style	access:public
 markerSize	h/graphical_object.h	/^	unsigned int markerSize = 5;$/;"	m	struct:Style	access:public
 markerTexes	h/graphical_object.h	/^static const unsigned char markerTexes[][64] = {$/;"	v
 markerType	h/graphical_object.h	/^	MarkerType markerType = MARK_SQUARE;$/;"	m	struct:Style	access:public
+maska	src/graphical_object.cpp	/^const unsigned int maska = 0x000000FF;$/;"	v
+maskb	src/graphical_object.cpp	/^const unsigned int maskb = 0x0000FF00;$/;"	v
+maskg	src/graphical_object.cpp	/^const unsigned int maskg = 0x00FF0000;$/;"	v
+maskr	src/graphical_object.cpp	/^const unsigned int maskr = 0xFF000000;$/;"	v
 metaObject	moc_glwidget.cpp	/^const QMetaObject *GLWidget::metaObject() const$/;"	f	class:GLWidget	signature:() const
 mouseListeners	h/glwidget.h	/^	vector<IMouseEventListener*> mouseListeners;$/;"	m	class:GLWidget	access:private
 mouseMoveEvent	h/event.h	/^	virtual void mouseMoveEvent(int,int)=0;$/;"	p	class:IMouseEventListener	access:public	implementation:pure virtual	signature:(int,int)
@@ -436,8 +443,8 @@ mouseScrollEvent	h/kbplot.h	/^		virtual void mouseScrollEvent(int angle);$/;"	p	
 mouseScrollEvent	src/kbplot.cpp	/^void KbPlot::mouseScrollEvent(int a){$/;"	f	class:KbPlot	signature:(int a)
 mouseX	h/glwidget.h	/^	int mouseX, mouseY;$/;"	m	class:GLWidget	access:private
 mouseY	h/glwidget.h	/^	int mouseX, mouseY;$/;"	m	class:GLWidget	access:private
-myglObjectPlaneWH	h/utilities.h	/^Txy myglObjectPlaneWH();\/\/Получить размеры видимой плоскости (ширина, высота)$/;"	p	signature:()
-myglObjectPlaneWH	src/utilities.cpp	/^Txy myglObjectPlaneWH(){$/;"	f	signature:()
+myglPlaneWH	h/utilities.h	/^Txy myglPlaneWH();\/\/Получить размеры видимой плоскости (ширина, высота)$/;"	p	signature:()
+myglPlaneWH	src/utilities.cpp	/^Txy myglPlaneWH(){$/;"	f	signature:()
 myglScreenWH	h/utilities.h	/^Txy myglScreenWH();\/\/Получить размеры экрана(ш,в)$/;"	p	signature:()
 myglScreenWH	src/utilities.cpp	/^Txy myglScreenWH(){$/;"	f	signature:()
 myglTrObjectScreen	h/utilities.h	/^Txy myglTrObjectScreen(double x, double y); \/\/Математику в координаты экрана$/;"	p	signature:(double x, double y)
@@ -503,6 +510,7 @@ subscribeToMouse	h/glwidget.h	/^	virtual void subscribeToMouse(IMouseEventListen
 subscribeToMouse	src/glwidget.cpp	/^void GLWidget::subscribeToMouse(IMouseEventListener*l){$/;"	f	class:GLWidget	signature:(IMouseEventListener*l)
 text	h/graphical_object.h	/^		string text;$/;"	m	class:Text	access:private
 textAlignment	h/graphical_object.h	/^	TextAlignment textAlignment = TEXT_ALIGN_CENTER;$/;"	m	struct:Style	access:public
+textColor	h/graphical_object.h	/^	unsigned int textColor = 0xFFFFFFFF;$/;"	m	struct:Style	access:public
 toggleFixed	h/graphical_object.h	/^		void toggleFixed(bool b = true);$/;"	p	class:GraphicalObject	access:public	signature:(bool b = true)
 toggleFixed	src/graphical_object.cpp	/^void GraphicalObject::toggleFixed(bool b){$/;"	f	class:GraphicalObject	signature:(bool b)
 toggleScaled	h/graphical_object.h	/^		void toggleScaled(bool b = true);$/;"	p	class:GraphicalObject	access:public	signature:(bool b = true)
