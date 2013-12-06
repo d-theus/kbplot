@@ -4,6 +4,19 @@
 
 using std::vector;
 
+class RawData{
+	public:
+	typedef enum {
+		TYPE_DOUBLE,
+		TYPE_FLOAT,
+		TYPE_INT1,
+		TYPE_INT4,
+		TYPE_INT8,
+		TYPE_INT16
+	} DataType; 
+	static vector<Txy> *get(unsigned char *data, size_t count, size_t item_length, size_t o_x, size_t o_y, DataType t);
+};
+
 struct DataSet {
 		DataSet(vector<Txy> *data);
 		vector<Txy> *getData()const;

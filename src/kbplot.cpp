@@ -251,3 +251,24 @@ void KbPlot::gridRebuild(){
 	}
 }
 
+vector<Txy>* RawData::get(unsigned char *data, size_t count, size_t item_length, size_t o_x, size_t o_y, DataType t){
+	qDebug()<< "lowest address:" << &data[0];
+	vector<Txy> *res = new vector<Txy>();
+	int lineOffset;
+	for (size_t i = 0; i < count; i++) {
+		lineOffset = i*item_length;
+		switch(t) {
+			case TYPE_INT1:
+				res->push_back(Txy(*(char*)(data + lineOffset + o_x),*(char*)(data + lineOffset + o_y)));
+				break;
+			case TYPE_DOUBLE:
+				double x = *(double*)(data + lineOffset + o_x);
+				res->push_back(Txy(x,*(double*)(data + lineOffset + o_y)));
+				qDebug() << "x["<<i<<"]:"<<x;
+				break;
+		}
+	}
+	qDebug() << "hightest address:" << &data[0] + count*item_length-1;
+	return res;
+}
+

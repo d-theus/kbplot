@@ -43,6 +43,7 @@ DataSet::getData	h/kbplot.h	/^		vector<Txy> *getData()const;$/;"	p	struct:DataSe
 DataSet::getData	src/kbplot.cpp	/^vector<Txy> * DataSet::getData()const{$/;"	f	class:DataSet	signature:() const
 DataSet::~DataSet	h/kbplot.h	/^		virtual ~DataSet();$/;"	p	struct:DataSet	access:public	implementation:virtual	signature:()
 DataSet::~DataSet	src/kbplot.cpp	/^DataSet::~DataSet(){$/;"	f	class:DataSet	signature:()
+DataType	h/kbplot.h	/^	} DataType; $/;"	t	class:RawData	typeref:enum:RawData::__anon5	access:private
 EVENT_H	h/event.h	2;"	d
 GLWIDGET_H	h/glwidget.h	2;"	d
 GLWidget	h/glwidget.h	/^	GLWidget();$/;"	p	class:GLWidget	access:public	signature:()
@@ -242,10 +243,10 @@ Line::y2	h/graphical_object.h	/^		double x1,x2,y1,y2;$/;"	m	class:Line	access:pr
 Line::~Line	h/graphical_object.h	/^		virtual ~Line(){};$/;"	f	class:Line	access:public	implementation:virtual	signature:()
 LineStroke	h/graphical_object.h	/^	} LineStroke;$/;"	t	struct:Style	typeref:enum:Style::__anon1	access:public
 MAKEFILE	Makefile	/^MAKEFILE      = Makefile$/;"	m
-MARK_CROSS	h/graphical_object.h	/^		MARK_CROSS$/;"	e	enum:Style::__anon2
+MARK_CROSS	h/graphical_object.h	/^		MARK_CROSS,$/;"	e	enum:Style::__anon2
 MARK_DOT	h/graphical_object.h	/^		MARK_DOT,$/;"	e	enum:Style::__anon2
 MARK_SQUARE	h/graphical_object.h	/^		MARK_SQUARE,$/;"	e	enum:Style::__anon2
-MARK_TRIANGLE	h/graphical_object.h	/^		MARK_TRIANGLE,$/;"	e	enum:Style::__anon2
+MARK_TRIANGLE	h/graphical_object.h	/^		MARK_TRIANGLE$/;"	e	enum:Style::__anon2
 MKDIR	Makefile	/^MKDIR         = mkdir -p$/;"	m
 MOVE	Makefile	/^MOVE          = mv -f$/;"	m
 MRK_TYPE_CROSS	h/graphical_object.h	/^	MRK_TYPE_CROSS$/;"	e	enum:__anon4
@@ -286,6 +287,16 @@ QMAKE_TARGET	Makefile	/^QMAKE_TARGET  = kbplot$/;"	m
 QT_MOC_LITERAL	moc_glwidget.cpp	25;"	d	file:
 QT_MOC_LITERAL	moc_glwidget.cpp	36;"	d	file:
 RANLIB	Makefile	/^RANLIB        = $/;"	m
+RawData	h/kbplot.h	/^class RawData{$/;"	c
+RawData::DataType	h/kbplot.h	/^	} DataType; $/;"	t	class:RawData	typeref:enum:RawData::__anon5	access:private
+RawData::TYPE_DOUBLE	h/kbplot.h	/^		TYPE_DOUBLE,$/;"	e	enum:RawData::__anon5
+RawData::TYPE_FLOAT	h/kbplot.h	/^		TYPE_FLOAT,$/;"	e	enum:RawData::__anon5
+RawData::TYPE_INT1	h/kbplot.h	/^		TYPE_INT1,$/;"	e	enum:RawData::__anon5
+RawData::TYPE_INT16	h/kbplot.h	/^		TYPE_INT16$/;"	e	enum:RawData::__anon5
+RawData::TYPE_INT4	h/kbplot.h	/^		TYPE_INT4,$/;"	e	enum:RawData::__anon5
+RawData::TYPE_INT8	h/kbplot.h	/^		TYPE_INT8,$/;"	e	enum:RawData::__anon5
+RawData::get	h/kbplot.h	/^	static vector<Txy> *get(void *data, size_t count, size_t item_length, size_t o_x, size_t o_y, DataType t);$/;"	p	class:RawData	access:public	signature:(void *data, size_t count, size_t item_length, size_t o_x, size_t o_y, DataType t)
+RawData::get	src/kbplot.cpp	/^vector<Txy>* RawData::get(void *data, size_t count, size_t item_length, size_t o_x, size_t o_y, DataType t){$/;"	f	class:RawData	signature:(void *data, size_t count, size_t item_length, size_t o_x, size_t o_y, DataType t)
 SED	Makefile	/^SED           = sed$/;"	m
 SOURCES	Makefile	/^SOURCES       = src\/glwidget.cpp \\$/;"	m
 STRIP	Makefile	/^STRIP         = strip$/;"	m
@@ -298,10 +309,10 @@ Style::LINE_DASH_DOTTED	h/graphical_object.h	/^		LINE_DASH_DOTTED$/;"	e	enum:Sty
 Style::LINE_DOTTED	h/graphical_object.h	/^		LINE_DOTTED,$/;"	e	enum:Style::__anon1
 Style::LINE_STD	h/graphical_object.h	/^		LINE_STD,$/;"	e	enum:Style::__anon1
 Style::LineStroke	h/graphical_object.h	/^	} LineStroke;$/;"	t	struct:Style	typeref:enum:Style::__anon1	access:public
-Style::MARK_CROSS	h/graphical_object.h	/^		MARK_CROSS$/;"	e	enum:Style::__anon2
+Style::MARK_CROSS	h/graphical_object.h	/^		MARK_CROSS,$/;"	e	enum:Style::__anon2
 Style::MARK_DOT	h/graphical_object.h	/^		MARK_DOT,$/;"	e	enum:Style::__anon2
 Style::MARK_SQUARE	h/graphical_object.h	/^		MARK_SQUARE,$/;"	e	enum:Style::__anon2
-Style::MARK_TRIANGLE	h/graphical_object.h	/^		MARK_TRIANGLE,$/;"	e	enum:Style::__anon2
+Style::MARK_TRIANGLE	h/graphical_object.h	/^		MARK_TRIANGLE$/;"	e	enum:Style::__anon2
 Style::MarkerType	h/graphical_object.h	/^	} MarkerType;$/;"	t	struct:Style	typeref:enum:Style::__anon2	access:public
 Style::Style	h/graphical_object.h	/^	Style();$/;"	p	struct:Style	access:public	signature:()
 Style::Style	src/graphical_object.cpp	/^Style::Style(){$/;"	f	class:Style	signature:()
@@ -322,7 +333,7 @@ Style::lineStroke	h/graphical_object.h	/^	LineStroke lineStroke = LINE_STD;$/;"	
 Style::lineThickness	h/graphical_object.h	/^	float lineThickness = 1.0;$/;"	m	struct:Style	access:public
 Style::markerColor	h/graphical_object.h	/^	unsigned int markerColor = 0xFFFFFFFF;$/;"	m	struct:Style	access:public
 Style::markerSize	h/graphical_object.h	/^	unsigned int markerSize = 5;$/;"	m	struct:Style	access:public
-Style::markerType	h/graphical_object.h	/^	MarkerType markerType = MARK_SQUARE;$/;"	m	struct:Style	access:public
+Style::markerType	h/graphical_object.h	/^	MarkerType markerType = MARK_CROSS;$/;"	m	struct:Style	access:public
 Style::textAlignment	h/graphical_object.h	/^	TextAlignment textAlignment = TEXT_ALIGN_CENTER;$/;"	m	struct:Style	access:public
 Style::textColor	h/graphical_object.h	/^	unsigned int textColor = 0xFFFFFFFF;$/;"	m	struct:Style	access:public
 TAR	Makefile	/^TAR           = tar -cf$/;"	m
@@ -337,6 +348,12 @@ TEXT_ALIGN_TOP	h/graphical_object.h	/^		TEXT_ALIGN_TOP,$/;"	e	enum:Style::__anon
 TEXT_ALIGN_TOPLEFT	h/graphical_object.h	/^		TEXT_ALIGN_TOPLEFT,$/;"	e	enum:Style::__anon3
 TEXT_ALIGN_TOPRIGHT	h/graphical_object.h	/^		TEXT_ALIGN_TOPRIGHT,$/;"	e	enum:Style::__anon3
 TXY_H	h/txy.h	2;"	d
+TYPE_DOUBLE	h/kbplot.h	/^		TYPE_DOUBLE,$/;"	e	enum:RawData::__anon5
+TYPE_FLOAT	h/kbplot.h	/^		TYPE_FLOAT,$/;"	e	enum:RawData::__anon5
+TYPE_INT1	h/kbplot.h	/^		TYPE_INT1,$/;"	e	enum:RawData::__anon5
+TYPE_INT16	h/kbplot.h	/^		TYPE_INT16$/;"	e	enum:RawData::__anon5
+TYPE_INT4	h/kbplot.h	/^		TYPE_INT4,$/;"	e	enum:RawData::__anon5
+TYPE_INT8	h/kbplot.h	/^		TYPE_INT8,$/;"	e	enum:RawData::__anon5
 Text	h/graphical_object.h	/^		Text(const string &text, size_t size, double x, double y);$/;"	p	class:Text	access:public	signature:(const string &text, size_t size, double x, double y)
 Text	h/graphical_object.h	/^class Text : public GraphicalObject {$/;"	c	inherits:GraphicalObject
 Text	src/graphical_object.cpp	/^Text::Text(const string &text, size_t size, double x, double y){$/;"	f	class:Text	signature:(const string &text, size_t size, double x, double y)
@@ -399,6 +416,8 @@ fontName	h/graphical_object.h	/^	string fontName = "Ubuntu-R.ttf";$/;"	m	struct:
 fontSize	h/graphical_object.h	/^	size_t fontSize = 16;$/;"	m	struct:Style	access:public
 frame	h/kbplot.h	/^		Polyline *frame;$/;"	m	class:KbPlot	access:private
 framePoints	h/kbplot.h	/^		vector<Txy> framePoints;$/;"	m	class:KbPlot	access:private
+get	h/kbplot.h	/^	static vector<Txy> *get(void *data, size_t count, size_t item_length, size_t o_x, size_t o_y, DataType t);$/;"	p	class:RawData	access:public	signature:(void *data, size_t count, size_t item_length, size_t o_x, size_t o_y, DataType t)
+get	src/kbplot.cpp	/^vector<Txy>* RawData::get(void *data, size_t count, size_t item_length, size_t o_x, size_t o_y, DataType t){$/;"	f	class:RawData	signature:(void *data, size_t count, size_t item_length, size_t o_x, size_t o_y, DataType t)
 getData	h/kbplot.h	/^		vector<Txy> *getData()const;$/;"	p	struct:DataSet	access:public	signature:() const
 getData	src/kbplot.cpp	/^vector<Txy> * DataSet::getData()const{$/;"	f	class:DataSet	signature:() const
 gridRebuild	h/kbplot.h	/^		void gridRebuild(); \/\/build new ticks collections$/;"	p	class:KbPlot	access:private	signature:()
@@ -414,8 +433,8 @@ lineThickness	h/graphical_object.h	/^	float lineThickness = 1.0;$/;"	m	struct:St
 main	src/main.cpp	/^int main(int argc, char *argv[])$/;"	f	signature:(int argc, char *argv[])
 markerColor	h/graphical_object.h	/^	unsigned int markerColor = 0xFFFFFFFF;$/;"	m	struct:Style	access:public
 markerSize	h/graphical_object.h	/^	unsigned int markerSize = 5;$/;"	m	struct:Style	access:public
-markerTexes	h/graphical_object.h	/^static const unsigned char markerTexes[][64] = {$/;"	v
-markerType	h/graphical_object.h	/^	MarkerType markerType = MARK_SQUARE;$/;"	m	struct:Style	access:public
+markerTexes	h/graphical_object.h	/^const GLubyte markerTexes[][64] ={{$/;"	v
+markerType	h/graphical_object.h	/^	MarkerType markerType = MARK_CROSS;$/;"	m	struct:Style	access:public
 maska	src/graphical_object.cpp	/^const unsigned int maska = 0x000000FF;$/;"	v
 maskb	src/graphical_object.cpp	/^const unsigned int maskb = 0x0000FF00;$/;"	v
 maskg	src/graphical_object.cpp	/^const unsigned int maskg = 0x00FF0000;$/;"	v
