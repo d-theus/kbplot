@@ -52,6 +52,24 @@ void GraphicalObject::before_draw()const{
 	}
 	
 	glLineWidth(this -> style.lineThickness);
+	if(this -> style.lineStroke != Style::LINE_STD){
+
+		glEnable(GL_LINE_STIPPLE);
+		glPushAttrib(GL_LINE_BIT);
+
+		switch(style.lineStroke)
+		{
+			case Style::LINE_DASHED:
+				glLineStipple(1, 0x00FF);
+			break;
+			case Style::LINE_DASH_DOTTED:
+				glLineStipple(1, 0x0C0F);
+			break;
+			case Style::LINE_DOTTED:
+				glLineStipple(1, 0xAAAA);
+			break;
+		}
+	}
 }
 
 void GraphicalObject::after_draw()const{
@@ -62,6 +80,10 @@ void GraphicalObject::after_draw()const{
 	if (isTranslated || isScaled){
 		glMatrixMode(GL_MODELVIEW);
 		glPopMatrix();
+	}
+	if(this -> style.lineStroke != Style::LINE_STD){
+		glPopAttrib();
+		glDisable(GL_LINE_STIPPLE);
 	}
 }
 
@@ -77,6 +99,7 @@ void Polyline::draw() const{
 
 	const unsigned int c = this -> style.lineColor;
 	glColor4ub((c&maskr)>>24, (c&maskg)>>16, (c&maskb)>>8, c&maska);
+
 	
 	glBegin(GL_LINE_STRIP);
 	for (vector<Txy>::const_iterator i = data->begin(); i != data->end(); i++) {
