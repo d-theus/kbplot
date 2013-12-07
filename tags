@@ -43,7 +43,7 @@ DataSet::getData	h/kbplot.h	/^		vector<Txy> *getData()const;$/;"	p	struct:DataSe
 DataSet::getData	src/kbplot.cpp	/^vector<Txy> * DataSet::getData()const{$/;"	f	class:DataSet	signature:() const
 DataSet::~DataSet	h/kbplot.h	/^		virtual ~DataSet();$/;"	p	struct:DataSet	access:public	implementation:virtual	signature:()
 DataSet::~DataSet	src/kbplot.cpp	/^DataSet::~DataSet(){$/;"	f	class:DataSet	signature:()
-DataType	h/kbplot.h	/^	} DataType; $/;"	t	class:RawData	typeref:enum:RawData::__anon5	access:private
+DataType	h/kbplot.h	/^	} DataType; $/;"	t	class:RawData	typeref:enum:RawData::__anon5	access:public
 EVENT_H	h/event.h	2;"	d
 GLWIDGET_H	h/glwidget.h	2;"	d
 GLWidget	h/glwidget.h	/^	GLWidget();$/;"	p	class:GLWidget	access:public	signature:()
@@ -165,7 +165,7 @@ KbPlot::axisRebuild	src/kbplot.cpp	/^void KbPlot::axisRebuild(){$/;"	f	class:KbP
 KbPlot::c_frameThickness	h/kbplot.h	/^		static const double c_frameThickness = 0.02;$/;"	m	class:KbPlot	access:private
 KbPlot::c_tickLength	h/kbplot.h	/^		static const double c_tickLength = 0.2;$/;"	m	class:KbPlot	access:private
 KbPlot::container	h/kbplot.h	/^		GLWidget *container;$/;"	m	class:KbPlot	access:private
-KbPlot::datasets	h/kbplot.h	/^		vector<const DataSet*> datasets;$/;"	m	class:KbPlot	access:private
+KbPlot::datasetCounter	h/kbplot.h	/^		size_t datasetCounter;$/;"	m	class:KbPlot	access:private
 KbPlot::draw	h/kbplot.h	/^		void draw(DataSet &ds, Style &s);$/;"	p	class:KbPlot	access:public	signature:(DataSet &ds, Style &s)
 KbPlot::draw	src/kbplot.cpp	/^void KbPlot::draw(DataSet &ds, Style &s){$/;"	f	class:KbPlot	signature:(DataSet &ds, Style &s)
 KbPlot::exportAsImage	h/kbplot.h	/^		void exportAsImage(const string filename);$/;"	p	class:KbPlot	access:public	signature:(const string filename)
@@ -173,6 +173,7 @@ KbPlot::frame	h/kbplot.h	/^		Polyline *frame;$/;"	m	class:KbPlot	access:private
 KbPlot::framePoints	h/kbplot.h	/^		vector<Txy> framePoints;$/;"	m	class:KbPlot	access:private
 KbPlot::gridRebuild	h/kbplot.h	/^		void gridRebuild(); \/\/build new ticks collections$/;"	p	class:KbPlot	access:private	signature:()
 KbPlot::gridRebuild	src/kbplot.cpp	/^void KbPlot::gridRebuild(){$/;"	f	class:KbPlot	signature:()
+KbPlot::isGridEnabled	h/kbplot.h	/^		bool  isGridEnabled;$/;"	m	class:KbPlot	access:private
 KbPlot::mouseMoveEvent	h/kbplot.h	/^		virtual void mouseMoveEvent(int x,int y);$/;"	p	class:KbPlot	access:public	implementation:virtual	signature:(int x,int y)
 KbPlot::mouseMoveEvent	src/kbplot.cpp	/^void KbPlot::mouseMoveEvent(int x, int y){$/;"	f	class:KbPlot	signature:(int x, int y)
 KbPlot::mouseNewMovement	h/kbplot.h	/^		bool mouseNewMovement = true;$/;"	m	class:KbPlot	access:private
@@ -189,7 +190,9 @@ KbPlot::setAxisYName	h/kbplot.h	/^		void setAxisYName(const string);$/;"	p	class
 KbPlot::setAxisYTick	h/kbplot.h	/^		void setAxisYTick(double);$/;"	p	class:KbPlot	access:public	signature:(double)
 KbPlot::setBackground	h/kbplot.h	/^		void setBackground(const string filename);$/;"	p	class:KbPlot	access:public	signature:(const string filename)
 KbPlot::setBackground	h/kbplot.h	/^		void setBackground(const unsigned int color);$/;"	p	class:KbPlot	access:public	signature:(const unsigned int color)
+KbPlot::setBackground	src/kbplot.cpp	/^void KbPlot::setBackground(const unsigned int color){$/;"	f	class:KbPlot	signature:(const unsigned int color)
 KbPlot::setGridColor	h/kbplot.h	/^		void setGridColor(const unsigned int);$/;"	p	class:KbPlot	access:public	signature:(const unsigned int)
+KbPlot::setGridColor	src/kbplot.cpp	/^void KbPlot::setGridColor(const unsigned int color){$/;"	f	class:KbPlot	signature:(const unsigned int color)
 KbPlot::setGridStroke	h/kbplot.h	/^		void setGridStroke(const Style::LineStroke)  ;$/;"	p	class:KbPlot	access:public	signature:(const Style::LineStroke)
 KbPlot::setGridThickness	h/kbplot.h	/^		void setGridThickness(const unsigned int);$/;"	p	class:KbPlot	access:public	signature:(const unsigned int)
 KbPlot::setGridTick	h/kbplot.h	/^		void setGridTick(const int);$/;"	p	class:KbPlot	access:public	signature:(const int)
@@ -204,6 +207,8 @@ KbPlot::stAxisY	h/kbplot.h	/^		Style stAxisX, stAxisY, stBkgnd, stGridX, stGridY
 KbPlot::stBkgnd	h/kbplot.h	/^		Style stAxisX, stAxisY, stBkgnd, stGridX, stGridY;$/;"	m	class:KbPlot	access:private
 KbPlot::stGridX	h/kbplot.h	/^		Style stAxisX, stAxisY, stBkgnd, stGridX, stGridY;$/;"	m	class:KbPlot	access:private
 KbPlot::stGridY	h/kbplot.h	/^		Style stAxisX, stAxisY, stBkgnd, stGridX, stGridY;$/;"	m	class:KbPlot	access:private
+KbPlot::toggleGrid	h/kbplot.h	/^		void toggleGrid(bool b);$/;"	p	class:KbPlot	access:public	signature:(bool b)
+KbPlot::toggleGrid	src/kbplot.cpp	/^void KbPlot::toggleGrid(bool b){$/;"	f	class:KbPlot	signature:(bool b)
 KbPlot::xgrid	h/kbplot.h	/^		std::vector<Line*> xgrid;$/;"	m	class:KbPlot	access:private
 KbPlot::xgtick	h/kbplot.h	/^		double xgtick, ygtick;$/;"	m	class:KbPlot	access:private
 KbPlot::xmax	h/kbplot.h	/^		double xmax, ymax, xmin, ymin;$/;"	m	class:KbPlot	access:private
@@ -288,15 +293,15 @@ QT_MOC_LITERAL	moc_glwidget.cpp	25;"	d	file:
 QT_MOC_LITERAL	moc_glwidget.cpp	36;"	d	file:
 RANLIB	Makefile	/^RANLIB        = $/;"	m
 RawData	h/kbplot.h	/^class RawData{$/;"	c
-RawData::DataType	h/kbplot.h	/^	} DataType; $/;"	t	class:RawData	typeref:enum:RawData::__anon5	access:private
+RawData::DataType	h/kbplot.h	/^	} DataType; $/;"	t	class:RawData	typeref:enum:RawData::__anon5	access:public
 RawData::TYPE_DOUBLE	h/kbplot.h	/^		TYPE_DOUBLE,$/;"	e	enum:RawData::__anon5
 RawData::TYPE_FLOAT	h/kbplot.h	/^		TYPE_FLOAT,$/;"	e	enum:RawData::__anon5
 RawData::TYPE_INT1	h/kbplot.h	/^		TYPE_INT1,$/;"	e	enum:RawData::__anon5
 RawData::TYPE_INT16	h/kbplot.h	/^		TYPE_INT16$/;"	e	enum:RawData::__anon5
 RawData::TYPE_INT4	h/kbplot.h	/^		TYPE_INT4,$/;"	e	enum:RawData::__anon5
 RawData::TYPE_INT8	h/kbplot.h	/^		TYPE_INT8,$/;"	e	enum:RawData::__anon5
-RawData::get	h/kbplot.h	/^	static vector<Txy> *get(void *data, size_t count, size_t item_length, size_t o_x, size_t o_y, DataType t);$/;"	p	class:RawData	access:public	signature:(void *data, size_t count, size_t item_length, size_t o_x, size_t o_y, DataType t)
-RawData::get	src/kbplot.cpp	/^vector<Txy>* RawData::get(void *data, size_t count, size_t item_length, size_t o_x, size_t o_y, DataType t){$/;"	f	class:RawData	signature:(void *data, size_t count, size_t item_length, size_t o_x, size_t o_y, DataType t)
+RawData::get	h/kbplot.h	/^	static vector<Txy> *get(unsigned char *data, size_t count, size_t item_length, size_t o_x, size_t o_y, DataType t);$/;"	p	class:RawData	access:public	signature:(unsigned char *data, size_t count, size_t item_length, size_t o_x, size_t o_y, DataType t)
+RawData::get	src/kbplot.cpp	/^vector<Txy>* RawData::get(unsigned char *data, size_t count, size_t item_length, size_t o_x, size_t o_y, DataType t){$/;"	f	class:RawData	signature:(unsigned char *data, size_t count, size_t item_length, size_t o_x, size_t o_y, DataType t)
 SED	Makefile	/^SED           = sed$/;"	m
 SOURCES	Makefile	/^SOURCES       = src\/glwidget.cpp \\$/;"	m
 STRIP	Makefile	/^STRIP         = strip$/;"	m
@@ -326,6 +331,7 @@ Style::TEXT_ALIGN_TOP	h/graphical_object.h	/^		TEXT_ALIGN_TOP,$/;"	e	enum:Style:
 Style::TEXT_ALIGN_TOPLEFT	h/graphical_object.h	/^		TEXT_ALIGN_TOPLEFT,$/;"	e	enum:Style::__anon3
 Style::TEXT_ALIGN_TOPRIGHT	h/graphical_object.h	/^		TEXT_ALIGN_TOPRIGHT,$/;"	e	enum:Style::__anon3
 Style::TextAlignment	h/graphical_object.h	/^	} TextAlignment;$/;"	t	struct:Style	typeref:enum:Style::__anon3	access:public
+Style::fillColor	h/graphical_object.h	/^	unsigned int fillColor = 0x00000000;$/;"	m	struct:Style	access:public
 Style::fontName	h/graphical_object.h	/^	string fontName = "Ubuntu-R.ttf";$/;"	m	struct:Style	access:public
 Style::fontSize	h/graphical_object.h	/^	size_t fontSize = 16;$/;"	m	struct:Style	access:public
 Style::lineColor	h/graphical_object.h	/^	unsigned int lineColor = 0xFFFFFFFF;$/;"	m	struct:Style	access:public
@@ -368,8 +374,10 @@ Text::x	h/graphical_object.h	/^		double x, y;$/;"	m	class:Text	access:private
 Text::y	h/graphical_object.h	/^		double x, y;$/;"	m	class:Text	access:private
 Text::~Text	h/graphical_object.h	/^		~Text(){};$/;"	f	class:Text	access:public	signature:()
 TextAlignment	h/graphical_object.h	/^	} TextAlignment;$/;"	t	struct:Style	typeref:enum:Style::__anon3	access:public
+Txy	h/txy.h	/^	Txy(){x = 0; y = 0;}$/;"	f	struct:Txy	access:public	signature:()
 Txy	h/txy.h	/^	Txy(double _x, double _y){x = _x; y = _y;}$/;"	f	struct:Txy	access:public	signature:(double _x, double _y)
 Txy	h/txy.h	/^struct Txy $/;"	s
+Txy::Txy	h/txy.h	/^	Txy(){x = 0; y = 0;}$/;"	f	struct:Txy	access:public	signature:()
 Txy::Txy	h/txy.h	/^	Txy(double _x, double _y){x = _x; y = _y;}$/;"	f	struct:Txy	access:public	signature:(double _x, double _y)
 Txy::x	h/txy.h	/^	double x,y;$/;"	m	struct:Txy	access:public
 Txy::y	h/txy.h	/^	double x,y;$/;"	m	struct:Txy	access:public
@@ -396,7 +404,7 @@ data	h/graphical_object.h	/^		vector<Txy> *data;$/;"	m	class:Polygon	access:priv
 data	h/graphical_object.h	/^		vector<Txy> *data;$/;"	m	class:Polyline	access:private
 data	h/kbplot.h	/^		vector<Txy> *data;$/;"	m	struct:DataSet	access:private
 data	moc_glwidget.cpp	/^    QByteArrayData data[1];$/;"	m	struct:qt_meta_stringdata_GLWidget_t	file:	access:public
-datasets	h/kbplot.h	/^		vector<const DataSet*> datasets;$/;"	m	class:KbPlot	access:private
+datasetCounter	h/kbplot.h	/^		size_t datasetCounter;$/;"	m	class:KbPlot	access:private
 draw	h/graphical_object.h	/^		virtual void draw() const = 0;$/;"	p	class:GraphicalObject	access:public	implementation:pure virtual	signature:() const
 draw	h/graphical_object.h	/^		virtual void draw() const;$/;"	p	class:Line	access:public	implementation:virtual	signature:() const
 draw	h/graphical_object.h	/^		virtual void draw() const;$/;"	p	class:MarkerSet	access:public	implementation:virtual	signature:() const
@@ -411,13 +419,14 @@ draw	src/graphical_object.cpp	/^void Polyline::draw() const{$/;"	f	class:Polylin
 draw	src/graphical_object.cpp	/^void Text::draw()const{$/;"	f	class:Text	signature:() const
 draw	src/kbplot.cpp	/^void KbPlot::draw(DataSet &ds, Style &s){$/;"	f	class:KbPlot	signature:(DataSet &ds, Style &s)
 exportAsImage	h/kbplot.h	/^		void exportAsImage(const string filename);$/;"	p	class:KbPlot	access:public	signature:(const string filename)
+fillColor	h/graphical_object.h	/^	unsigned int fillColor = 0x00000000;$/;"	m	struct:Style	access:public
 font	h/graphical_object.h	/^		struct dtx_font *font;$/;"	m	class:Text	typeref:struct:Text::dtx_font	access:private
 fontName	h/graphical_object.h	/^	string fontName = "Ubuntu-R.ttf";$/;"	m	struct:Style	access:public
 fontSize	h/graphical_object.h	/^	size_t fontSize = 16;$/;"	m	struct:Style	access:public
 frame	h/kbplot.h	/^		Polyline *frame;$/;"	m	class:KbPlot	access:private
 framePoints	h/kbplot.h	/^		vector<Txy> framePoints;$/;"	m	class:KbPlot	access:private
-get	h/kbplot.h	/^	static vector<Txy> *get(void *data, size_t count, size_t item_length, size_t o_x, size_t o_y, DataType t);$/;"	p	class:RawData	access:public	signature:(void *data, size_t count, size_t item_length, size_t o_x, size_t o_y, DataType t)
-get	src/kbplot.cpp	/^vector<Txy>* RawData::get(void *data, size_t count, size_t item_length, size_t o_x, size_t o_y, DataType t){$/;"	f	class:RawData	signature:(void *data, size_t count, size_t item_length, size_t o_x, size_t o_y, DataType t)
+get	h/kbplot.h	/^	static vector<Txy> *get(unsigned char *data, size_t count, size_t item_length, size_t o_x, size_t o_y, DataType t);$/;"	p	class:RawData	access:public	signature:(unsigned char *data, size_t count, size_t item_length, size_t o_x, size_t o_y, DataType t)
+get	src/kbplot.cpp	/^vector<Txy>* RawData::get(unsigned char *data, size_t count, size_t item_length, size_t o_x, size_t o_y, DataType t){$/;"	f	class:RawData	signature:(unsigned char *data, size_t count, size_t item_length, size_t o_x, size_t o_y, DataType t)
 getData	h/kbplot.h	/^		vector<Txy> *getData()const;$/;"	p	struct:DataSet	access:public	signature:() const
 getData	src/kbplot.cpp	/^vector<Txy> * DataSet::getData()const{$/;"	f	class:DataSet	signature:() const
 gridRebuild	h/kbplot.h	/^		void gridRebuild(); \/\/build new ticks collections$/;"	p	class:KbPlot	access:private	signature:()
@@ -425,6 +434,7 @@ gridRebuild	src/kbplot.cpp	/^void KbPlot::gridRebuild(){$/;"	f	class:KbPlot	sign
 initializeGL	h/glwidget.h	/^	void initializeGL();$/;"	p	class:GLWidget	access:public	signature:()
 initializeGL	src/glwidget.cpp	/^void GLWidget::initializeGL() {$/;"	f	class:GLWidget	signature:()
 isFixed	h/graphical_object.h	/^		bool isFixed= false;$/;"	m	class:GraphicalObject	access:protected
+isGridEnabled	h/kbplot.h	/^		bool  isGridEnabled;$/;"	m	class:KbPlot	access:private
 isScaled	h/graphical_object.h	/^		bool isScaled = false;$/;"	m	class:GraphicalObject	access:protected
 isTranslated	h/graphical_object.h	/^		bool isTranslated = false;$/;"	m	class:GraphicalObject	access:protected
 lineColor	h/graphical_object.h	/^	unsigned int lineColor = 0xFFFFFFFF;$/;"	m	struct:Style	access:public
@@ -496,9 +506,11 @@ setAxisYName	h/kbplot.h	/^		void setAxisYName(const string);$/;"	p	class:KbPlot	
 setAxisYTick	h/kbplot.h	/^		void setAxisYTick(double);$/;"	p	class:KbPlot	access:public	signature:(double)
 setBackground	h/kbplot.h	/^		void setBackground(const string filename);$/;"	p	class:KbPlot	access:public	signature:(const string filename)
 setBackground	h/kbplot.h	/^		void setBackground(const unsigned int color);$/;"	p	class:KbPlot	access:public	signature:(const unsigned int color)
+setBackground	src/kbplot.cpp	/^void KbPlot::setBackground(const unsigned int color){$/;"	f	class:KbPlot	signature:(const unsigned int color)
 setCoordinates	h/graphical_object.h	/^		void setCoordinates(double,double,double,double);$/;"	p	class:Line	access:public	signature:(double,double,double,double)
 setCoordinates	src/graphical_object.cpp	/^void Line::setCoordinates(double _x1, double _y1, double _x2, double _y2){$/;"	f	class:Line	signature:(double _x1, double _y1, double _x2, double _y2)
 setGridColor	h/kbplot.h	/^		void setGridColor(const unsigned int);$/;"	p	class:KbPlot	access:public	signature:(const unsigned int)
+setGridColor	src/kbplot.cpp	/^void KbPlot::setGridColor(const unsigned int color){$/;"	f	class:KbPlot	signature:(const unsigned int color)
 setGridStroke	h/kbplot.h	/^		void setGridStroke(const Style::LineStroke)  ;$/;"	p	class:KbPlot	access:public	signature:(const Style::LineStroke)
 setGridThickness	h/kbplot.h	/^		void setGridThickness(const unsigned int);$/;"	p	class:KbPlot	access:public	signature:(const unsigned int)
 setGridTick	h/kbplot.h	/^		void setGridTick(const int);$/;"	p	class:KbPlot	access:public	signature:(const int)
@@ -532,6 +544,8 @@ textAlignment	h/graphical_object.h	/^	TextAlignment textAlignment = TEXT_ALIGN_C
 textColor	h/graphical_object.h	/^	unsigned int textColor = 0xFFFFFFFF;$/;"	m	struct:Style	access:public
 toggleFixed	h/graphical_object.h	/^		void toggleFixed(bool b = true);$/;"	p	class:GraphicalObject	access:public	signature:(bool b = true)
 toggleFixed	src/graphical_object.cpp	/^void GraphicalObject::toggleFixed(bool b){$/;"	f	class:GraphicalObject	signature:(bool b)
+toggleGrid	h/kbplot.h	/^		void toggleGrid(bool b);$/;"	p	class:KbPlot	access:public	signature:(bool b)
+toggleGrid	src/kbplot.cpp	/^void KbPlot::toggleGrid(bool b){$/;"	f	class:KbPlot	signature:(bool b)
 toggleScaled	h/graphical_object.h	/^		void toggleScaled(bool b = true);$/;"	p	class:GraphicalObject	access:public	signature:(bool b = true)
 toggleScaled	src/graphical_object.cpp	/^void GraphicalObject::toggleScaled(bool b){$/;"	f	class:GraphicalObject	signature:(bool b)
 toggleTranslated	h/graphical_object.h	/^		void toggleTranslated(bool b = true);$/;"	p	class:GraphicalObject	access:public	signature:(bool b = true)

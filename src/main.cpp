@@ -35,6 +35,10 @@ int main(int argc, char *argv[])
     s.markerType = Style::MARK_CROSS;
     s1.lineStroke = Style::LINE_DASHED;
     s.lineStroke = Style::LINE_DASH_DOTTED;
+
+    p.toggleGrid(true);
+    p.setGridColor(0x77777777);
+    p.setGridYStroke(Style::LINE_DOTTED);
     w.show();
 
     p.draw(ds1, s1);

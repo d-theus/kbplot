@@ -43,6 +43,7 @@ class KbPlot : IMouseEventListener {
 		void setAxisXName(const string);
 		void setAxisYName(const string);
 
+		void toggleGrid(bool b);
 		void setGridTick(const int);
 		void setGridXTick(const int);
 		void setGridYTick(const int);
@@ -87,6 +88,7 @@ class KbPlot : IMouseEventListener {
 		double xmax, ymax, xmin, ymin;
 		double xtick, ytick;
 		double xgtick, ygtick;
+		bool  isGridEnabled;
 
 		size_t datasetCounter;
 		Style stAxisX, stAxisY, stBkgnd, stGridX, stGridY;

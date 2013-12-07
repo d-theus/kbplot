@@ -54,6 +54,7 @@ struct Style {
 	string fontName = "Ubuntu-R.ttf";
 	unsigned int textColor = 0xFFFFFFFF;
 
+	unsigned int fillColor = 0x00000000;
 	Style();
 };
 

@@ -27,7 +27,6 @@ KbPlot::KbPlot(GLWidget *_container, double _xmin, double _xmax, double _ymin, d
 
 	xtick = ytick = 0;
 	xgtick = ygtick = 0;
-	isGridEnabled = false;
 
 	datasetCounter = 0;
 
@@ -242,24 +241,18 @@ void KbPlot::gridRebuild(){
 	xgrid.clear();
 	ygrid.clear();
 
-	if(!this->isGridEnabled) return;
-
 	int xticksCount = (xmax - xmin) / xgtick + 10;
 	int yticksCount = (ymax - ymin) / ygtick + 10;
 
 	for (int i = 0; i < xticksCount; i++) {
 		std::stringstream id;
-		Line *l = new Line(0,0,0,0);
-		l->style = this->stGridX;
-		xgrid.push_back(l);
+		xgrid.push_back(new Line(0,0,0,0));
 		id << "grid_x_" << i;
 		container -> addObject(id.str(), (GraphicalObject*)(xgrid[i]));
 	}
 	for (int i = 0; i < yticksCount; i++) {
 		std::stringstream id;
-		Line *l = new Line(0,0,0,0);
-		l->style = this->stGridY;
-		ygrid.push_back(l);
+		ygrid.push_back(new Line(0,0,0,0));
 		id << "grid_y_" << i;
 		container -> addObject(id.str(), (GraphicalObject*)(ygrid[i]));
 	}
@@ -267,33 +260,11 @@ void KbPlot::gridRebuild(){
 
 void KbPlot::setBackground(const unsigned int color){
 	this->stBkgnd.fillColor = color;
-	setRanges(xmin,xmax,ymin,ymax);
 }
 
 void KbPlot::setGridColor(const unsigned int color){
 	this->stGridX.lineColor = color;
 	this->stGridY.lineColor = color;
-	setRanges(xmin,xmax,ymin,ymax);
-}
-void KbPlot::setGridXTick(const int t){
-	this->xgtick = t;
-}
-void KbPlot::setGridYTick(const int t){
-	this->ygtick = t;
-}
-void KbPlot::setGridTick(const int t){
-	this->xgtick = t;
-	this->ygtick = t;
-}
-void KbPlot::setGridStroke(const Style::LineStroke st)  {
-	this->stGridX.lineStroke = st;
-	this->stGridY.lineStroke = st;
-}
-void KbPlot::setGridXStroke(const Style::LineStroke st) {
-	this->stGridX.lineStroke = st;
-}
-void KbPlot::setGridYStroke(const Style::LineStroke st) {
-	this->stGridY.lineStroke = st;
 }
 
 vector<Txy>* RawData::get(unsigned char *data, size_t count, size_t item_length, size_t o_x, size_t o_y, DataType t){
@@ -317,7 +288,3 @@ vector<Txy>* RawData::get(unsigned char *data, size_t count, size_t item_length,
 	return res;
 }
 
-void KbPlot::toggleGrid(bool b){
-	this->isGridEnabled = b;
-	setRanges(xmin,xmax,ymin,ymax);//<=> refresh, TODO:fix it, GLupdate() is the way
-}
