@@ -9,7 +9,7 @@
 
 WINAPI _tWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPTSTR lpCmdLine, int nCmdShow)
 {
-	GLWidget view;
+    GLWidget view;
     ModelPlot model(&view);
     Window app(&view, &model, 1024, 768, hInstance, nCmdShow);
     app.Create();

@@ -9,15 +9,15 @@ class ModelPlot
 {
 public:
     ModelPlot(GLWidget* view);
-	~ModelPlot();
+    ~ModelPlot();
 
-	void Clear();
+    void Clear();
 public:
-	void CreateOption1();
-	void CreateOption2();
-	void CreateOption3();
-	void CreateOption4();
-	void CreateOption5();
+    void CreateOption1();
+    void CreateOption2();
+    void CreateOption3();
+    void CreateOption4();
+    void CreateOption5();
 private:
 
     KbPlot *plot;
