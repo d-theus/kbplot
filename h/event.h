@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------
 
-#ifndef eventH
-#define eventH
+#ifndef EVENT_H
+#define EVENT_H
 
 class IMouseEventListener {
 public:
@@ -11,4 +11,4 @@ public:
 	virtual void mouseScrollEvent(int)=0;
 };
 
-#endif
+#endif//EVENT_H

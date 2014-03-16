@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------
-#ifndef ModelPlotH
-#define ModelPlotH
+#ifndef MODELPLOT_H
+#define MODELPLOT_H
 //---------------------------------------------------------------------------
 #include "KbPlot.h"
 #include "GLWidget.h"
@@ -31,4 +31,4 @@ private:
     RawData<double> *rd;
 
 };
-#endif
+#endif//MODELPLOT_H

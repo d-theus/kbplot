@@ -84,4 +84,4 @@ class RawData{
 	}
 
 };
-#endif
+#endif//RAWDATA_HPP

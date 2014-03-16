@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------
 
-#ifndef aglwidgetH
-#define aglwidgetH
+#ifndef AGLWIDGET_H
+#define AGLWIDGET_H
 
 #include "event.h"
 #include "graphical_object.h"
@@ -44,4 +44,4 @@ public:
 
 AGLWidget *CreateGLWidget();
 
-#endif
+#endif//AGLWIDGET_H

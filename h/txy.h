@@ -14,4 +14,4 @@ bool operator==(const Txy& left, const Txy& right)
     return left.x == right.x && left.y == right.y;
 }
 
-#endif
+#endif //TXY_H

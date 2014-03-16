@@ -1,5 +1,7 @@
 #pragma once
 
+#ifndef BITMAP_FONT_H
+#define BITMAP_FONT_H
 #include <stdio.h>			// Header File For Standard Input/Output
 #include <stdarg.h>			// Header File For Variable Argument Routines
 #include "gl_helper.h"
@@ -20,3 +22,4 @@ private:
 	HDC hDC_;
 };
 
+#endif//BITMAP_FONT_H

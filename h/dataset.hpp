@@ -64,4 +64,4 @@ typedef DataSetT<RawData<double> > DSRd;
 typedef DataSetT<RawData<int> > DSRi;
 typedef DataSetT<RawData<unsigned short> > DSRus;
 
-#endif
+#endif //DATASET_HPP

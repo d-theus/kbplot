@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------
 
-#ifndef kbplotH
-#define kbplotH
+#ifndef KBPLOT_H
+#define KBPLOT_H
 
 #include "glwidget.h"
 #include "event.h"
@@ -86,4 +86,4 @@ class KbPlot : IMouseEventListener {
 		Style stAxisX, stAxisY, stBkgnd, stGridX, stGridY;
 };
 
-#endif
+#endif //KBPLOT_H

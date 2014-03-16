@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------
 
-#ifndef graphical_objectH
-#define graphical_objectH
+#ifndef GRAPHICAL_OBJECT_H
+#define GRAPHICAL_OBJECT_H
 
 #include <vector>
 #include <map>
@@ -176,4 +176,4 @@ class TextMarkerSet: public GraphicalObject
 		map<size_t ,string >*tmarkers;
 
  };
-#endif
+#endif //GRAPHICAL_OBJECT_H

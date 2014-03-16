@@ -29,8 +29,8 @@
 /*
  *  Класс окна для MS Windows.
  */
-#ifndef WindowH
-#define WindowH
+#ifndef WINDOW_H
+#define WINDOW_H
 //---------------------------------------------------------------------------
 #include <windows.h>
 #include "GLWidget.h"
@@ -91,4 +91,4 @@ class Window
                 int cmdShow;                    // вспомогательный параметр из _tMain для функции winapi ::ShowWindow(...);
 };
 
-#endif
+#endif //WINDOW_H
