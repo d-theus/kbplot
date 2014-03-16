@@ -33,6 +33,7 @@ KbPlot::KbPlot(GLWidget *_container, double _xmin, double _xmax, double _ymin, d
 
     const double framePos = 1.0 - KbPlot::c_frameThickness;
 
+    //Построение рамки
     framePoints = new std::vector<Txy>();
     framePoints->push_back(Txy(-1.0, 1.0));
     framePoints->push_back(Txy(-1.0, -1.0));
@@ -73,6 +74,12 @@ KbPlot::~KbPlot()
 
 void KbPlot::setRanges(double _xmin, double _xmax, double _ymin, double _ymax)
 {
+    /*
+     * Переустановка границ рабочей области
+     * ! Перестраивает сетку
+     * ! Перестраивает отметки осей
+     * ! Вызывает отрисовку
+     */
     xmin = _xmin;
     xmax = _xmax;
     ymin = _ymin;
@@ -192,9 +199,6 @@ void KbPlot::draw(DataSet *ds, std::map<size_t, std::string> *tmarks)
 
 void KbPlot::draw(DataSet *ds, Style &s)
 {
-#ifdef DEBUG
-    cout << "Kbplot::draw(){"<<"\n";
-#endif
     if(s.lineThickness > 0)
     {
         GraphicalObject *pl = new Polylines(ds);
@@ -207,13 +211,10 @@ void KbPlot::draw(DataSet *ds, Style &s)
         ms->style = s;
         container->addObject("marks",ms);
     }
-    container -> setWorkingArea(xmin, xmax, ymin, ymax); //ensure
+    container -> setWorkingArea(xmin, xmax, ymin, ymax);
     container -> GLpaint();
     datasetCounter++;
-#ifdef DEBUG
-    cout << "}"<<"\n";
-#endif
-} /*------------------------TextMarkerSet-----------------------------------------*/
+}
 
 void KbPlot::draw(DataSet *ds, std::map<size_t, std::string>  *tmarks, Style &s)
 {
@@ -223,7 +224,7 @@ void KbPlot::draw(DataSet *ds, std::map<size_t, std::string>  *tmarks, Style &s)
     container -> setWorkingArea(xmin, xmax, ymin, ymax); //ensure
     container -> GLpaint();
 }
-/*------------------------TextMarkerSet-----------------------------------------*/
+
 double KbPlot::axisAdjustMin(double min, double tick)
 {
     double pow10tick = floor(log10(tick));
@@ -398,5 +399,5 @@ void KbPlot::setGridYStroke(const Style::LineStroke st)
 void KbPlot::toggleGrid(bool b)
 {
     this->isGridEnabled = b;
-    setRanges(xmin,xmax,ymin,ymax);//<=> refresh, TODO:fix it, GLupdate() is the way
+    setRanges(xmin,xmax,ymin,ymax);
 }

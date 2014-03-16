@@ -14,6 +14,7 @@ Txy myglTrObjectScreen(double x,double y)
 
     y = (float)vp[3] - y; //everybody: 0 - topleft, gl:bottomleft >_<
 
+    //obj -> win
     gluProject(x,y,0.0, mv,pj,vp,&scrx,&scry,&scrz);
 
     return Txy(scrx,scry);
@@ -33,6 +34,7 @@ Txy myglTrScreenObject(double x, double y)
 
     y = (float)vp[3] - y; //everybody: 0 - topleft, gl:bottomleft >_<
 
+    //win -> obj
     gluUnProject(x,y,0.0, mv,pj,vp,&ox,&oy,&oz);
 
     return Txy(ox,oy);

@@ -5,6 +5,11 @@
 
 template <typename T>
 class RawData{
+	/*
+	 * Класс для извлечения данных из сложных пользовательских массивов
+	 * Реализованы некоторые одноименные методы STL-контейнеров, чтобы использовать
+	 * при конструировании DataSet
+	 */
 	unsigned char *data;
 	size_t count, str_len, ox, oy;
 
@@ -12,6 +17,9 @@ class RawData{
 	public:
 
 	class iterator:public std::iterator<std::random_access_iterator_tag, Txy> {
+		/*
+		 * Необходим, чтобы использовать RawData как DataSet
+		 */
 		size_t strn;
 		unsigned char *data;
 		size_t count, str_len, ox, oy;

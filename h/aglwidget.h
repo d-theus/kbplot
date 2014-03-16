@@ -8,6 +8,9 @@
 
 class AGLWidget
 {
+    /*
+     * Абстрактный класс, содержащий базовые методы работы с графической областью.
+     */
 public:
     virtual ~AGLWidget() {};
 
@@ -26,18 +29,24 @@ public:
     virtual void mouseReleaseEvent(int xPos, int yPos)=0;
     virtual void wheelEvent(int delta)=0;
 
+    //Трансляция из пиксельных координат в openGL [0,1]x[0,1]
     virtual double trScreenToGLx(int)=0;
     virtual double trScreenToGLy(int)=0;
+    //И наоборот
     virtual int trGLToScreenx(double)=0;
     virtual int trGLToScreeny(double)=0;
 
+    //Добавить объект к слою
     virtual void addObject(const string&, GraphicalObject*)=0;
+    //Добавить именованный слой
     virtual void addLayer(const string&)=0;
     virtual void clearLayer(const string&)=0;
-    virtual void clearScene()=0;
     virtual void removeLayer(const string&)=0;
+    //Удалить со сцены все объекты
+    virtual void clearScene()=0;
 
 
+    //Установить границы отображаемой области плоскости ХОУ
     virtual void setWorkingArea(double xmin, double xmax, double ymin, double ymax)=0;
 
     virtual void exportAsImage(const wchar_t* filename)=0;

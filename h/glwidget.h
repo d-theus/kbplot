@@ -16,10 +16,12 @@ using std::string;
 using std::vector;
 using std::map;
 
-/// структура, содержащая необходимые для
-/// создания openGL окна поля
 struct GLWindowData
 {
+    /*
+     * структура, содержащая необходимые для
+     * создания openGL окна поля
+     */
     HWND      hWndParent;     // handle to parent window	   	// указатель на окно родителя( MainWindowData)
     LPWSTR 	  title;
     LPWSTR 	  className;      // name of window class
@@ -43,6 +45,10 @@ struct InternalGLWindowData
 
 class GLWidget : public AGLWidget
 {
+    /*
+     * Класс, представляющий собой конкретную реализацию
+     * интерфейса AGLWidget для ОС Windows и среды Borland Builder
+     */
 public:
     GLWidget();
     virtual ~GLWidget();
@@ -51,6 +57,7 @@ public:
     // GL Window
     HWND CreateGLWindow(const GLWindowData wndData, WNDPROC WndProc, LPVOID WndProcData);
     void KillGLWindow();
+    // Обработка WINAPI-сообщения
     bool TryProcessMessage(UINT uMsg, WPARAM wParam, LPARAM lParam, LRESULT& res);
 
 private:
@@ -68,7 +75,6 @@ public:
     virtual void mouseMoveEvent(int xPos, int yPos);
     virtual void mouseReleaseEvent(int xPos, int yPos);
     virtual void wheelEvent(int delta);
-    //Adapter part
     virtual void subscribeToMouse(IMouseEventListener*);
 
     virtual double trScreenToGLx(int);

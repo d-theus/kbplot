@@ -13,6 +13,10 @@
 #include "rawdata.hpp"
 
 class DataSet {
+	/*
+	 * Абстрактный класс, представляющий интерфейс работы с 
+	 * набором данных.
+	*/
 	public:
 		virtual void advance()=0;
 		virtual void rewind()=0;
@@ -26,7 +30,9 @@ class DataSet {
 
 template<class Container>
 class DataSetT : public DataSet {
-
+	/*
+	 * Конкретные реализации существующими контейнерами интерфейса DataSet
+	 */
 	Container *data;
 	typename Container::iterator cur;
 

@@ -22,6 +22,12 @@ using std::cout;
 
 struct Style
 {
+    /*
+     * Структура, содержащая информацию о стилях отображения
+     * графических объектов. Содержит данные сразу о всех параметрах для
+     * всех объектов. Отдельные параметры используются конкретным объектом
+     * по мере необходимости.
+     */
     typedef enum
     {
         LINE_STD,
@@ -72,6 +78,10 @@ struct Style
 
 class GraphicalObject
 {
+    /*
+     * Графический объект. Содержит в себе основные и общие для всех
+     * объектов методы.
+     */
 protected:
     bool isFixed;
     bool isScaled;
@@ -82,7 +92,10 @@ protected:
 
     DataSet *data;
 
+    //Вызывается внутри draw(). Применяет необходимые параметры перемещения или поворота
     void before_draw()const;
+
+    //Отменяет действия before_draw() для корректного рисования других объектов
     void after_draw()const;
 public:
     GraphicalObject(DataSet *data);
@@ -92,6 +105,8 @@ public:
     void setScale(double,double);
     void setTranslation(double,double);
 
+    //Прикрепить объект к плоскости экрана [0,1]x[0,1]
+    //Используется, чтобы рисовать статичные элементы, вроде рамки
     void toggleFixed(bool b = true);
     void toggleScaled(bool b = true);
     void toggleTranslated(bool b = true);
@@ -101,6 +116,9 @@ public:
 
 class Polylines : public GraphicalObject
 {
+    /*
+     * Ломаная линия.
+     */
 public:
     Polylines(DataSet *data):
         GraphicalObject(data) {};
@@ -110,6 +128,10 @@ public:
 
 class Line : public GraphicalObject
 {
+    /*
+     * Отрезок. Создан, чтобы не создавать отдельно хранящиеся
+     * наборы данных для Polyline
+     */
 public:
     Line(double,double,double,double);
     virtual void draw() const;
@@ -121,6 +143,9 @@ private:
 
 class Polygon : public GraphicalObject
 {
+    /*
+     * Многоугольник c заливкой.
+     */
 public:
     Polygon(DataSet *data):
         GraphicalObject(data) {}
@@ -138,6 +163,9 @@ class Text;
 
 class MarkerSet : public GraphicalObject
 {
+    /*
+     * Набор графических меток(маркеров).
+     */
 public:
     MarkerSet (DataSet *data):
         GraphicalObject(data) {}
@@ -180,6 +208,9 @@ private:
 
 class TextMarkerSet: public GraphicalObject
 {
+    /*
+     * Набор текстовых меток
+     */
 public:
     TextMarkerSet (DataSet *ds, map<size_t,string> *tmarkers);
 
