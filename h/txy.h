@@ -3,17 +3,14 @@
 #define TXY_H
 struct Txy
 {
-    Txy(double _x, double _y)
+    Txy(double _x = 0.0, double _y = 0.0)
     {
         x = _x;
         y = _y;
     }
-    Txy()
-    {
-        x = 0;
-        y = 0;
-    }
+
     double x,y;
+
     friend bool operator==(const Txy& left, const Txy& right);
 };
 

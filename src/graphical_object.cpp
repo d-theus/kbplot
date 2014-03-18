@@ -11,20 +11,28 @@
 #include <limits>
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
-#define DEBUG
-const unsigned int maskr = 0xFF000000;
-const unsigned int maskg = 0x00FF0000;
-const unsigned int maskb = 0x0000FF00;
-const unsigned int maska = 0x000000FF;
+//Маски для извлечения компонент цвета
+//Компоненты извлекаются побайтно, RGBA
+const unsigned int maskr = 0xFF000000;//R
+const unsigned int maskg = 0x00FF0000;//G
+const unsigned int maskb = 0x0000FF00;//B
+const unsigned int maska = 0x000000FF;//A
 
 static void setGLColor(const unsigned c)
 {
+    /*
+     * Вспомогательная функция для установки цвета
+     */
     glColor4ub((c & maskr) >> 24, (c & maskg) >> 16, (c & maskb) >> 8, c & maska);
 }
 
-// NOTE: crude interpolation implementation without accurate rounding
 static unsigned interpolateColor(const unsigned c1, const unsigned c2, const double v1, const double v2, const double v)
 {
+    /*
+     * Используется для получения цвета для значения функции при градиентной заливке с учетом экстремумов.
+     */
+
+    //Значение должно находиться между максимумом и минимумом.
     assert(v1 <= v && v <= v2);
 
     const double k2 = (v - v1) / (v2 - v1), k1 = 1 - k2;
@@ -35,9 +43,26 @@ static unsigned interpolateColor(const unsigned c1, const unsigned c2, const dou
 }
 
 
-Style::Style(): lineStroke(LINE_STD), lineColor(0xFFFFFFFF) ,lineThickness(1.0), markerType(MARK_CROSS), markerSize(5),
-    markerColor(0xFFFFFFFF), textAlignment(TEXT_ALIGN_CENTER), fontSize(16), fontName("Ubuntu-R.ttf"), textColor(0xFFFFFFFF),
-    fillEnable(false), extremumFill(false), fillColor(0x00000000), fillColorMax(0x00000000) {}
+Style::Style():
+    //Умолчания:
+    lineStroke(LINE_STD), //Сплошная
+    lineColor(0xFFFFFFFF),//Белый
+    lineThickness(1.0),
+
+    markerType(MARK_CROSS),//Кресты
+    markerSize(5),
+    markerColor(0xFFFFFFFF),//Белый
+    textAlignment(TEXT_ALIGN_CENTER),//Поверх точки(в центре)
+
+    fontSize(16),
+    fontName(""),
+    textColor(0xFFFFFFFF),//Белый
+
+    fillEnable(false),
+    extremumFill(false),
+    fillColor(0x00000000),//Черный
+    fillColorMax(0x00000000)//Черный
+{}
 
 GraphicalObject::GraphicalObject(DataSet *data = NULL) :
     data(data), isFixed(false),  isScaled(false), isTranslated(false) { }
@@ -87,9 +112,6 @@ void GraphicalObject::before_draw()const
         if (isTranslated) glTranslated(trX, trY, 0.0);
         if (isScaled) glScaled(scX, scY, 1.0);
     }
-    /*
-    setGLColor(style.lineColor);
-           */
     glLineWidth(this -> style.lineThickness);
     if(this -> style.lineStroke != Style::LINE_STD)
     {
@@ -100,13 +122,13 @@ void GraphicalObject::before_draw()const
         switch(style.lineStroke)
         {
         case Style::LINE_DASHED:
-            glLineStipple(1, 0x00FF);
+            glLineStipple(1, 0x00FF);//Двоичное 0000 0000 1111 1111 пробел пробел тире тире
             break;
         case Style::LINE_DASH_DOTTED:
-            glLineStipple(1, 0x0C0F);
+            glLineStipple(1, 0x0C0F);//Двоичное 0000 1100 0000 1111 пробел точка пробел тире
             break;
         case Style::LINE_DOTTED:
-            glLineStipple(1, 0xAAAA);
+            glLineStipple(1, 0xAAAA);//Двоичное 1000 1000 1000 1000 точка точка точка точка
             break;
         }
     }

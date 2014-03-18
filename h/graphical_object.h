@@ -28,6 +28,7 @@ struct Style
      * всех объектов. Отдельные параметры используются конкретным объектом
      * по мере необходимости.
      */
+    //Перечисление с типами штрихов линий
     typedef enum
     {
         LINE_STD,
@@ -36,6 +37,7 @@ struct Style
         LINE_DASH_DOTTED
     } LineStroke;
 
+    //Перечисление с типами маркеров
     typedef enum
     {
         MARK_CROSS,
@@ -44,6 +46,7 @@ struct Style
         MARK_TRIANGLE
     } MarkerType;
 
+    //Перечисление с позициями текста относительно вершин
     typedef enum
     {
         TEXT_ALIGN_CENTER,
@@ -57,21 +60,26 @@ struct Style
         TEXT_ALIGN_BOTRIGHT
     } TextAlignment;
 
-    LineStroke lineStroke;
-    unsigned int lineColor;
-    float lineThickness;
+    ////    Линии:
+    LineStroke lineStroke; //Штрих
+    unsigned int lineColor; //Цвет, 4 байта, RGBA
+    float lineThickness; //Толщина
 
-    MarkerType markerType;
-    unsigned int markerSize;
-    unsigned int markerColor;
+    //Графические метки
+    MarkerType markerType;//Тип
+    unsigned int markerSize;//Размер
+    unsigned int markerColor; //Цвет, 4 байта, RGBA
 
-    TextAlignment textAlignment;
-    size_t fontSize;
-    string fontName;
-    unsigned int textColor;
+    //Текст
+    TextAlignment textAlignment; //Позиция относительно вершины
+    size_t fontSize; //Размер шрифта
+    string fontName; //Имя шрифта
+    unsigned int textColor; //Цвет, 4 байта, RGBA
 
-    bool fillEnable, extremumFill;
-    unsigned int fillColor, fillColorMax;
+    //Заливка
+    bool fillEnable; //Задействована ли
+    bool extremumFill; //Градиентное выделение экстремумов
+    unsigned int fillColor, fillColorMax; //Цвет, 4 байта, RGBA
 
     Style();
 };
